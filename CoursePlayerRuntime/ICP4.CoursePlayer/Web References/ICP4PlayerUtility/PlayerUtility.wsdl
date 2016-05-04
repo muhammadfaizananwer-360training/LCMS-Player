@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s1="http://www.360training.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://www.360training.com/" />
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateCache">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="publishedCourseId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseConfiguration" type="s1:CourseConfiguration" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseSequence" type="s1:Sequence" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseDemoSequence" type="s1:Sequence" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseTOC" type="s1:TableOfContent" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddUpdateCacheResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddUpdateCacheResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InvalidateCache">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="publishedCourseId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InvalidateCacheResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InvalidateCacheResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InvalidateCacheAndNotifyToAllRemainingServers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="publishedCourseId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="notifytoAllRemainingServers" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InvalidateCacheAndNotifyToAllRemainingServersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InvalidateCacheAndNotifyToAllRemainingServersResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.360training.com/">
+      <s:complexType name="CourseConfiguration">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CourseConfigurationID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlayerEnableIntroPage" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlayerEnableContent" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlayerEnableEndOfCourseScene" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlayerAllowUserToReviewCourseAfterCompletion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlayerIdleUserTimeout" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlayerCourseFlow" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlayerEnforceTimedOutline" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlayerEnableOrientaionScenes" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlayerCourseEvaluation" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlayerDisplayCourseEvaluation" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlayerMustCompleteCourseEvaluatio" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PlayerCourseEvaluationInstructions" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionPostAssessmentAttempted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionPostAssessmentMastery" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionPreAssessmentMastery" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionQuizMastery" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionSurvey" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionViewEverySceneInCourse" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionCompleteAfterNOUniqueCourseVisit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionMustCompleteWithinSpecifiedAmountOfTimeMinute" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionMustCompleteWithinSpecifiedAmountOfTimeDay" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CertificateEnabled" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CertificateAssetID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompletionUnitOfMustCompleteWithInSpecifiedAmountOfTime" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionRespondToCourseEvaluation" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentEnabled" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentNOQuestion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentMasteryScore" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentRandomizeQuestion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentRandomizeAnswers" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentEnforceMaximumTimeLimit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentMaximumNOAttempt" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreAssessmentActionToTakeAfterFailingMaxAttempt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreAssessmentScoreType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentProctoredAssessment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentAllowSkippingQuestion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentEnforceUniqueQuestionsOnRetake" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentQuestionLevelResult" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentContentRemediation" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentScoreAsYouGo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentShowQuestionAnswerSummary" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentAllowPauseResumeAssessment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentRestrictiveMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentEnabled" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentNOQuestion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentMasteryScore" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentRandomizeQuestion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentRandomizeAnswers" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentEnforceMaximumTimeLimit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentMaximumNOAttempt" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostAssessmentActionToTakeAfterFailingMaxAttempt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostAssessmentScoreType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentProctoredAssessment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentAllowSkippingQuestion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentEnforceUniqueQuestionsOnRetake" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentQuestionLevelResult" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentContentRemediation" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentScoreAsYouGo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentShowQuestionAnswerSummary" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentAllowPauseResumeAssessment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentRestrictiveMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentMinimumTimeBeforeStart" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostAssessmentMinimumTimeBeforeStartUnit" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizEnabled" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizNOQuestion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizMasteryScore" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizRandomizeQuestion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizRandomizeAnswers" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizEnforceMaximumTimeLimit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizMaximumNOAttempt" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuizActionToTakeAfterFailingMaxAttempt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuizScoreType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizProctoredAssessment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizAllowSkippingQuestion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizEnforceUniqueQuestionsOnRetake" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizQuestionLevelResult" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizContentRemediation" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizScoreAsYouGo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizShowQuestionAnswerSummary" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizAllowPauseResumeAssessment" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizAssessmentRestrictiveMode" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidationRequireIdentityValidation" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidationTimeBetweenQuestion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidationTimeToAnswerQuestion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidationNOMissedQuestionsAllowed" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValidationNOValidationQuestion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmbeddedAcknowledgmentEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmbeddedAcknowledgmentText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SeatTimeEnabled" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SeatTimeInHour" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SeatTimeInMin" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageSeatTimeExceeds" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageSeatTimeCourseLaunch" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActionToTakeUponIdleTimeOut" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Sequence">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SequenceItems" type="s1:ArrayOfSequenceItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSequenceItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SequenceItem" nillable="true" type="s1:SequenceItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SequenceItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="sceneID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="isTitleVisible" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isTopicTitleVisible" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SequenceItemID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Item_GUID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SequenceItemType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Assets" type="s1:ArrayOfAsset" />
+          <s:element minOccurs="1" maxOccurs="1" name="SceneTemplateID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SceneGUID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SceneDuration" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContentObjectName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsViewStreamingInScene" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SceneName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SceneID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTitleVisible" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTopicTitleVisible" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsValidQuiz" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="VideoFilename" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreamingServerApplication" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartQueueHours" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartQueueMinutes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartQueueSeconds" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndQueueHours" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndQueueMinutes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndQueueSeconds" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VideoHeight" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VideoWidth" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FullScreen" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAsset">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Asset" nillable="true" type="s1:Asset" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Asset">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AssetID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssetType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="URL" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Asset_GUID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssetSceneOrientation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContentText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTopicTitleVisible" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TableOfContent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ContentObjects" type="s1:ArrayOfContentObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfContentObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ContentObject" nillable="true" type="s1:ContentObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContentObject">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ContentObjectID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentContentObjectID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AlowQuizTF" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContentObjects" type="s1:ArrayOfContentObject" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContentObject_GUID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DisplayOrder" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateCacheSoapIn">
+    <wsdl:part name="parameters" element="tns:AddUpdateCache" />
+  </wsdl:message>
+  <wsdl:message name="AddUpdateCacheSoapOut">
+    <wsdl:part name="parameters" element="tns:AddUpdateCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheSoapIn">
+    <wsdl:part name="parameters" element="tns:InvalidateCache" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheSoapOut">
+    <wsdl:part name="parameters" element="tns:InvalidateCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheAndNotifyToAllRemainingServersSoapIn">
+    <wsdl:part name="parameters" element="tns:InvalidateCacheAndNotifyToAllRemainingServers" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheAndNotifyToAllRemainingServersSoapOut">
+    <wsdl:part name="parameters" element="tns:InvalidateCacheAndNotifyToAllRemainingServersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PlayerUtilitySoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateCache">
+      <wsdl:input message="tns:AddUpdateCacheSoapIn" />
+      <wsdl:output message="tns:AddUpdateCacheSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <wsdl:input message="tns:InvalidateCacheSoapIn" />
+      <wsdl:output message="tns:InvalidateCacheSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCacheAndNotifyToAllRemainingServers">
+      <wsdl:input message="tns:InvalidateCacheAndNotifyToAllRemainingServersSoapIn" />
+      <wsdl:output message="tns:InvalidateCacheAndNotifyToAllRemainingServersSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PlayerUtilitySoap" type="tns:PlayerUtilitySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateCache">
+      <soap:operation soapAction="http://tempuri.org/AddUpdateCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <soap:operation soapAction="http://tempuri.org/InvalidateCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCacheAndNotifyToAllRemainingServers">
+      <soap:operation soapAction="http://tempuri.org/InvalidateCacheAndNotifyToAllRemainingServers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PlayerUtilitySoap12" type="tns:PlayerUtilitySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateCache">
+      <soap12:operation soapAction="http://tempuri.org/AddUpdateCache" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <soap12:operation soapAction="http://tempuri.org/InvalidateCache" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCacheAndNotifyToAllRemainingServers">
+      <soap12:operation soapAction="http://tempuri.org/InvalidateCacheAndNotifyToAllRemainingServers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PlayerUtility">
+    <wsdl:port name="PlayerUtilitySoap" binding="tns:PlayerUtilitySoap">
+      <soap:address location="http://localhost:52023/PlayerUtility.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PlayerUtilitySoap12" binding="tns:PlayerUtilitySoap12">
+      <soap12:address location="http://localhost:52023/PlayerUtility.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

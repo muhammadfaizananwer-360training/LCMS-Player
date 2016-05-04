@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://www.example.org/CourseLevelRatingService" elementFormDefault="qualified" targetNamespace="http://www.example.org/CourseLevelRatingService" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="CourseLevelRatingRequest" type="tns:CLRRequestType" />
+  <complexType name="CLRRequestType">
+    <sequence>
+      <element name="courseGuid" type="string" />
+      <element name="ratingCount" type="int" />
+      <element name="avgRating" type="double" />
+    </sequence>
+  </complexType>
+  <element name="CourseLevelRatingResponse">
+    <complexType>
+      <sequence>
+        <element name="success" type="string" />
+      </sequence>
+    </complexType>
+  </element>
+</schema>

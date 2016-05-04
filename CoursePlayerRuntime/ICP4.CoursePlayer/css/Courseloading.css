@@ -1,0 +1,85 @@
+﻿
+	 .process_window, .process_window_shadow
+        {
+            position: absolute;
+            width: 400px;
+            height: 140px;
+            padding-top: 15px;
+            padding-left: 15px;
+            background-color: #F7F7F7;
+            border: 1px;
+            border-style: solid;
+            border-color: #E8E8E8;
+            z-index: 0;
+            left: 50%;
+            margin-left: -15em;
+            margin-top: -9em;
+            position: absolute;
+            top: 50%;
+            width: 30em;
+        }
+        .process_window_shadow
+        {
+            background-color: #F1F1F1;
+            border: none;
+            z-index: -1;
+            left: 50%;
+            margin-left: -15em;
+            margin-top: -9em;
+            position: absolute;
+            top: 50%;
+            width: 30em;
+        }
+        .icon_clock
+        {
+            float: left;
+            height: 55px;
+            width: 57px;
+            margin-left: 5px;
+            background-image: url( ../images/loadingClock.gif);
+            /* background-image: url(loadingClock.gif);*/
+            background-repeat: no-repeat;
+        }
+        .process_heading
+        {
+            float: left;
+            width: 300px;
+            font-size: 18px;
+            margin-top: 17px;
+            margin-left: 10px;
+            font-weight: bold;
+            text-align: left !important;
+        }
+        .processing_text
+        {
+            font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+            font-size: 11px;
+            color: #000000;
+            float: left;
+            width: 500px;
+            padding-left: 7px;
+            margin-top: 20px;
+            text-align: left !important;
+        }
+        .bars_container
+        {
+            float: left;
+            height: 21px;
+            border: 1px #F7F7F7 solid;
+            z-index: 1;
+        }
+        .progress_bar, .status_bar
+        {
+            text-align: left;
+            position: absolute;
+            height: 21px;
+            width: 375px;
+            background-color: #FFFFFF;
+            border: 1px solid #E8E8E8;
+        }
+        .status_bar
+        {
+        	background-image: url( ../images/loadingbar.gif);
+           /*  background-image: url(  'loadingbar.gif' );*/
+            z-index: 2;
+        }

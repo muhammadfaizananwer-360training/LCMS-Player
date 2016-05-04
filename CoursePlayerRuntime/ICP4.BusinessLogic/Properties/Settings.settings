@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ICP4.BusinessLogic.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ICP4_BusinessLogic_LCMS_VUConnectorService_LCMS_VUConnectorServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://kar-dev-3/vu360/vu3/icp4/LCMS_VUConnectorService.cfc</Value>
+    </Setting>
+    <Setting Name="ICP4_BusinessLogic_LegacyVUValidationQuestionService_ValidationQuestionsService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://kar-dev-3/vu3/ICP4/ValidationQuestions.cfc</Value>
+    </Setting>
+    <Setting Name="ICP4_BusinessLogic_LearningSessionComplete_lmsLcmsService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.0.100.152:8080/lms/service/lms-lcms/</Value>
+    </Setting>
+    <Setting Name="ICP4_BusinessLogic_ICPBrandingService_BrandingService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://10.0.100.179/iCPBrandingService/BrandingService.asmx</Value>
+    </Setting>
+    <Setting Name="ICP4_BusinessLogic_ICPAssessmentService_AssessmentService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://10.0.100.179/iCPAssessmentService/AssessmentService.asmx</Value>
+    </Setting>
+    <Setting Name="ICP4_BusinessLogic_ICPTrackingService_TrackingService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:50061/TrackingService.asmx</Value>
+    </Setting>
+    <Setting Name="ICP4_BusinessLogic_ICPCourseService_CourseService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://10.0.100.179/ICPCourseService/CourseService.asmx</Value>
+    </Setting>
+    <Setting Name="ICP4_BusinessLogic_ICP4PlayerUtility_PlayerUtility" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:58412/PlayerUtility.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

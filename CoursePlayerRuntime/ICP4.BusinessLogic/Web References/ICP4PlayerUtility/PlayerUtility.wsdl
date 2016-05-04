@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InvalidateCache">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="publishedCourseId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InvalidateCacheResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InvalidateCacheResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InvalidateCacheAndNotifyToAllRemainingServers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="publishedCourseId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="notifytoAllRemainingServers" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InvalidateCacheAndNotifyToAllRemainingServersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InvalidateCacheAndNotifyToAllRemainingServersResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSessionTimeOutKeyValue">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSessionTimeOutKeyValueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSessionTimeOutKeyValueResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppSettingKeyValue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppSettingKeyValueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAppSettingKeyValueResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheSoapIn">
+    <wsdl:part name="parameters" element="tns:InvalidateCache" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheSoapOut">
+    <wsdl:part name="parameters" element="tns:InvalidateCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheAndNotifyToAllRemainingServersSoapIn">
+    <wsdl:part name="parameters" element="tns:InvalidateCacheAndNotifyToAllRemainingServers" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheAndNotifyToAllRemainingServersSoapOut">
+    <wsdl:part name="parameters" element="tns:InvalidateCacheAndNotifyToAllRemainingServersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionTimeOutKeyValueSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSessionTimeOutKeyValue" />
+  </wsdl:message>
+  <wsdl:message name="GetSessionTimeOutKeyValueSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSessionTimeOutKeyValueResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAppSettingKeyValueSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAppSettingKeyValue" />
+  </wsdl:message>
+  <wsdl:message name="GetAppSettingKeyValueSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAppSettingKeyValueResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PlayerUtilitySoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <wsdl:input message="tns:InvalidateCacheSoapIn" />
+      <wsdl:output message="tns:InvalidateCacheSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCacheAndNotifyToAllRemainingServers">
+      <wsdl:input message="tns:InvalidateCacheAndNotifyToAllRemainingServersSoapIn" />
+      <wsdl:output message="tns:InvalidateCacheAndNotifyToAllRemainingServersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionTimeOutKeyValue">
+      <wsdl:input message="tns:GetSessionTimeOutKeyValueSoapIn" />
+      <wsdl:output message="tns:GetSessionTimeOutKeyValueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppSettingKeyValue">
+      <wsdl:input message="tns:GetAppSettingKeyValueSoapIn" />
+      <wsdl:output message="tns:GetAppSettingKeyValueSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PlayerUtilitySoap" type="tns:PlayerUtilitySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <soap:operation soapAction="http://tempuri.org/InvalidateCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCacheAndNotifyToAllRemainingServers">
+      <soap:operation soapAction="http://tempuri.org/InvalidateCacheAndNotifyToAllRemainingServers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionTimeOutKeyValue">
+      <soap:operation soapAction="http://tempuri.org/GetSessionTimeOutKeyValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppSettingKeyValue">
+      <soap:operation soapAction="http://tempuri.org/GetAppSettingKeyValue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PlayerUtilitySoap12" type="tns:PlayerUtilitySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <soap12:operation soapAction="http://tempuri.org/InvalidateCache" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCacheAndNotifyToAllRemainingServers">
+      <soap12:operation soapAction="http://tempuri.org/InvalidateCacheAndNotifyToAllRemainingServers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSessionTimeOutKeyValue">
+      <soap12:operation soapAction="http://tempuri.org/GetSessionTimeOutKeyValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppSettingKeyValue">
+      <soap12:operation soapAction="http://tempuri.org/GetAppSettingKeyValue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PlayerUtility">
+    <wsdl:port name="PlayerUtilitySoap" binding="tns:PlayerUtilitySoap">
+      <soap:address location="http://localhost:52023/PlayerUtility.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PlayerUtilitySoap12" binding="tns:PlayerUtilitySoap12">
+      <soap12:address location="http://localhost:52023/PlayerUtility.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

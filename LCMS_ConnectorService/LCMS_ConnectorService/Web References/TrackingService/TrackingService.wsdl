@@ -1,0 +1,3213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.360training.com" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.360training.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.360training.com">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveStudentCourseTrack">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="courseID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequenceNo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveStudentCourseTrackResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveStudentCourseTrackResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStudentCourseTrack">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="courseID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStudentCourseTrackResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetStudentCourseTrackResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="endTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="totalTimeSpent" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="percentageCourseProgress" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="enrollment_Id" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EndSessionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionLegacy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="endTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="MAXPERCENTAGECOURSEATTENDED" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionLegacyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EndSessionLegacyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionExternal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="endTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="MAXPERCENTAGECOURSEATTENDED" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionExternalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EndSessionExternalResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionLegacyScorm">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="endTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="MAXPERCENTAGECOURSEATTENDED" type="s:decimal" />
+            <s:element minOccurs="1" maxOccurs="1" name="PASSEDASSESSMENT" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="RAWSCORE" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndSessionLegacyScormResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EndSessionLegacyScormResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLearnerStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerStatistics" type="tns:LearnerStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LearnerStatistics">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LearnerStatisticsID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="LearningSession_ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LearnerEnrollment_ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeInSeconds" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Statistic_Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Item_GUID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssessmentType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumberAnswersCorrect" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumberAnswersIncorrect" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CorrectTF" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssessmentItemID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AssessmentAttemptNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Scene_GUID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LearnerStatisticsAnswers" type="tns:ArrayOfLearnerStatisticsAnswer" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxAtemptActionTaken" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RemediationCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RawScore" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPass" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CorrectAnswerGuids" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AnswerProvided" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuestionType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnswerTexts" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TestID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRepeatedAssessmentAttempt" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLearnerStatisticsAnswer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LearnerStatisticsAnswer" nillable="true" type="tns:LearnerStatisticsAnswer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LearnerStatisticsAnswer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LearnerStatisticsAnswerID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssessmentItemAnswerGUID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LearnerStatisticsID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveLearnerStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveLearnerStatisticsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLearnerStatistics_Scene">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerStatistics" type="tns:LearnerStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLearnerStatistics_SceneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveLearnerStatistics_SceneResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLearnerStatisticsWithStatisticDateTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerStatistics" type="tns:LearnerStatistics" />
+            <s:element minOccurs="1" maxOccurs="1" name="StatisticDateTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLearnerStatisticsWithStatisticDateTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveLearnerStatisticsWithStatisticDateTimeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLearnerStatisticsFromLegacyVU">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerStatistics" type="tns:LearnerStatistics" />
+            <s:element minOccurs="0" maxOccurs="1" name="learnerStatisticsAnswer" type="tns:LearnerStatisticsAnswer" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLearnerStatisticsFromLegacyVUResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveLearnerStatisticsFromLegacyVUResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearningSessionID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearningSessionIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLearningSessionIDResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearnerCoursetrackInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearnerCoursetrackInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLearnerCoursetrackInfoResult" type="tns:LearnerCourseTrackInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LearnerCourseTrackInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LearnerSessionID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CourseID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LearnerID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SceneGUID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ItemGUID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatisticsType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EnrollmentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RedirectURL" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalTimeSpent" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeSpent" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstAccessDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RegAccessDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LearningSessionStartDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="LearnerCourseCompletionStatus" type="tns:LearnerCourseCompletionStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="CourseApprovalID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CourseConfigurationID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LearnerCourseCompletionStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsPostAssessmentAttempted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPostAssessmentMasteryAchieved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPreAssessmentMasteryAchieved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsQuizMasteryAchieved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsViewEverySceneInCourseAchieved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCompleteAfterNOUniqueCourseVisitAchieved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMustCompleteWithinSpecifiedAmountOfTimeaAfterFirstAccess" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMustCompleteWithinSpecifiedAmountOfTimeAfterRegDate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsembeddedAcknowledgmentAchieved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRespondToCourseEvaluationAchieved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCourseCompleted" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveLearnerCourseBookmark">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="courseID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="item_GUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sceneGUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="flashSceneNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bookMarkTitle" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastScene" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isMovieEnded" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="nextButtonState" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstSceneName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLearnerCourseBookmarkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveLearnerCourseBookmarkResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearnerCourseBookMarkInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="learnerCourseBookMarkID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearnerCourseBookMarkInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLearnerCourseBookMarkInfoResult" type="tns:LearnerCourseBookMarkInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LearnerCourseBookMarkInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BookMarkInfoID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Item_GUID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Scene_GUID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LearnerID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CourseID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FlashSceneNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BookMarkTitle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastScene" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMovieEnded" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="NextButtonState" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstSceneName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllLearnerCourseBookMarksInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="courseID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLearnerCourseBookMarksInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllLearnerCourseBookMarksInfoResult" type="tns:ArrayOfLearnerCourseBookMarkInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLearnerCourseBookMarkInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LearnerCourseBookMarkInfo" nillable="true" type="tns:LearnerCourseBookMarkInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllLearnerCourseTrackInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="courseID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllLearnerCourseTrackInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllLearnerCourseTrackInfoResult" type="tns:ArrayOfLearnerCourseTrackInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLearnerCourseTrackInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LearnerCourseTrackInfo" nillable="true" type="tns:LearnerCourseTrackInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPreviouslyAskedQuestions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerSessionGUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="assessmentType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="remediationCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPreviouslyAskedQuestionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPreviouslyAskedQuestionsResult" type="tns:ArrayOfLearnerStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLearnerStatistics">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LearnerStatistics" nillable="true" type="tns:LearnerStatistics" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPreviouslyAskedQuestionsQuiz">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerSessionGUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="assessmentType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="remediationCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="contentObjectId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPreviouslyAskedQuestionsQuizResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPreviouslyAskedQuestionsQuizResult" type="tns:ArrayOfLearnerStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPreAssessmentAttemptNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerSessionGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPreAssessmentAttemptNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPreAssessmentAttemptNoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostAssessmentAttemptNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerSessionGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostAssessmentAttemptNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetPostAssessmentAttemptNoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuizAssessmentAttemptNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerSessionGUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentObjectGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuizAssessmentAttemptNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetQuizAssessmentAttemptNoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPreAssessmentResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerSessionGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPreAssessmentResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPreAssessmentResultResult" type="tns:ArrayOfLearnerStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostAssessmentResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerSessionGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPostAssessmentResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPostAssessmentResultResult" type="tns:ArrayOfLearnerStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuizResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerSessionGUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentObjectGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetQuizResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetQuizResultResult" type="tns:ArrayOfLearnerStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPracticeExamResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerSessionGUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contentObjectGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPracticeExamResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPracticeExamResultResult" type="tns:ArrayOfLearnerStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsCourseLocked">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsCourseLockedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsCourseLockedResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="lockType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LockUnlockCourse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="courseID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="lockType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="islock" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LockUnlockCourseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LockUnlockCourseResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLearnerStatisticsMaximumAttemptAction">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="learnerStatisticsID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="maxAttemptActionTaken" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLearnerStatisticsMaximumAttemptActionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateLearnerStatisticsMaximumAttemptActionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsCourseCompleted">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsCourseCompletedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsCourseCompletedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocuSignStatusByEnrollmentId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocuSignStatusByEnrollmentIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetDocuSignStatusByEnrollmentIdResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearnerTimeSpent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearnerTimeSpentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLearnerTimeSpentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearnerTimeSpentbyTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="startTime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearnerTimeSpentbyTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLearnerTimeSpentbyTimeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCourseCompletionStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="courseID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseCompletionPolicy" type="tns:CourseCompletionPolicy" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="QuizCount" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="regDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="courseProgress" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="courseApprovalID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CourseCompletionPolicy">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentAttempted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentMasteryAchived" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentMasteryAchived" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizMasteryAchived" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ViewEverySceneInCourse" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompleteAfterNumberOfUniqueVisits" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostAssessmentMasteryScore" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreAssessmentMasteryScore" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuizMasteryScore" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MustCompleteWithInSpecifiedAmountOfTime" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MustCompleteWithInSpecifiedAmountOfTimeUnit" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RespondToCourseEvaluation" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="MustCompleteWithInSpecifiedAmountOfDayAfterRegistration" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EnableEmbeddedAknowledgement" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostAssessmentScoreType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PreAssessmentScoreType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QuizScoreType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCourseCompletionStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCourseCompletionStatusResult" type="tns:LearnerCourseCompletionStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertLearningSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="courseGUID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="startTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="uniqueUserGUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionGUID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sourceVU" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="brandingID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="languageID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertLearningSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertLearningSessionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSource">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerSessionGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSourceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSourceResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearningSessionBrandcodeVariant">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearningSessionBrandcodeVariantResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="brandCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="variant" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveLearnerValidationStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerValidationStatistics" type="tns:LearnerValidationStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LearnerValidationStatistics">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LearnerValidationStatisticsId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AnswerText" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCorrect" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SaveTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EnrollmentID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuestionID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAnswered" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveLearnerValidationStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveLearnerValidationStatisticsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearningSessionCourseTypeAndUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearningSessionCourseTypeAndUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLearningSessionCourseTypeAndUrlResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="URL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfoForLMSVUConnector">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfoForLMSVUConnectorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseGUID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="epoch" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="officePhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="streetAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="middleName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateValidationLearnerStatisticsAnswer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="learnerValidationStatisticsID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="answerText" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isCorrect" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isAnswered" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateValidationLearnerStatisticsAnswerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateValidationLearnerStatisticsAnswerResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentLearnerValidationStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCurrentLearnerValidationStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCurrentLearnerValidationStatisticsResult" type="tns:ArrayOfLearnerValidationStatistics" />
+            <s:element minOccurs="1" maxOccurs="1" name="minutesSinceLastValidation" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfLearnerValidationStatistics">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LearnerValidationStatistics" nillable="true" type="tns:LearnerValidationStatistics" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserProfileResult" type="tns:LearnerProfile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LearnerProfile">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LearningSessionID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobilePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Website" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BrandCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Variant" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateLearnerProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TransactionGUID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="profile" type="tns:LearnerProfile" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLearnerProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateLearnerProfileResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCompleteLearnerProfile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="emailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="officePhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="streetAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="middleName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateCompleteLearnerProfileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateCompleteLearnerProfileResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearnerCourseMetaCertificateInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Course_ID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Learner_ID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Enrollment_ID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearnerCourseMetaCertificateInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CourseName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ApprovedCourseHours" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CompletionDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CertificateNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CertificateIssueDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnlockLockedCourse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnlockLockedCourseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnlockLockedCourseResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearningSessionResourceValueOfKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="resourceKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearningSessionResourceValueOfKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLearningSessionResourceValueOfKeyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResourceValueOfResourceKey">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="brandCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="variant" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="resourceKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResourceValueOfResourceKeyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetResourceValueOfResourceKeyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPreviousLearnerStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="currentItemGUID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPreviousLearnerStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPreviousLearnerStatisticsResult" type="tns:ArrayOfLearnerStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearningSessionRedirectURL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLearningSessionRedirectURLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLearningSessionRedirectURLResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LearningSessionEndedLMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerSessioGUID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="completed" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="certificateURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LearningSessionEndedLMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LearningSessionEndedLMSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCourseEvaluationResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="courseEvaluationResult" type="tns:CourseEvaluationResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CourseEvaluationResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CourseEvaluationResultAnswers" type="tns:ArrayOfCourseEvaluationResultAnswer" />
+          <s:element minOccurs="1" maxOccurs="1" name="CourseID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SurveyID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LearnerID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LearningSessionID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCourseEvaluationResultAnswer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CourseEvaluationResultAnswer" nillable="true" type="tns:CourseEvaluationResultAnswer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CourseEvaluationResultAnswer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CourseEvaluationAnswerID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CourseEvaluationQuestionID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CourseEvaluationAnswerType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CourseEvaluationResultAnswerText" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveCourseEvaluationResultResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveCourseEvaluationResultResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsCourseEvaluationAttempted">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="courseID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="learningSessionID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="surveyType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsCourseEvaluationAttemptedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsCourseEvaluationAttemptedResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LegacyStatsRecorder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionGuid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="courseId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="studentId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="epoch" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="playerVersion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="source" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LegacyStatsRecorderResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SaveAssessmentScore">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerStatistics" type="tns:LearnerStatistics" />
+            <s:element minOccurs="1" maxOccurs="1" name="masteryScore" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAssessmentScoreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveAssessmentScoreResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAssessmentScore_Game">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerStatistics" type="tns:LearnerStatistics" />
+            <s:element minOccurs="1" maxOccurs="1" name="masteryScore" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAssessmentScore_GameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveAssessmentScore_GameResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAssessmentItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learnerStatistics" type="tns:LearnerStatistics" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAssessmentItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveAssessmentItemResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLearnerCourseStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="enrollmentId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="certificateURL" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isCompleted" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateLearnerCourseStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateLearnerCourseStatisticsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateProctor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="courseID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="proctorLogin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="proctorPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateProctorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AuthenticateProctorResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateSpecialPostAssessmentValidation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="courseID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DRELicenseNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DriverLicenseNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateSpecialPostAssessmentValidationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AuthenticateSpecialPostAssessmentValidationResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateNYInsuranceValidation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="courseID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="learnerID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MonitorNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateNYInsuranceValidationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AuthenticateNYInsuranceValidationResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProctorLoginRequirementCriteriaMeets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProctorLoginRequirementCriteriaMeetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ProctorLoginRequirementCriteriaMeetsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateMMAPP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="courseGuid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateMMAPPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticateMMAPPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateStatisticsForFlashCourse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lsGuid" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="score" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="isCompleted" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isPass" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="assessmentAttemptNo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateStatisticsForFlashCourseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateStatisticsForFlashCourseResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAssessmentTimeForAllSessions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="assessmentType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="contentObjectID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="examID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="assessmentConfigurationID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAssessmentTimeForAllSessionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetAssessmentTimeForAllSessionsResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetAssessmentItemStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="learningSessionGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="statisticsType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="assessmentType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="itemGUID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="attemptNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="remediationCount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetAssessmentItemStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ResetAssessmentItemStatisticsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCourseRating">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CourseID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Rating" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="EnrollmentID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveCourseRatingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveCourseRatingResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveStudentCourseTrackSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveStudentCourseTrack" />
+  </wsdl:message>
+  <wsdl:message name="SaveStudentCourseTrackSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveStudentCourseTrackResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCourseTrackSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStudentCourseTrack" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCourseTrackSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStudentCourseTrackResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:EndSession" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:EndSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionLegacySoapIn">
+    <wsdl:part name="parameters" element="tns:EndSessionLegacy" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionLegacySoapOut">
+    <wsdl:part name="parameters" element="tns:EndSessionLegacyResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionExternalSoapIn">
+    <wsdl:part name="parameters" element="tns:EndSessionExternal" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionExternalSoapOut">
+    <wsdl:part name="parameters" element="tns:EndSessionExternalResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionLegacyScormSoapIn">
+    <wsdl:part name="parameters" element="tns:EndSessionLegacyScorm" />
+  </wsdl:message>
+  <wsdl:message name="EndSessionLegacyScormSoapOut">
+    <wsdl:part name="parameters" element="tns:EndSessionLegacyScormResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerStatisticsSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveLearnerStatistics" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerStatisticsSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveLearnerStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerStatistics_SceneSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveLearnerStatistics_Scene" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerStatistics_SceneSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveLearnerStatistics_SceneResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerStatisticsWithStatisticDateTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveLearnerStatisticsWithStatisticDateTime" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerStatisticsWithStatisticDateTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveLearnerStatisticsWithStatisticDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerStatisticsFromLegacyVUSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveLearnerStatisticsFromLegacyVU" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerStatisticsFromLegacyVUSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveLearnerStatisticsFromLegacyVUResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLearningSessionIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLearningSessionID" />
+  </wsdl:message>
+  <wsdl:message name="GetLearningSessionIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLearningSessionIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLearnerCoursetrackInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLearnerCoursetrackInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetLearnerCoursetrackInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLearnerCoursetrackInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerCourseBookmarkSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveLearnerCourseBookmark" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerCourseBookmarkSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveLearnerCourseBookmarkResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLearnerCourseBookMarkInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLearnerCourseBookMarkInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetLearnerCourseBookMarkInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLearnerCourseBookMarkInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLearnerCourseBookMarksInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllLearnerCourseBookMarksInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLearnerCourseBookMarksInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllLearnerCourseBookMarksInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLearnerCourseTrackInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllLearnerCourseTrackInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetAllLearnerCourseTrackInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllLearnerCourseTrackInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPreviouslyAskedQuestionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPreviouslyAskedQuestions" />
+  </wsdl:message>
+  <wsdl:message name="GetPreviouslyAskedQuestionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPreviouslyAskedQuestionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPreviouslyAskedQuestionsQuizSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPreviouslyAskedQuestionsQuiz" />
+  </wsdl:message>
+  <wsdl:message name="GetPreviouslyAskedQuestionsQuizSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPreviouslyAskedQuestionsQuizResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPreAssessmentAttemptNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPreAssessmentAttemptNo" />
+  </wsdl:message>
+  <wsdl:message name="GetPreAssessmentAttemptNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPreAssessmentAttemptNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPostAssessmentAttemptNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPostAssessmentAttemptNo" />
+  </wsdl:message>
+  <wsdl:message name="GetPostAssessmentAttemptNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPostAssessmentAttemptNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetQuizAssessmentAttemptNoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetQuizAssessmentAttemptNo" />
+  </wsdl:message>
+  <wsdl:message name="GetQuizAssessmentAttemptNoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetQuizAssessmentAttemptNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPreAssessmentResultSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPreAssessmentResult" />
+  </wsdl:message>
+  <wsdl:message name="GetPreAssessmentResultSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPreAssessmentResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPostAssessmentResultSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPostAssessmentResult" />
+  </wsdl:message>
+  <wsdl:message name="GetPostAssessmentResultSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPostAssessmentResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetQuizResultSoapIn">
+    <wsdl:part name="parameters" element="tns:GetQuizResult" />
+  </wsdl:message>
+  <wsdl:message name="GetQuizResultSoapOut">
+    <wsdl:part name="parameters" element="tns:GetQuizResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPracticeExamResultSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPracticeExamResult" />
+  </wsdl:message>
+  <wsdl:message name="GetPracticeExamResultSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPracticeExamResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsCourseLockedSoapIn">
+    <wsdl:part name="parameters" element="tns:IsCourseLocked" />
+  </wsdl:message>
+  <wsdl:message name="IsCourseLockedSoapOut">
+    <wsdl:part name="parameters" element="tns:IsCourseLockedResponse" />
+  </wsdl:message>
+  <wsdl:message name="LockUnlockCourseSoapIn">
+    <wsdl:part name="parameters" element="tns:LockUnlockCourse" />
+  </wsdl:message>
+  <wsdl:message name="LockUnlockCourseSoapOut">
+    <wsdl:part name="parameters" element="tns:LockUnlockCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLearnerStatisticsMaximumAttemptActionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLearnerStatisticsMaximumAttemptAction" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLearnerStatisticsMaximumAttemptActionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLearnerStatisticsMaximumAttemptActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsCourseCompletedSoapIn">
+    <wsdl:part name="parameters" element="tns:IsCourseCompleted" />
+  </wsdl:message>
+  <wsdl:message name="IsCourseCompletedSoapOut">
+    <wsdl:part name="parameters" element="tns:IsCourseCompletedResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocuSignStatusByEnrollmentIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocuSignStatusByEnrollmentId" />
+  </wsdl:message>
+  <wsdl:message name="GetDocuSignStatusByEnrollmentIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocuSignStatusByEnrollmentIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLearnerTimeSpentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLearnerTimeSpent" />
+  </wsdl:message>
+  <wsdl:message name="GetLearnerTimeSpentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLearnerTimeSpentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLearnerTimeSpentbyTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLearnerTimeSpentbyTime" />
+  </wsdl:message>
+  <wsdl:message name="GetLearnerTimeSpentbyTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLearnerTimeSpentbyTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseCompletionStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCourseCompletionStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetCourseCompletionStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCourseCompletionStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertLearningSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertLearningSession" />
+  </wsdl:message>
+  <wsdl:message name="InsertLearningSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertLearningSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSourceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSource" />
+  </wsdl:message>
+  <wsdl:message name="GetSourceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLearningSessionBrandcodeVariantSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLearningSessionBrandcodeVariant" />
+  </wsdl:message>
+  <wsdl:message name="GetLearningSessionBrandcodeVariantSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLearningSessionBrandcodeVariantResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerValidationStatisticsSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveLearnerValidationStatistics" />
+  </wsdl:message>
+  <wsdl:message name="SaveLearnerValidationStatisticsSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveLearnerValidationStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLearningSessionCourseTypeAndUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLearningSessionCourseTypeAndUrl" />
+  </wsdl:message>
+  <wsdl:message name="GetLearningSessionCourseTypeAndUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLearningSessionCourseTypeAndUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoForLMSVUConnectorSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInfoForLMSVUConnector" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoForLMSVUConnectorSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInfoForLMSVUConnectorResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateValidationLearnerStatisticsAnswerSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateValidationLearnerStatisticsAnswer" />
+  </wsdl:message>
+  <wsdl:message name="UpdateValidationLearnerStatisticsAnswerSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateValidationLearnerStatisticsAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentLearnerValidationStatisticsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCurrentLearnerValidationStatistics" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentLearnerValidationStatisticsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCurrentLearnerValidationStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserProfile" />
+  </wsdl:message>
+  <wsdl:message name="GetUserProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLearnerProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLearnerProfile" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLearnerProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLearnerProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCompleteLearnerProfileSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateCompleteLearnerProfile" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCompleteLearnerProfileSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateCompleteLearnerProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLearnerCourseMetaCertificateInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLearnerCourseMetaCertificateInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetLearnerCourseMetaCertificateInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLearnerCourseMetaCertificateInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnlockLockedCourseSoapIn">
+    <wsdl:part name="parameters" element="tns:UnlockLockedCourse" />
+  </wsdl:message>
+  <wsdl:message name="UnlockLockedCourseSoapOut">
+    <wsdl:part name="parameters" element="tns:UnlockLockedCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLearningSessionResourceValueOfKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetLearningSessionResourceValueOfKey" />
+  </wsdl:message>
+  <wsdl:message name="GetLearningSessionResourceValueOfKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetLearningSessionResourceValueOfKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetResourceValueOfResourceKeySoapIn">
+    <wsdl:part name="parameters" element="tns:GetResourceValueOfResourceKey" />
+  </wsdl:message>
+  <wsdl:message name="GetResourceValueOfResourceKeySoapOut">
+    <wsdl:part name="parameters" element="tns:GetResourceValueOfResourceKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPreviousLearnerStatisticsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPreviousLearnerStatistics" />
+  </wsdl:message>
+  <wsdl:message name="GetPreviousLearnerStatisticsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPreviousLearnerStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLearningSessionRedirectURLSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLearningSessionRedirectURL" />
+  </wsdl:message>
+  <wsdl:message name="GetLearningSessionRedirectURLSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLearningSessionRedirectURLResponse" />
+  </wsdl:message>
+  <wsdl:message name="LearningSessionEndedLMSSoapIn">
+    <wsdl:part name="parameters" element="tns:LearningSessionEndedLMS" />
+  </wsdl:message>
+  <wsdl:message name="LearningSessionEndedLMSSoapOut">
+    <wsdl:part name="parameters" element="tns:LearningSessionEndedLMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveCourseEvaluationResultSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveCourseEvaluationResult" />
+  </wsdl:message>
+  <wsdl:message name="SaveCourseEvaluationResultSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveCourseEvaluationResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsCourseEvaluationAttemptedSoapIn">
+    <wsdl:part name="parameters" element="tns:IsCourseEvaluationAttempted" />
+  </wsdl:message>
+  <wsdl:message name="IsCourseEvaluationAttemptedSoapOut">
+    <wsdl:part name="parameters" element="tns:IsCourseEvaluationAttemptedResponse" />
+  </wsdl:message>
+  <wsdl:message name="LegacyStatsRecorderSoapIn">
+    <wsdl:part name="parameters" element="tns:LegacyStatsRecorder" />
+  </wsdl:message>
+  <wsdl:message name="LegacyStatsRecorderSoapOut">
+    <wsdl:part name="parameters" element="tns:LegacyStatsRecorderResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveAssessmentScoreSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveAssessmentScore" />
+  </wsdl:message>
+  <wsdl:message name="SaveAssessmentScoreSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveAssessmentScoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveAssessmentScore_GameSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveAssessmentScore_Game" />
+  </wsdl:message>
+  <wsdl:message name="SaveAssessmentScore_GameSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveAssessmentScore_GameResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveAssessmentItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveAssessmentItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveAssessmentItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveAssessmentItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLearnerCourseStatisticsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateLearnerCourseStatistics" />
+  </wsdl:message>
+  <wsdl:message name="UpdateLearnerCourseStatisticsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateLearnerCourseStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateProctorSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateProctor" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateProctorSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateProctorResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateSpecialPostAssessmentValidationSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateSpecialPostAssessmentValidation" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateSpecialPostAssessmentValidationSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateSpecialPostAssessmentValidationResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateNYInsuranceValidationSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateNYInsuranceValidation" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateNYInsuranceValidationSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateNYInsuranceValidationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProctorLoginRequirementCriteriaMeetsSoapIn">
+    <wsdl:part name="parameters" element="tns:ProctorLoginRequirementCriteriaMeets" />
+  </wsdl:message>
+  <wsdl:message name="ProctorLoginRequirementCriteriaMeetsSoapOut">
+    <wsdl:part name="parameters" element="tns:ProctorLoginRequirementCriteriaMeetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateMMAPPSoapIn">
+    <wsdl:part name="parameters" element="tns:AuthenticateMMAPP" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateMMAPPSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateMMAPPResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStatisticsForFlashCourseSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateStatisticsForFlashCourse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateStatisticsForFlashCourseSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateStatisticsForFlashCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAssessmentTimeForAllSessionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAssessmentTimeForAllSessions" />
+  </wsdl:message>
+  <wsdl:message name="GetAssessmentTimeForAllSessionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAssessmentTimeForAllSessionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResetAssessmentItemStatisticsSoapIn">
+    <wsdl:part name="parameters" element="tns:ResetAssessmentItemStatistics" />
+  </wsdl:message>
+  <wsdl:message name="ResetAssessmentItemStatisticsSoapOut">
+    <wsdl:part name="parameters" element="tns:ResetAssessmentItemStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveCourseRatingSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveCourseRating" />
+  </wsdl:message>
+  <wsdl:message name="SaveCourseRatingSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveCourseRatingResponse" />
+  </wsdl:message>
+  <wsdl:portType name="TrackingServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveStudentCourseTrack">
+      <wsdl:input message="tns:SaveStudentCourseTrackSoapIn" />
+      <wsdl:output message="tns:SaveStudentCourseTrackSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCourseTrack">
+      <wsdl:input message="tns:GetStudentCourseTrackSoapIn" />
+      <wsdl:output message="tns:GetStudentCourseTrackSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndSession">
+      <wsdl:input message="tns:EndSessionSoapIn" />
+      <wsdl:output message="tns:EndSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionLegacy">
+      <wsdl:input message="tns:EndSessionLegacySoapIn" />
+      <wsdl:output message="tns:EndSessionLegacySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionExternal">
+      <wsdl:input message="tns:EndSessionExternalSoapIn" />
+      <wsdl:output message="tns:EndSessionExternalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionLegacyScorm">
+      <wsdl:input message="tns:EndSessionLegacyScormSoapIn" />
+      <wsdl:output message="tns:EndSessionLegacyScormSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatistics">
+      <wsdl:input message="tns:SaveLearnerStatisticsSoapIn" />
+      <wsdl:output message="tns:SaveLearnerStatisticsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatistics_Scene">
+      <wsdl:input message="tns:SaveLearnerStatistics_SceneSoapIn" />
+      <wsdl:output message="tns:SaveLearnerStatistics_SceneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatisticsWithStatisticDateTime">
+      <wsdl:input message="tns:SaveLearnerStatisticsWithStatisticDateTimeSoapIn" />
+      <wsdl:output message="tns:SaveLearnerStatisticsWithStatisticDateTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatisticsFromLegacyVU">
+      <wsdl:input message="tns:SaveLearnerStatisticsFromLegacyVUSoapIn" />
+      <wsdl:output message="tns:SaveLearnerStatisticsFromLegacyVUSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionID">
+      <wsdl:input message="tns:GetLearningSessionIDSoapIn" />
+      <wsdl:output message="tns:GetLearningSessionIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerCoursetrackInfo">
+      <wsdl:input message="tns:GetLearnerCoursetrackInfoSoapIn" />
+      <wsdl:output message="tns:GetLearnerCoursetrackInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerCourseBookmark">
+      <wsdl:input message="tns:SaveLearnerCourseBookmarkSoapIn" />
+      <wsdl:output message="tns:SaveLearnerCourseBookmarkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerCourseBookMarkInfo">
+      <wsdl:input message="tns:GetLearnerCourseBookMarkInfoSoapIn" />
+      <wsdl:output message="tns:GetLearnerCourseBookMarkInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLearnerCourseBookMarksInfo">
+      <wsdl:input message="tns:GetAllLearnerCourseBookMarksInfoSoapIn" />
+      <wsdl:output message="tns:GetAllLearnerCourseBookMarksInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLearnerCourseTrackInfo">
+      <wsdl:input message="tns:GetAllLearnerCourseTrackInfoSoapIn" />
+      <wsdl:output message="tns:GetAllLearnerCourseTrackInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreviouslyAskedQuestions">
+      <wsdl:input message="tns:GetPreviouslyAskedQuestionsSoapIn" />
+      <wsdl:output message="tns:GetPreviouslyAskedQuestionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreviouslyAskedQuestionsQuiz">
+      <wsdl:input message="tns:GetPreviouslyAskedQuestionsQuizSoapIn" />
+      <wsdl:output message="tns:GetPreviouslyAskedQuestionsQuizSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreAssessmentAttemptNo">
+      <wsdl:input message="tns:GetPreAssessmentAttemptNoSoapIn" />
+      <wsdl:output message="tns:GetPreAssessmentAttemptNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostAssessmentAttemptNo">
+      <wsdl:input message="tns:GetPostAssessmentAttemptNoSoapIn" />
+      <wsdl:output message="tns:GetPostAssessmentAttemptNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizAssessmentAttemptNo">
+      <wsdl:input message="tns:GetQuizAssessmentAttemptNoSoapIn" />
+      <wsdl:output message="tns:GetQuizAssessmentAttemptNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreAssessmentResult">
+      <wsdl:input message="tns:GetPreAssessmentResultSoapIn" />
+      <wsdl:output message="tns:GetPreAssessmentResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostAssessmentResult">
+      <wsdl:input message="tns:GetPostAssessmentResultSoapIn" />
+      <wsdl:output message="tns:GetPostAssessmentResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizResult">
+      <wsdl:input message="tns:GetQuizResultSoapIn" />
+      <wsdl:output message="tns:GetQuizResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPracticeExamResult">
+      <wsdl:input message="tns:GetPracticeExamResultSoapIn" />
+      <wsdl:output message="tns:GetPracticeExamResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsCourseLocked">
+      <wsdl:input message="tns:IsCourseLockedSoapIn" />
+      <wsdl:output message="tns:IsCourseLockedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LockUnlockCourse">
+      <wsdl:input message="tns:LockUnlockCourseSoapIn" />
+      <wsdl:output message="tns:LockUnlockCourseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLearnerStatisticsMaximumAttemptAction">
+      <wsdl:input message="tns:UpdateLearnerStatisticsMaximumAttemptActionSoapIn" />
+      <wsdl:output message="tns:UpdateLearnerStatisticsMaximumAttemptActionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsCourseCompleted">
+      <wsdl:input message="tns:IsCourseCompletedSoapIn" />
+      <wsdl:output message="tns:IsCourseCompletedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuSignStatusByEnrollmentId">
+      <wsdl:input message="tns:GetDocuSignStatusByEnrollmentIdSoapIn" />
+      <wsdl:output message="tns:GetDocuSignStatusByEnrollmentIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerTimeSpent">
+      <wsdl:input message="tns:GetLearnerTimeSpentSoapIn" />
+      <wsdl:output message="tns:GetLearnerTimeSpentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerTimeSpentbyTime">
+      <wsdl:input message="tns:GetLearnerTimeSpentbyTimeSoapIn" />
+      <wsdl:output message="tns:GetLearnerTimeSpentbyTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseCompletionStatus">
+      <wsdl:input message="tns:GetCourseCompletionStatusSoapIn" />
+      <wsdl:output message="tns:GetCourseCompletionStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertLearningSession">
+      <wsdl:input message="tns:InsertLearningSessionSoapIn" />
+      <wsdl:output message="tns:InsertLearningSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSource">
+      <wsdl:input message="tns:GetSourceSoapIn" />
+      <wsdl:output message="tns:GetSourceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionBrandcodeVariant">
+      <wsdl:input message="tns:GetLearningSessionBrandcodeVariantSoapIn" />
+      <wsdl:output message="tns:GetLearningSessionBrandcodeVariantSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerValidationStatistics">
+      <wsdl:input message="tns:SaveLearnerValidationStatisticsSoapIn" />
+      <wsdl:output message="tns:SaveLearnerValidationStatisticsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionCourseTypeAndUrl">
+      <wsdl:input message="tns:GetLearningSessionCourseTypeAndUrlSoapIn" />
+      <wsdl:output message="tns:GetLearningSessionCourseTypeAndUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForLMSVUConnector">
+      <wsdl:input message="tns:GetInfoForLMSVUConnectorSoapIn" />
+      <wsdl:output message="tns:GetInfoForLMSVUConnectorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateValidationLearnerStatisticsAnswer">
+      <wsdl:input message="tns:UpdateValidationLearnerStatisticsAnswerSoapIn" />
+      <wsdl:output message="tns:UpdateValidationLearnerStatisticsAnswerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentLearnerValidationStatistics">
+      <wsdl:input message="tns:GetCurrentLearnerValidationStatisticsSoapIn" />
+      <wsdl:output message="tns:GetCurrentLearnerValidationStatisticsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <wsdl:input message="tns:GetUserProfileSoapIn" />
+      <wsdl:output message="tns:GetUserProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLearnerProfile">
+      <wsdl:input message="tns:UpdateLearnerProfileSoapIn" />
+      <wsdl:output message="tns:UpdateLearnerProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompleteLearnerProfile">
+      <wsdl:input message="tns:UpdateCompleteLearnerProfileSoapIn" />
+      <wsdl:output message="tns:UpdateCompleteLearnerProfileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerCourseMetaCertificateInfo">
+      <wsdl:input message="tns:GetLearnerCourseMetaCertificateInfoSoapIn" />
+      <wsdl:output message="tns:GetLearnerCourseMetaCertificateInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnlockLockedCourse">
+      <wsdl:input message="tns:UnlockLockedCourseSoapIn" />
+      <wsdl:output message="tns:UnlockLockedCourseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionResourceValueOfKey">
+      <wsdl:input message="tns:GetLearningSessionResourceValueOfKeySoapIn" />
+      <wsdl:output message="tns:GetLearningSessionResourceValueOfKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceValueOfResourceKey">
+      <wsdl:input message="tns:GetResourceValueOfResourceKeySoapIn" />
+      <wsdl:output message="tns:GetResourceValueOfResourceKeySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreviousLearnerStatistics">
+      <wsdl:input message="tns:GetPreviousLearnerStatisticsSoapIn" />
+      <wsdl:output message="tns:GetPreviousLearnerStatisticsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionRedirectURL">
+      <wsdl:input message="tns:GetLearningSessionRedirectURLSoapIn" />
+      <wsdl:output message="tns:GetLearningSessionRedirectURLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LearningSessionEndedLMS">
+      <wsdl:input message="tns:LearningSessionEndedLMSSoapIn" />
+      <wsdl:output message="tns:LearningSessionEndedLMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCourseEvaluationResult">
+      <wsdl:input message="tns:SaveCourseEvaluationResultSoapIn" />
+      <wsdl:output message="tns:SaveCourseEvaluationResultSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsCourseEvaluationAttempted">
+      <wsdl:input message="tns:IsCourseEvaluationAttemptedSoapIn" />
+      <wsdl:output message="tns:IsCourseEvaluationAttemptedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LegacyStatsRecorder">
+      <wsdl:input message="tns:LegacyStatsRecorderSoapIn" />
+      <wsdl:output message="tns:LegacyStatsRecorderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssessmentScore">
+      <wsdl:input message="tns:SaveAssessmentScoreSoapIn" />
+      <wsdl:output message="tns:SaveAssessmentScoreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssessmentScore_Game">
+      <wsdl:input message="tns:SaveAssessmentScore_GameSoapIn" />
+      <wsdl:output message="tns:SaveAssessmentScore_GameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssessmentItem">
+      <wsdl:input message="tns:SaveAssessmentItemSoapIn" />
+      <wsdl:output message="tns:SaveAssessmentItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLearnerCourseStatistics">
+      <wsdl:input message="tns:UpdateLearnerCourseStatisticsSoapIn" />
+      <wsdl:output message="tns:UpdateLearnerCourseStatisticsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateProctor">
+      <wsdl:input message="tns:AuthenticateProctorSoapIn" />
+      <wsdl:output message="tns:AuthenticateProctorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateSpecialPostAssessmentValidation">
+      <wsdl:input message="tns:AuthenticateSpecialPostAssessmentValidationSoapIn" />
+      <wsdl:output message="tns:AuthenticateSpecialPostAssessmentValidationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateNYInsuranceValidation">
+      <wsdl:input message="tns:AuthenticateNYInsuranceValidationSoapIn" />
+      <wsdl:output message="tns:AuthenticateNYInsuranceValidationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProctorLoginRequirementCriteriaMeets">
+      <wsdl:input message="tns:ProctorLoginRequirementCriteriaMeetsSoapIn" />
+      <wsdl:output message="tns:ProctorLoginRequirementCriteriaMeetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateMMAPP">
+      <wsdl:input message="tns:AuthenticateMMAPPSoapIn" />
+      <wsdl:output message="tns:AuthenticateMMAPPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatisticsForFlashCourse">
+      <wsdl:input message="tns:UpdateStatisticsForFlashCourseSoapIn" />
+      <wsdl:output message="tns:UpdateStatisticsForFlashCourseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAssessmentTimeForAllSessions">
+      <wsdl:input message="tns:GetAssessmentTimeForAllSessionsSoapIn" />
+      <wsdl:output message="tns:GetAssessmentTimeForAllSessionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetAssessmentItemStatistics">
+      <wsdl:input message="tns:ResetAssessmentItemStatisticsSoapIn" />
+      <wsdl:output message="tns:ResetAssessmentItemStatisticsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCourseRating">
+      <wsdl:input message="tns:SaveCourseRatingSoapIn" />
+      <wsdl:output message="tns:SaveCourseRatingSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TrackingServiceSoap" type="tns:TrackingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://www.360training.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveStudentCourseTrack">
+      <soap:operation soapAction="http://www.360training.com/SaveStudentCourseTrack" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCourseTrack">
+      <soap:operation soapAction="http://www.360training.com/GetStudentCourseTrack" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSession">
+      <soap:operation soapAction="http://www.360training.com/EndSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionLegacy">
+      <soap:operation soapAction="http://www.360training.com/EndSessionLegacy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionExternal">
+      <soap:operation soapAction="http://www.360training.com/EndSessionExternal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionLegacyScorm">
+      <soap:operation soapAction="http://www.360training.com/EndSessionLegacyScorm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatistics">
+      <soap:operation soapAction="http://www.360training.com/SaveLearnerStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatistics_Scene">
+      <soap:operation soapAction="http://www.360training.com/SaveLearnerStatistics_Scene" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatisticsWithStatisticDateTime">
+      <soap:operation soapAction="http://www.360training.com/SaveLearnerStatisticsWithStatisticDateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatisticsFromLegacyVU">
+      <soap:operation soapAction="http://www.360training.com/SaveLearnerStatisticsFromLegacyVU" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionID">
+      <soap:operation soapAction="http://www.360training.com/GetLearningSessionID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerCoursetrackInfo">
+      <soap:operation soapAction="http://www.360training.com/GetLearnerCoursetrackInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerCourseBookmark">
+      <soap:operation soapAction="http://www.360training.com/SaveLearnerCourseBookmark" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerCourseBookMarkInfo">
+      <soap:operation soapAction="http://www.360training.com/GetLearnerCourseBookMarkInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLearnerCourseBookMarksInfo">
+      <soap:operation soapAction="http://www.360training.com/GetAllLearnerCourseBookMarksInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLearnerCourseTrackInfo">
+      <soap:operation soapAction="http://www.360training.com/GetAllLearnerCourseTrackInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreviouslyAskedQuestions">
+      <soap:operation soapAction="http://www.360training.com/GetPreviouslyAskedQuestions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreviouslyAskedQuestionsQuiz">
+      <soap:operation soapAction="http://www.360training.com/GetPreviouslyAskedQuestionsQuiz" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreAssessmentAttemptNo">
+      <soap:operation soapAction="http://www.360training.com/GetPreAssessmentAttemptNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostAssessmentAttemptNo">
+      <soap:operation soapAction="http://www.360training.com/GetPostAssessmentAttemptNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizAssessmentAttemptNo">
+      <soap:operation soapAction="http://www.360training.com/GetQuizAssessmentAttemptNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreAssessmentResult">
+      <soap:operation soapAction="http://www.360training.com/GetPreAssessmentResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostAssessmentResult">
+      <soap:operation soapAction="http://www.360training.com/GetPostAssessmentResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizResult">
+      <soap:operation soapAction="http://www.360training.com/GetQuizResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPracticeExamResult">
+      <soap:operation soapAction="http://www.360training.com/GetPracticeExamResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsCourseLocked">
+      <soap:operation soapAction="http://www.360training.com/IsCourseLocked" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LockUnlockCourse">
+      <soap:operation soapAction="http://www.360training.com/LockUnlockCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLearnerStatisticsMaximumAttemptAction">
+      <soap:operation soapAction="http://www.360training.com/UpdateLearnerStatisticsMaximumAttemptAction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsCourseCompleted">
+      <soap:operation soapAction="http://www.360training.com/IsCourseCompleted" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuSignStatusByEnrollmentId">
+      <soap:operation soapAction="http://www.360training.com/GetDocuSignStatusByEnrollmentId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerTimeSpent">
+      <soap:operation soapAction="http://www.360training.com/GetLearnerTimeSpent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerTimeSpentbyTime">
+      <soap:operation soapAction="http://www.360training.com/GetLearnerTimeSpentbyTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseCompletionStatus">
+      <soap:operation soapAction="http://www.360training.com/GetCourseCompletionStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLearningSession">
+      <soap:operation soapAction="http://www.360training.com/InsertLearningSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSource">
+      <soap:operation soapAction="http://www.360training.com/GetSource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionBrandcodeVariant">
+      <soap:operation soapAction="http://www.360training.com/GetLearningSessionBrandcodeVariant" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerValidationStatistics">
+      <soap:operation soapAction="http://www.360training.com/SaveLearnerValidationStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionCourseTypeAndUrl">
+      <soap:operation soapAction="http://www.360training.com/GetLearningSessionCourseTypeAndUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForLMSVUConnector">
+      <soap:operation soapAction="http://www.360training.com/GetInfoForLMSVUConnector" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateValidationLearnerStatisticsAnswer">
+      <soap:operation soapAction="http://www.360training.com/UpdateValidationLearnerStatisticsAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentLearnerValidationStatistics">
+      <soap:operation soapAction="http://www.360training.com/GetCurrentLearnerValidationStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <soap:operation soapAction="http://www.360training.com/GetUserProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLearnerProfile">
+      <soap:operation soapAction="http://www.360training.com/UpdateLearnerProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompleteLearnerProfile">
+      <soap:operation soapAction="http://www.360training.com/UpdateCompleteLearnerProfile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerCourseMetaCertificateInfo">
+      <soap:operation soapAction="http://www.360training.com/GetLearnerCourseMetaCertificateInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockLockedCourse">
+      <soap:operation soapAction="http://www.360training.com/UnlockLockedCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionResourceValueOfKey">
+      <soap:operation soapAction="http://www.360training.com/GetLearningSessionResourceValueOfKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceValueOfResourceKey">
+      <soap:operation soapAction="http://www.360training.com/GetResourceValueOfResourceKey" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreviousLearnerStatistics">
+      <soap:operation soapAction="http://www.360training.com/GetPreviousLearnerStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionRedirectURL">
+      <soap:operation soapAction="http://www.360training.com/GetLearningSessionRedirectURL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LearningSessionEndedLMS">
+      <soap:operation soapAction="http://www.360training.com/LearningSessionEndedLMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCourseEvaluationResult">
+      <soap:operation soapAction="http://www.360training.com/SaveCourseEvaluationResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsCourseEvaluationAttempted">
+      <soap:operation soapAction="http://www.360training.com/IsCourseEvaluationAttempted" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LegacyStatsRecorder">
+      <soap:operation soapAction="http://www.360training.com/LegacyStatsRecorder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssessmentScore">
+      <soap:operation soapAction="http://www.360training.com/SaveAssessmentScore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssessmentScore_Game">
+      <soap:operation soapAction="http://www.360training.com/SaveAssessmentScore_Game" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssessmentItem">
+      <soap:operation soapAction="http://www.360training.com/SaveAssessmentItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLearnerCourseStatistics">
+      <soap:operation soapAction="http://www.360training.com/UpdateLearnerCourseStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateProctor">
+      <soap:operation soapAction="http://www.360training.com/AuthenticateProctor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateSpecialPostAssessmentValidation">
+      <soap:operation soapAction="http://www.360training.com/AuthenticateSpecialPostAssessmentValidation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateNYInsuranceValidation">
+      <soap:operation soapAction="http://www.360training.com/AuthenticateNYInsuranceValidation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProctorLoginRequirementCriteriaMeets">
+      <soap:operation soapAction="http://www.360training.com/ProctorLoginRequirementCriteriaMeets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateMMAPP">
+      <soap:operation soapAction="http://www.360training.com/AuthenticateMMAPP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatisticsForFlashCourse">
+      <soap:operation soapAction="http://www.360training.com/UpdateStatisticsForFlashCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssessmentTimeForAllSessions">
+      <soap:operation soapAction="http://www.360training.com/GetAssessmentTimeForAllSessions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetAssessmentItemStatistics">
+      <soap:operation soapAction="http://www.360training.com/ResetAssessmentItemStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCourseRating">
+      <soap:operation soapAction="http://www.360training.com/SaveCourseRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TrackingServiceSoap12" type="tns:TrackingServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://www.360training.com/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveStudentCourseTrack">
+      <soap12:operation soapAction="http://www.360training.com/SaveStudentCourseTrack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCourseTrack">
+      <soap12:operation soapAction="http://www.360training.com/GetStudentCourseTrack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSession">
+      <soap12:operation soapAction="http://www.360training.com/EndSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionLegacy">
+      <soap12:operation soapAction="http://www.360training.com/EndSessionLegacy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionExternal">
+      <soap12:operation soapAction="http://www.360training.com/EndSessionExternal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndSessionLegacyScorm">
+      <soap12:operation soapAction="http://www.360training.com/EndSessionLegacyScorm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatistics">
+      <soap12:operation soapAction="http://www.360training.com/SaveLearnerStatistics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatistics_Scene">
+      <soap12:operation soapAction="http://www.360training.com/SaveLearnerStatistics_Scene" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatisticsWithStatisticDateTime">
+      <soap12:operation soapAction="http://www.360training.com/SaveLearnerStatisticsWithStatisticDateTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerStatisticsFromLegacyVU">
+      <soap12:operation soapAction="http://www.360training.com/SaveLearnerStatisticsFromLegacyVU" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionID">
+      <soap12:operation soapAction="http://www.360training.com/GetLearningSessionID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerCoursetrackInfo">
+      <soap12:operation soapAction="http://www.360training.com/GetLearnerCoursetrackInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerCourseBookmark">
+      <soap12:operation soapAction="http://www.360training.com/SaveLearnerCourseBookmark" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerCourseBookMarkInfo">
+      <soap12:operation soapAction="http://www.360training.com/GetLearnerCourseBookMarkInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLearnerCourseBookMarksInfo">
+      <soap12:operation soapAction="http://www.360training.com/GetAllLearnerCourseBookMarksInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLearnerCourseTrackInfo">
+      <soap12:operation soapAction="http://www.360training.com/GetAllLearnerCourseTrackInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreviouslyAskedQuestions">
+      <soap12:operation soapAction="http://www.360training.com/GetPreviouslyAskedQuestions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreviouslyAskedQuestionsQuiz">
+      <soap12:operation soapAction="http://www.360training.com/GetPreviouslyAskedQuestionsQuiz" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreAssessmentAttemptNo">
+      <soap12:operation soapAction="http://www.360training.com/GetPreAssessmentAttemptNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostAssessmentAttemptNo">
+      <soap12:operation soapAction="http://www.360training.com/GetPostAssessmentAttemptNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizAssessmentAttemptNo">
+      <soap12:operation soapAction="http://www.360training.com/GetQuizAssessmentAttemptNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreAssessmentResult">
+      <soap12:operation soapAction="http://www.360training.com/GetPreAssessmentResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostAssessmentResult">
+      <soap12:operation soapAction="http://www.360training.com/GetPostAssessmentResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuizResult">
+      <soap12:operation soapAction="http://www.360training.com/GetQuizResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPracticeExamResult">
+      <soap12:operation soapAction="http://www.360training.com/GetPracticeExamResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsCourseLocked">
+      <soap12:operation soapAction="http://www.360training.com/IsCourseLocked" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LockUnlockCourse">
+      <soap12:operation soapAction="http://www.360training.com/LockUnlockCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLearnerStatisticsMaximumAttemptAction">
+      <soap12:operation soapAction="http://www.360training.com/UpdateLearnerStatisticsMaximumAttemptAction" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsCourseCompleted">
+      <soap12:operation soapAction="http://www.360training.com/IsCourseCompleted" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocuSignStatusByEnrollmentId">
+      <soap12:operation soapAction="http://www.360training.com/GetDocuSignStatusByEnrollmentId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerTimeSpent">
+      <soap12:operation soapAction="http://www.360training.com/GetLearnerTimeSpent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerTimeSpentbyTime">
+      <soap12:operation soapAction="http://www.360training.com/GetLearnerTimeSpentbyTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCourseCompletionStatus">
+      <soap12:operation soapAction="http://www.360training.com/GetCourseCompletionStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLearningSession">
+      <soap12:operation soapAction="http://www.360training.com/InsertLearningSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSource">
+      <soap12:operation soapAction="http://www.360training.com/GetSource" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionBrandcodeVariant">
+      <soap12:operation soapAction="http://www.360training.com/GetLearningSessionBrandcodeVariant" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveLearnerValidationStatistics">
+      <soap12:operation soapAction="http://www.360training.com/SaveLearnerValidationStatistics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionCourseTypeAndUrl">
+      <soap12:operation soapAction="http://www.360training.com/GetLearningSessionCourseTypeAndUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoForLMSVUConnector">
+      <soap12:operation soapAction="http://www.360training.com/GetInfoForLMSVUConnector" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateValidationLearnerStatisticsAnswer">
+      <soap12:operation soapAction="http://www.360training.com/UpdateValidationLearnerStatisticsAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentLearnerValidationStatistics">
+      <soap12:operation soapAction="http://www.360training.com/GetCurrentLearnerValidationStatistics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserProfile">
+      <soap12:operation soapAction="http://www.360training.com/GetUserProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLearnerProfile">
+      <soap12:operation soapAction="http://www.360training.com/UpdateLearnerProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompleteLearnerProfile">
+      <soap12:operation soapAction="http://www.360training.com/UpdateCompleteLearnerProfile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearnerCourseMetaCertificateInfo">
+      <soap12:operation soapAction="http://www.360training.com/GetLearnerCourseMetaCertificateInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnlockLockedCourse">
+      <soap12:operation soapAction="http://www.360training.com/UnlockLockedCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionResourceValueOfKey">
+      <soap12:operation soapAction="http://www.360training.com/GetLearningSessionResourceValueOfKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceValueOfResourceKey">
+      <soap12:operation soapAction="http://www.360training.com/GetResourceValueOfResourceKey" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreviousLearnerStatistics">
+      <soap12:operation soapAction="http://www.360training.com/GetPreviousLearnerStatistics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLearningSessionRedirectURL">
+      <soap12:operation soapAction="http://www.360training.com/GetLearningSessionRedirectURL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LearningSessionEndedLMS">
+      <soap12:operation soapAction="http://www.360training.com/LearningSessionEndedLMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCourseEvaluationResult">
+      <soap12:operation soapAction="http://www.360training.com/SaveCourseEvaluationResult" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsCourseEvaluationAttempted">
+      <soap12:operation soapAction="http://www.360training.com/IsCourseEvaluationAttempted" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LegacyStatsRecorder">
+      <soap12:operation soapAction="http://www.360training.com/LegacyStatsRecorder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssessmentScore">
+      <soap12:operation soapAction="http://www.360training.com/SaveAssessmentScore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssessmentScore_Game">
+      <soap12:operation soapAction="http://www.360training.com/SaveAssessmentScore_Game" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAssessmentItem">
+      <soap12:operation soapAction="http://www.360training.com/SaveAssessmentItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLearnerCourseStatistics">
+      <soap12:operation soapAction="http://www.360training.com/UpdateLearnerCourseStatistics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateProctor">
+      <soap12:operation soapAction="http://www.360training.com/AuthenticateProctor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateSpecialPostAssessmentValidation">
+      <soap12:operation soapAction="http://www.360training.com/AuthenticateSpecialPostAssessmentValidation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateNYInsuranceValidation">
+      <soap12:operation soapAction="http://www.360training.com/AuthenticateNYInsuranceValidation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProctorLoginRequirementCriteriaMeets">
+      <soap12:operation soapAction="http://www.360training.com/ProctorLoginRequirementCriteriaMeets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthenticateMMAPP">
+      <soap12:operation soapAction="http://www.360training.com/AuthenticateMMAPP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateStatisticsForFlashCourse">
+      <soap12:operation soapAction="http://www.360training.com/UpdateStatisticsForFlashCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAssessmentTimeForAllSessions">
+      <soap12:operation soapAction="http://www.360training.com/GetAssessmentTimeForAllSessions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetAssessmentItemStatistics">
+      <soap12:operation soapAction="http://www.360training.com/ResetAssessmentItemStatistics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCourseRating">
+      <soap12:operation soapAction="http://www.360training.com/SaveCourseRating" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TrackingService">
+    <wsdl:port name="TrackingServiceSoap" binding="tns:TrackingServiceSoap">
+      <soap:address location="http://localhost:9096/TrackingService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="TrackingServiceSoap12" binding="tns:TrackingServiceSoap12">
+      <soap12:address location="http://localhost:9096/TrackingService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

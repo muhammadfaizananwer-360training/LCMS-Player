@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://www.example.org/CourseLevelRatingService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:rating="http://www.example.org/CourseLevelRatingService/" name="ThreeSixtyTraining-CourseLevelRating" targetNamespace="http://www.example.org/CourseLevelRatingService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import schemaLocation="../../xsd/ThreeSixtyTrainingService/CourseLevelRating.xsd" namespace="http://www.example.org/CourseLevelRatingService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="NewOperationResponse">
+    <wsdl:part name="NewOperationResponse" element="tns:CourseLevelRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="NewOperationRequest">
+    <wsdl:part name="NewOperationRequest" element="tns:CourseLevelRatingRequest" />
+  </wsdl:message>
+  <wsdl:portType name="ThreeSixtyTraining-CourseLevelRatingPortType">
+    <wsdl:operation name="NewOperation">
+      <wsdl:input message="rating:NewOperationRequest" />
+      <wsdl:output message="rating:NewOperationResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CourseLevelRatingServiceBinding" type="rating:ThreeSixtyTraining-CourseLevelRatingPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="NewOperation">
+      <soap:operation soapAction="http://www.example.org/ThreeSixtyTraining-CourseLevelRating/NewOperation" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CourseLevelRatingService">
+    <wsdl:port name="CourseLevelRatingService" binding="rating:CourseLevelRatingServiceBinding">
+      <soap:address location="https://qa-ws1.austin.360training.com:443/webapp/wcs/services/CourseLevelRatingService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,64 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<style>
+.mainimage {
+  max-width: 350px;
+  max-height: 360px;
+  width: expression(this.width > 350 ? "350px" : true);
+  height: expression(this.height > 360 ? "360px" : true);
+}
+
+#contentTable {
+  height:98%;
+  width:100%;
+  margin : auto;
+  border : 10px white solid;
+}
+
+.sceneTitle {
+  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
+  font-size : 36px; 
+  text-decoration : bold;
+  
+}
+
+.sceneTextArea {
+  text-align: left;
+  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
+  font-size : 18px;
+
+}
+
+.sceneTextArea p{
+margin:0px;
+padding:0px;
+}
+
+.sceneClosedCaptioningText {
+  text-align: justify;
+  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
+  font-size : 12px;
+
+}
+.sceneClosedCaptioningText p{
+margin:0px;
+padding:0px;
+
+}
+</style>
+<!--text-transform : capitalize;-->
+<table id="contentTable">
+  <tr>
+    <td height="43" colspan="3"><span class="sceneTitle"><div style="margin-right:12px;">$Heading</div></span></td>
+  </tr>
+  <tr>
+    <td colspan="3" height="15"><img height="15" src="images/pixel.gif" /></td>
+  </tr>
+  <tr>
+    <td width="65%" valign="top"><div class="sceneTextArea"><div style="margin-right:12px;">$Text</div>
+    </div></td>
+    
+  </tr>
+</table>

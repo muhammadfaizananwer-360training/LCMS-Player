@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{95E526D2-428E-40CE-8645-37F78F4D8D67}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ICP4.CommunicationLogic</RootNamespace>
+    <AssemblyName>ICP4.CommunicationLogic</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommunicationCommand\CommandCreator.cs" />
+    <Compile Include="CommunicationCommand\CommandNames.cs" />
+    <Compile Include="CommunicationCommand\CourseCompletionCommand\ShowCourseCompletion.cs" />
+    <Compile Include="CommunicationCommand\CourseCompletionCommand\CourseCompletion.cs" />
+    <Compile Include="CommunicationCommand\CourseLevelRating\CourseLevelRating.cs" />
+    <Compile Include="CommunicationCommand\CourseLevelRating\ShowCourseLevelRating.cs" />
+    <Compile Include="CommunicationCommand\ProctorLockCourse\ProctorLockCourseCommand.cs" />
+    <Compile Include="CommunicationCommand\ProctorLockCourse\ProctorLockCourseCommandMessage.cs" />
+    <Compile Include="CommunicationCommand\SeatTimeExceedCommand\SeatTimeExceed.cs" />
+    <Compile Include="CommunicationCommand\SeatTimeExceedCommand\ShowSeatTimeExceed.cs" />
+    <Compile Include="CommunicationCommand\ShowAssessmentResult\AssessmentResultMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowAssessmentResult\ShowAssessmentResult.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseApprovalAffidavit\CourseApprovalAffidavit.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseApprovalAffidavit\ShowCourseApprovalAffidavit.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseApproval\CourseApprovalMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseApproval\ShowCourseApproval.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseEvaluationQuestions\CourseEvaluationAnswer.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseEvaluationQuestions\CourseEvaluationQuestions.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseEvaluationQuestions\CourseEvaluationRoot.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseEvaluationQuestions\ShowCourseEvaluationQuestions.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseEvaluation\CourseEvaluation.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseEvaluation\ShowCourseEvaluation.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseSettings\CourseSettings.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseSettings\ShowCourseSettings.cs" />
+    <Compile Include="CommunicationCommand\ShowDocuSignProcess\DocuSignProcess.cs" />
+    <Compile Include="CommunicationCommand\ShowDocuSignProcess\ShowDocuSignProcess.cs" />
+    <Compile Include="CommunicationCommand\ShowDocuSignRequirementAffidavit\DocuSignRequirementAffidavit.cs" />
+    <Compile Include="CommunicationCommand\ShowDocuSignRequirementAffidavit\ShowDocuSignRequirementAffidavit.cs" />
+    <Compile Include="CommunicationCommand\ShowFinalExamLocked\FinalExamLocked.cs" />
+    <Compile Include="CommunicationCommand\ShowFinalExamLocked\ShowFinalExamLocked.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseCertificate\CourseCertificate.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseCertificate\ShowCourseCertificate.cs" />
+    <Compile Include="CommunicationCommand\ShowEmbeddedAcknowledgment\EmbeddedAcknowledgment.cs" />
+    <Compile Include="CommunicationCommand\ShowEmbeddedAcknowledgment\ShowEmbeddedAcknowledgment.cs" />
+    <Compile Include="CommunicationCommand\ShowEOCInstructions\EOCInstructions.cs" />
+    <Compile Include="CommunicationCommand\ShowEOCInstructions\ShowEOCInstructions.cs" />
+    <Compile Include="CommunicationCommand\OpenCommand\OpenCommand.cs" />
+    <Compile Include="CommunicationCommand\OpenCommand\OpenCommandMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowAnswerReview\ShowAnswerReview.cs" />
+    <Compile Include="CommunicationCommand\ShowAnswerReview\AnswerReview.cs" />
+    <Compile Include="CommunicationCommand\ShowAssessmentScoreSummary\AssessmentScoreSummary.cs" />
+    <Compile Include="CommunicationCommand\ShowAssessmentScoreSummary\ShowAssessmentScoreSummary.cs" />
+    <Compile Include="CommunicationCommand\ShowBookmark\Bookmark.cs" />
+    <Compile Include="CommunicationCommand\ShowBookmark\ShowBookmark.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseInfo\CourseInfo.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseInfo\ShowCourseInfo.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseLocked\CourseLockedMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseLocked\ShowCourseLocked.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseMaterial\ShowCourseMaterial.cs" />
+    <Compile Include="CommunicationCommand\ShowCourseMaterial\CourseMaterial.cs" />
+    <Compile Include="CommunicationCommand\ShowCustomMessage\CustomMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowCustomMessage\ShowCustomMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowEOCTextCommand\CourseEndTextOnRelaunch.cs" />
+    <Compile Include="CommunicationCommand\ShowEOCTextCommand\ShowCourseEndTextOnRelaunch.cs" />
+    <Compile Include="CommunicationCommand\ShowErrorMessage\ErrorMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowErrorMessage\ShowErrorMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowGlossaryInDetail\GlossaryDetail.cs" />
+    <Compile Include="CommunicationCommand\ShowGlossaryInDetail\ShowGlossaryInDetail.cs" />
+    <Compile Include="CommunicationCommand\ShowGlossary\Glossary.cs" />
+    <Compile Include="CommunicationCommand\ShowGlossary\ShowGlossary.cs" />
+    <Compile Include="CommunicationCommand\ShowIndividualQuestionScore\IndividualQuestionScore.cs" />
+    <Compile Include="CommunicationCommand\ShowIndividualQuestionScore\ShowIndividualQuestionScore.cs" />
+    <Compile Include="CommunicationCommand\ShowLocalizedInfo\ShowLocalizedInfo.cs" />
+    <Compile Include="CommunicationCommand\ShowLocalizedInfo\LocalizedInfo.cs" />
+    <Compile Include="CommunicationCommand\ShowProctorAuthenticationResult\ProctorAuthenticationResult.cs" />
+    <Compile Include="CommunicationCommand\ShowProctorAuthenticationResult\ShowProctorAuthenticationResult.cs" />
+    <Compile Include="CommunicationCommand\ShowProctorLoginScreen\ProctorLoginScreen.cs" />
+    <Compile Include="CommunicationCommand\ShowProctorLoginScreen\ShowProctorLoginScreen.cs" />
+    <Compile Include="CommunicationCommand\ShowProctorMessage\ProctorMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowProctorMessage\ShowProctorMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestionResult\QuestionResult.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestionResult\ShowQuestionResult.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\AssessmentItem.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\AssessmentItemAnswer.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\FillInTheBlankQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\FITBAssessmentItemAnswer.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\ImageTargetAssessmentItemAnswer.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\ImageTargetCoordinate.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\ImageTargetQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\MatchingAssessmentItemAnswer.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\MatchingQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\MultipleChoiceQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\MultipleSelectQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\NumericInputQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\OrderingAssessmentItemAnswer.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\OrderingQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\StudentAnswer.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\QuestionType.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\RatingQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\ShowQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\SingleSelectQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\TextInputQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowQuestion\TrueFalseQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowResourceInfo\ResourceInfo.cs" />
+    <Compile Include="CommunicationCommand\ShowResourceInfo\ShowResourceInfo.cs" />
+    <Compile Include="CommunicationCommand\ShowSeatTimeCourseLaunch\SeatTimeCourseLaunch.cs" />
+    <Compile Include="CommunicationCommand\ShowSeatTimeCourseLaunch\ShowSeatTimeCourseLaunch.cs" />
+    <Compile Include="CommunicationCommand\ShowSkippedQuestion\ShowSkippedQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowSkippedQuestion\SkippedQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowSlide\ShowSlide.cs" />
+    <Compile Include="CommunicationCommand\ShowSlide\SlideMediaAsset.cs" />
+    <Compile Include="CommunicationCommand\ShowSpecialPostAssessmentAuthenticationResult\ShowSpecialPostAssessmentAuthenticationResult.cs" />
+    <Compile Include="CommunicationCommand\ShowSpecialPostAssessmentAuthenticationResult\SpecialPostAssessmentAuthenticationResult.cs" />
+    <Compile Include="CommunicationCommand\ShowSpecialPostAssessmentValidation\ShowSpecialPostAssessmentValidation.cs" />
+    <Compile Include="CommunicationCommand\ShowSpecialPostAssessmentValidation\SpecialPostAssessmentValidation.cs" />
+    <Compile Include="CommunicationCommand\ShowStartAssessment\ShowStartAssessment.cs" />
+    <Compile Include="CommunicationCommand\ShowStartAssessment\StartAssessmentMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowTableofContent\TOCItem.cs" />
+    <Compile Include="CommunicationCommand\ShowTableofContent\ShowTableofContent.cs" />
+    <Compile Include="CommunicationCommand\ShowTableofContent\TableOfContent.cs" />
+    <Compile Include="CommunicationCommand\ShowTimerExpiredMessage\ShowTimerExpiredMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowTimerExpiredMessage\TimerExpiredMessage.cs" />
+    <Compile Include="CommunicationCommand\ShowTopicScoreSummary\TopicScoreSummary.cs" />
+    <Compile Include="CommunicationCommand\ShowTopicScoreSummary\ShowTopicScoreSummary.cs" />
+    <Compile Include="CommunicationCommand\ShowValidationOrientationScene\ShowValidationOrientationScene.cs" />
+    <Compile Include="CommunicationCommand\ShowValidationOrientationScene\ValiadationOrientationScene.cs" />
+    <Compile Include="CommunicationCommand\ShowValidationQuestion\ShowValidationQuestion.cs" />
+    <Compile Include="CommunicationCommand\ShowValidationQuestion\ValidationQuestion.cs" />
+    <Compile Include="CommunicationCommand\StartValidation\StartValidation.cs" />
+    <Compile Include="CommunicationCommand\StartValidation\StartValidationMessage.cs" />
+    <Compile Include="CommunicationCommand\ValidationIdentityQuestion\ShowValidationIdentityQuestion.cs" />
+    <Compile Include="CommunicationCommand\ValidationIdentityQuestion\ValidationIdentityQuestion.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CommunicationCommand\Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

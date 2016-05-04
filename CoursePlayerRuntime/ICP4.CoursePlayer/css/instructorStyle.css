@@ -1,0 +1,85 @@
+h1, h2, h3, h4, h5, h6, h7 {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	font-family:Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	font-size:11px;
+}
+.datacontainer {
+	height: 100%;
+}
+.roundcont {
+	background-color: #fff;
+	margin-bottom: 10px;
+}
+label {
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	font-size: 14px;
+	padding-top: 10px;
+}
+input {
+	background: #f4f4f4;
+	border: #999999 1px solid;
+}
+select {
+	background: #f4f4f4;
+	border: #999999 1px solid;
+}
+#customerLogo{
+}
+#imgLogoRight{
+	float:right;
+	opacity:.6;
+}
+.info-header, .content{
+	padding:0 20px;
+	background-color:#FCFDFF;
+}
+.roundcont p {
+	margin: 0 10px;
+	margin-left: 0px;
+	padding-bottom: 15px;
+}
+.roundtop {
+	height: 15px;
+	background: url(../images/top_row.gif);
+}
+.roundbottom {
+	height: 15px;
+	background: url(../images/bot_row.gif);
+}
+img.corner {
+	width: 19px;
+	height: 15px;
+	border: none;
+	display: block !important;
+	float: left;
+}
+.datacontainer {
+	position: relative;
+}
+.rowleft {
+	position: absolute;
+	float: left;
+	width: 19px;
+	height: 100%;
+	background: url(../images/bg_left.gif);
+	border: #000099 0px solid;
+}
+.rowright {
+	position: absolute;
+	right: 0px;
+	width: 19px;
+	height: 100%;
+	background: url(../images/bg_right.gif);
+}
+.dataHead {
+	position: relative;
+}
+
+.dataHead {
+	height: 30px;
+}

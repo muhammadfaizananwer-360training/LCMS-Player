@@ -1,0 +1,61 @@
+<style>
+table {
+  height:100%;
+  width:100%;
+  margin:auto;
+  padding : 10px 10px 5px 10px
+}
+
+.mainimage {
+  max-width: 350px;
+  max-height: 400px;
+  width: expression(this.width > 350 ? "350px" : true);
+  height: expression(this.height > 400 ? "400px" : true);
+}
+
+.sceneTitle {
+  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
+  font-size : 36px; 
+  text-decoration : bold;
+}
+
+.sceneTextArea {
+  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
+  font-size : 18px;
+  text-align: left;
+
+}
+
+.sceneClosedCaptioningText {
+  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
+  font-size : 12px;
+  text-align: justify;
+}
+.sceneClosedCaptioningText p{
+margin:0px;
+padding:0px;
+
+}
+</style>
+<table border="0" width="95%" align="center" valign="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img height="15" src="images/pixel.gif" /></td>
+  </tr>
+  <tr>
+    <td align="justify">
+     <p align="center" class="sceneTextArea">
+       <center>
+         $Heading
+       </center>
+     </p>
+    <p align="center" class="sceneTitle">$Text</p>
+      <p align="center" class="sceneTextArea"><center>
+<img src="$VisualTop" />
+</center><br/>
+        </p>
+    <div align="center"><img width="15" src="images/pixel.gif" /></div></td>
+  </tr>
+  <tr>
+    <td><img height="15" src="images/pixel.gif" /></td>
+  </tr>
+</table>

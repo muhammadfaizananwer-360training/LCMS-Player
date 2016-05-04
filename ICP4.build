@@ -1,0 +1,337 @@
+﻿<?xml version="1.0"?>
+<project name="ICP" default="help">
+	
+	<description>ICP Build Script</description>
+	
+	<property name="dist" value="dist"/>
+	<property name="dist-ICP" value="ICP"/>
+	<tstamp property="dtime" pattern="yyyy-MM-dd-HHmm"></tstamp>
+	
+	<target name="help">
+		<echo message="Please run the script again with Target Environment: dev1, qa, prod, uat, demo. eg. nant dev"/>
+	</target>
+	
+	<target name="init">
+		<mkdir dir="${dist}"/>
+		<mkdir dir="${dist}\${dtime}"/>
+	</target>
+	
+	<target name="clean">
+		<delete dir="${dist}\${dtime}"></delete>
+		<delete dir="${dist}"></delete>
+		<delete file="TestSuiteResults.trx"/>
+	</target>
+	
+	<target name="publish" depends="clean,init">
+		
+		<!--<copy todir="${dist}\${dtime}\${dist-ICP}\ICPscenetemplate\">
+			<fileset basedir="CoursePlayerRuntime\ICP4.CoursePlayer\scene templates\">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		
+		<copy todir="${dist}\${dtime}\${dist-ICP}\Custom_Template\">
+			<fileset basedir="Custom_Template\">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${dist}\${dtime}\${dist-ICP}\Assessment_Template\">
+			<fileset basedir="Assessment_Template\">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		<copy todir="${dist}\${dtime}\${dist-ICP}\ICPBrands\">
+			<fileset basedir="CoursePlayerRuntime\ICP4.CoursePlayer\ICPBrands\">
+				<include name="**/*" />
+			</fileset>
+		</copy>		
+		-->
+			
+		<exec basedir="C:\WINDOWS\Microsoft.NET\Framework\v3.5\" program="msbuild.exe" 
+		commandline="CoursePlayerRuntime\ICP4.CoursePlayer\ICP4.CoursePlayer.csproj /nologo 
+		/t:Rebuild
+		/t:publish
+		/p:OutDir=..\..\${dist}\${dtime}\${dist-ICP}\Player\bin\
+		/p:WebProjectOutputDir=..\..\${dist}\${dtime}\${dist-ICP}\Player\"
+		workingdir="."
+		failonerror="true" />
+					
+		<exec basedir="C:\WINDOWS\Microsoft.NET\Framework\v3.5\" program="msbuild.exe" 
+			commandline="360TrainingServices\360Training.AssessmentService\360Training.AssessmentService.csproj /nologo 
+			/t:Rebuild
+			/t:publish
+			/p:OutDir=..\..\${dist}\${dtime}\${dist-ICP}\Services\AssessmentService\bin\
+			/p:WebProjectOutputDir=..\..\${dist}\${dtime}\${dist-ICP}\Services\AssessmentService\"
+			workingdir="."
+			failonerror="true" />
+		
+		<exec basedir="C:\WINDOWS\Microsoft.NET\Framework\v3.5\" program="msbuild.exe" 
+			commandline="360TrainingServices\360Training.BrandingService\360Training.BrandingService.csproj /nologo 
+			/t:Rebuild
+			/t:publish
+			/p:OutDir=..\..\${dist}\${dtime}\${dist-ICP}\Services\BrandingService\bin\
+			/p:WebProjectOutputDir=..\..\${dist}\${dtime}\${dist-ICP}\Services\BrandingService\"
+			workingdir="."
+			failonerror="true" />
+		
+		<exec basedir="C:\WINDOWS\Microsoft.NET\Framework\v3.5\" program="msbuild.exe" 
+			commandline="360TrainingServices\360Training.CourseService\360Training.CourseService.csproj /nologo 
+			/t:Rebuild
+			/t:publish
+			/p:OutDir=..\..\${dist}\${dtime}\${dist-ICP}\Services\CourseService\bin\
+			/p:WebProjectOutputDir=..\..\${dist}\${dtime}\${dist-ICP}\Services\CourseService\"
+			workingdir="."
+			failonerror="true" />
+		
+		<exec basedir="C:\WINDOWS\Microsoft.NET\Framework\v3.5\" program="msbuild.exe" 
+			commandline="360TrainingServices\360Training.TrackingService\360Training.TrackingService.csproj /nologo 
+			/t:Rebuild
+			/t:publish
+			/p:OutDir=..\..\${dist}\${dtime}\${dist-ICP}\Services\TrackingService\bin\
+			/p:WebProjectOutputDir=..\..\${dist}\${dtime}\${dist-ICP}\Services\TrackingService\"
+			workingdir="."
+			failonerror="true" />	
+	
+		<exec basedir="C:\WINDOWS\Microsoft.NET\Framework\v3.5\" program="msbuild.exe" 
+			commandline="UnitTests\UnitTests.csproj /nologo 
+			/t:Rebuild
+			/t:publish
+			/p:OutDir=..\${dist}\${dtime}\${dist-ICP}\UnitTests\bin\
+			/p:WebProjectOutputDir=..\${dist}\${dtime}\${dist-ICP}\UnitTests\"
+			workingdir="."
+			failonerror="true" />	
+			
+		<exec basedir="C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\" program="mstest.exe" 
+			commandline="/testcontainer:${dist}\${dtime}\${dist-ICP}\UnitTests\bin\UnitTests.dll /resultsfile:TestSuiteResults.trx"
+			workingdir="."
+			failonerror="true" />				
+	</target>
+	
+	
+	<target name="dev1" depends="publish">
+	
+		<copy file="CoursePlayerRuntime\ICP4.CoursePlayer\dev-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Player\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.AssessmentService\dev-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\AssessmentService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.BrandingService\dev-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\BrandingService\Web.config" overwrite="true"></copy>
+
+		<copy file="360TrainingServices\360Training.CourseService\dev-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\CourseService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.TrackingService\dev-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\TrackingService\Web.config" overwrite="true"></copy>
+		
+		<property name="DestinationServer" value="10.0.100.60"/>
+		<property name="DestinationServerUserName" value="anonymous"/>
+		<property name="DestinationServerPassword" value=""/>
+		<property name="DestinationServerFolder" value="iCP4"/>		
+		
+		<call target="Copy_FTP"/>
+		
+		<exec program="iisreset" commandline="iisreset kar-dev-4 /noforce "/> 
+		
+		<call target="email"/>
+	
+	</target>
+	
+	<target name="dev2" depends="publish">
+	
+		<copy file="CoursePlayerRuntime\ICP4.CoursePlayer\dev2-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Player\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.AssessmentService\dev2-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Services\AssessmentService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.BrandingService\dev2-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Services\BrandingService\Web.config" overwrite="true"></copy>
+
+		<copy file="360TrainingServices\360Training.CourseService\dev2-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Services\CourseService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.TrackingService\dev2-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Services\TrackingService\Web.config" overwrite="true"></copy>
+		
+		<property name="DestinationServer" value="10.0.100.60"/>
+		<property name="DestinationServerUserName" value="anonymous"/>
+		<property name="DestinationServerPassword" value=""/>
+		<property name="DestinationServerFolder" value="iCP4"/>		
+		
+		<call target="Copy_FTP"/>
+		
+		<exec program="iisreset" commandline="iisreset kar-dev-4 /noforce "/> 
+		
+		<call target="email"/>
+	
+	</target>	
+	
+	<target name="prod" depends="publish">
+		
+		<copy file="CoursePlayerRuntime\ICP4.CoursePlayer\prod-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Player\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.AssessmentService\prod-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\AssessmentService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.BrandingService\prod-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\BrandingService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.CourseService\prod-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\CourseService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.TrackingService\prod-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\TrackingService\Web.config" overwrite="true"></copy>
+		
+		<call target="Copy"/>
+		<exec program="iisreset" commandline="iisreset 10.0.0.1.47 /noforce "/> 
+		<call target="email"/>
+	
+	</target>
+	
+	<target name="demo" depends="publish">
+		
+		<copy file="CoursePlayerRuntime\ICP4.CoursePlayer\demo-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Player\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.AssessmentService\demo-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\AssessmentService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.BrandingService\demo-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\BrandingService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.CourseService\demo-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\CourseService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.TrackingService\demo-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\TrackingService\Web.config" overwrite="true"></copy>
+		
+		<call target="Copy"/>
+		
+		<call target="email"/>
+	
+	</target>
+	
+	<target name="qa1" depends="publish">
+		
+		<copy file="CoursePlayerRuntime\ICP4.CoursePlayer\qa-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Player\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.AssessmentService\qa-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Services\AssessmentService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.BrandingService\qa-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Services\BrandingService\Web.config" overwrite="true"></copy>
+
+		<copy file="360TrainingServices\360Training.CourseService\qa-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Services\CourseService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.TrackingService\qa-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Services\TrackingService\Web.config" overwrite="true"></copy>
+		
+		<property name="DestinationServer" value="10.0.1.47"/>
+		<property name="DestinationServerUserName" value="360training\qalcms-autodeploy"/>
+		<property name="DestinationServerPassword" value="Build123!@#"/>
+		<property name="DestinationServerFolder" value="ICP4_QA"/>
+		
+		<call target="Copy_FTP"/>
+		
+		<exec program="iisreset" commandline="iisreset 10.0.1.47 /noforce "/> 
+		
+		<call target="email"/>
+	
+	</target>
+	
+	<target name="qa2" depends="publish">
+		
+		<copy file="CoursePlayerRuntime\ICP4.CoursePlayer\qa-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Player\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.AssessmentService\qa-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\AssessmentService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.BrandingService\qa-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\BrandingService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.CourseService\qa-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\CourseService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.TrackingService\qa-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\TrackingService\Web.config" overwrite="true"></copy>
+		
+		<call target="Copy"/>
+		<exec program="iisreset" commandline="iisreset qa2-lcms.360training.com /noforce "/> 
+		<call target="email"/>
+	
+	</target>	
+	
+	<target name="uat" depends="publish">
+		
+		<copy file="CoursePlayerRuntime\ICP4.CoursePlayer\uat-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\Player\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.AssessmentService\uat-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\AssessmentService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.BrandingService\uat-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\BrandingService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.CourseService\uat-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\CourseService\Web.config" overwrite="true"></copy>
+		
+		<copy file="360TrainingServices\360Training.TrackingService\uat-Web.config" tofile="${dist}\${dtime}\${dist-ICP}\TrackingService\Web.config" overwrite="true"></copy>
+		
+		<call target="Copy"/>
+		<exec program="iisreset" commandline="iisreset uat-player.360training.com /noforce "/> 
+		<call target="email"/>
+	
+	</target>
+
+	<target name="Copy_DEV1">
+		
+		<copy todir="\\10.0.100.250\LCMS_MCM\iCP4">
+			<fileset basedir="${dist}\${dtime}\iCP">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		
+	</target>
+	
+	<target name="Copy">
+		
+		<copy todir="D:\DSL\Builds\LCMS\ICP">
+			<fileset basedir="${dist}\">
+				<include name="**/*" />
+			</fileset>
+		</copy>
+		
+	</target>
+	
+	<target name="Copy_FTP">
+  <!-- Deploy configuration-->
+		<FtpNant ftpServerName="${DestinationServer}" ftpUserName="${DestinationServerUserName}" ftpPassword="${DestinationServerPassword}" targetFilename="${DestinationServerFolder}">
+            <fileset basedir="${dist}\${dtime}\${dist-ICP}\">
+                <include name="**/*" />
+            </fileset>
+		</FtpNant>
+		<!--<FtpNant ftpServerName="${DestinationServer}" ftpUserName="${DestinationServerUserName}" ftpPassword="${DestinationServerPassword}" targetFilename="${DestinationServerFolder}" CurrentDirectory="/Services/AssessmentService">
+            <fileset basedir="${dist}\${dtime}\${dist-ICP}\AssessmentService\">
+                <include name="**/*" />
+            </fileset>
+		</FtpNant>
+		<FtpNant ftpServerName="${DestinationServer}" ftpUserName="${DestinationServerUserName}" ftpPassword="${DestinationServerPassword}" targetFilename="${DestinationServerFolder}" CurrentDirectory="/Services/BrandingService">
+            <fileset basedir="${dist}\${dtime}\${dist-ICP}\BrandingService\">
+                <include name="**/*" />
+            </fileset>
+		</FtpNant>
+		<FtpNant ftpServerName="${DestinationServer}" ftpUserName="${DestinationServerUserName}" ftpPassword="${DestinationServerPassword}" targetFilename="${DestinationServerFolder}" CurrentDirectory="/Services/CourseService">
+            <fileset basedir="${dist}\${dtime}\${dist-ICP}\CourseService\">
+                <include name="**/*" />
+            </fileset>
+		</FtpNant>
+		<FtpNant ftpServerName="${DestinationServer}" ftpUserName="${DestinationServerUserName}" ftpPassword="${DestinationServerPassword}" targetFilename="${DestinationServerFolder}" CurrentDirectory="/Services/TrackingService">
+            <fileset basedir="${dist}\${dtime}\${dist-ICP}\TrackingService\">
+                <include name="**/*" />
+            </fileset>
+		</FtpNant>
+		<FtpNant ftpServerName="${DestinationServer}" ftpUserName="${DestinationServerUserName}" ftpPassword="${DestinationServerPassword}" targetFilename="${DestinationServerFolder}" CurrentDirectory="/Assessment_Template">
+            <fileset basedir="${dist}\${dtime}\${dist-ICP}\Assessment_Template\">
+                <include name="**/*" />
+            </fileset>
+		</FtpNant>	
+		<FtpNant ftpServerName="${DestinationServer}" ftpUserName="${DestinationServerUserName}" ftpPassword="${DestinationServerPassword}" targetFilename="${DestinationServerFolder}" CurrentDirectory="/Custom_Template">
+            <fileset basedir="${dist}\${dtime}\${dist-ICP}\Custom_Template\">
+                <include name="**/*" />
+            </fileset>
+		</FtpNant>	
+		<FtpNant ftpServerName="${DestinationServer}" ftpUserName="${DestinationServerUserName}" ftpPassword="${DestinationServerPassword}" targetFilename="${DestinationServerFolder}" CurrentDirectory="/ICPBrands">
+            <fileset basedir="${dist}\${dtime}\${dist-ICP}\ICPBrands\">
+                <include name="**/*" />
+            </fileset>
+		</FtpNant>			
+		<FtpNant ftpServerName="${DestinationServer}" ftpUserName="${DestinationServerUserName}" ftpPassword="${DestinationServerPassword}" targetFilename="${DestinationServerFolder}" CurrentDirectory="/ICPSceneTemplate">
+            <fileset basedir="${dist}\${dtime}\${dist-ICP}\ICPscenetemplate\">
+                <include name="**/*" />
+            </fileset>
+		</FtpNant>	-->		
+		
+	</target>	
+	
+	<target name="email">
+		<mail from="ICP4@360training.com" 
+		tolist="muhammad.bilal@360training.com" 
+		subject="ICP Build Status"
+		mailhost="10.0.0.198"
+		message="ICP Build Location: D:\DSL\Builds\LCMS\ICP\${dtime}">
+		</mail>
+	</target>
+
+</project>

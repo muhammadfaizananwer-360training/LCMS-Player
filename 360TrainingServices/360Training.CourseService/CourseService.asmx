@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="CourseService.asmx.cs" Class="_360Training.CourseService.CourseService" %>

@@ -1,0 +1,142 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FA045D6F-B14C-441F-AEA4-8C2B2F0BD25C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CoursePlayerBusinessLogicUnitTest</RootNamespace>
+    <AssemblyName>CoursePlayerBusinessLogicUnitTest</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssessmentManagerTest.cs" />
+    <Compile Include="CourseManagerTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TrackingManagerTest.cs" />
+    <Compile Include="UnitTest1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\360Training.BusinessEntities\360Training.BusinessEntities.csproj">
+      <Project>{196D0D80-337D-441E-9B25-8297160EBE4A}</Project>
+      <Name>360Training.BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\360TrainingServices\360Training.AssessmentServiceBusinessLogic\360Training.AssessmentServiceBusinessLogic.csproj">
+      <Project>{0F26857A-BD15-44E7-9933-B1147E089102}</Project>
+      <Name>360Training.AssessmentServiceBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\360TrainingServices\360Training.AssessmentServiceDataLogic\360Training.AssessmentServiceDataLogic.csproj">
+      <Project>{D064C7A4-B347-4D25-978C-6CB92B5247AE}</Project>
+      <Name>360Training.AssessmentServiceDataLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\360TrainingServices\360Training.AssessmentService\360Training.AssessmentService.csproj">
+      <Project>{30B37523-9322-4728-B53B-85C3F8E74E01}</Project>
+      <Name>360Training.AssessmentService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\360TrainingServices\360Training.CourseServiceBusinessLogic\360Training.CourseServiceBusinessLogic.csproj">
+      <Project>{F54FF817-4D98-4D58-BEE5-F9B89951FC31}</Project>
+      <Name>360Training.CourseServiceBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\360TrainingServices\360Training.CourseServiceDataLogic\360Training.CourseServiceDataLogic.csproj">
+      <Project>{7F52FAF9-9200-4B2D-96E1-DF6EA3B08D58}</Project>
+      <Name>360Training.CourseServiceDataLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\360TrainingServices\360Training.TrackingServiceBusinessLogic\360Training.TrackingServiceBusinessLogic.csproj">
+      <Project>{45EB0D5F-A68D-4511-A1F9-DD5FD1A07E80}</Project>
+      <Name>360Training.TrackingServiceBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\360TrainingServices\360Training.TrackingServiceDataLogic\360Training.TrackingServiceDataLogic.csproj">
+      <Project>{7B01791B-2AA8-4D27-BE73-602DE46D0CFC}</Project>
+      <Name>360Training.TrackingServiceDataLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoursePlayerRuntime\ICP4.BusinessLogic\ICP4.BusinessLogic.csproj">
+      <Project>{472AA97A-6014-44E8-99E5-F8A16699C677}</Project>
+      <Name>ICP4.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoursePlayerRuntime\ICP4.CommunicationLogic\ICP4.CommunicationLogic.csproj">
+      <Project>{95E526D2-428E-40CE-8645-37F78F4D8D67}</Project>
+      <Name>ICP4.CommunicationLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoursePlayerRuntime\ICP4.DataLogic\ICP4.DataLogic.csproj">
+      <Project>{C0B070CD-5EC6-469C-B216-F3FCF7DFCF98}</Project>
+      <Name>ICP4.DataLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

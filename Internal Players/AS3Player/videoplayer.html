@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html> 
+<html ><!--PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"--><!--xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"-->
+    <head>
+        <title>LCMS Video Player</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript">
+			//------- var videoSize = "16x9" || "4x3" || "FreeSize" ----
+			
+			
+            function thisMovie(movieName) {
+				//alert(navigator.appVersion.indexOf("10.0") != -1)
+				
+				if(String(document[movieName])!="undefined"){
+					return document[movieName]
+				}else if(String(document.embeds[movieName]) != "undefined"){
+					return document.embeds[movieName]	
+				}else{
+					return window[movieName];
+				};
+            }
+			
+            function playerLoaded(){
+                //Set video player volume
+				//alert(thisMovie("videoplayer"))
+                thisMovie("videoplayer").setVolume(0.5);
+
+                //Play SWF file from the local machine
+               // thisMovie("videoplayer").sendVariables(null, null, "sample.swf");
+                
+                //Play SWF file from http location
+                //thisMovie("videoplayer").sendVariables(null, null, "http://ui.360training.com/webapps/video-streamer/LCMS/sample.swf");
+				
+				//thisMovie("videoplayer").sendVariables(null, null, "http://10.0.205.211/vod/360/WP10.mp4")
+				//thisMovie("videoplayer").sendVariables("streaming.360training.com", "360", "WP11.mp4",1) // 0 = 4:3, 1 = 16:9
+				//thisMovie("videoplayer").sendVariables("streaming.360training.com", "freemium", "L-005.mp4",1)
+                // Play video files from the local machine
+                //thisMovie("videoplayer").sendVariables(null, null, "https://10.0.100.250/ICPFileSystem/PersistentAssets/94082/110774/3 Year Old Genius.flv");
+				//thisMovie("videoplayer").sendVariables(null, null, "https://10.0.100.250/ICPFileSystem/PersistentAssets/117885/145028/Copy of monkey.flv");
+
+                // Play video files from http location
+                //thisMovie("videoplayer").sendVariables(null, null, "http://ui.360training.com/webapps/video-streamer/LCMS/sample.flv");
+					
+                //Stream videos (flv/f4v) from the flash media server
+                //thisMovie("videoplayer").sendVariables("streaming.360training.com", "safety", "WHMISv1.f4v");
+				thisMovie("videoplayer").sendVariables("streaming.360training.com","","freemium/L-005.mp4",1)
+				
+				
+            }
+        </script>
+        <style type="text/css" media="screen">
+            html, body { height:100%; background-color: #F9F9F9;}
+            body { margin:0; overflow:hidden; }
+            #flashContent { width:100%; height:100%;}
+        </style>
+    </head>
+    <body>
+        <div id="flashContent">
+            <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="100%" height="100%" id="videoplayer">
+                <param name="movie" value="videoplayer.swf" />
+                <param name="quality" value="high" />
+                <param name="bgcolor" value="#ffffff" />
+                <param name="play" value="true" />
+                <param name="loop" value="true" />
+                <param name="wmode" value="window" />
+                <param name="scale" value="showall" />
+                <param name="menu" value="true" />
+                <param name="devicefont" value="false" />
+                <param name="salign" value="" />
+                <param name="allowScriptAccess" value="always" />
+                <param name="allowFullScreen" value="true" />
+                <!--[if !IE]>-->
+                <embed src="videoplayer.swf" type="application/x-shockwave-flash" data="videoplayer.swf" width="100%" height="100%" name="videoplayer">
+                    <param name="movie" value="videoplayer.swf" />
+                    <param name="quality" value="high" />
+                    <param name="bgcolor" value="#ffffff" />
+                    <param name="play" value="true" />
+                    <param name="loop" value="true" />
+                    <param name="wmode" value="window" />
+                    <param name="scale" value="showall" />
+                    <param name="menu" value="true" />
+                    <param name="devicefont" value="false" />
+                    <param name="salign" value="" />
+                    <param name="allowScriptAccess" value="always" />
+                    <param name="allowFullScreen" value="true" />
+                    <!--<![endif]-->
+                    <a href="http://www.adobe.com/go/getflash">
+                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" />
+                    </a>
+                    <!--[if !IE]>-->
+                </embed>
+                <!--<![endif]-->
+            </object>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,241 @@
+
+<style>
+.mainimage {
+  max-width: 960px;
+  width: expression(this.width > 960 ? "960px" : true);
+}
+
+#contentTable {
+  width:100%;
+  margin : auto;
+  border : 10px white solid;
+  height: 55px; 
+  position: relative;
+}
+
+.sceneTitle {
+  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
+  font-size : 36px; 
+  text-decoration : bold;
+
+}
+
+.sceneTextArea {
+  text-align: left;
+  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
+  font-size : 18px;
+
+}
+
+.sceneTextArea p{
+margin:0px;
+padding:0px;
+}
+
+.sceneTitle p{
+margin:0px;
+padding:0px;
+}
+
+.sceneClosedCaptioningText {
+  text-align: justify;
+  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
+  font-size : 12px;
+
+}
+.sceneClosedCaptioningText p{
+margin:0px;
+padding:0px;
+
+}
+
+.play{
+	background-image:url("images/play_button.png"); 
+	background-repeat:no-repeat; 
+	background-position:center;
+	position: relative; 
+    height: 30%; 
+	width:10%;  
+	z-index:9999px;
+	margin:0 auto; 
+	top : 341px;
+	outline:  none;
+    ie-dummy: expression(this.hideFocus=true); 
+	/* left: -30px; */
+	
+	}
+	
+.pause{
+	background-image:url("images/pause_button.png"); 
+	background-repeat:no-repeat; 
+	background-position:center;
+	height: 30%; 
+	width:10%; 
+	z-index:9999px;
+	position: relative;
+	margin:0 auto;
+	top : 341px;
+	outline:  none;
+    ie-dummy: expression(this.hideFocus=true);	
+	/* left: -30px; */
+
+	}
+
+.play a{
+		float: left;
+	    height: 100%; 
+		width:100%;
+        outline:  none;
+        ie-dummy: expression(this.hideFocus=true); 		
+	   }
+		
+.pause a{
+		float:left;
+		width:100%;
+		height:100%;
+		outline:  none;
+        ie-dummy: expression(this.hideFocus=true); 
+		}
+
+
+
+#finalPPdiv
+	{
+	width:960px;  
+	 height:420px; 
+	position:absolute;	
+	float: left; 
+    right: 0;
+    top: 0;
+	left: 0px;
+	left: 0px; /* standard */
+	left: 0px\9; /* IE 8 and below */
+	*left: 10px; /* IE 7 and below */
+	_left: 0px; /* IE 6 */	
+	bottom: 0px;
+	margin:0 auto;
+	/*z-index:9999px;*/  
+	}
+	
+	
+#media{ 
+
+	width:960px; 
+	height:420px;  
+	overflow:hidden;
+	margin:0 auto;
+	left: 0px;  
+	position:relative;
+
+	}
+
+#container{ 
+
+	width:960px; 
+	height:420px;  
+	overflow:hidden;
+	margin:0 auto;
+	left: 0px;  
+	position:relative;
+
+	}
+</style>
+<!--  text-transform : capitalize;-->
+
+   <div  id="contentTable" style="padding-bottom:28px;">
+   <span class="sceneTitle"><div style="margin-right:12px;">$Heading</div></span>
+   </div>
+   
+<div align="center">
+   <span id="image">
+    <img src="$VisualTop" class="mainimage" align="top" />
+    </span> 
+	
+	</div>
+	<div  id="media" style="overflow:hidden;" height="430px" >
+	<div id="container" style="display:none;"></div>
+      <embed src="$VisualTop"  wmode="transparent" id="finalPPdiv" name="finalPPdiv" >
+      </embed>
+	  <div id="toggle">
+               <a href="javascript:pauseFlash();" ></a> 
+    </div> 
+    </div>
+ <script type="text/javascript">
+ var test = 0;
+ 
+ 	if(playPauseFeature == false) {        		 		  
+		    document.getElementById("media").children[2].remove(); 
+     }	
+ 
+     if (JSplayerEnabled == false) {
+         if (document.getElementById('media').children[1].src.indexOf(".mp4") > 0) {
+
+             /*  var isSelection = document.getElementById("media").children[0].src; 
+             document.getElementById("media").innerHTML = "";	
+             var embedStr = "<Embed Src='"+isSelection+"' Width=960 Height=420  ></Embed>"; 
+             document.getElementById('media').innerHTML = embedStr; */
+
+         }
+
+     } 
+function pauseFlash()
+{
+	if(test == "-1")
+	{
+      document.getElementById('finalPPdiv').Play();
+	 
+	  test ++ ;
+	}
+	else
+	{
+	   document.getElementById('finalPPdiv').StopPlay();
+	  
+	   
+	   test --;
+	}
+}
+
+$(document).ready(function() {
+
+    $('#toggle').bind("click", function() {
+        if ($(this).attr("class") == "play") 
+        {
+            $(this).attr("class", "pause");
+            $('#toggle a').attr('title', 'Click here to Pause');
+        }
+        else
+        
+            $(this).attr("class", "play");
+            $('#toggle a').attr('title', 'Click here to Play');
+        
+    });
+
+
+    $('#media').mouseover(function() {
+
+        if (test == "0") {
+            $('#toggle').addClass("pause");
+            $(".pause").css("display", "block");
+            $("#toggle").removeClass("play");
+            $('#toggle a').attr('title', 'Click here to Pause');
+        }
+
+        else if (test == "-1") {
+            $('#toggle').addClass("play");
+            $(".play").css("display", "block");
+            $("#toggle").removeClass("pause");
+            $('#toggle a').attr('title', 'Click here to Play'); 
+        }
+    });
+
+    $('#media').mouseout(function() {
+
+        if (test == "0") {
+            $(".pause").css("display", "none");            
+        }
+        if (test == "-1") {
+            $(".play").css("display", "none");            
+        }
+    });
+});
+</script>

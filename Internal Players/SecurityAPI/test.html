@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Security API</title>
+
+
+<script type="text/javascript" language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js">//jQuery.js</script>
+<script language="javascript" type="text/javascript">
+
+$(function(){
+
+ $(document).keyup(function (e){
+     if(e.which == 17 || e.which == 122){
+         jsFun();
+     }
+ });
+
+window.onblur = jsFun; 
+ 
+ $(document).keydown(function (e){
+     if(e.which == 83){
+        return false;
+     }
+ });
+
+
+ function jsFun(){
+    thisMovie("securityAPI").jsFun();
+ }
+
+ function thisMovie(movieName) {
+     if (navigator.appName.indexOf("Microsoft") != -1) {
+         return window[movieName];
+     } else {
+         return document[movieName];
+     }
+ }
+
+ 
+
+
+
+}); 
+
+</script>
+</head>
+
+<body onselectstart= "return false;"  ondragstart = "return false;" oncontextmenu = "return false;">
+<table width="884" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+<div style="overflow: hidden; width: 5px; height: 5px; float: left;">
+		<object id="securityAPI" height="5" align="middle" width="5" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000">
+	        <param value="always" name="allowScriptAccess"/>
+	        <param value="false" name="allowFullScreen"/>
+	        <param value="securityAPI.swf" name="movie"/>
+	        <param value="high" name="quality"/>
+	        <param value="#EAEAEA" name="bgcolor"/>
+	        <embed height="5" align="middle" width="5" pluginspage="http://www.adobe.com/go/getflashplayer" swliveconnect="true" type="application/x-shockwave-flash" allowfullscreen="false" allowscriptaccess="always" name="securityAPI" bgcolor="#EAEAEA" quality="high" src="securityAPI.swf"/>
+	</object>
+</div> 
+
+
+
+
+ 
+
+<tr>
+	<td> This is my disabled text </td>
+  </tr>
+</table>
+</body>
+</html>

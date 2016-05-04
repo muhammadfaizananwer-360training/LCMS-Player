@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="AssessmentService.asmx.cs" Class="_360Training.AssessmentService.AssessmentService" %>

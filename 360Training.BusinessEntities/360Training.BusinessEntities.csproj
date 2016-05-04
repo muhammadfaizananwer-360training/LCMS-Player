@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{196D0D80-337D-441E-9B25-8297160EBE4A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>_360Training.BusinessEntities</RootNamespace>
+    <AssemblyName>360Training.BusinessEntities</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LogicaCMG.EnterpriseLibraryExtensions.Logging, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\LogicaCMG.EnterpriseLibraryExtensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="LogicaCMG.EnterpriseLibraryExtensions.Logging.Configuration.Design, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\LogicaCMG.EnterpriseLibraryExtensions.Logging.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\reference_dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AfterMaxFailAction.cs" />
+    <Compile Include="AssessmentConfiguration.cs" />
+    <Compile Include="AssessmentItem.cs" />
+    <Compile Include="AssessmentItemAnswer.cs" />
+    <Compile Include="AssessmentItemAsset.cs" />
+    <Compile Include="AssessmentItemBank.cs" />
+    <Compile Include="AssessmentItemResult.cs" />
+    <Compile Include="AssessmentItemTemplate.cs" />
+    <Compile Include="Asset.cs" />
+    <Compile Include="AssetType.cs" />
+    <Compile Include="CollectionDumpUtility.cs" />
+    <Compile Include="CourseApproval.cs" />
+    <Compile Include="CourseApprovalCertificate.cs" />
+    <Compile Include="CourseCompletionPolicy.cs" />
+    <Compile Include="CourseRating.cs" />
+    <Compile Include="DocuSignLearner.cs" />
+    <Compile Include="ICPException.cs" />
+    <Compile Include="ICPExceptionPolicy.cs" />
+    <Compile Include="IdleTimeOut.cs" />
+    <Compile Include="CourseEndPage.cs" />
+    <Compile Include="CourseEvaluation.cs" />
+    <Compile Include="CourseEvaluationAnswer.cs" />
+    <Compile Include="CourseEvaluationQuestion.cs" />
+    <Compile Include="CourseEvaluationQuestionType.cs" />
+    <Compile Include="CourseEvaluationResult.cs" />
+    <Compile Include="CourseEvaluationResultAnswer.cs" />
+    <Compile Include="CourseMaterialInfo.cs" />
+    <Compile Include="CourseIntroPage.cs" />
+    <Compile Include="DisplayCourseEvaluation.cs" />
+    <Compile Include="EOCInstructions.cs" />
+    <Compile Include="FeedbackType.cs" />
+    <Compile Include="FillInTheBlankCourseEvaluationQuestion.cs" />
+    <Compile Include="FillInTheBlankQuestion.cs" />
+    <Compile Include="FITBAssessmentItemAnswer.cs" />
+    <Compile Include="ImageTargetAssessmentItemAnswer.cs" />
+    <Compile Include="ImageTargetCoordinate.cs" />
+    <Compile Include="ImageTargetQuestion.cs" />
+    <Compile Include="LearnerCourseBookMarkInfo.cs" />
+    <Compile Include="BrandLocaleInfo.cs" />
+    <Compile Include="ContentObject.cs" />
+    <Compile Include="CourseConfiguration.cs" />
+    <Compile Include="CourseFlow.cs" />
+    <Compile Include="CourseInfo.cs" />
+    <Compile Include="GlossaryItem.cs" />
+    <Compile Include="LearnerCourseCompletionStatus.cs" />
+    <Compile Include="LearnerCourseTrackInfo.cs" />
+    <Compile Include="LearnerProfile.cs" />
+    <Compile Include="LearnerStatistics.cs" />
+    <Compile Include="LearnerStatisticsAnswer.cs" />
+    <Compile Include="LearnerStatisticsType.cs" />
+    <Compile Include="LearnerValidationStatistics.cs" />
+    <Compile Include="LearningSessionInformation.cs" />
+    <Compile Include="LegacyCertificateInfo.cs" />
+    <Compile Include="LegacyCourseCompletion.cs" />
+    <Compile Include="LegacyLearnerStatistics.cs" />
+    <Compile Include="LocaleResource.cs" />
+    <Compile Include="MatchingAssessmentItemAnswer.cs" />
+    <Compile Include="MatchingQuestion.cs" />
+    <Compile Include="MultipleChoiceQuestion.cs" />
+    <Compile Include="MultipleSelectCourseEvaluationQuestion.cs" />
+    <Compile Include="MultipleSelectQuestion.cs" />
+    <Compile Include="NumericInputQuestion.cs" />
+    <Compile Include="OrderingAssessmentItemAnswer.cs" />
+    <Compile Include="OrderingQuestion.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionType.cs" />
+    <Compile Include="RatingQuestion.cs" />
+    <Compile Include="ResourceKeyNames.cs" />
+    <Compile Include="Scene.cs" />
+    <Compile Include="SceneTemplate.cs" />
+    <Compile Include="SceneTemplateType.cs" />
+    <Compile Include="ScoreType.cs" />
+    <Compile Include="Sequence.cs" />
+    <Compile Include="SequenceItem.cs" />
+    <Compile Include="SequenceItemType.cs" />
+    <Compile Include="SingleSelectCourseEvaluationQuestion.cs" />
+    <Compile Include="SingleSelectQuestion.cs" />
+    <Compile Include="SuggestedCourse.cs" />
+    <Compile Include="TableOfContent.cs" />
+    <Compile Include="TextCourseEvaluationQuestion.cs" />
+    <Compile Include="TextInputQuestion.cs" />
+    <Compile Include="TimeUnit.cs" />
+    <Compile Include="TOCItem.cs" />
+    <Compile Include="TOCItemType.cs" />
+    <Compile Include="TrueFalseQuestion.cs" />
+    <Compile Include="ValidationQuestion.cs" />
+    <Compile Include="ValidationQuestionOption.cs" />
+    <Compile Include="ValidationQuestionType.cs" />
+    <Compile Include="VisitedScene.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

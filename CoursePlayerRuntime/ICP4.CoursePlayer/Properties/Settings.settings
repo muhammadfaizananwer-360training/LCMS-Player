@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ICP4.CoursePlayer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ICP4_CoursePlayer_net_docusign_test_APIService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://test.docusign.net/api/3.0/api.asmx</Value>
+    </Setting>
+    <Setting Name="ICP4_CoursePlayer_CourseLevelRatingWeb_CourseLevelRatingService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://qa-ws1.austin.360training.com:443/webapp/wcs/services/CourseLevelRatingService</Value>
+    </Setting>
+    <Setting Name="ICP4_CoursePlayer_SuggestedCoursesWeb_ThreeSixtyTraining_SuggestedCoursesDisplayService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.0.101.88/webapp/wcs/services/SuggestedCoursesDisplayService</Value>
+    </Setting>
+    <Setting Name="ICP4_CoursePlayer_SuggestedCourses_SuggestedCoursesDisplayService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.0.101.88:80/webapp/wcs/services/SuggestedCoursesDisplayService</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

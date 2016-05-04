@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<div id="ValidationQuestion" style="display:none">
+<script language=javascript>
+    function clearFields(inputField) { 
+
+        document.getElementById(inputField).value = "";
+    }
+
+
+</script>
+<head>
+    <title></title>
+    <style type="text/css">
+        .mandatory{ color: Red; padding:0px 4px 0px 0px; float: right; *padding:0px 4px 0px 298px; *float:left;}
+        .error-meesage{color: Red; padding: 10px 0px 10px 0px; float: left;}
+		table { height:100%; width:100%; margin:auto; padding : 10px 10px 5px 0px}
+		.bottom-spacing{ float: left; margin-bottom: 5px;}
+		
+		table tr td.style1{ width: 301px !important; /*float: left;*/ margin-left: 5px;}
+		/*.table td{width: 70%;}*/
+		
+		h2.sceneTitle { font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 24px; text-decoration : normal; font-weight: normal;}
+        .space{ padding: 0px 10px 0px 10px; *padding: 10px 10px 0px 10px;}
+		 .space2{padding: 0px 10px 0px 10px; *padding: 0px 10px 0px 10px; *text-decoration:justify;}
+        .style1
+        {
+            width: 307px;
+			font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
+			font-size : 13px; 
+			text-align: left; 
+			padding-top: 0px;
+			
+			padding-top: 0px\0; /* IE8, IE9 */
+			*padding-top: 10px;
+            *line-height: 8px;
+        }
+        . ie10 .style1
+        {
+            width: 307px;
+			padding-top: 0px;
+        }
+          . ie10 .content-text
+        { 
+            width: 543px;
+             margin-top: 3px;
+			 font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 13px; text-align: left; margin-bottom: 20px;
+        }
+
+        
+         .style2
+        {
+            
+			font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 13px; text-align: left; 
+        }
+        .QuestionSet
+        {
+            width: 548px;
+			font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 13px; text-align: left; 
+        }
+        .content-text
+        { 
+            width: 543px;
+             margin-top: 3px\0;
+			 font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 13px; text-align: left; margin-bottom: 20px;
+        }
+        
+        
+    
+                                           
+                                          }
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    /* Safari and Chrome */
+    
+             .content-text
+              {
+                           
+                width: 530px;
+			    font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 13px; text-align: left; margin-bottom: 20px;
+              } 
+            .mandatory{ color: Red; padding: 2px 4px 0px 0px; float: right;}
+            .style1
+            {
+                width: 307px;padding-top: 8px;
+			    font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 13px; text-align: left; float: left;
+            }
+
+    /* Safari only override */
+    ::i-block-chrome,
+             .content-text
+              {
+                           
+               width: 530px;
+			    font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 13px; text-align: left; margin-bottom: 20px;
+              } 
+
+              .mandatory{ color: Red; padding: 0px 4px 0px 0px; float: right;}
+                  
+            .style1
+            {
+                width: 307px;padding-top: 4px;
+			    font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 13px; text-align: left; float: left;
+            }
+}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px) {
+/* Styles for IPAD */
+
+  .content-text
+              {
+                           
+                width: 533px;
+			    font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 13px; text-align: left; margin-bottom: 20px;
+              } 
+            .mandatory{ color: Red; padding: 2px 4px 0px 0px; float: right;}
+            .style1
+            {
+                width: 307px;padding-top: 8px;
+			    font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 13px; text-align: left; float: left;
+            }
+
+}
+
+
+         #Save
+        {
+            width: 81px;
+        }
+        .validation-icon img{ margin-top: 20px;}
+
+        
+        </style>
+</head>
+<body>
+
+    
+<table >
+        
+
+        <tr>
+        
+        
+            <td valign="top">
+            <div class="validation-icon"><img src="Images/icon-locked.png" alt="IconLocked" /></div>
+            
+            </td>
+			
+			
+            
+            <td valign="top">
+           
+             
+			 <h2 class="sceneTitle">Identity Validation</h2>
+			    <div class="style2" style="width:95%;">		
+			    This course requires you to answer identity validation questions. You have not yet 
+                submitted your original answers to these questions. For your convenience, you may 
+                do so here. For each of the five questions sets below, choose one question 
+                from the drop-down and type in your answer to that question. You must fill out 
+                all 5 questions sets. When finished, click <strong>Save</strong>, and these questions and answers 
+                will be saved to your Learner Profile in the LMS, and you may continue in the 
+                course.</div>
+			</td>  
+          </tr>
+          <tr>
+          
+      
+            <td valign="bottom" width="100" >
+			<!--
+			<div id="validationIdentityButton" style="padding-top: 30px; padding-left: 8px; vertical-align: top; float: left;" >
+			<div id="btnstart" class="btn-start" style="float:left;"></div> 
+				<span id="btnSaveValidityIdentityQuestions">
+						<a class="btn-stem star-rating-readonly" href="#">Save</a>
+				</span>
+				 <div id="btnend" class="btn-end" style="float:left;"></div> 
+			</div>
+			-->
+		  </td>
+         
+            
+  
+          
+            <td valign="top">
+
+    <table class="table" cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+            <td class="style2" colspan="2">
+                <div id="RequiredValidationQuestion"  class="error-meesage" > </div>
+            </td>
+           
+        </tr>
+    
+        <tr>
+            <td class="style1">
+                QUESTION SET 1 (Pick a question and answer.) <span class="mandatory">*</span></td>
+            <td class="bottom-spacing">
+                <select id="QuestionSet1" name="D1" class="QuestionSet" onchange="clearFields('txtAnswerSet1');">
+                    <option value='0'>
+                    Select a Question
+                    </option>
+                    <option value='101'>
+                   What was your childhood nickname? 
+                    </option>
+                    <option value='102'>
+                     In what city did you meet your spouse/significant other?  
+                    </option>
+                    <option value='103'>
+                    What school did you attend for sixth grade?  
+                    </option>
+                </select></td>
+        </tr>
+        <tr>
+            <td class="style1">
+                &nbsp;</td>
+            <td style="padding:0px; margin:0px;">
+                <input class="content-text" id="txtAnswerSet1" type="text" onkeyup="disableNext();" /></td>
+        </tr>
+        <tr>
+            <td class="style1">
+                QUESTION SET 2 (Pick a question and answer.) <span class="mandatory">*</span></td>
+            <td class="bottom-spacing">
+                <select id="QuestionSet2" name="D2" class="QuestionSet" onchange="clearFields('txtAnswerSet2');">
+                    <option value='0'>Select a Question</option>
+                    <option value='104'>What is the middle name of your oldest child? </option>
+                    <option value='105'>What is your oldest sibling's middle name?</option>
+                    <option value='106'>What is the name of your favorite childhood friend?</option>
+                </select></td>
+        </tr>
+        <tr>
+            <td class="style1">
+                &nbsp;</td>
+            <td style="padding:0px; margin:0px;">
+                <input class="content-text" id="txtAnswerSet2" type="text" onkeyup="disableNext();"/></td>
+        </tr>
+        <tr>
+            <td class="style1">
+                QUESTION SET 3 (Pick a question and answer.) <span class="mandatory">*</span></td>
+            <td class="bottom-spacing">
+                <select id="QuestionSet3" name="D3" class="QuestionSet" onchange="clearFields('txtAnswerSet3');">
+                    <option value='0'>Select a Question</option>
+                    <option value='107'>What is your oldest cousin's first name?</option>
+                    <option value='108'>What is your maternal grandmother's maiden name?</option>                    
+                </select></td>
+        </tr>
+        <tr>
+            <td class="style1">
+                &nbsp;</td>
+            <td style="padding:0px; margin:0px;">
+                <input id="txtAnswerSet3" type="text" class="content-text" onkeyup="disableNext();" /></td>
+        </tr>
+        <tr>
+            <td class="style1">
+                QUESTION SET 4 (Pick a question and answer.)<span class="mandatory">*</span></td>
+            <td class="bottom-spacing">
+                <select id="QuestionSet4" name="D4" class="QuestionSet" onchange="clearFields('txtAnswerSet4');">
+                    <option value='0'>Select a Question</option>
+                    <option value='110'>What was the last name of your third grade teacher?</option>
+                    <option value='111'>What is your oldest siblings birth year?(e.g., 1969)</option>
+                    <option value='112'>In what city or town did your parents meet? </option>
+                </select></td>
+        </tr>
+        <tr>
+            <td class="style1">
+                &nbsp;</td>
+            <td style="padding:0px; margin:0px;">
+                <input class="content-text" id="txtAnswerSet4" type="text" onkeyup="disableNext();"/></td>
+        </tr>
+        <tr>
+            <td class="style1">
+                QUESTION SET 5 (Pick a question and answer.)<span class="mandatory">*</span></td>
+            <td class="bottom-spacing">
+                <select id="QuestionSet5" name="D5" class="QuestionSet" onchange="clearFields('txtAnswerSet5');">
+                    <option value='0'>Select a Question</option>
+                    <option value='113'>In what city or town was your first job?</option>
+                    <option value='114'>What is the name of a college you applied to but didn't attend? </option>
+                    <option value='115'>What was the name of your first stuffed animal?</option>
+                </select></td>
+        </tr>
+        <tr>
+            <td class="style1">
+                &nbsp;</td>
+            <td style="padding:0px; margin:0px;">
+                <input class="content-text" id="txtAnswerSet5" type="text" onkeyup="disableNext();"/></td>
+        </tr>
+
+    </table>
+    
+    
+            </td>
+        </tr>
+</table>    
+    
+    
+    	<div id="validationIdentityButton" style="padding-top: 30px; padding-left: 8px; vertical-align: top; float: right;margin-right:5%" >
+			<div id="btnstart" class="btn-start" style="float:left;"></div> 
+				<span id="btnSaveValidityIdentityQuestions">
+						<a class="btn-stem star-rating-readonly" href="#">Save</a>
+				</span>
+				 <div id="btnend" class="btn-end" style="float:left;"></div> 
+			</div>
+    
+</body>
+</html>

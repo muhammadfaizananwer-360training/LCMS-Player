@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<!--<domain -->
+<title>Player</title>
+<link href="JSPlayer/j360.css" rel="stylesheet" type="text/css">
+</head>
+<script type="text/javascript" src="JSPlayer/j360player.js"></script>
+<script type="text/javascript" src="JSPlayer/init.js"></script>
+<body>
+<!--<input type="text" id="inpttext"/>-->
+<div id="container"><div style="position:absolute;width:100%; text-align:center;top:10%">Select video format:   <select id="dummySetect">
+<option > <-Select-> </option>
+<option value="flv"> flv </option>
+<option value="flvStreaming"> flvStreaming </option>
+<option value="f4v"> f4v </option>
+<option value="f4vStreaming"> f4vStreaming </option>
+<option value="swf"> swf </option>
+<option value="mp4Streaming"> mp4Streaming </option>
+<option value="mp4LCMS"> mp4LCMS </option>
+<option value="mp4"> mp4 </option>
+<option value="mp3"> mp3 </option>
+</select><br><br><input type="button" value=" Submit " onClick="
+runVideo(document.getElementById('dummySetect').options[document.getElementById('dummySetect').selectedIndex].value)"/></div></div>
+<script type="text/javascript">
+
+function runVideo(format){
+	//alert(format)
+		switch(format){
+			case "flv":
+				j360Player.PlayerCall("flv","http://360-flash-2/vod/pse/No10_FlirtyVIPs.flv");
+			break;
+			case "flvStreaming":
+				j360Player.PlayerCall("flv","AF_Mod1.flv","rtmp://streaming.360training.com/ltc","rtmp");
+			break;
+			case "f4v":
+				j360Player.PlayerCall("f4v","http://streaming.360training.com/vod/ndn/HERA1-9.f4v");
+			break;
+			case "f4vStreaming":
+				j360Player.PlayerCall("f4v","mp4:HERA1-9.f4v","rtmp://streaming.360training.com/ndn","rtmp");
+			break;
+			case "swf":
+				j360Player.PlayerCall("swf","https://qa-player.360training.com/ICPFileSystem/PersistentAssets/118448/109739/BasicFlash.swf");
+			break;
+			case "mp4Streaming":
+				j360Player.PlayerCall("mp4","mp4:WP11.mp4","rtmp://streaming.360training.com/360","rtmp");
+			break;
+			case "mp4LCMS":
+			j360Player.PlayerCall("mp4",	"https://player.360training.com/ICPFileSystem/PersistentAssets/397707/623733/TABC-L2-V2-GM.mp4")
+			//j360Player.PlayerCall("mp4","link/new.mp4");
+				//j360Player.PlayerCall("mp4","http://207.207.3.72/vod/360/WP10.mp4");
+			break;
+			case "mp4":
+			//j360Player.PlayerCall("mp4","link/new.mp4");
+				j360Player.PlayerCall("mp4","http://streaming.360training.com/vod/360/WP10.mp4");
+			break;
+			case "mp3":
+				j360Player.PlayerCall("mp3","http://10.0.100.250/JSPlayer/link/test.mp3");
+				//j360Player.PlayerCall("mp3","http://qa-player.360training.com/ICPFileSystem/PersistentAssets/12933/19949/014 - Wham - Last christmas.mp3");
+			break;
+		}
+}
+window.onload = function(){
+//j360Player.PlayerCall("mp4","http://360-flash-2/vod/360/WP10.mp4");
+	//j360Player.PlayerCall("mp4","http://360-flash-2/vod/360/WP10.mp4"); 
+	//j360Player.PlayerCall("flv","AF_Mod1.flv","rtmp://streaming.360training.com/ltc","rtmp");// for flv;
+	//j360Player.PlayerCall("flv","JumpStart-Equipment-Part4.flv","rtmp://streaming.360training.com/fse","rtmp");// for flv;
+	//j360Player.PlayerCall("f4v","mp4:HERA1-9.f4v","rtmp://streaming.360training.com/ndn","rtmp");// for f4v;
+	//j360Player.PlayerCall("mp4","WP11.mp4","rtmp://streaming.360training.com/360","rtmp");
+        //j360Player.PlayerCall("wmv","../link/monkey321.wmv"); //for mp4
+	//j360Player.PlayerCall("swf","../link/testSwf.swf"); //For SWF
+      //j360Player.PlayerCall("mp4","http://10.0.100.250/ICPFileSystem/PersistentAssets/117794/144968/testing.mp4"); 
+	//j360Player.PlayerCall("swf","http://10.0.100.250/ICPFileSystem/PersistentAssets/93916/110652/intro.swf");
+
+	//j360Player.PlayerCall("swf","http://karachi-310/hosting/Play/Play/Player2/test.swf");
+        //j360Player.PlayerCall("swf","https://qa-player.360training.com/ICPFileSystem/PersistentAssets/118450/109741/as3.swf"); // for AS3 video;
+       //j360Player.PlayerCall("swf","https://qa-player.360training.com/ICPFileSystem/PersistentAssets/118460/109751/testVideo.swf");// for AS2 Video; 
+	   //j360Player.PlayerCall("swf","https://qa-player.360training.com/ICPFileSystem/PersistentAssets/118448/109739/BasicFlash.swf");  
+//j360Player.PlayerCall("flv","https://qa-player.360training.com/ICPFileSystem/PersistentAssets/118516/109757/video.flv");        //j360Player.PlayerCall("flvk","http://10.0.100.250/ICPFileSystem/PersistentAssets/94082/110774/3%20Year%20Old%20Genius.flv");// for FLV Video;  
+         //j360Player.PlayerCall("mp3","http://karachi-310/hosting/link/A.mp3");//For MP3
+         //j360Player.PlayerCall("mov","../link/test2.mov");//For mov 
+         //j360Player.PlayerCall("flv","../link/AF_Mod1.flv");//For flv 
+}   
+
+
+</script>
+
+</body>
+
+</html>

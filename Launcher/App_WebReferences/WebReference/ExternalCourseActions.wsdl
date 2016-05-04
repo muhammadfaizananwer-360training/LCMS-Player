@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LockCourse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LearningSessionGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LockCourseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LockCourseResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnLockCourse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LearningSessionGuid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UnLockCourseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UnLockCourseResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="LockCourseSoapIn">
+    <wsdl:part name="parameters" element="tns:LockCourse" />
+  </wsdl:message>
+  <wsdl:message name="LockCourseSoapOut">
+    <wsdl:part name="parameters" element="tns:LockCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="UnLockCourseSoapIn">
+    <wsdl:part name="parameters" element="tns:UnLockCourse" />
+  </wsdl:message>
+  <wsdl:message name="UnLockCourseSoapOut">
+    <wsdl:part name="parameters" element="tns:UnLockCourseResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ExternalCourseActionsSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LockCourse">
+      <wsdl:input message="tns:LockCourseSoapIn" />
+      <wsdl:output message="tns:LockCourseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UnLockCourse">
+      <wsdl:input message="tns:UnLockCourseSoapIn" />
+      <wsdl:output message="tns:UnLockCourseSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ExternalCourseActionsSoap" type="tns:ExternalCourseActionsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LockCourse">
+      <soap:operation soapAction="http://tempuri.org/LockCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnLockCourse">
+      <soap:operation soapAction="http://tempuri.org/UnLockCourse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ExternalCourseActionsSoap12" type="tns:ExternalCourseActionsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LockCourse">
+      <soap12:operation soapAction="http://tempuri.org/LockCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnLockCourse">
+      <soap12:operation soapAction="http://tempuri.org/UnLockCourse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExternalCourseActions">
+    <wsdl:port name="ExternalCourseActionsSoap" binding="tns:ExternalCourseActionsSoap">
+      <soap:address location="http://10.0.100.250/ICP4/ExternalCourseActions.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ExternalCourseActionsSoap12" binding="tns:ExternalCourseActionsSoap12">
+      <soap12:address location="http://10.0.100.250/ICP4/ExternalCourseActions.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,1043 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5DA32D40-1F91-4EFD-A0DA-EA16B33ABB2F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ICP4.CoursePlayer</RootNamespace>
+    <AssemblyName>ICP4.CoursePlayer</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="itextsharp, Version=5.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ICP4.BusinessLogic\CommonAPI\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LogicaCMG.EnterpriseLibraryExtensions.Logging, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\LogicaCMG.EnterpriseLibraryExtensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="LogicaCMG.EnterpriseLibraryExtensions.Logging.Configuration.Design, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\LogicaCMG.EnterpriseLibraryExtensions.Logging.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions.Design, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\ls360-amazon-affiliate-panel.css" />
+    <Content Include="images\ico_default_book.png" />
+    <Content Include="Scripts\ls360-amazon-affiliate-panel.js" />
+    <Content Include="CacheInfo.aspx" />
+    <Content Include="CacheInfoDetail.aspx" />
+    <Content Include="CourseDemoPreviewer.aspx" />
+    <Content Include="CoursePlayer.aspx" />
+    <Content Include="CoursePlayerPreviewer.aspx" />
+    <Content Include="css\Courseloading.css" />
+    <Content Include="css\instructorStyle.css" />
+    <Content Include="css\jquery.treeview.css" />
+    <Content Include="css\screen.css" />
+    <Content Include="css\style.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="DynamicPageLoader.aspx" />
+    <Content Include="flashplugin.swf" />
+    <Content Include="Global.asax" />
+    <Content Include="Heartbeat.aspx" />
+    <Content Include="ICPBrands\1\CSS\style.css" />
+    <Content Include="ICPBrands\1\Images\ajax-loader.gif" />
+    <Content Include="ICPBrands\1\Images\ball.PNG" />
+    <Content Include="ICPBrands\1\Images\bar.gif" />
+    <Content Include="ICPBrands\1\Images\bg-dialog.gif" />
+    <Content Include="ICPBrands\1\Images\bg-dialog2.gif" />
+    <Content Include="ICPBrands\1\Images\bg_button.gif" />
+    <Content Include="ICPBrands\1\Images\bg_button_hover.gif" />
+    <Content Include="ICPBrands\1\Images\bg_container.gif" />
+    <Content Include="ICPBrands\1\Images\bg_CourseTitle.gif" />
+    <Content Include="ICPBrands\1\Images\bg_ctrlpanel.gif" />
+    <Content Include="ICPBrands\1\Images\bg_dialog_title.gif" />
+    <Content Include="ICPBrands\1\Images\bg_footer.jpg" />
+    <Content Include="ICPBrands\1\Images\bg_gloss_dialog.gif" />
+    <Content Include="ICPBrands\1\Images\bg_heading.gif" />
+    <Content Include="ICPBrands\1\Images\bg_left.gif" />
+    <Content Include="ICPBrands\1\Images\bg_right.gif" />
+    <Content Include="ICPBrands\1\Images\bg_sidebarheading.gif" />
+    <Content Include="ICPBrands\1\Images\bg_title.gif" />
+    <Content Include="ICPBrands\1\Images\bl.gif" />
+    <Content Include="ICPBrands\1\Images\bot_row.gif" />
+    <Content Include="ICPBrands\1\Images\br.gif" />
+    <Content Include="ICPBrands\1\Images\btn_center.gif" />
+    <Content Include="ICPBrands\1\Images\btn_downloadcertificate.gif" />
+    <Content Include="ICPBrands\1\Images\btn_left.gif" />
+    <Content Include="ICPBrands\1\Images\btn_logout.gif" />
+    <Content Include="ICPBrands\1\Images\btn_logout_DS.gif" />
+    <Content Include="ICPBrands\1\Images\btn_post.gif" />
+    <Content Include="ICPBrands\1\Images\btn_pre.gif" />
+    <Content Include="ICPBrands\1\Images\btn_right.gif" />
+    <Content Include="ICPBrands\1\Images\callout.gif" />
+    <Content Include="ICPBrands\1\Images\conclusion.swf" />
+    <Content Include="ICPBrands\1\Images\copyright.PNG" />
+    <Content Include="ICPBrands\1\Images\copyrightforcoursedescription.jpg" />
+    <Content Include="ICPBrands\1\Images\course-description-black.swf" />
+    <Content Include="ICPBrands\1\Images\coursedescriptionblack.swf" />
+    <Content Include="ICPBrands\1\Images\courseIntro.PNG" />
+    <Content Include="ICPBrands\1\Images\course_certificate.png" />
+    <Content Include="ICPBrands\1\Images\ctrl_ver_devider.gif" />
+    <Content Include="ICPBrands\1\Images\disclaimer.png" />
+    <Content Include="ICPBrands\1\Images\error.jpg" />
+    <Content Include="ICPBrands\1\Images\icon-locked.png" />
+    <Content Include="ICPBrands\1\Images\ico_assessment.gif" />
+    <Content Include="ICPBrands\1\Images\ico_bmp.gif" />
+    <Content Include="ICPBrands\1\Images\ico_correct.gif" />
+    <Content Include="ICPBrands\1\Images\ico_correct.png" />
+    <Content Include="ICPBrands\1\Images\ico_docM.png" />
+    <Content Include="ICPBrands\1\Images\ico_file.png" />
+    <Content Include="ICPBrands\1\Images\ico_flvM.png" />
+    <Content Include="ICPBrands\1\Images\ico_gif.gif" />
+    <Content Include="ICPBrands\1\Images\ico_html.png" />
+    <Content Include="ICPBrands\1\Images\ico_incorrect.gif" />
+    <Content Include="ICPBrands\1\Images\ico_incorrect.png" />
+    <Content Include="ICPBrands\1\Images\ico_jpg.gif" />
+    <Content Include="ICPBrands\1\Images\ico_pdf.png" />
+    <Content Include="ICPBrands\1\Images\ico_pptx.png" />
+    <Content Include="ICPBrands\1\Images\ico_questionfeedback.gif" />
+    <Content Include="ICPBrands\1\Images\ico_questionfeedback.png" />
+    <Content Include="ICPBrands\1\Images\ico_rtfM.png" />
+    <Content Include="ICPBrands\1\Images\ico_txtS.png" />
+    <Content Include="ICPBrands\1\Images\ico_url.png" />
+    <Content Include="ICPBrands\1\Images\ico_xlsm.png" />
+    <Content Include="ICPBrands\1\Images\lessonobjectives.swf" />
+    <Content Include="ICPBrands\1\Images\lessonsummaryblack.swf" />
+    <Content Include="ICPBrands\1\Images\logo.GIF" />
+    <Content Include="ICPBrands\1\Images\logo.jpg" />
+    <Content Include="ICPBrands\1\Images\logo_360.gif" />
+    <Content Include="ICPBrands\1\Images\logo_old.gif" />
+    <Content Include="ICPBrands\1\Images\maleCourseDescription.PNG" />
+    <Content Include="ICPBrands\1\Images\menu_btn.gif" />
+    <Content Include="ICPBrands\1\Images\minus.gif" />
+    <Content Include="ICPBrands\1\Images\missionstatement.PNG" />
+    <Content Include="ICPBrands\1\Images\panel_button.gif" />
+    <Content Include="ICPBrands\1\Images\panel_button_off.gif" />
+    <Content Include="ICPBrands\1\Images\panel_button_on.gif" />
+    <Content Include="ICPBrands\1\Images\pixel.gif" />
+    <Content Include="ICPBrands\1\Images\plus.gif" />
+    <Content Include="ICPBrands\1\Images\preassessment.png" />
+    <Content Include="ICPBrands\1\Images\preassessmentcopy.PNG" />
+    <Content Include="ICPBrands\1\Images\progressbar-glass.png" />
+    <Content Include="ICPBrands\1\Images\progressbar-highlight.png" />
+    <Content Include="ICPBrands\1\Images\question-mark.gif" />
+    <Content Include="ICPBrands\1\Images\saveclose.gif" />
+    <Content Include="ICPBrands\1\Images\selector.gif" />
+    <Content Include="ICPBrands\1\Images\sme.PNG" />
+    <Content Include="ICPBrands\1\Images\specialinstructions.PNG" />
+    <Content Include="ICPBrands\1\Images\stop.gif" />
+    <Content Include="ICPBrands\1\Images\support.PNG" />
+    <Content Include="ICPBrands\1\Images\tl.gif" />
+    <Content Include="ICPBrands\1\Images\top_row.gif" />
+    <Content Include="ICPBrands\1\Images\tr.gif" />
+    <Content Include="ICPBrands\1\Images\validation.PNG" />
+    <Content Include="ICPBrands\2\CSS\style.css" />
+    <Content Include="ICPBrands\2\Images\ajax-loader.gif" />
+    <Content Include="ICPBrands\2\Images\ajaxloader.gif" />
+    <Content Include="ICPBrands\2\Images\ball.PNG" />
+    <Content Include="ICPBrands\2\Images\bar.gif" />
+    <Content Include="ICPBrands\2\Images\bg-dialog.gif" />
+    <Content Include="ICPBrands\2\Images\bg-dialog2.gif" />
+    <Content Include="ICPBrands\2\Images\bg_button.gif" />
+    <Content Include="ICPBrands\2\Images\bg_button_hover.gif" />
+    <Content Include="ICPBrands\2\Images\bg_container.gif" />
+    <Content Include="ICPBrands\2\Images\bg_containerPink.gif" />
+    <Content Include="ICPBrands\2\Images\bg_CourseTitle.gif" />
+    <Content Include="ICPBrands\2\Images\bg_ctrlpanel.gif" />
+    <Content Include="ICPBrands\2\Images\bg_dialog_title.gif" />
+    <Content Include="ICPBrands\2\Images\bg_footer.jpg" />
+    <Content Include="ICPBrands\2\Images\bg_gloss_dialog.gif" />
+    <Content Include="ICPBrands\2\Images\bg_heading.gif" />
+    <Content Include="ICPBrands\2\Images\bg_left.gif" />
+    <Content Include="ICPBrands\2\Images\bg_right.gif" />
+    <Content Include="ICPBrands\2\Images\bg_sidebarheading.gif" />
+    <Content Include="ICPBrands\2\Images\bg_title.gif" />
+    <Content Include="ICPBrands\2\Images\bl.gif" />
+    <Content Include="ICPBrands\2\Images\bot_row.gif" />
+    <Content Include="ICPBrands\2\Images\br.gif" />
+    <Content Include="ICPBrands\2\Images\btn_logout.gif" />
+    <Content Include="ICPBrands\2\Images\btn_logout_DS.gif" />
+    <Content Include="ICPBrands\2\Images\btn_post.gif" />
+    <Content Include="ICPBrands\2\Images\btn_pre.gif" />
+    <Content Include="ICPBrands\2\Images\callout.gif" />
+    <Content Include="ICPBrands\2\Images\copyright.PNG" />
+    <Content Include="ICPBrands\2\Images\courseIntro.PNG" />
+    <Content Include="ICPBrands\2\Images\ctrl_ver_devider.gif" />
+    <Content Include="ICPBrands\2\Images\disclaimer.png" />
+    <Content Include="ICPBrands\2\Images\error.jpg" />
+    <Content Include="ICPBrands\2\Images\Icon-ProctorLoginRequired.jpg" />
+    <Content Include="ICPBrands\2\Images\ico_assessment.gif" />
+    <Content Include="ICPBrands\2\Images\ico_bmp.gif" />
+    <Content Include="ICPBrands\2\Images\ico_correct.gif" />
+    <Content Include="ICPBrands\2\Images\ico_correct.png" />
+    <Content Include="ICPBrands\2\Images\ico_docM.png" />
+    <Content Include="ICPBrands\2\Images\ico_file.png" />
+    <Content Include="ICPBrands\2\Images\ico_flvM.png" />
+    <Content Include="ICPBrands\2\Images\ico_gif.gif" />
+    <Content Include="ICPBrands\2\Images\ico_html.png" />
+    <Content Include="ICPBrands\2\Images\ico_incorrect.gif" />
+    <Content Include="ICPBrands\2\Images\ico_incorrect.png" />
+    <Content Include="ICPBrands\2\Images\ico_jpg.gif" />
+    <Content Include="ICPBrands\2\Images\ico_pdf.png" />
+    <Content Include="ICPBrands\2\Images\ico_pptx.png" />
+    <Content Include="ICPBrands\2\Images\ico_questionfeedback.gif" />
+    <Content Include="ICPBrands\2\Images\ico_questionfeedback.png" />
+    <Content Include="ICPBrands\2\Images\ico_rtfM.png" />
+    <Content Include="ICPBrands\2\Images\ico_txtS.png" />
+    <Content Include="ICPBrands\2\Images\ico_url.png" />
+    <Content Include="ICPBrands\2\Images\ico_xlsm.png" />
+    <Content Include="ICPBrands\2\Images\logo.GIF" />
+    <Content Include="ICPBrands\2\Images\logo.jpg" />
+    <Content Include="ICPBrands\2\Images\logo_360.gif" />
+    <Content Include="ICPBrands\2\Images\logo_old.gif" />
+    <Content Include="ICPBrands\2\Images\maleCourseDescription.PNG" />
+    <Content Include="ICPBrands\2\Images\menu_btn.gif" />
+    <Content Include="ICPBrands\2\Images\minus.gif" />
+    <Content Include="ICPBrands\2\Images\missionstatement.PNG" />
+    <Content Include="ICPBrands\2\Images\panel_button.gif" />
+    <Content Include="ICPBrands\2\Images\panel_button_off.gif" />
+    <Content Include="ICPBrands\2\Images\panel_button_on.gif" />
+    <Content Include="ICPBrands\2\Images\pixel.gif" />
+    <Content Include="ICPBrands\2\Images\plus.gif" />
+    <Content Include="ICPBrands\2\Images\preassessment.PNG" />
+    <Content Include="ICPBrands\2\Images\preassessmentcopy.PNG" />
+    <Content Include="ICPBrands\2\Images\progressbar-glass.png" />
+    <Content Include="ICPBrands\2\Images\progressbar-highlight.png" />
+    <Content Include="ICPBrands\2\Images\question-mark.gif" />
+    <Content Include="ICPBrands\2\Images\selector.gif" />
+    <Content Include="ICPBrands\2\Images\sme.PNG" />
+    <Content Include="ICPBrands\2\Images\specialinstructions.PNG" />
+    <Content Include="ICPBrands\2\Images\stop.gif" />
+    <Content Include="ICPBrands\2\Images\support.PNG" />
+    <Content Include="ICPBrands\2\Images\tl.gif" />
+    <Content Include="ICPBrands\2\Images\top_row.gif" />
+    <Content Include="ICPBrands\2\Images\tr.gif" />
+    <Content Include="ICPBrands\2\Images\validation.PNG" />
+    <Content Include="ICPBrands\2\Images\__menu_btn.gif" />
+    <Content Include="images\ajax-loader.gif" />
+    <Content Include="images\ajaxloader.gif" />
+    <Content Include="images\bar.gif" />
+    <Content Include="images\bg-dialog.gif" />
+    <Content Include="images\bg-dialog2.gif" />
+    <Content Include="images\bg_button.gif" />
+    <Content Include="images\bg_button_hover.gif" />
+    <Content Include="images\bg_container.gif" />
+    <Content Include="images\bg_CourseTitle.gif" />
+    <Content Include="images\bg_ctrlpanel.gif" />
+    <Content Include="images\bg_dialog_title.gif" />
+    <Content Include="images\bg_gloss_dialog.gif" />
+    <Content Include="images\bg_heading.gif" />
+    <Content Include="images\bg_left.gif" />
+    <Content Include="images\bg_right.gif" />
+    <Content Include="images\bg_sidebarheading.gif" />
+    <Content Include="images\bg_title.gif" />
+    <Content Include="images\bl.gif" />
+    <Content Include="images\bot_row.gif" />
+    <Content Include="images\br.gif" />
+    <Content Include="images\btn_logout.gif" />
+    <Content Include="images\btn_logout_DS.gif" />
+    <Content Include="images\callout.gif" />
+    <Content Include="images\ccctreeview-gray.gif" />
+    <Content Include="images\close.png" />
+    <Content Include="images\course_certificate.png" />
+    <Content Include="images\ctrl_ver_devider.gif" />
+    <Content Include="images\error.jpg" />
+    <Content Include="images\exam.png" />
+    <Content Include="images\exclamation.gif" />
+    <Content Include="images\file.gif" />
+    <Content Include="images\folder-closed.gif" />
+    <Content Include="images\folder.gif" />
+    <Content Include="images\Icon-ProctorLoginRequired.jpg" />
+    <Content Include="images\icon-report-hover.png" />
+    <Content Include="images\icon-report.png" />
+    <Content Include="images\ico_assessment.gif" />
+    <Content Include="images\ico_bmp.gif" />
+    <Content Include="images\ico_correct.gif" />
+    <Content Include="images\ico_correct.png" />
+    <Content Include="images\ico_docM.png" />
+    <Content Include="images\ico_file.png" />
+    <Content Include="images\ico_flvM.png" />
+    <Content Include="images\ico_gif.gif" />
+    <Content Include="images\ico_html.png" />
+    <Content Include="images\ico_incorrect.gif" />
+    <Content Include="images\ico_incorrect.png" />
+    <Content Include="images\ico_jpg.gif" />
+    <Content Include="images\ico_pdf.png" />
+    <Content Include="images\ico_pptx.png" />
+    <Content Include="images\ico_questionfeedback.gif" />
+    <Content Include="images\ico_rtfM.png" />
+    <Content Include="images\ico_txtS.png" />
+    <Content Include="images\ico_url.png" />
+    <Content Include="images\ico_xlsm.png" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\loadingbar.gif" />
+    <Content Include="images\loadingclock.gif" />
+    <Content Include="images\logo.GIF" />
+    <Content Include="images\logo.jpg" />
+    <Content Include="images\logo_360.gif" />
+    <Content Include="images\logo_360_white.gif" />
+    <Content Include="images\logo_old.gif" />
+    <Content Include="images\menu_btn.gif" />
+    <Content Include="images\minus.gif" />
+    <Content Include="images\panel_button_on.gif" />
+    <Content Include="images\panel_button_off.gif" />
+    <Content Include="images\pixel.gif" />
+    <Content Include="images\plus.gif" />
+    <Content Include="images\progressbar-glass.png" />
+    <Content Include="images\progressbar-highlight.png" />
+    <Content Include="images\question-mark.gif" />
+    <Content Include="images\selector.gif" />
+    <Content Include="images\stop.gif" />
+    <Content Include="images\tl.gif" />
+    <Content Include="images\top_row.gif" />
+    <Content Include="images\tr.gif" />
+    <Content Include="images\treeview-black-line.gif" />
+    <Content Include="images\treeview-black.gif" />
+    <Content Include="images\treeview-default-line.gif" />
+    <Content Include="images\treeview-default.gif" />
+    <Content Include="images\treeview-famfamfam-line.gif" />
+    <Content Include="images\treeview-famfamfam.gif" />
+    <Content Include="images\treeview-gray-line.gif" />
+    <Content Include="images\treeview-gray.gif" />
+    <Content Include="images\treeview-red-line.gif" />
+    <Content Include="images\treeview-red.gif" />
+    <Content Include="InstructorInfo.aspx" />
+    <Content Include="LegacyQuizRedirector.aspx" />
+    <Content Include="OpenEmbeddedDocuSign.aspx" />
+    <Content Include="player.swf" />
+    <Content Include="player1.swf" />
+    <Content Include="PlayerCourseCache.aspx" />
+    <Content Include="PlayerUtility.asmx" />
+    <Content Include="player_as2.swf" />
+    <Content Include="player_as3.swf" />
+    <Content Include="Scripts\AC_RunActiveContent.js" />
+    <Content Include="Scripts\com\CommunicationEngine.js" />
+    <Content Include="Scripts\com\CoursePlayerEngine.js" />
+    <Content Include="Scripts\com\RenderEngine.js" />
+    <Content Include="Scripts\jquery-1.2.6.js" />
+    <Content Include="Scripts\jquery\jquery-1.2.6.js" />
+    <Content Include="Scripts\jQuery.intellisense.js" />
+    <Content Include="Scripts\jquery\jquery-1.2.6.min.js" />
+    <Content Include="Scripts\jquery\jquery.accordion.js" />
+    <Content Include="Scripts\jquery\jquery.dimensions.js" />
+    <Content Include="Scripts\jquery\jquery.event.drag-1.2.js" />
+    <Content Include="Scripts\jquery\jquery.event.drop-1.0.js" />
+    <Content Include="Scripts\jquery\jquery.js" />
+    <Content Include="Scripts\jquery\jquery.multicolselect.js" />
+    <Content Include="Scripts\jquery\jquery.treeview.js" />
+    <Content Include="Scripts\jquery\jquery.wresize.js" />
+    <Content Include="Scripts\jquery\ui.core.js" />
+    <Content Include="Scripts\jquery\ui.mouse.js" />
+    <Content Include="Scripts\jquery\ui.progressbar.js" />
+    <Content Include="Scripts\jquery\ui.slider.js" />
+    <Content Include="Scripts\JSON.js" />
+    <Content Include="Scripts\swfobject.js" />
+    <Content Include="securityAPI.swf" />
+    <Content Include="ShowCourseCertificate.aspx" />
+    <Content Include="SteelOverAll.swf" />
+    <Content Include="Validation\ValidationShowProfile.aspx" />
+    <Content Include="Validation\ValidationUnlockedSuccessful.aspx" />
+    <Content Include="Validation\ValidationUnlockProfileInfo.aspx" />
+    <Content Include="Validation\ValidationUnlockRequest.aspx" />
+    <Content Include="videoplayer.swf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CacheInfo.aspx.cs">
+      <DependentUpon>CacheInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CacheInfo.aspx.designer.cs">
+      <DependentUpon>CacheInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CacheInfoDetail.aspx.cs">
+      <DependentUpon>CacheInfoDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CacheInfoDetail.aspx.designer.cs">
+      <DependentUpon>CacheInfoDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CourseDemoPreviewer.aspx.cs">
+      <DependentUpon>CourseDemoPreviewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CourseDemoPreviewer.aspx.designer.cs">
+      <DependentUpon>CourseDemoPreviewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CoursePlayer.aspx.cs">
+      <DependentUpon>CoursePlayer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CoursePlayer.aspx.designer.cs">
+      <DependentUpon>CoursePlayer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CoursePlayerPreviewer.aspx.cs">
+      <DependentUpon>CoursePlayerPreviewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CoursePlayerPreviewer.aspx.designer.cs">
+      <DependentUpon>CoursePlayerPreviewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DocuSignHandler.ashx.cs">
+      <DependentUpon>DocuSignHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicPageLoader.aspx.cs">
+      <DependentUpon>DynamicPageLoader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DynamicPageLoader.aspx.designer.cs">
+      <DependentUpon>DynamicPageLoader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmailUtility.cs" />
+    <Compile Include="ExternalCourseActions.asmx.cs">
+      <DependentUpon>ExternalCourseActions.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Heartbeat.aspx.cs">
+      <DependentUpon>Heartbeat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Heartbeat.aspx.designer.cs">
+      <DependentUpon>Heartbeat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InstructorInfo.aspx.cs">
+      <DependentUpon>InstructorInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InstructorInfo.aspx.designer.cs">
+      <DependentUpon>InstructorInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyQuizRedirector.aspx.cs">
+      <DependentUpon>LegacyQuizRedirector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LegacyQuizRedirector.aspx.designer.cs">
+      <DependentUpon>LegacyQuizRedirector.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LegacyRedirectPage.aspx.cs">
+      <DependentUpon>LegacyRedirectPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LegacyRedirectPage.aspx.designer.cs">
+      <DependentUpon>LegacyRedirectPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OpenEmbeddedDocuSign.aspx.cs">
+      <DependentUpon>OpenEmbeddedDocuSign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OpenEmbeddedDocuSign.aspx.designer.cs">
+      <DependentUpon>OpenEmbeddedDocuSign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerCourseCache.aspx.cs">
+      <DependentUpon>PlayerCourseCache.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlayerCourseCache.aspx.designer.cs">
+      <DependentUpon>PlayerCourseCache.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerUtility.asmx.cs">
+      <DependentUpon>PlayerUtility.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Receiver.aspx.cs">
+      <DependentUpon>Receiver.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Receiver.aspx.designer.cs">
+      <DependentUpon>Receiver.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Redirector.aspx.cs">
+      <DependentUpon>Redirector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Redirector.aspx.designer.cs">
+      <DependentUpon>Redirector.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowCourseCertificate.aspx.cs">
+      <DependentUpon>ShowCourseCertificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShowCourseCertificate.aspx.designer.cs">
+      <DependentUpon>ShowCourseCertificate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\ValidationShowProfile.aspx.cs">
+      <DependentUpon>ValidationShowProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Validation\ValidationShowProfile.aspx.designer.cs">
+      <DependentUpon>ValidationShowProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\ValidationUnlockedSuccessful.aspx.cs">
+      <DependentUpon>ValidationUnlockedSuccessful.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Validation\ValidationUnlockedSuccessful.aspx.designer.cs">
+      <DependentUpon>ValidationUnlockedSuccessful.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\ValidationUnlockProfileInfo.aspx.cs">
+      <DependentUpon>ValidationUnlockProfileInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Validation\ValidationUnlockProfileInfo.aspx.designer.cs">
+      <DependentUpon>ValidationUnlockProfileInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Validation\ValidationUnlockRequest.aspx.cs">
+      <DependentUpon>ValidationUnlockRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Validation\ValidationUnlockRequest.aspx.designer.cs">
+      <DependentUpon>ValidationUnlockRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAssessmentResult.aspx.cs">
+      <DependentUpon>ViewAssessmentResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewAssessmentResult.aspx.designer.cs">
+      <DependentUpon>ViewAssessmentResult.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\CourseLevelRatingWeb\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\net.docusign.test\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\SuggestedCourses\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\360Training.BusinessEntities\360Training.BusinessEntities.csproj">
+      <Project>{196D0D80-337D-441E-9B25-8297160EBE4A}</Project>
+      <Name>360Training.BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ICP4.BusinessLogic\ICP4.BusinessLogic.csproj">
+      <Project>{472AA97A-6014-44E8-99E5-F8A16699C677}</Project>
+      <Name>ICP4.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ICP4.CommunicationLogic\ICP4.CommunicationLogic.csproj">
+      <Project>{95E526D2-428E-40CE-8645-37F78F4D8D67}</Project>
+      <Name>ICP4.CommunicationLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ICP4.DataLogic\ICP4.DataLogic.csproj">
+      <Project>{C0B070CD-5EC6-469C-B216-F3FCF7DFCF98}</Project>
+      <Name>ICP4.DataLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\jquery.rating.css" />
+    <Content Include="css\ls360-recommendation-course-panel.css" />
+    <Content Include="DocuSignHandler.ashx" />
+    <Content Include="ExternalCourseActions.asmx" />
+    <Content Include="ICPBrands\1\Images\mask_loader.gif" />
+    <Content Include="ICPBrands\2\Images\mask_loader.gif" />
+    <Content Include="images\bg_footer.jpg" />
+    <Content Include="images\btnUnlock.gif" />
+    <Content Include="images\btn_center.gif" />
+    <Content Include="images\btn_center_ds.gif" />
+    <Content Include="images\btn_downloadcertificate.gif" />
+    <Content Include="images\btn_left.gif" />
+    <Content Include="images\btn_left_ds.gif" />
+    <Content Include="images\btn_normal.png" />
+    <Content Include="images\btn_right.gif" />
+    <Content Include="images\btn_right_ds.gif" />
+    <Content Include="images\cross-icon.png" />
+    <Content Include="images\delete.gif" />
+    <Content Include="images\exam-active.png" />
+    <Content Include="images\exam-done.png" />
+    <Content Include="images\file_disable.gif" />
+    <Content Include="images\Flag1.png" />
+    <Content Include="images\Flag2.png" />
+    <Content Include="images\folder_disable.gif" />
+    <Content Include="images\icon-amazon-disable.png" />
+    <Content Include="images\icon-amazon-hover.png" />
+    <Content Include="images\icon-amazon.png" />
+    <Content Include="images\icon-coursecompletionreport.png" />
+    <Content Include="images\icon-locked.png" />
+    <Content Include="images\icon-recommend-course-disable.png" />
+    <Content Include="images\icon-recommend-course-hover.png" />
+    <Content Include="images\icon-recommend-course.png" />
+    <Content Include="images\icon-report-disable.png" />
+    <Content Include="images\icon-speaker-hover.png" />
+    <Content Include="images\icon-speaker.png" />
+    <Content Include="images\icon_report.png" />
+    <Content Include="images\ico_default_course.png" />
+    <Content Include="images\ico_questionfeedback.png" />
+    <Content Include="images\mask_loader.gif" />
+    <Content Include="images\mask_loaderspanish.gif" />
+    <Content Include="images\pause_button.png" />
+    <Content Include="images\pause_button_hover.png" />
+    <Content Include="images\play_button.png" />
+    <Content Include="images\play_button_hover.png" />
+    <Content Include="images\rating-icon.png" />
+    <Content Include="images\saveclose.gif" />
+    <Content Include="images\saveclosespanish.gif" />
+    <Content Include="images\smallFlag1.png" />
+    <Content Include="images\smallFlag2.png" />
+    <Content Include="images\star.gif" />
+    <Content Include="images\warning.png" />
+    <Content Include="JSPlayer\init.js" />
+    <Content Include="JSPlayer\j360.css" />
+    <Content Include="JSPlayer\j360player.js" />
+    <Content Include="JSPlayer\player.html" />
+    <Content Include="JSPlayer\player.swf" />
+    <Content Include="JSPlayer\swfHolder.swf" />
+    <Content Include="JSPlayer\ui\backGround.png" />
+    <Content Include="JSPlayer\ui\blank.png" />
+    <Content Include="JSPlayer\ui\bufferIcon.png" />
+    <Content Include="JSPlayer\ui\bufferProgress.png" />
+    <Content Include="JSPlayer\ui\controllerBG.png" />
+    <Content Include="JSPlayer\ui\divider.png" />
+    <Content Include="JSPlayer\ui\error.png" />
+    <Content Include="JSPlayer\ui\fullScreen.png" />
+    <Content Include="JSPlayer\ui\iconBG.png" />
+    <Content Include="JSPlayer\ui\mute.png" />
+    <Content Include="JSPlayer\ui\normalScreen.png" />
+    <Content Include="JSPlayer\ui\pasueBtn.png" />
+    <Content Include="JSPlayer\ui\playB.png" />
+    <Content Include="JSPlayer\ui\playBtn.png" />
+    <Content Include="JSPlayer\ui\progressScroller.png" />
+    <Content Include="JSPlayer\ui\scrollProgress.png" />
+    <Content Include="JSPlayer\ui\unmute.png" />
+    <Content Include="JSPlayer\ui\volumeSliderProgress.png" />
+    <Content Include="JSPlayer\ui\volumeSliderRail.png" />
+    <Content Include="LegacyRedirectPage.aspx" />
+    <Content Include="Receiver.aspx" />
+    <Content Include="Redirector.aspx" />
+    <None Include="JSPlayer\ui\Thumbs.db" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\DocuSign\jquery-1.9.1.js" />
+    <Content Include="Scripts\DocuSign\jquery-ui-1.10.1.custom.css" />
+    <Content Include="Scripts\DocuSign\jquery-ui-1.10.1.custom.min.js" />
+    <Content Include="Scripts\DocuSign\themes\base\images\animated-overlay.gif" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery-ui.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.all.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.base.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.button.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.core.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.menu.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.slider.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.spinner.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.theme.css" />
+    <Content Include="Scripts\DocuSign\themes\base\jquery.ui.tooltip.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\animated-overlay.gif" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.menu.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Scripts\DocuSign\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\animated-overlay.gif" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery-ui.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.accordion.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.all.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.autocomplete.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.base.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.button.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.core.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.datepicker.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.dialog.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.menu.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.progressbar.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.resizable.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.selectable.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.slider.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.spinner.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.tabs.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.theme.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\jquery.ui.tooltip.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\animated-overlay.gif" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery-ui.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.button.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.core.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.menu.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.slider.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.spinner.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.theme.min.css" />
+    <Content Include="Scripts\DocuSign\themes\ui-lightness\minified\jquery.ui.tooltip.min.css" />
+    <None Include="Web References\CourseLevelRatingWeb\CourseLevelRating.xsd" />
+    <None Include="Web References\CourseLevelRatingWeb\CourseLevelRatingResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\CourseLevelRatingWeb\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CourseLevelRatingWeb\ThreeSixtyTraining-CourseLevelRating.wsdl" />
+    <None Include="Web References\net.docusign.test\AccountMembershipFeaturesList.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\AccountSetting.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\AddressBookItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\api.disco" />
+    <None Include="ICPBrands\1\Images\Thumbs.db" />
+    <None Include="ICPBrands\2\Images\Thumbs.db" />
+    <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
+    <None Include="Web References\net.docusign.test\api.wsdl" />
+    <None Include="Web References\net.docusign.test\AuthenticationStatus.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\AuthoritativeCopyExportDocuments.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\AuthoritativeCopyExportStatus.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\AvailableFolders.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\BrandResults.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\ConnectFailure.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\CorrectionStatus.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\DocumentPDFs.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\DocuSignEnvelopeInformation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\Envelope.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\EnvelopePDF.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\EnvelopeStatus.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\EnvelopeTemplate.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\EnvelopeTemplateDefinition.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\FilteredEnvelopeStatusChanges.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\FilteredEnvelopeStatuses.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\FolderResults.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\PublishConnectFailuresResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\PurgeDocumentStatus.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\RecipientEsignList.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\RecipientList.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\net.docusign.test\SaveTemplateResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\SynchEnvelopeStatus.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\TransferEnvelopeStatus.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\UpdateAddressBookResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\net.docusign.test\VoidEnvelopeStatus.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SuggestedCourses\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\SuggestedCourses\SuggestedCoursesDisplayResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SuggestedCourses\SuggestedCoursesDisplayService.xsd" />
+    <None Include="Web References\SuggestedCourses\ThreeSixtyTraining-SuggestedCoursesDisplayService.wsdl" />
+    <Content Include="Scripts\jquery\jquery.MetaData.js" />
+    <Content Include="Scripts\jquery\jquery.rating.js" />
+    <Content Include="Scripts\jquery\jquery.rating.pack.js" />
+    <Content Include="Scripts\jquery\jquery1.9.1.js" />
+    <Content Include="Scripts\Language\En-US.js" />
+    <Content Include="Scripts\Language\es-ES.js" />
+    <Content Include="Scripts\Language\fr-FR.js" />
+    <Content Include="Scripts\ls360-recommendation-course-panel.js" />
+    <Content Include="ViewAssessmentResult.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://qa-ws1.austin.360training.com/webapp/wcs/services/CourseLevelRatingService%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CourseLevelRatingWeb\</RelPath>
+      <UpdateFromURL>https://qa-ws1.austin.360training.com/webapp/wcs/services/CourseLevelRatingService%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ICP4_CoursePlayer_CourseLevelRatingWeb_CourseLevelRatingService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://qa-ws1.austin.360training.com/webapp/wcs/services/SuggestedCoursesDisplayService/wsdl/wsdl/ThreeSixtyTrainingService/ThreeSixtyTraining-SuggestedCoursesDisplayService.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SuggestedCourses\</RelPath>
+      <UpdateFromURL>http://qa-ws1.austin.360training.com/webapp/wcs/services/SuggestedCoursesDisplayService/wsdl/wsdl/ThreeSixtyTrainingService/ThreeSixtyTraining-SuggestedCoursesDisplayService.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ICP4_CoursePlayer_SuggestedCourses_SuggestedCoursesDisplayService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://test.docusign.net/api/3.0/api.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\net.docusign.test\</RelPath>
+      <UpdateFromURL>https://test.docusign.net/api/3.0/api.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ICP4_CoursePlayer_net_docusign_test_APIService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Logging\" />
+    <Folder Include="signedpdfs\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>65065</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/ICP4.CoursePlayer</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

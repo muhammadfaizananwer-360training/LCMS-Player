@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:tns1="http://rpc.xml.coldfusion" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://iCP4.vu3" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:intf="http://iCP4.vu3" targetNamespace="http://iCP4.vu3" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://rpc.xml.coldfusion">
+      <xsd:import namespace="http://iCP4.vu3" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="CFCInvocationException">
+        <xsd:sequence />
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://iCP4.vu3">
+      <xsd:import namespace="http://rpc.xml.coldfusion" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:complexType name="ArrayOf_xsd_anyType">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="xsd:anyType[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllASVsResponse">
+    <wsdl:part name="GetAllASVsReturn" type="intf:ArrayOf_xsd_anyType" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCourseDateTimeResponse">
+    <wsdl:part name="GetStudentCourseDateTimeReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClientsRequest" />
+  <wsdl:message name="GetEOCInstructionResponse">
+    <wsdl:part name="GetEOCInstructionReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="PublishCourseRequest">
+    <wsdl:part name="Name" type="xsd:string" />
+    <wsdl:part name="Description" type="xsd:string" />
+    <wsdl:part name="hour" type="xsd:double" />
+    <wsdl:part name="LCMSCourseGUID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllVerticalsResponse">
+    <wsdl:part name="GetAllVerticalsReturn" type="intf:ArrayOf_xsd_anyType" />
+  </wsdl:message>
+  <wsdl:message name="GetASVResponse">
+    <wsdl:part name="GetASVReturn" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseStatusRequest">
+    <wsdl:part name="CourseGUID" type="xsd:string" />
+    <wsdl:part name="EnrollmentID" type="xsd:double" />
+    <wsdl:part name="CourseStatus" type="xsd:double" />
+    <wsdl:part name="LCMSTimeSpent" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="GetEOCInstructionWithASVRequest">
+    <wsdl:part name="courseGuid" type="xsd:string" />
+    <wsdl:part name="student_id" type="xsd:double" />
+    <wsdl:part name="studentcourse_id" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="UpdateCourseStatusResponse">
+    <wsdl:part name="UpdateCourseStatusReturn" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCourseDateTimeRequest">
+    <wsdl:part name="Enrollment_id" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCourseStatusResponse">
+    <wsdl:part name="GetStudentCourseStatusReturn" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="GetAllVerticalsRequest">
+    <wsdl:part name="clientID" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCourseRegDateResponse">
+    <wsdl:part name="GetStudentCourseRegDateReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="echoStringResponse">
+    <wsdl:part name="echoStringReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetEOCInstructionRequest">
+    <wsdl:part name="ASV" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCourseRegDateRequest">
+    <wsdl:part name="Enrollment_id" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="PublishCourseResponse">
+    <wsdl:part name="PublishCourseReturn" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="echoStringRequest">
+    <wsdl:part name="input" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllStatesResponse">
+    <wsdl:part name="GetAllStatesReturn" type="intf:ArrayOf_xsd_anyType" />
+  </wsdl:message>
+  <wsdl:message name="GetASVRequest">
+    <wsdl:part name="courseGuid" type="xsd:string" />
+    <wsdl:part name="student_id" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCourseIDRequest">
+    <wsdl:part name="courseId" type="xsd:double" />
+    <wsdl:part name="student_id" type="xsd:double" />
+    <wsdl:part name="epoch" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="CFCInvocationException">
+    <wsdl:part name="fault" type="tns1:CFCInvocationException" />
+  </wsdl:message>
+  <wsdl:message name="IsLegacyCourseDemoableResponse">
+    <wsdl:part name="IsLegacyCourseDemoableReturn" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetEOCInstructionWithASVResponse">
+    <wsdl:part name="GetEOCInstructionWithASVReturn" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllASVsRequest">
+    <wsdl:part name="clientID" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClientsResponse">
+    <wsdl:part name="GetAllClientsReturn" type="intf:ArrayOf_xsd_anyType" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCourseStatusRequest">
+    <wsdl:part name="Enrollment_id" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="IsLegacyCourseDemoableRequest">
+    <wsdl:part name="CourseGUID" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="PublishCourseWithPackageRequest">
+    <wsdl:part name="Name" type="xsd:string" />
+    <wsdl:part name="Description" type="xsd:string" />
+    <wsdl:part name="hour" type="xsd:double" />
+    <wsdl:part name="LCMSCourseGUID" type="xsd:string" />
+    <wsdl:part name="Cost" type="xsd:double" />
+    <wsdl:part name="TimeOutDays" type="xsd:double" />
+    <wsdl:part name="Type" type="xsd:double" />
+    <wsdl:part name="Tier" type="xsd:double" />
+    <wsdl:part name="Available" type="xsd:double" />
+    <wsdl:part name="VerticalID" type="xsd:double" />
+    <wsdl:part name="ClientID" type="xsd:double" />
+    <wsdl:part name="StateID" type="xsd:double" />
+    <wsdl:part name="AsvID" type="xsd:double" />
+    <wsdl:part name="CommType" type="xsd:double" />
+    <wsdl:part name="Commission" type="xsd:double" />
+    <wsdl:part name="Delivery" type="xsd:double" />
+    <wsdl:part name="MSRP" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="GetStudentCourseIDResponse">
+    <wsdl:part name="GetStudentCourseIDReturn" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:message name="PublishCourseWithPackageResponse">
+    <wsdl:part name="PublishCourseWithPackageReturn" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetAllStatesRequest">
+    <wsdl:part name="clientID" type="xsd:double" />
+  </wsdl:message>
+  <wsdl:portType name="LCMS_VUConnectorService">
+    <wsdl:operation name="UpdateCourseStatus" parameterOrder="CourseGUID EnrollmentID CourseStatus LCMSTimeSpent">
+      <wsdl:input name="UpdateCourseStatusRequest" message="intf:UpdateCourseStatusRequest" />
+      <wsdl:output name="UpdateCourseStatusResponse" message="intf:UpdateCourseStatusResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetASV" parameterOrder="courseGuid student_id">
+      <wsdl:input name="GetASVRequest" message="intf:GetASVRequest" />
+      <wsdl:output name="GetASVResponse" message="intf:GetASVResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCourseID" parameterOrder="courseId student_id epoch">
+      <wsdl:input name="GetStudentCourseIDRequest" message="intf:GetStudentCourseIDRequest" />
+      <wsdl:output name="GetStudentCourseIDResponse" message="intf:GetStudentCourseIDResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllASVs" parameterOrder="clientID">
+      <wsdl:input name="GetAllASVsRequest" message="intf:GetAllASVsRequest" />
+      <wsdl:output name="GetAllASVsResponse" message="intf:GetAllASVsResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEOCInstructionWithASV" parameterOrder="courseGuid student_id studentcourse_id">
+      <wsdl:input name="GetEOCInstructionWithASVRequest" message="intf:GetEOCInstructionWithASVRequest" />
+      <wsdl:output name="GetEOCInstructionWithASVResponse" message="intf:GetEOCInstructionWithASVResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllVerticals" parameterOrder="clientID">
+      <wsdl:input name="GetAllVerticalsRequest" message="intf:GetAllVerticalsRequest" />
+      <wsdl:output name="GetAllVerticalsResponse" message="intf:GetAllVerticalsResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCourseDateTime" parameterOrder="Enrollment_id">
+      <wsdl:input name="GetStudentCourseDateTimeRequest" message="intf:GetStudentCourseDateTimeRequest" />
+      <wsdl:output name="GetStudentCourseDateTimeResponse" message="intf:GetStudentCourseDateTimeResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="PublishCourseWithPackage" parameterOrder="Name Description hour LCMSCourseGUID Cost TimeOutDays Type Tier Available VerticalID ClientID StateID AsvID CommType Commission Delivery MSRP">
+      <wsdl:input name="PublishCourseWithPackageRequest" message="intf:PublishCourseWithPackageRequest" />
+      <wsdl:output name="PublishCourseWithPackageResponse" message="intf:PublishCourseWithPackageResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="echoString" parameterOrder="input">
+      <wsdl:input name="echoStringRequest" message="intf:echoStringRequest" />
+      <wsdl:output name="echoStringResponse" message="intf:echoStringResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="IsLegacyCourseDemoable" parameterOrder="CourseGUID">
+      <wsdl:input name="IsLegacyCourseDemoableRequest" message="intf:IsLegacyCourseDemoableRequest" />
+      <wsdl:output name="IsLegacyCourseDemoableResponse" message="intf:IsLegacyCourseDemoableResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="PublishCourse" parameterOrder="Name Description hour LCMSCourseGUID">
+      <wsdl:input name="PublishCourseRequest" message="intf:PublishCourseRequest" />
+      <wsdl:output name="PublishCourseResponse" message="intf:PublishCourseResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClients">
+      <wsdl:input name="GetAllClientsRequest" message="intf:GetAllClientsRequest" />
+      <wsdl:output name="GetAllClientsResponse" message="intf:GetAllClientsResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStates" parameterOrder="clientID">
+      <wsdl:input name="GetAllStatesRequest" message="intf:GetAllStatesRequest" />
+      <wsdl:output name="GetAllStatesResponse" message="intf:GetAllStatesResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEOCInstruction" parameterOrder="ASV">
+      <wsdl:input name="GetEOCInstructionRequest" message="intf:GetEOCInstructionRequest" />
+      <wsdl:output name="GetEOCInstructionResponse" message="intf:GetEOCInstructionResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCourseStatus" parameterOrder="Enrollment_id">
+      <wsdl:input name="GetStudentCourseStatusRequest" message="intf:GetStudentCourseStatusRequest" />
+      <wsdl:output name="GetStudentCourseStatusResponse" message="intf:GetStudentCourseStatusResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCourseRegDate" parameterOrder="Enrollment_id">
+      <wsdl:input name="GetStudentCourseRegDateRequest" message="intf:GetStudentCourseRegDateRequest" />
+      <wsdl:output name="GetStudentCourseRegDateResponse" message="intf:GetStudentCourseRegDateResponse" />
+      <wsdl:fault name="CFCInvocationException" message="intf:CFCInvocationException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LCMS_VUConnectorService.cfcSoapBinding" type="intf:LCMS_VUConnectorService">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="UpdateCourseStatus">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="UpdateCourseStatusRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="UpdateCourseStatusResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetASV">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetASVRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetASVResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCourseID">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetStudentCourseIDRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetStudentCourseIDResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllASVs">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetAllASVsRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetAllASVsResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEOCInstructionWithASV">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetEOCInstructionWithASVRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetEOCInstructionWithASVResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllVerticals">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetAllVerticalsRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetAllVerticalsResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCourseDateTime">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetStudentCourseDateTimeRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetStudentCourseDateTimeResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PublishCourseWithPackage">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="PublishCourseWithPackageRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="PublishCourseWithPackageResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="echoString">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="echoStringRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="echoStringResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsLegacyCourseDemoable">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="IsLegacyCourseDemoableRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="IsLegacyCourseDemoableResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PublishCourse">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="PublishCourseRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="PublishCourseResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClients">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetAllClientsRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetAllClientsResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllStates">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetAllStatesRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetAllStatesResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetEOCInstruction">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetEOCInstructionRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetEOCInstructionResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCourseStatus">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetStudentCourseStatusRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetStudentCourseStatusResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetStudentCourseRegDate">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="GetStudentCourseRegDateRequest">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetStudentCourseRegDateResponse">
+        <wsdlsoap:body use="encoded" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+      <wsdl:fault name="CFCInvocationException">
+        <wsdlsoap:fault use="encoded" name="CFCInvocationException" namespace="http://iCP4.vu3" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LCMS_VUConnectorServiceService">
+    <wsdl:port name="LCMS_VUConnectorService.cfc" binding="intf:LCMS_VUConnectorService.cfcSoapBinding">
+      <wsdlsoap:address location="https://10.0.100.144/vu3/icp4/LCMS_VUConnectorService.cfc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

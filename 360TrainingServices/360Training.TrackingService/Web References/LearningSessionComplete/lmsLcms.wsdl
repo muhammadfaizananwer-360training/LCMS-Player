@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns="http://www.360training.com/vu360/schemas/lms/lcmsMessages" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="http://www.360training.com/vu360/schemas/lms/lcmsMessages" targetNamespace="http://www.360training.com/vu360/schemas/lms/lcmsMessages" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:vu360-lms-lcms="http://www.360training.com/vu360/schemas/lms/lcmsMessages" elementFormDefault="qualified" targetNamespace="http://www.360training.com/vu360/schemas/lms/lcmsMessages" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="LearningSessionCompleteRequest">
+        <complexType>
+          <attribute name="transactionGUID" type="string" use="required" />
+          <attribute name="eventDate" type="dateTime" />
+          <attribute name="learningSessionId" type="string" use="required" />
+          <attribute name="courseCompleted" type="boolean" />
+          <attribute name="certificateURL" type="string" />
+        </complexType>
+      </element>
+      <element name="LearningSessionCompleteResponse">
+        <complexType>
+          <attribute name="transactionGUID" type="string" use="required" />
+          <attribute name="eventDate" type="dateTime" use="required" />
+          <attribute name="transactionResult" type="vu360-lms-lcms:TransactionResultType" use="required" />
+          <attribute name="transactionResultMessage" type="string" />
+        </complexType>
+      </element>
+      <simpleType name="TransactionResultType">
+        <restriction base="string">
+          <enumeration value="Success" />
+          <enumeration value="Failure" />
+        </restriction>
+      </simpleType>
+      <element name="UpdateProfileRequest">
+        <complexType>
+          <sequence>
+            <element name="user" type="vu360-lms-lcms:VU360User" />
+          </sequence>
+          <attribute name="transactionGUID" type="string" use="required" />
+          <attribute name="eventDate" type="dateTime" use="required" />
+        </complexType>
+      </element>
+      <element name="UpdateProfileResponse">
+        <complexType>
+          <attribute name="transactionGUID" type="string" use="required" />
+          <attribute name="eventDate" type="dateTime" use="required" />
+          <attribute name="transactionResult" type="vu360-lms-lcms:TransactionResultType" use="required" />
+          <attribute name="transactionResultMessage" type="string" />
+        </complexType>
+      </element>
+      <element name="PublishCourseRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="unbounded" name="contentOwnerList" type="vu360-lms-lcms:ContentOwnerVO" />
+          </sequence>
+          <attribute name="transactionGUID" type="string" use="required" />
+          <attribute name="eventDate" type="dateTime" use="required" />
+        </complexType>
+      </element>
+      <element name="PublishCourseResponse">
+        <complexType>
+          <attribute name="transactionGUID" type="string" use="required" />
+          <attribute name="eventDate" type="dateTime" use="required" />
+          <attribute name="transactionResult" type="vu360-lms-lcms:TransactionResultType" use="required" />
+          <attribute name="transactionResultMessage" type="string" />
+          <attribute name="noOfCoursesPublishedSuccessfully" type="integer" />
+        </complexType>
+      </element>
+      <element name="LearnerSetupRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="unbounded" name="userList" type="vu360-lms-lcms:VU360User" />
+          </sequence>
+          <attribute name="transactionGUID" type="string" use="required" />
+          <attribute name="eventDate" type="dateTime" use="required" />
+          <attribute name="contentOwnerGUID" type="string" use="required" />
+        </complexType>
+      </element>
+      <element name="LearnerSetupResponse">
+        <complexType>
+          <attribute name="transactionGUID" type="string" use="required" />
+          <attribute name="eventDate" type="dateTime" use="required" />
+          <attribute name="transactionResult" type="vu360-lms-lcms:TransactionResultType" use="required" />
+          <attribute name="transactionResultMessage" type="string" />
+          <attribute name="noOfLearnerSetupSuccessfully" type="integer" />
+        </complexType>
+      </element>
+      <complexType name="VU360User">
+        <sequence>
+          <element name="learnerProfile" nillable="true" type="vu360-lms-lcms:LearnerProfile" />
+        </sequence>
+        <attribute name="userGUID" type="string" />
+        <attribute name="firstName" type="string" />
+        <attribute name="lastName" type="string" />
+        <attribute name="middleName" type="string" />
+        <attribute name="emailAddress" type="string" />
+        <attribute name="userName" type="string" />
+      </complexType>
+      <complexType name="LearnerProfile">
+        <sequence>
+          <element name="billingAddress" type="vu360-lms-lcms:Address" />
+          <element name="shippingAddress" type="vu360-lms-lcms:Address" />
+        </sequence>
+        <attribute name="mobilePhone" type="string" />
+        <attribute name="officePhone" type="string" />
+        <attribute name="officePhoneExt" type="string" />
+      </complexType>
+      <complexType name="Address">
+        <sequence>
+          <element name="addressLine1" type="string" />
+          <element name="addressLine2" type="string" />
+          <element name="addressLine3" type="string" />
+          <element name="city" type="string" />
+          <element name="state" type="string" />
+          <element name="zipCode" type="string" />
+          <element name="country" type="string" />
+        </sequence>
+      </complexType>
+      <complexType name="ContentOwnerVO">
+        <sequence>
+          <element minOccurs="1" maxOccurs="unbounded" name="courseList" type="vu360-lms-lcms:CourseVO" />
+        </sequence>
+        <attribute name="contentOwnerGUID" type="string" use="required" />
+      </complexType>
+      <complexType name="CourseVO">
+        <sequence>
+          <element name="guid" type="string" />
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="PublishCourseResponse">
+    <wsdl:part name="PublishCourseResponse" element="sch:PublishCourseResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProfileRequest">
+    <wsdl:part name="UpdateProfileRequest" element="sch:UpdateProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateProfileResponse">
+    <wsdl:part name="UpdateProfileResponse" element="sch:UpdateProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="LearnerSetupResponse">
+    <wsdl:part name="LearnerSetupResponse" element="sch:LearnerSetupResponse" />
+  </wsdl:message>
+  <wsdl:message name="PublishCourseRequest">
+    <wsdl:part name="PublishCourseRequest" element="sch:PublishCourseRequest" />
+  </wsdl:message>
+  <wsdl:message name="LearningSessionCompleteRequest">
+    <wsdl:part name="LearningSessionCompleteRequest" element="sch:LearningSessionCompleteRequest" />
+  </wsdl:message>
+  <wsdl:message name="LearnerSetupRequest">
+    <wsdl:part name="LearnerSetupRequest" element="sch:LearnerSetupRequest" />
+  </wsdl:message>
+  <wsdl:message name="LearningSessionCompleteResponse">
+    <wsdl:part name="LearningSessionCompleteResponse" element="sch:LearningSessionCompleteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="lmsLcms">
+    <wsdl:operation name="LearnerSetup">
+      <wsdl:input name="LearnerSetupRequest" message="sch:LearnerSetupRequest" />
+      <wsdl:output name="LearnerSetupResponse" message="sch:LearnerSetupResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="LearningSessionComplete">
+      <wsdl:input name="LearningSessionCompleteRequest" message="sch:LearningSessionCompleteRequest" />
+      <wsdl:output name="LearningSessionCompleteResponse" message="sch:LearningSessionCompleteResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfile">
+      <wsdl:input name="UpdateProfileRequest" message="sch:UpdateProfileRequest" />
+      <wsdl:output name="UpdateProfileResponse" message="sch:UpdateProfileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="PublishCourse">
+      <wsdl:input name="PublishCourseRequest" message="sch:PublishCourseRequest" />
+      <wsdl:output name="PublishCourseResponse" message="sch:PublishCourseResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="lmsLcmsSoap11" type="sch:lmsLcms">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LearnerSetup">
+      <soap:operation soapAction="" />
+      <wsdl:input name="LearnerSetupRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LearnerSetupResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LearningSessionComplete">
+      <soap:operation soapAction="" />
+      <wsdl:input name="LearningSessionCompleteRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LearningSessionCompleteResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfile">
+      <soap:operation soapAction="" />
+      <wsdl:input name="UpdateProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UpdateProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PublishCourse">
+      <soap:operation soapAction="" />
+      <wsdl:input name="PublishCourseRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="PublishCourseResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="lmsLcmsService">
+    <wsdl:port name="lmsLcmsSoap11" binding="sch:lmsLcmsSoap11">
+      <soap:address location="http://dev-lms.360training.com:8080/lms/service/lms-lcms/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns:tns="http://www.example.org/SuggestedCoursesDisplayService" elementFormDefault="qualified" targetNamespace="http://www.example.org/SuggestedCoursesDisplayService" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="SuggestedCoursesDisplayRequest">
+    <complexType>
+      <sequence>
+        <element name="in" type="tns:SuggestedCoursesDisplayRequestType" />
+      </sequence>
+    </complexType>
+  </element>
+  <element name="SuggestedCoursesDisplayResponse" type="tns:SuggestedCoursesDisplayResponseType" />
+  <complexType name="SuggestedCoursesDisplayRequestType">
+    <sequence>
+      <element minOccurs="1" maxOccurs="unbounded" name="courseGuids" type="string" />
+      <element name="storeId" type="string" />
+    </sequence>
+  </complexType>
+  <complexType name="SuggestedCoursesDisplayResponseType">
+    <sequence>
+      <element name="CourseList" type="tns:SuggestedCoursesList" />
+    </sequence>
+  </complexType>
+  <complexType name="SuggestedCoursesList">
+    <sequence>
+      <element minOccurs="1" maxOccurs="unbounded" name="Course" type="tns:CourseInfo" />
+    </sequence>
+  </complexType>
+  <complexType name="CourseInfo">
+    <sequence>
+      <element name="courseGuidFrom" type="string" />
+      <element name="courseGuidTo" type="string" />
+      <element name="orderItemURL" type="string" />
+      <element name="imageUrl" type="string" />
+    </sequence>
+  </complexType>
+</schema>

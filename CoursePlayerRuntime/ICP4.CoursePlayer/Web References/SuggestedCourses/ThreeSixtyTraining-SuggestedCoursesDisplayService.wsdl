@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd2="http://www.example.org/SuggestedCoursesDisplayService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SCDModule="http://www.example.org/SuggestedCoursesDisplayService/" xmlns:xsd1="http://www.example.org/SuggestedCoursesDisplayService.xsd" name="ThreeSixtyTraining-SuggestedCoursesDisplayService" targetNamespace="http://www.example.org/SuggestedCoursesDisplayService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import schemaLocation="../../xsd/ThreeSixtyTrainingService/SuggestedCoursesDisplayService.xsd" namespace="http://www.example.org/SuggestedCoursesDisplayService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ShowProductInformation">
+    <wsdl:part name="ShowProductInformation" element="xsd2:SuggestedCoursesDisplayResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProductInformation">
+    <wsdl:part name="GetProductInformation" element="xsd2:SuggestedCoursesDisplayRequest" />
+  </wsdl:message>
+  <wsdl:portType name="ThreeSixtyTraining-SuggestedCoursesDisplayServicePortType">
+    <wsdl:operation name="GetSuggestedCourses">
+      <wsdl:input name="GetProductInformation" message="SCDModule:GetProductInformation" />
+      <wsdl:output name="ShowProductInformation" message="SCDModule:ShowProductInformation" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SCDServices" type="SCDModule:ThreeSixtyTraining-SuggestedCoursesDisplayServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSuggestedCourses">
+      <soap:operation soapAction="http://www.example.org/NewOperation" />
+      <wsdl:input name="GetProductInformation">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ShowProductInformation">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SuggestedCoursesDisplayService">
+    <wsdl:port name="SuggestedCoursesDisplayService" binding="SCDModule:SCDServices">
+      <soap:address location="http://10.0.101.88:80/webapp/wcs/services/SuggestedCoursesDisplayService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

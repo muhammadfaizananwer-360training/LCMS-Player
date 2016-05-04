@@ -1,0 +1,614 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{472AA97A-6014-44E8-99E5-F8A16699C677}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ICP4.BusinessLogic</RootNamespace>
+    <AssemblyName>ICP4.BusinessLogic</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICP4.BusinessEntities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="itextsharp, Version=5.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>CommonAPI\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LogicaCMG.EnterpriseLibraryExtensions.Logging, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\LogicaCMG.EnterpriseLibraryExtensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="LogicaCMG.EnterpriseLibraryExtensions.Logging.Configuration.Design, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\LogicaCMG.EnterpriseLibraryExtensions.Logging.Configuration.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging.Database, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\reference_dll\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssessmentManager\AssessmentManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssessmentManager\ExamPrepConstants.cs" />
+    <Compile Include="AssessmentManager\QuestionInfo.cs" />
+    <Compile Include="AssessmentManager\ScoreType.cs" />
+    <Compile Include="AssessmentManager\SelectedQuestion.cs" />
+    <Compile Include="BrandManager\BrandManager.cs" />
+    <Compile Include="BrandManager\ResourceKeyNames.cs" />
+    <Compile Include="CacheManager\CacheManager.cs" />
+    <Compile Include="CacheManager\KeyManager.cs" />
+    <Compile Include="CommonAPI\AcceptAllCertificatePolicy.cs" />
+    <Compile Include="CommonAPI\NumberToWordConvertor.cs" />
+    <Compile Include="CourseEvaluationManager\CourseEvaluationManager.cs" />
+    <Compile Include="CourseEvaluationManager\CourseEvaluationQuestionType.cs" />
+    <Compile Include="CourseManager\AfterMaxFailAction.cs" />
+    <Compile Include="CourseManager\CourseManager.cs" />
+    <Compile Include="CourseManager\CourseType.cs" />
+    <Compile Include="CourseManager\LearnerStatisticsType.cs" />
+    <Compile Include="CourseManager\LearnerStatisticsTypeTranslator.cs" />
+    <Compile Include="CourseManager\LockingReason.cs" />
+    <Compile Include="CourseManager\ProctorManagement.cs" />
+    <Compile Include="CourseManager\SceneTemplateType.cs" />
+    <Compile Include="CourseManager\SequenceItemTypeName.cs" />
+    <Compile Include="DocuSignManager\DocuSignHelper.cs" />
+    <Compile Include="FTPManager\FtpClientNet.cs" />
+    <Compile Include="IntegerationManager\Integeration.cs" />
+    <Compile Include="IntegerationManager\IntegerationFactory.cs" />
+    <Compile Include="IntegerationManager\IntegerationLMS.cs" />
+    <Compile Include="IntegerationManager\IntegerationStatistics.cs" />
+    <Compile Include="IntegerationManager\IntegerationStatisticsType.cs" />
+    <Compile Include="IntegerationManager\IntegerationVU.cs" />
+    <Compile Include="IntegerationManager\IntegrationDirectDB.cs" />
+    <Compile Include="KnowledgeCheckManager\KnowledgeCheckManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CredentialAPI\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DocuSignAPI\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ValidationManager\ValidationManager.cs" />
+    <Compile Include="ValidationManager\ValidationQuestion.cs" />
+    <Compile Include="ValidationManager\ValidationQuestionOption.cs" />
+    <Compile Include="ValidationManager\ValidationUnlockManager.cs" />
+    <Compile Include="Web References\ICP4PlayerUtility\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ICPAssessmentService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ICPBrandingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ICPCourseService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\ICPTrackingService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\LCMS_VUConnectorService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\LearningSessionComplete\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\LegacyVUValidationQuestionService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\360Training.BusinessEntities\360Training.BusinessEntities.csproj">
+      <Project>{196D0D80-337D-441E-9B25-8297160EBE4A}</Project>
+      <Name>360Training.BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ICP4.CommunicationLogic\ICP4.CommunicationLogic.csproj">
+      <Project>{95E526D2-428E-40CE-8645-37F78F4D8D67}</Project>
+      <Name>ICP4.CommunicationLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ICP4.DataLogic\ICP4.DataLogic.csproj">
+      <Project>{C0B070CD-5EC6-469C-B216-F3FCF7DFCF98}</Project>
+      <Name>ICP4.DataLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CommonAPI\Newtonsoft.Json.dll" />
+    <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.AccountMembershipFeaturesList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.AccountSetting.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.AddressBookItem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.AuthenticationStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.AuthoritativeCopyExportDocuments.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.AuthoritativeCopyExportStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.AvailableFolders.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.BrandResults.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.ConnectFailure.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.CorrectionStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.DocumentPDFs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.DocuSignEnvelopeInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.Envelope.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.EnvelopePDF.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.EnvelopeStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.EnvelopeTemplate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.EnvelopeTemplateDefinition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.FilteredEnvelopeStatusChanges.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.FilteredEnvelopeStatuses.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.FolderResults.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.PublishConnectFailuresResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.PurgeDocumentStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.RecipientEsignList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.RecipientList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.SaveTemplateResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.SynchEnvelopeStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.TransferEnvelopeStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.UpdateAddressBookResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\ICP4.BusinessLogic.DocuSignAPI.VoidEnvelopeStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DocuSignAPI\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DocuSignAPI\configuration.svcinfo" />
+    <None Include="Service References\DocuSignAPI\configuration91.svcinfo" />
+    <None Include="Service References\DocuSignAPI\api.disco" />
+    <None Include="Service References\CredentialAPI\ICP4.BusinessLogic.CredentialAPI.LoginResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CredentialAPI\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\CredentialAPI\configuration.svcinfo" />
+    <None Include="Service References\CredentialAPI\configuration91.svcinfo" />
+    <None Include="Service References\CredentialAPI\credential.disco" />
+    <None Include="Service References\CredentialAPI\credential.wsdl" />
+    <None Include="Service References\DocuSignAPI\api.wsdl" />
+    <None Include="Web References\ICP4PlayerUtility\PlayerUtility.disco" />
+    <None Include="Web References\ICP4PlayerUtility\PlayerUtility.wsdl" />
+    <None Include="Web References\ICP4PlayerUtility\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ICPAssessmentService\AssessmentItemAsset.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPAssessmentService\AssessmentItemBank.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPAssessmentService\AssessmentItemResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPAssessmentService\AssessmentItemTemplate.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\AssessmentConfiguration.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\Asset.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\Asset1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\CourseApproval.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\CourseApprovalCertificate.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\CourseConfiguration.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\CourseConfiguration1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\CourseEvaluation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\CourseEvaluation1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\CourseInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\CourseInfo1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\CourseMaterialInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\CourseMaterialInfo1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\DocuSignLearner.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\EOCInstructions.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\EOCInstructions1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\GlossaryItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\GlossaryItem1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\SceneTemplate.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\SceneTemplate1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\Sequence.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\Sequence1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\SuggestedCourse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\TableOfContent.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\TableOfContent1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\ValidationQuestion.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPCourseService\ValidationQuestion1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPTrackingService\CourseRating.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPTrackingService\LearnerCourseBookMarkInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPTrackingService\LearnerCourseCompletionStatus.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPTrackingService\LearnerCourseTrackInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPTrackingService\LearnerProfile.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPTrackingService\LearnerStatistics.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPTrackingService\LearnerValidationStatistics.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPTrackingService\LearningSessionInformation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPTrackingService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ICPTrackingService\TrackingService.disco" />
+    <None Include="Web References\ICPCourseService\CourseService.disco" />
+    <None Include="Web References\ICPBrandingService\BrandingService.disco" />
+    <None Include="Web References\ICPAssessmentService\AssessmentItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPAssessmentService\AssessmentService.disco" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ICPAssessmentService\AssessmentService.wsdl" />
+    <None Include="Web References\ICPAssessmentService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ICPBrandingService\BrandingService.wsdl" />
+    <None Include="Web References\ICPBrandingService\BrandLocaleInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ICPBrandingService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ICPCourseService\CourseService.wsdl" />
+    <None Include="Web References\ICPCourseService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ICPTrackingService\TrackingService.wsdl" />
+    <None Include="Web References\LCMS_VUConnectorService\LCMS_VUConnectorService.wsdl" />
+    <None Include="Web References\LCMS_VUConnectorService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\LearningSessionComplete\LearnerCourseProgressResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LearningSessionComplete\LearnerSetupResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LearningSessionComplete\LearnerStatsTransferResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LearningSessionComplete\LearningSessionCompleteResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LearningSessionComplete\lmsLcms.wsdl" />
+    <None Include="Web References\LearningSessionComplete\PublishCourseResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LearningSessionComplete\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\LearningSessionComplete\UpdateProfileResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LegacyVUValidationQuestionService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\LegacyVUValidationQuestionService\ValidationQuestions.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://10.0.100.179/iCPAssessmentService/AssessmentService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ICPAssessmentService\</RelPath>
+      <UpdateFromURL>https://10.0.100.179/iCPAssessmentService/AssessmentService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ICP4_BusinessLogic_ICPAssessmentService_AssessmentService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://10.0.100.179/iCPBrandingService/BrandingService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ICPBrandingService\</RelPath>
+      <UpdateFromURL>https://10.0.100.179/iCPBrandingService/BrandingService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ICP4_BusinessLogic_ICPBrandingService_BrandingService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://10.0.100.179/ICPCourseService/CourseService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ICPCourseService\</RelPath>
+      <UpdateFromURL>https://10.0.100.179/ICPCourseService/CourseService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ICP4_BusinessLogic_ICPCourseService_CourseService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://10.0.100.179/ICPTrackingService/TrackingService.asmx">
+      <UrlBehavior>Static</UrlBehavior>
+      <RelPath>Web References\ICPTrackingService\</RelPath>
+      <UpdateFromURL>https://10.0.100.179/ICPTrackingService/TrackingService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ICP4_BusinessLogic_ICPTrackingService_TrackingService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://10.0.100.152:8080/lms/service/lms-lcms/lmsLcms.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\LearningSessionComplete\</RelPath>
+      <UpdateFromURL>http://10.0.100.152:8080/lms/service/lms-lcms/lmsLcms.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ICP4_BusinessLogic_LearningSessionComplete_lmsLcmsService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://kar-dev-3/vu3/ICP4/ValidationQuestions.cfc%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\LegacyVUValidationQuestionService\</RelPath>
+      <UpdateFromURL>http://kar-dev-3/vu3/ICP4/ValidationQuestions.cfc%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ICP4_BusinessLogic_LegacyVUValidationQuestionService_ValidationQuestionsService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://kar-dev-3/vu360/vu3/icp4/LCMS_VUConnectorService.cfc%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\LCMS_VUConnectorService\</RelPath>
+      <UpdateFromURL>http://kar-dev-3/vu360/vu3/icp4/LCMS_VUConnectorService.cfc%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ICP4_BusinessLogic_LCMS_VUConnectorService_LCMS_VUConnectorServiceService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:52023/PlayerUtility.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ICP4PlayerUtility\</RelPath>
+      <UpdateFromURL>http://localhost:52023/PlayerUtility.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ICP4_BusinessLogic_ICP4PlayerUtility_PlayerUtility</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CredentialAPI\" />
+    <WCFMetadataStorage Include="Service References\DocuSignAPI\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

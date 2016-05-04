@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="BrandingService.asmx.cs" Class="_360Training.BrandingService.BrandingService" %>

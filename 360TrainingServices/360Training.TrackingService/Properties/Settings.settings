@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="_360Training.TrackingService.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="_360Training_TrackingService_LearningSessionComplete_lmsLcmsService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://dev-lms.360training.com:8080/lms/service/lms-lcms/</Value>
+    </Setting>
+    <Setting Name="_360Training_TrackingService_VUConnectorService_LCMS_VUConnectorServiceService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://10.0.100.144/vu3/icp4/LCMS_VUConnectorService.cfc</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

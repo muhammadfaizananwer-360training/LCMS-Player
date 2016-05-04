@@ -1,0 +1,118 @@
+.recommendation-item-container
+{
+    width: 300px;
+    margin: 1px;
+    height: 130px;
+    float: left;
+    background-color: white;
+}
+.recommendation-item-hidden
+{
+    display: none;
+}
+.recommendation-item-title
+{
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 10px;
+    margin-right: 5px;
+    color:Black;
+}
+.recommendation-item-author
+{
+    font-weight: bold;
+    font-size: 11px;
+    color: blue;
+   
+}
+.recommendation-item-price
+{
+    font-weight: bold;
+    font-size: 16px;
+    color:Blue;
+   
+}
+.recommendation-item-image
+{
+    float: left;
+    padding-left: 2px;
+    padding-top: 2px;
+    width: 100px;
+    height: 110px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.recommendation-item-text-field
+{
+    width: 100%;
+    padding-top: 10px;
+}
+
+
+.recommendation-panel
+{
+    height: 130px;
+    background-color:Gray;
+    display: block;
+}
+.recommendation-panel-hidden
+{
+    display: none;
+}
+.recommendation-panel-wrapper
+{
+    width: 100%;
+    height: 130px;
+}
+.recommendation-panel-header
+{
+    text-align:right;
+    background-color: lightgrey;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    height: 14px;
+    cursor: pointer;
+}
+
+/*****LCMS-10392***************/
+.recommendation-panel-redirect-dialog
+{
+    display: none;
+    background-image: url("../images/bg-dialog2.gif");
+    border: 1px solid #DBD8D8;
+    display: none;
+    height: 150px;
+    left: 57%;
+    margin-left: -366.5px;
+    margin-top: -150px;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: 60%;
+    width: 500px;
+    z-index: 50;
+}
+.recommendation-panel-redirect-dialog h2
+{
+    background-image: url("../images/bg_dialog_title.gif");
+    color: #000000;
+    font-size: 1.2em;
+    height: 28px;
+    margin: 0;
+    padding: 5px 5px 5px 10px;
+    text-align: left;
+}
+.recommendation-panel-redirect-dialog .ap-redirect-dialog-message
+{
+    padding: 10px;
+    text-align: left;
+    font-size: 13px;
+    color:Black;
+}
+.recommendation-panel-redirect-dialog .ap-redirect-dialog-buttons
+{
+    float: right;
+    margin-right: 10px;
+}
