@@ -43,8 +43,7 @@
 
     <!-- ========================================================== -->
 
-    <script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-
+    <script src="Scripts/jquery.min.js" type="text/javascript"></script>
     <!-- Start Loading JQuery -->
 
     <script type="text/javascript" src="Scripts/jquery/jquery-1.2.6.js"></script>
@@ -74,7 +73,8 @@
     <script type="text/javascript" src='<%="JSPlayer/j360player.js"%>'></script>
 
     <script type="text/javascript" src='<%="JSPlayer/init.js"%>'></script>
-    <script src="https://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    
+    <script type="text/javascript" src="Scripts/JSON3.js"></script>
     <!-- End Loading JQuery -->
     <!-- Start Loading Course Player Frame Work -->
     <!-- LCMS-11870 starts -->
