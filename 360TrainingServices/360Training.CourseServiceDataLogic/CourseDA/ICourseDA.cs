@@ -173,5 +173,6 @@ namespace _360Training.CourseServiceDataLogic.CourseDA
         /// <returns></returns>
         bool GetMultipleQuizConfigurationCount(int courseID);
         //Stop
+        string GetCourseGroupsByCourse(int CourseID);
     }
 }

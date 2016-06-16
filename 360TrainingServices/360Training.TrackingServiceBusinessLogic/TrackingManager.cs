@@ -392,13 +392,13 @@ namespace _360Training.TrackingServiceBusinessLogic
         /// <param name="flashSceneNo">string flashSceneNo</param>
         /// <param name="bookMarkTitle">string bookMarkTitle</param>
         /// <returns>boolean true if suucessfull,else false</returns>
-        public bool SaveLearnerCourseBookmark(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName)
+        public bool SaveLearnerCourseBookmark(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName, DateTime createddate)
         {
             try
             {
                 using (StudentTrackingDA studentTrackingDA = new StudentTrackingDA())
                 {
-                    return studentTrackingDA.SaveLearnerCourseBookmark(courseID, learnerID, enrollmentID, item_GUID, sceneGUID, flashSceneNo, bookMarkTitle, lastScene, isMovieEnded, nextButtonState, firstSceneName);
+                    return studentTrackingDA.SaveLearnerCourseBookmark(courseID, learnerID, enrollmentID, item_GUID, sceneGUID, flashSceneNo, bookMarkTitle, lastScene, isMovieEnded, nextButtonState, firstSceneName, createddate);
                 }
             }
             catch (Exception exp)
@@ -447,6 +447,27 @@ namespace _360Training.TrackingServiceBusinessLogic
             {
                 ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// This method delete the bookmark against bookmarkID        
+        /// </summary>
+        /// <param name="courseID">int bookmarkID</param>        
+        /// <returns>true/false</returns>
+        public bool DeleteLearnerCourseBookMarksInfo(int bookmarkID)
+        {
+            try
+            {
+                using (StudentTrackingDA studentTrackingDA = new StudentTrackingDA())
+                {
+                    return studentTrackingDA.DeleteLearnerCourseBookmark(bookmarkID);
+                }
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+                return false;
             }
         }
         /// <summary>

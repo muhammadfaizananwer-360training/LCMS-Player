@@ -21,7 +21,7 @@
       <Value Profile="(Default)">http://localhost:50061/TrackingService.asmx</Value>
     </Setting>
     <Setting Name="ICP4_BusinessLogic_ICPCourseService_CourseService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://10.0.100.179/ICPCourseService/CourseService.asmx</Value>
+      <Value Profile="(Default)">https://10.0.100.250/ICPCourseService/CourseService.asmx</Value>
     </Setting>
     <Setting Name="ICP4_BusinessLogic_ICP4PlayerUtility_PlayerUtility" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:58412/PlayerUtility.asmx</Value>

@@ -1,61 +1,11 @@
-
-
-<style>
-.mainimage {
-  max-width: 960px;
-  width: expression(this.width > 960 ? "960px" : true);
-}
-
-#contentTable {
-  height:98%;
-  width:100%;
-  margin : auto;
-  border : 10px white solid;
-}
-
-.sceneTitle {
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 36px; 
-  text-decoration : bold;
-
-}
-
-.sceneTextArea {
-  text-align: left;
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 18px;
-}
-
-.sceneTextArea p{
-margin:0px;
-padding:0px;
-}
-
-.sceneClosedCaptioningText {
-  text-align: justify;
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 12px;
-
-}
-.sceneClosedCaptioningText p{
-margin:0px;
-padding:0px;
-
-}
-
-</style>
-<!--  text-transform : capitalize;-->
-<table id="contentTable" >
-  <tr>
-    <td colspan="3"><span class="sceneTitle">$Heading</span></td>
-  </tr>
-  <tr>
-    <td valign="top">
-    <span id="image">
-    <img src="$VisualTop" class="mainimage" align="top" />
-    </span> <span id="media" class="sceneTextArea">
-      <embed src="$VisualTop" width="960" height="410" wmode="transparent">
-      </embed>
-    </span></td>
-  </tr>
-</table>
+<section class="scene-wrapper visual-activity with-heading" id="contentTable">
+	<div class="scene-body">
+		<h1 class="scene-title">$Heading</h1>
+		<div class="visual-element">
+			<img id="image" class="img-responsive" src="$VisualTop" />
+			<div id="media">
+				<embed src="$VisualTop" wmode="transparent"></embed>
+			</div>
+		</div>
+	</div>
+</section>

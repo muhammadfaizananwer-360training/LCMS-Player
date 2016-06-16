@@ -66,7 +66,7 @@ namespace _360Training.TrackingServiceDataLogic.StudentTrackingDA
         /// <param name="flashSceneNo">string flashSceneNo</param>
         /// <param name="bookMarkTitle">string bookMarkTitle</param>
         /// <returns>boolean true if suucessfull,else false</returns>
-        bool SaveLearnerCourseBookmark(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName);
+        bool SaveLearnerCourseBookmark(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName, DateTime createddate);
         /// <summary>
         /// This method returns the LearnerCourseBookmarkInfo object
         /// </summary>
@@ -307,7 +307,9 @@ namespace _360Training.TrackingServiceDataLogic.StudentTrackingDA
 
        string GetCourseIDAgainstLearningSessionGUID(string LearningSessionGuid);
 
-       void GetEnrollmentIDBrandcodeVariant(int enrollmentID, ref string brandCode, ref string variant);
+       bool DeleteLearnerCourseBookmark(int bookmarkID);
+	   
+	   void GetEnrollmentIDBrandcodeVariant(int enrollmentID, ref string brandCode, ref string variant);
 
     }
 }

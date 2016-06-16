@@ -535,7 +535,7 @@ function RenderEngine() {
                 case "LoadingImage":
                     {
                         
-                          $("#divLoading")[0].children[0].src = resourceInfo.ResourceInfo[index].ResourceValue;
+                          //$("#divLoading")[0].children[0].src = resourceInfo.ResourceInfo[index].ResourceValue;
                          //$("#divLoading")[0].children[0].attr('src', resourceInfo.ResourceInfo[index].ResourceValue);
                         break;
 
@@ -562,12 +562,6 @@ function RenderEngine() {
         var showInstructorInfo = obj.CourseInfo.ShowInstructorInfo;
         globalshowInstructorInfo = obj.CourseInfo.ShowInstructorInfo;
         var showAmazonAffiliatePanel = obj.CourseInfo.ShowAmazonAffiliatePanel;
-        
-        //Waqas Zakai
-        //LCMS-14012
-        //Start     
-        restrictIncompletJSTemplate = obj.CourseInfo.RestrictIncompleteJSTemplate;        
-        //END
 
         //Abdus Samad
         //LCMS-11878
@@ -1038,7 +1032,10 @@ function RenderEngine() {
         $(BackbuttonDs).hide();
         $(IAgreeButton).find("a").bind('click.namespace', function() {
             cp.PlayClick();
-            cp.SynchToExternalSystem("ShowEmbeddedAcknowledgment");
+            ui.slide.next(function()
+            {
+                cp.SynchToExternalSystem("ShowEmbeddedAcknowledgment");
+            });			            
         });
 
     }
@@ -1453,29 +1450,6 @@ function RenderEngine() {
 
 
         xmlSampleData_ForCustomTemplate = showHTMLObject.MediaAsset.MCSceneXml; // MC
-        
-        //Changed By Waqas Zakai at 22nd FEB 2016
-        //LCMS-14012
-        //START
-        if(xmlSampleData_ForCustomTemplate !=null)
-        {        
-            if (xmlSampleData_ForCustomTemplate.length > 0 && restrictIncompletJSTemplate=='true')
-            {
-                $(PlaybuttonEn).hide();
-                $(PlaybuttonDs).show();
-            }
-            else
-            {
-                $(PlaybuttonEn).show();
-                $(PlaybuttonDs).hide();        
-            }
-        }
-        else
-        {
-            $(PlaybuttonEn).show();
-            $(PlaybuttonDs).hide();        
-        }        
-        //END
 
         var isCourseApproval = showHTMLObject.MediaAsset.IsCourseApproval;
 
@@ -1853,18 +1827,7 @@ function RenderEngine() {
             }
 
             if (showHTMLObject.MediaAsset.SceneTemplateType == "VSC") {
-    
-	            //debugger;   
-			    var isEmbedCode = showHTMLObject.MediaAsset.IsEmbedCode;
-				var EmbedCode  = showHTMLObject.MediaAsset.EmbedCode;
-				
-				if(isEmbedCode == true){
-				    $("#media").removeAttr("style").html(EmbedCode).attr("style","display:block;width:100%;text-align:center;padding-top:20px");				  
-							 
-				}
-				else
-				{
-				
+
                 var streamingServerURL = showHTMLObject.MediaAsset.StreamingServerURL;
                 var streamingApplication = showHTMLObject.MediaAsset.StreamingServer;
                 var videoFileName = showHTMLObject.MediaAsset.VideoFileName;
@@ -1916,10 +1879,12 @@ function RenderEngine() {
                         document.getElementById("media").innerHTML = streaminghtml;
                        
                         var displayratio;
-                        if(displayStandard == true){
+                        if(displayStandard == true)
+                        {
                         displayratio = 0;
                         }
-                        else {
+                        else
+                        {
                         displayratio = 1;
                         }
 
@@ -1927,7 +1892,6 @@ function RenderEngine() {
                         var funcName = "initialize('" + streamingServerURL + "','" + streamingApplication + "','" + videoFileName + "','" + displayratio + "')";
                         setTimeout(funcName, 500);
                     }
-                  }
                 }
                 //LCMS-12264 By Waqas Zakai.....END
             }
@@ -8929,13 +8893,6 @@ function setMediaType(mediaType, imageDiv, mediaDiv) {
                 break;
             }
         case "mp4":
-            {
-                $(mediaDiv).show();
-                $(imageDiv).hide();
-                break;
-            }
-			
-	    case "embed":
             {
                 $(mediaDiv).show();
                 $(imageDiv).hide();
