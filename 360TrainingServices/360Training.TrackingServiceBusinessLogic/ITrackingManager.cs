@@ -43,7 +43,7 @@ namespace _360Training.TrackingServiceBusinessLogic
         /// <param name="flashSceneNo">string flashSceneNo</param>
         /// <param name="bookMarkTitle">string bookMarkTitle</param>
         /// <returns>boolean true if suucessfull,else false</returns>
-        bool SaveLearnerCourseBookmark(int courseID, int learnerID,int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState,string firstSceneName);
+        bool SaveLearnerCourseBookmark(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName, DateTime createddate);
         /// <summary>
         /// This method returns the LearnerCourseBookmarkInfo object
         /// </summary>

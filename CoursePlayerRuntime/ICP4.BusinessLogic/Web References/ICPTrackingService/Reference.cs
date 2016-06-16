@@ -61,6 +61,8 @@ namespace ICP4.BusinessLogic.ICPTrackingService {
         
         private System.Threading.SendOrPostCallback GetAllLearnerCourseBookMarksInfoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DeleteLearnerCourseBookMarksInfoOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAllLearnerCourseTrackInfoOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetPreviouslyAskedQuestionsOperationCompleted;
@@ -199,7 +201,7 @@ namespace ICP4.BusinessLogic.ICPTrackingService {
         
         /// <remarks/>
         public TrackingService() {
-            this.Url = "https://10.0.100.179/ICPTrackingService/TrackingService.asmx";
+            this.Url = "https://10.0.100.250/ICPTrackingService/TrackingService.asmx";
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -280,6 +282,9 @@ namespace ICP4.BusinessLogic.ICPTrackingService {
         
         /// <remarks/>
         public event GetAllLearnerCourseBookMarksInfoCompletedEventHandler GetAllLearnerCourseBookMarksInfoCompleted;
+        
+        /// <remarks/>
+        public event DeleteLearnerCourseBookMarksInfoCompletedEventHandler DeleteLearnerCourseBookMarksInfoCompleted;
         
         /// <remarks/>
         public event GetAllLearnerCourseTrackInfoCompletedEventHandler GetAllLearnerCourseTrackInfoCompleted;
@@ -893,7 +898,7 @@ namespace ICP4.BusinessLogic.ICPTrackingService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.360training.com/SaveLearnerCourseBookmark", RequestNamespace="http://www.360training.com", ResponseNamespace="http://www.360training.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool SaveLearnerCourseBookmark(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName) {
+        public bool SaveLearnerCourseBookmark(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName, System.DateTime createddate) {
             object[] results = this.Invoke("SaveLearnerCourseBookmark", new object[] {
                         courseID,
                         learnerID,
@@ -905,17 +910,18 @@ namespace ICP4.BusinessLogic.ICPTrackingService {
                         lastScene,
                         isMovieEnded,
                         nextButtonState,
-                        firstSceneName});
+                        firstSceneName,
+                        createddate});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void SaveLearnerCourseBookmarkAsync(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName) {
-            this.SaveLearnerCourseBookmarkAsync(courseID, learnerID, enrollmentID, item_GUID, sceneGUID, flashSceneNo, bookMarkTitle, lastScene, isMovieEnded, nextButtonState, firstSceneName, null);
+        public void SaveLearnerCourseBookmarkAsync(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName, System.DateTime createddate) {
+            this.SaveLearnerCourseBookmarkAsync(courseID, learnerID, enrollmentID, item_GUID, sceneGUID, flashSceneNo, bookMarkTitle, lastScene, isMovieEnded, nextButtonState, firstSceneName, createddate, null);
         }
         
         /// <remarks/>
-        public void SaveLearnerCourseBookmarkAsync(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName, object userState) {
+        public void SaveLearnerCourseBookmarkAsync(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName, System.DateTime createddate, object userState) {
             if ((this.SaveLearnerCourseBookmarkOperationCompleted == null)) {
                 this.SaveLearnerCourseBookmarkOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSaveLearnerCourseBookmarkOperationCompleted);
             }
@@ -930,7 +936,8 @@ namespace ICP4.BusinessLogic.ICPTrackingService {
                         lastScene,
                         isMovieEnded,
                         nextButtonState,
-                        firstSceneName}, this.SaveLearnerCourseBookmarkOperationCompleted, userState);
+                        firstSceneName,
+                        createddate}, this.SaveLearnerCourseBookmarkOperationCompleted, userState);
         }
         
         private void OnSaveLearnerCourseBookmarkOperationCompleted(object arg) {
@@ -999,6 +1006,35 @@ namespace ICP4.BusinessLogic.ICPTrackingService {
             if ((this.GetAllLearnerCourseBookMarksInfoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAllLearnerCourseBookMarksInfoCompleted(this, new GetAllLearnerCourseBookMarksInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.360training.com/DeleteLearnerCourseBookMarksInfo", RequestNamespace="http://www.360training.com", ResponseNamespace="http://www.360training.com", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool DeleteLearnerCourseBookMarksInfo(int bookmarkID) {
+            object[] results = this.Invoke("DeleteLearnerCourseBookMarksInfo", new object[] {
+                        bookmarkID});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DeleteLearnerCourseBookMarksInfoAsync(int bookmarkID) {
+            this.DeleteLearnerCourseBookMarksInfoAsync(bookmarkID, null);
+        }
+        
+        /// <remarks/>
+        public void DeleteLearnerCourseBookMarksInfoAsync(int bookmarkID, object userState) {
+            if ((this.DeleteLearnerCourseBookMarksInfoOperationCompleted == null)) {
+                this.DeleteLearnerCourseBookMarksInfoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDeleteLearnerCourseBookMarksInfoOperationCompleted);
+            }
+            this.InvokeAsync("DeleteLearnerCourseBookMarksInfo", new object[] {
+                        bookmarkID}, this.DeleteLearnerCourseBookMarksInfoOperationCompleted, userState);
+        }
+        
+        private void OnDeleteLearnerCourseBookMarksInfoOperationCompleted(object arg) {
+            if ((this.DeleteLearnerCourseBookMarksInfoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DeleteLearnerCourseBookMarksInfoCompleted(this, new DeleteLearnerCourseBookMarksInfoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4717,6 +4753,8 @@ namespace ICP4.BusinessLogic.ICPTrackingService {
         
         private string firstSceneNameField;
         
+        private System.DateTime createdDateField;
+        
         /// <remarks/>
         public int BookMarkInfoID {
             get {
@@ -4824,6 +4862,16 @@ namespace ICP4.BusinessLogic.ICPTrackingService {
             }
             set {
                 this.firstSceneNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreatedDate {
+            get {
+                return this.createdDateField;
+            }
+            set {
+                this.createdDateField = value;
             }
         }
     }
@@ -5594,6 +5642,32 @@ namespace ICP4.BusinessLogic.ICPTrackingService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((LearnerCourseBookMarkInfo[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.5483")]
+    public delegate void DeleteLearnerCourseBookMarksInfoCompletedEventHandler(object sender, DeleteLearnerCourseBookMarksInfoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.5483")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DeleteLearnerCourseBookMarksInfoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DeleteLearnerCourseBookMarksInfoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }

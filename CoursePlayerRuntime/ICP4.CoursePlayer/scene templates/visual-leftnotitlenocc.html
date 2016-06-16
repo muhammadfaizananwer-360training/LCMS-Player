@@ -1,189 +1,58 @@
-
-
 <style>
-.mainimage {
-  max-width: 350px;
-  max-height: 460px;
-  width: expression(this.width > 350 ? "350px" : true);
-  height: expression(this.height > 460 ? "460px" : true);
-}
-
-#contentTable {
-  height:98%;
-  width:100%;
-  margin : auto;
-  border : 10px white solid;
-}
-
-.sceneTitle {
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 36px; 
-  text-decoration : bold;
-  
-}
-
-.sceneTextArea {
-  text-align: left;
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 18px;
-
-}
-
-.sceneTextArea p{
-margin:0px;
-padding:0px;
-}
-
-.sceneClosedCaptioningText {
-  text-align: justify;
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 12px;
-
-}
-.sceneClosedCaptioningText p{
-margin:0px;
-padding:0px;
-
-}
-ul {list-style-type: none; list-style-position: inside;}ol {list-style-type: decimal;list-style-position: inside;}ol ol {list-style-type: lower-alpha;}ul li { font-style: normal; }ol li { font-style: normal; }ol ol { font-style: normal; } p {margin:.5em 0} p.indent {margin-left:40px} p.left {text-align:left} p.center {text-align:center} p.right {text-align:right} span.underline {text-decoration:underline} span.strikethrough {text-decoration:line-through}
-
-.play{
-
-	background-image:url("images/play_button.png"); 
-	background-repeat:no-repeat; 
-	background-position:center;
-	position: relative; 
-    height: 9%; 
-	width:10%;  
-	z-index:9999px;
-	margin:0 auto; 
-	top : -137px;       
-	*top : -139px;	   
-	outline:  none;
-    ie-dummy: expression(this.hideFocus=true); 
-
-	}	
-	
-.pause{
-
-	background-image:url("images/pause_button.png"); 
-	background-repeat:no-repeat; 
-	background-position:center;
-	border-collapse:collapse;
-	height: 9%; 
-	width:10%; 
-	z-index:9999px;
-	position: relative;
-	margin:0 auto;
-	top : -137px; 
-	*top : -139px; 	
-	outline:  none;
-    ie-dummy: expression(this.hideFocus=true); 
-   
-
-	}
-
-
-.play a{
-		float: left;
-	    height: 100%; 
-		width:100%; 		
-		outline:  none;
-        ie-dummy: expression(this.hideFocus=true); 
-		
-	   }
-		
-.pause a{
-		float:left;
-		width:100%;
-		height:100%; 		
-		outline:  none;
-        ie-dummy: expression(this.hideFocus=true);
-		
-		}
-
-
-#finalPPdiv
-	{	
+#finalPPdiv{	
 	width:350px;  
 	height:460px;
-	right: 0;
-    top: 0;
-	left: 0px;
-	left: 0px; /* standard */
-	left: 0px\9; /* IE 8 and below */
-	*left: 0px; /* IE 7 and below */
-	_left: 0px; /* IE 6 */	
-	left: 0px*;	
-	bottom: 0px;
-	margin:0 auto;	
-   overflow:hidden;	
-
-	}
-	
+}
 #media{ 
     width:350px; 
 	height:460px;
 	overflow:hidden;
-	
 }
-
 #container{ 
     width:350px; 
 	height:460px;
-	overflow:hidden;	
+	overflow:hidden;
 }
-
-	
-	
 #toggle{ 
- outline:  none;  
-   }
-
+	outline:none;  
+}
 </style>
 
-
-
-
-<table id="contentTable">
-  <tr>
-    <td valign="top" align="center">
-    <span id="image">
-    <img src="$VisualTop" class="mainimage" align="top" />
-    </span>
-     <div  id="media" >
-     <div id="container" style="display:none;" ></div>
-        <embed src="$VisualTop"  wmode="transparent" id="finalPPdiv" name="finalPPdiv">
-        </embed>
-		<div id="toggle">
-               <a href="javascript:pauseFlash();" ></a> 
-        </div> 
-      </div></td>
-    <td width="15">
-    
-    <img width="15" src="images/pixel.gif" /></td>
-    <td width="65%" valign="top"><div class="sceneTextArea"><div style="margin-right:12px;">$Text</div>
-    </div></td>
-  </tr>
-  <tr>
-    <td colspan="3" height="15"><img height="15" src="images/pixel.gif" /></td>
-  </tr>
-</table>
+<section class="scene-wrapper visual-left" id="contentTable">
+	<div class="scene-body">
+		<div class="scene-cell visual-element">
+			<img id="image" class="img-responsive" src="$VisualTop" />
+			<div id="media">
+				<div id="container" style="display:none;"></div>
+				<embed src="$VisualTop" wmode="transparent" id="finalPPdiv" name="finalPPdiv"></embed>
+				<div id="toggle">
+					<a href="javascript:pauseFlash();"></a>
+				</div>
+			</div>
+		</div>
+		<div class="scene-cell">
+			<div class="scene-content">
+				$Text
+			</div>
+		</div>
+	</div>
+</section>
 
 <script type="text/javascript">
 var test = 0;
-    
+  
 	if(playPauseFeature == false) {        		 		  
-		    document.getElementById("media").children[2].remove(); 
+		var listMedia = document.getElementById("media");
+		listMedia.removeChild(listMedia.childNodes[2]);		   
      }	
  
     if (JSplayerEnabled == false) {
         if (document.getElementById("media").children[1].src.indexOf(".mp4") > 0) {
             document.getElementById("media").style.width = "975px";
             document.getElementById("media").style.height = "460px";
-            var isSelection = document.getElementById("media").children[1].src;
+            var isSelection = document.getElementById("media").children[1].src;			
             document.getElementById("media").innerHTML = "";
-            var embedStr = "<Embed Src='" + isSelection + "' Width=975 Height=460 ></Embed>";
+            var embedStr = "<embed src='" + isSelection + "' width='975' height='460' ></embed>";
             document.getElementById('media').innerHTML = embedStr;
         }
     }

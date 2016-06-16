@@ -1,190 +1,60 @@
-
 <style>
-.mainimage {
-  max-width: 960px;
-  width: expression(this.width > 960 ? "960px" : true);
+#finalPPdiv{
+	width:960px;  
+	height:420px;
 }
-
-#contentTable {
-  height:100%;
-  width:100%;
-  margin : auto;
-  border : 10px white solid;
-}
-
-.sceneTitle {
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 36px; 
-  text-decoration : bold;
-  
-}
-
-.sceneTextArea {
-  text-align: left;
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 18px;
-
-}
-
-.sceneTextArea p{
-margin:0px;
-padding:0px;
-}
-
-.sceneClosedCaptioningText {
-  text-align: justify;
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 12px;
-
-}
-.sceneClosedCaptioningText p{
-margin:0px;
-padding:0px;
-
-}
-.play{
-	background-image:url("images/play_button.png"); 
-	background-repeat:no-repeat; 
-	background-position:center;
-	position: relative; 
-    height: 7%; 
-	width:10%;  
-	z-index:9999px;
-	margin:0 auto; 
-	top : -44px; /* old was -23 change to -44 to adjust the button to the bottom of the video   */
-	*top : -46px; /* old was -25 change to -46 to adjust the button to the bottom of the video   */
-	outline:  none;
-    ie-dummy: expression(this.hideFocus=true); 
-	
-
-	}
-.pause{
-	background-image:url("images/pause_button.png"); 
-	background-repeat:no-repeat; 
-	background-position:center;
-	height: 7%; 
-	width:10%; 
-	z-index:9999px;
-	position: relative;
-	margin:0 auto;
-	top : -44px; /* old was -23 change to -44 to adjust the button to the bottom of the video   */
-	*top : -46px; /* old was -25 change to -46 to adjust the button to the bottom of the video   */
-	outline:  none;
-    ie-dummy: expression(this.hideFocus=true); 
-
-	}
-
-.play a{
-		float: left;
-	    height: 100%; 
-		width:100%; 
-		outline:  none;
-        ie-dummy: expression(this.hideFocus=true); 
-	   }
-		
-.pause a{
-		float:left;
-		width:100%;
-		height:100%;
-		outline:  none;
-        ie-dummy: expression(this.hideFocus=true); 
-		}
-
-
-
-#finalPPdiv
-	{	
-	/*width:500px;  
-	height:395px; */
-    right: 0;
-    top: 0;
-	left: 0px;
-	left: 0px; /* standard */
-	left: 0px\9; /* IE 8 and below */
-	*left: 0px; /* IE 7 and below */
-	_left: 0px; /* IE 6 */		
-	bottom: 0px;
-	margin:0 auto;
-	/*z-index:9999px;*/  
-	}
-	
-	
-#media{ 
-
-	width:960px; 
-	height:425px; 
-	/*overflow:hidden;*/
-	margin:0 auto;
-	left: 0px;  
-	/*position:absolute;*/
-	
-
-	}
-	
 #container{ 
-
 	width:100%; 
 	height:97%; 
 	overflow:hidden;
 	margin:0 auto;
 	left: 0px;  
 	position:absolute;
-	
-
-	}	
-	
+}
 </style>
 
-<!--text-transform : capitalize;-->
-<table id="contentTable">
-  <tr>
-    <td valign="top" align="center">
-    <span id="image">
-    <img src="$VisualTop" class="mainimage" align="top" />
-    </span> 
-	
-    <div  id="media" style="overflow:hidden;">
-    <div id="container" style="display:none;"></div>
-     <embed src="$VisualTop"  wmode="transparent" id="finalPPdiv" name="finalPPdiv" width="960px;" height="425px;"  >
-       </embed>	  
-	  <div id="toggle">
-               <a href="javascript:pauseFlash();" ></a> 
-            </div>
-   </div>
-	</td>
-  </tr>
-  <tr>
-    <td height="15"><img height="15" src="images/pixel.gif" /></td>
-  </tr>
-  <tr>
-    <td valign="bottom"><div class="sceneClosedCaptioningText"><div style="margin-right:12px;">$VOText</div></div></td>
-  </tr>
-</table>
-
+<section class="scene-wrapper visual-center" id="contentTable">
+	<div class="scene-body">
+		<div class="visual-element">
+			<img id="image" class="img-responsive" src="$VisualTop" />
+			<div id="media" style="overflow:hidden;">
+				<div id="container" style="display:none;"></div>
+				<embed src="$VisualTop" wmode="transparent" id="finalPPdiv" name="finalPPdiv"></embed>
+				<div id="toggle">
+					<a href="javascript:pauseFlash();"></a>
+				</div>
+			</div>
+		</div>
+		<div class="scene-caption">$VOText</div>
+	</div>
+</section>
  <script type="text/javascript">
 
  var test = 0;
      
 	 if(playPauseFeature == false) {        		 		  
-		    document.getElementById("media").children[2].remove(); 
+		var listMedia = document.getElementById("media");
+		listMedia.removeChild(listMedia.childNodes[2]);		    
      }	
  
      if (JSplayerEnabled == false) {
          if (document.getElementById('media').children[1].src.indexOf(".mp4") < 0) {
-             document.getElementById('media').children[1].width = 960;
+           
+			document.getElementById('media').children[1].width = 960;
              document.getElementById('media').children[1].height = 425;
 			 
          }
 
          else {
-
-             /* var isSelection = document.getElementById("media").children[0].src; 
+/*
+             var isSelection = document.getElementById("media").children[0].src; 
              document.getElementById("media").innerHTML = "";	
              var embedStr = "<Embed Src='"+isSelection+"' Width=1000 Height=425 ></Embed>"; 
-             document.getElementById('media').innerHTML = embedStr; */
-
+             document.getElementById('media').innerHTML = embedStr; 
+*/
          }
      }
+	 
 function pauseFlash()
 {
 	if(test == "-1")

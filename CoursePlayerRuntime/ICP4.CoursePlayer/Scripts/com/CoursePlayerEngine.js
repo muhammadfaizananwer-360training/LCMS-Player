@@ -41,71 +41,71 @@ jQuery(function($) {
 
 function content_resize() {
     //LCMS-10329
-    var otherElementHeight = 165;
-    if ($('#contentWrapper').length > 0) {
-        otherElementHeight += $('#contentWrapper').height();
-    }
+//    var otherElementHeight = 165;
+//    if ($('#contentWrapper').length > 0) {
+//        otherElementHeight += $('#contentWrapper').height();
+//    }
 
-    //Abdus Samad
-    //LCMS-11878  
-    //Start 
-    if ($('#contentWrapperReco').length > 0) {
-        otherElementHeight += $('#contentWrapperReco').height();
-    }
-    //Stop
-
-
-    var w = $(window);
-    var H = w.height() - otherElementHeight;
-    //END LCMS-10329		
-    var W = w.width();
+//    //Abdus Samad
+//    //LCMS-11878  
+//    //Start 
+//    if ($('#contentWrapperReco').length > 0) {
+//        otherElementHeight += $('#contentWrapperReco').height();
+//    }
+//    //Stop
 
 
-    globalinitheight = H;
-
-    if (IsAmazonAffiliatePanel == false && bIsContentResize == true) {
-        H = globalinitheight + $('#contentWrapper').height();
-    }
-
-    //Abdus Samad
-    //LCMS-11878  
-    //Start 
-    if (bIsContentResize == true && IsRecommendationCoursePanel == false) {
-        H = globalinitheight + $('#contentWrapperReco').height();
-    }
-    //Stop
+//    var w = $(window);
+//    var H = w.height() - otherElementHeight;
+//    //END LCMS-10329		
+//    var W = w.width();
 
 
-    $("#content_container").height(H);
+//    globalinitheight = H;
 
-    //for html overlay div
-    var ccWidth = $("#masked_div").width() / 2;
-    var ccHeight = $("#masked_div").height() / 2;
-    var rWidth = Math.round(ccWidth) - 50;
-    var rHeight = Math.round(ccHeight) - 50;
-    $("#divLoading").css('margin-top', rHeight);
-    $("#divLoading").css('margin-left', rWidth);
-    ///////////////////////
+//    if (IsAmazonAffiliatePanel == false && bIsContentResize == true) {
+//        H = globalinitheight + $('#contentWrapper').height();
+//    }
+
+//    //Abdus Samad
+//    //LCMS-11878  
+//    //Start 
+//    if (bIsContentResize == true && IsRecommendationCoursePanel == false) {
+//        H = globalinitheight + $('#contentWrapperReco').height();
+//    }
+//    //Stop
 
 
-    //var panelHeight = $("#content").height();
-    var panelHeight = $("#content_container").height();
-    $("#content").height(panelHeight);
-    $("#panel").height(panelHeight);
-    $("#panel > div").height(panelHeight - 147);
-    //alert(panelHeight);
-    $("#toc div").removeAttr('style');
-    $("#panelbutton").css('margin-top', (panelHeight / 2 - 20) + 'px');
-    $("#panelholder").css('width', '10px');
-    if (navigator.appName.indexOf("Microsoft") != -1) {
-        fullWidthAccordian = $("#content").width() - 15;
-    } else {
-        fullWidthAccordian = $("#content").width() - 10;
-    }
+//    $("#content_container").height(H);
 
-    AdjustingWidthAndHeightOfTOC();
+//    //for html overlay div
+//    var ccWidth = $("#masked_div").width() / 2;
+//    var ccHeight = $("#masked_div").height() / 2;
+//    var rWidth = Math.round(ccWidth) - 50;
+//    var rHeight = Math.round(ccHeight) - 50;
+//    $("#divLoading").css('margin-top', rHeight);
+//    $("#divLoading").css('margin-left', rWidth);
+//    ///////////////////////
 
-   //$( '#content' ).css( {width: W-20, height: H-20} ); 
+
+//    //var panelHeight = $("#content").height();
+//    var panelHeight = $("#content_container").height();
+//    $("#content").height(panelHeight);
+//    $("#panel").height(panelHeight);
+//    $("#panel > div").height(panelHeight - 147);
+//    //alert(panelHeight);
+//    $("#toc div").removeAttr('style');
+//    $("#panelbutton").css('margin-top', (panelHeight / 2 - 20) + 'px');
+//    $("#panelholder").css('width', '10px');
+//    if (navigator.appName.indexOf("Microsoft") != -1) {
+//        fullWidthAccordian = $("#content").width() - 15;
+//    } else {
+//        fullWidthAccordian = $("#content").width() - 10;
+//    }
+
+//    AdjustingWidthAndHeightOfTOC();
+
+//   //$( '#content' ).css( {width: W-20, height: H-20} ); 
 }
 
 
@@ -3576,11 +3576,11 @@ function CourseIdleTimeOut() {
 function LoadingEngine() {
 
     this.OnLoadContentArea = function(caption) {
-        $('#masked_div').show();
+        //$('#masked_div').show();
 
     }
     this.OnReadyContentArea = function() {
-        $('#masked_div').hide();
+        //$('#masked_div').hide();
 
     }
 }

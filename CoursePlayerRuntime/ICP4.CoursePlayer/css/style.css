@@ -3515,3 +3515,6 @@ display:none;
 #htmlContentContainer{
 display:none;
 } 
+
+/**************************Custom CSS*/
+.odometer #odometerTxt, .odometer #odometer{ display: inline;}

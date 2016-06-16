@@ -1,12 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <style>
-    table { height:100%; width:100%; margin:auto; padding : 10px 10px 5px 10px}
+<!--
+    table { height:100%; width:100%; margin:auto; padding : 10px 10px 5px 10px; position: relative;}
     .mainimage {  max-width: 350px;  vertical-align:top;}
     .sceneTitle { font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 36px; text-decoration : bold;}
     .sceneTextArea { font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 18px; text-align: left;}       
+	-->
+	.scene-content p{margion: 0 0 10px!important;}
 </style>
     <!--style="text-align:justify;"-->
-    <table border="0" width="95%" height="100" align="center" valign="center" cellpadding="0" cellspacing="0" style="height:100px !important;">
+<!--  
+  <table border="0" width="95%" height="100" align="center" valign="center" cellpadding="0" cellspacing="0" style="height:100px !important;">
         <tr>
             <td valign="top" style="height:30px !important;">
                 <table border="0" cellpadding="0" cellspacing="0">
@@ -37,4 +41,18 @@
          <tr>
             <td colspan="3" valign="top"></td>
          </tr>
-    </table>
+    </table>-->
+	<section class="scene-wrapper visual-right">
+	<div class="scene-body">
+
+		<img id="image" style="float: left;" class="img-responsive" src="$VisualImage" />
+		<h1 class="scene-title">$Heading</h1>
+		<div class="scene-cell">
+			<div class="scene-content">
+				<p>$Text</p>
+				<p>$CustomMessage</p>
+			</div>
+		</div>
+		
+	</div>
+</section>
