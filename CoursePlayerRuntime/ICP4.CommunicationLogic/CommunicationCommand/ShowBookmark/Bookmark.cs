@@ -22,6 +22,22 @@ namespace ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark
             set { bookMarkTitle = value; }
         }
 
+        private string bookMarkDate;
+
+        public string BookMarkDate
+        {
+            get { return bookMarkDate; }
+            set { bookMarkDate = value; }
+        }
+
+        private string bookMarkTime;
+
+        public string BookMarkTime
+        {
+            get { return bookMarkTime; }
+            set { bookMarkTime = value; }
+        }
+
         #region IDisposable Members
 
         public void Dispose()

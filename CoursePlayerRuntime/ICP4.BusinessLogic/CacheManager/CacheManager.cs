@@ -204,6 +204,34 @@ namespace ICP4.BusinessLogic.CacheManager
 
         }
 
+        /// <summary>
+        /// This method get Course Image from cache if exist
+        /// </summary>
+        /// <param name="CourseID">CourseID int value, represent the key for cache</param>        
+        /// <returns>ICPBrandingService.BrandLocaleInfo object</returns>
+        public string GetIFCourseImageExistInCache(int CourseID)
+        {
+            string courseImage = null;
+            try
+            {
+                if (HttpRuntime.Cache["COURSEIMAGE" + "_" + CourseID.ToString()] == null)
+                {
+                    courseImage = null;
+                }
+                else
+                {
+                    courseImage = (string)HttpRuntime.Cache["COURSEIMAGE" + "_" + CourseID.ToString()];
+                }
+                return courseImage;
+            }
+            catch (Exception ex)
+            {
+                ExceptionPolicyForLCMS.HandleException(ex, "ICPException");
+                return null;
+            }
+
+        }
+
 
         /// <summary>
         /// This method create Course Configuration in cache.
@@ -248,6 +276,32 @@ namespace ICP4.BusinessLogic.CacheManager
                     HttpRuntime.Cache.Add("COURSESEQUENCE" + "_" + courseID.ToString() + "_" + courseConfigurationID.ToString() + "_" + source.ToString(), courseSequence, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 6, 0, 0), System.Web.Caching.CacheItemPriority.NotRemovable, null);
                 }
                 
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ExceptionPolicyForLCMS.HandleException(ex, "ICPException");
+                return false;
+            }
+
+        }
+
+        /// <summary>
+        /// This method create Course Image in cache.
+        /// </summary>
+        /// <param name="courseID">CourseID integer value, represent the key for cache</param>        
+        /// <returns>Boolean value to represent whether the object is stored in cache</returns>
+        public bool CreateCourseImageInCache(int courseID, string courseImageURL)
+        {
+
+            try
+            {
+                if (HttpRuntime.Cache["COURSEIMAGE" + "_" + courseID.ToString()] == null)
+                {
+
+                    HttpRuntime.Cache.Add("COURSEIMAGE" + "_" + courseID.ToString(), courseImageURL, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 6, 0, 0), System.Web.Caching.CacheItemPriority.NotRemovable, null);
+                }
+
                 return true;
             }
             catch (Exception ex)

@@ -17,6 +17,14 @@ namespace ICP4.CommunicationLogic.CommunicationCommand.ShowCourseInfo
             set { courseName = value; }
         }
 
+        private string courseDescription;
+
+        public string CourseDescription
+        {
+            get { return courseDescription; }
+            set { courseDescription = value; }
+        }
+
         private int idleTimeOut;
 
         public int IdleTimeOut
@@ -100,6 +108,20 @@ namespace ICP4.CommunicationLogic.CommunicationCommand.ShowCourseInfo
         {
             get { return showInstructorInfo; }
             set { showInstructorInfo = value; }
+        }
+
+        private string showInstructorText;
+        public string ShowInstructorText
+        {
+            get { return showInstructorText; }
+            set { showInstructorText = value; }
+        }
+
+        private string showInstructorImage;
+        public string ShowInstructorImage
+        {
+            get { return showInstructorImage; }
+            set { showInstructorImage = value; }
         }
 
         private bool showAmazonAffiliatePanel;

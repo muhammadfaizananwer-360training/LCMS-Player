@@ -80,6 +80,14 @@ namespace _360Training.BusinessEntities
             set { firstSceneName = value; }
         }
 
+        private DateTime createdDate;
+
+        public DateTime CreatedDate
+        {
+            get { return createdDate; }
+            set { createdDate = value; }
+        }
+
 
 
         public LearnerCourseBookMarkInfo()
@@ -94,6 +102,7 @@ namespace _360Training.BusinessEntities
             this.isMovieEnded = false;
             this.nextButtonState = true;
             this.firstSceneName = string.Empty;
+            this.createdDate = DateTime.MinValue;
         }
     }
 }

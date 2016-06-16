@@ -38,6 +38,23 @@ namespace ICP4.CoursePlayer
             string brandCode = null;
             string variant = null;
 
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetExpires(DateTime.Now.AddSeconds(-1));
+            Response.Cache.SetNoStore();
+            Response.AppendHeader("Pragma", "no-cache");
+            //if (isPageExpired())
+            //{
+            //    Response.Redirect("CoursePlayerExit.aspx");
+            //}
+            //else
+            //{
+            //    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            //    Response.Cache.SetExpires(DateTime.Now.AddSeconds(-1));
+            //    Response.Cache.SetNoStore();
+            //    Response.AppendHeader("Pragma", "no-cache");
+            //}
+            
+
             if (Request.QueryString["REDIRECT"] == null)
             {
 
@@ -161,6 +178,14 @@ namespace ICP4.CoursePlayer
 
             }
         }
+
+        //private bool isPageExpired()
+        //{
+        //    if (Session["IsPageExpired"] != null && Convert.ToBoolean(Session["IsPageExpired"])==true)
+        //        return true;            
+        //    else
+        //        return false;
+        //}
 
         [WebMethod]
         public static string InitializeCoursePlayer(string learnerSessionID, string brandCode, string variant, int courseID, bool isdemo, bool isRedirect, bool isPreview, int svId, int sceneID, int assetID, string courseGUID)
@@ -656,6 +681,28 @@ namespace ICP4.CoursePlayer
         }
 
         [WebMethod]
+        public static string DeleteBookMark(string bookmarkID)
+        {
+            try
+            {
+                using (CourseManager courseManager = new CourseManager())
+                {
+                    int courseID = Convert.ToInt32(System.Web.HttpContext.Current.Session["CourseID"]);
+                    int studentID = Convert.ToInt32(System.Web.HttpContext.Current.Session["LearnerID"]);
+                    int enrollmentID = Convert.ToInt32(System.Web.HttpContext.Current.Session["EnrollmentID"]);                    
+                    object commandObject = courseManager.DeleteStudentBookmark(courseID, studentID, enrollmentID, Convert.ToInt32(bookmarkID));
+                    return JavaScriptConvert.SerializeObject(commandObject);
+                }
+            }
+            catch (Exception ex1)
+            {
+                ExceptionPolicyForLCMS.HandleException(ex1, "ICPException");
+                return CreateExceptionCommandMessage(ex1);
+
+            }
+        }
+
+        [WebMethod]
         public static string LoadBookMark(int bookMarkID)
         {
             try
@@ -884,7 +931,7 @@ namespace ICP4.CoursePlayer
                             customMessage.MessageImageURL = "";
                             customMessage.ButtonText = "";
                             customMessage.CustomMessageType = "SessionEnd";
-                            customMessage.RedirectURL = string.Empty;
+                            customMessage.RedirectURL = "CoursePlayerExit.aspx";
                             showCustomMessage.CommandName = ICP4.CommunicationLogic.CommunicationCommand.CommandNames.ShowCustomMessage;
                             showCustomMessage.CustomMessage = customMessage;
                             //System.Diagnostics.Trace.WriteLine("Turning isAbondoned to true at LogoutcoursePlayer if (commandObject == null)");
@@ -915,7 +962,7 @@ namespace ICP4.CoursePlayer
                         customMessage.MessageImageURL = "";
                         customMessage.ButtonText = "";
                         customMessage.CustomMessageType = "SessionEnd";
-                        customMessage.RedirectURL = string.Empty;
+                        customMessage.RedirectURL = "CoursePlayerExit.aspx";
                         showCustomMessage.CommandName = ICP4.CommunicationLogic.CommunicationCommand.CommandNames.ShowCustomMessage;
                         showCustomMessage.CustomMessage = customMessage;
                         //System.Diagnostics.Trace.WriteLine("Turning isAbondoned to true at LogoutcoursePlayer (outer else)");
