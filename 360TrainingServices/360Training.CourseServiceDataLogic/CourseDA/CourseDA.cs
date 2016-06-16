@@ -486,6 +486,43 @@ namespace _360Training.CourseServiceDataLogic.CourseDA
         }
 
         /// <summary>
+        /// Gets all course groups in the parent child hierarchy of A course group   
+        /// </summary>
+        /// <param name="courseGroupID"></param>
+        /// <returns>Course Group object List</returns>
+        public string GetCourseGroupsByCourse(int CourseID)
+        {
+            DbCommand dbCommand = null;
+            try
+            {
+                //This SP returns all coursegroups related to a particular coursegroup
+                //This procedure will return all the related coursegroups in the current hierarchy 
+                dbCommand = db.GetStoredProcCommand(StoredProcedures.ICP_SELECT_COURSEGROUPS_BY_COURSE);
+                db.AddInParameter(dbCommand, "@COURSE_ID", DbType.Int32, CourseID);
+                string courseGroupGuid = string.Empty;
+                using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+                {                   
+
+                    while (dataReader.Read())
+                    {
+                        if (Convert.ToBoolean(dataReader["CONTAINSCOURSE"]))
+                        {
+                            courseGroupGuid = dataReader["COURSEGROUP_GUID"] == DBNull.Value ? "" : dataReader["COURSEGROUP_GUID"].ToString();
+                        }
+                    }
+                }
+                return courseGroupGuid;
+
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicy.HandleException(exp, "Exception Policy");
+                return null;
+            }
+
+        }
+
+        /// <summary>
         /// This method returns Course Approval Affidavit
         /// </summary>
         /// <param name="courseID">int courseid</param>
@@ -1034,8 +1071,41 @@ namespace _360Training.CourseServiceDataLogic.CourseDA
                 ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
                 return string.Empty;
             }
-
         }
+
+        /// <summary>
+        /// This method gets the course name
+        /// </summary>
+        /// <param name="courseID">int courseid</param>
+        /// <returns>string courseName</returns>
+        public string[] GetCourseNameAndDescription(int courseID)
+        {
+            DbCommand dbCommand = null;
+            string[] coursenameanddescription=new string[2];
+            string courseName = string.Empty;
+            string courseDescription = string.Empty;
+            try
+            {
+                dbCommand = db.GetStoredProcCommand(StoredProcedures.SELECT_COURSE_NAME);
+                db.AddInParameter(dbCommand, "@COURSE_ID", DbType.Int32, courseID);
+                using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+                {
+                    while (dataReader.Read())
+                    {
+                        courseName = dataReader["NAME"] == DBNull.Value ? "" : dataReader["NAME"].ToString();
+                        courseDescription = dataReader["DESCRIPTION"] == DBNull.Value ? "" : dataReader["DESCRIPTION"].ToString();
+                    }
+                }
+                coursenameanddescription[0] = courseName;
+                coursenameanddescription[1] = courseDescription;
+                return coursenameanddescription;
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+                return coursenameanddescription;
+            }
+        }  
         /// <summary>
         /// 
         /// </summary>

@@ -139,6 +139,21 @@ namespace _360Training.CourseService
                 return courseManager.GetCourseName(courseID);
             }
         }
+
+        /// <summary>
+        /// This method gets the course name
+        /// </summary>
+        /// <param name="courseID">int courseid</param>
+        /// <returns>string courseName</returns>
+        [WebMethod]
+        public string[] GetCourseNameAndDescription(int courseID)
+        {
+            using (CourseManager courseManager = new CourseManager())
+            {
+                return courseManager.GetCourseNameAndDescription(courseID);
+            }
+        }
+
         /// <summary>
         /// This mehod gets the scene template HTML
         /// </summary>
@@ -737,6 +752,15 @@ namespace _360Training.CourseService
             using (CourseManager courseManager = new CourseManager())
             {
                 return courseManager.GetMultipleQuizConfigurationCount(courseID);
+            }
+        }
+
+        [WebMethod]
+        public string GetCourseGroupsByCourse(int CourseID)
+        {
+            using (CourseManager courseManager = new CourseManager())
+            {
+                return courseManager.GetCourseGroupsByCourse(CourseID);
             }
         }
         

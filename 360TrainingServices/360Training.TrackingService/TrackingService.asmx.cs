@@ -228,11 +228,11 @@ namespace _360Training.TrackingService
         /// <param name="bookMarkTitle">string bookMarkTitle</param>
         /// <returns>boolean true if suucessfull,else false</returns>
         [WebMethod]
-        public bool SaveLearnerCourseBookmark(int courseID, int learnerID,int enrollmentID, string item_GUID,string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState,string firstSceneName)
+        public bool SaveLearnerCourseBookmark(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName, DateTime createddate)
         {
             using (TrackingManager trackingManager = new TrackingManager())
             {
-                return trackingManager.SaveLearnerCourseBookmark(courseID, learnerID,enrollmentID, item_GUID, sceneGUID, flashSceneNo, bookMarkTitle, lastScene, isMovieEnded, nextButtonState, firstSceneName);
+                return trackingManager.SaveLearnerCourseBookmark(courseID, learnerID, enrollmentID, item_GUID, sceneGUID, flashSceneNo, bookMarkTitle, lastScene, isMovieEnded, nextButtonState, firstSceneName, createddate);
             }
         }
         /// <summary>
@@ -262,6 +262,21 @@ namespace _360Training.TrackingService
             using (TrackingManager trackingManager = new TrackingManager())
             {
                 return trackingManager.GetAllLearnerCourseBookMarksInfo(courseID,learnerID,enrollmentID);
+            }
+        }
+
+        /// <summary>
+        /// This method delete the bookmarks information against the bookmarkID
+        /// and learner
+        /// </summary>
+        /// <param name="bookmarkID">int bookmarkID</param>        
+        /// <returns>BookMarkInfo object</returns>
+        [WebMethod]
+        public bool DeleteLearnerCourseBookMarksInfo(int bookmarkID)
+        {
+            using (TrackingManager trackingManager = new TrackingManager())
+            {
+                return trackingManager.DeleteLearnerCourseBookMarksInfo(bookmarkID);
             }
         }
         /// <summary>

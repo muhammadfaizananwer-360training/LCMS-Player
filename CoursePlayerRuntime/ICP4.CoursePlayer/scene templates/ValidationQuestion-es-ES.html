@@ -139,7 +139,7 @@ and (max-device-width : 1024px) {
 </head>
 <body>
 
-    
+<!--   
 <table >
         
 
@@ -183,6 +183,8 @@ and (max-device-width : 1024px) {
 				 <div id="btnend" class="btn-end" style="float:left;"></div> 
 			</div>
 			-->
+			
+			<!--
 		  </td>
          
             
@@ -307,6 +309,145 @@ and (max-device-width : 1024px) {
 				 <div id="btnend" class="btn-end" style="float:left;"></div> 
 			</div>
     
-    
+    -->
+	
+	
+			<section class="scene-wrapper visual-right">
+	<div class="scene-body">
+		<div class="scene-cell">
+			<h1 class="scene-title">Validaci&oacute;n de la Identidad</h1>
+            <div class="scene-content">
+                <p> Este curso requiere que usted conteste preguntas de validaci&oacute;n de identidad. A&uacute;n no ha 
+				presentado sus respuestas originales a estas preguntas. Para su comodidad, 
+				puede hacerlo aqu&iacute; . Para cada uno de los cinco grupos de preguntas, elija una pregunta 
+				de la lista desplegable y escriba su respuesta a esa pregunta. Tiene que llenar todos 
+				los 5 grupos de preguntas. Cuando haya terminado, haga clic en <strong>Guardar</strong>, y estas 
+				preguntas y respuestas se guardan en el perfil del estudiante en el LMS, y usted puede seguir 
+				en el curso.</p>
+            </div>
+
+<div class="row">
+	<div class="col-sm-4">CONJUNTO DE PREGUNTAS 1 (Elija una pregunta y la respuesta.) <span class="mandatory">*</span></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<select id="QuestionSet1" name="D1" class="QuestionSet" onchange="clearFields('txtAnswerSet1');">
+                    <option value='0'>
+                    Seleccione una pregunta
+                    </option>
+                    <option value='101'>
+                   &iquest;Cu&aacute;l era su apodo en la infancia?
+                   
+                    </option>
+                    <option value='102'>
+                     &iquest;En qu&eacute; ciudad conoci&oacute; a su c&oacute;nyuge/pareja?  
+                    </option>
+                    <option value='103'>
+                    &iquest;A qu&eacute; escuela asisti&oacute; para el sexto grado?  
+                    </option>
+                </select>
+    </div>
+</div>
+
+<div class="row qborder">
+	<div class="col-sm-4"></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<input class="content-text form-control" id="txtAnswerSet1" type="text" onKeyUp="disableNext();" />
+    </div>
+</div>
+
+
+<div class="row">
+	<div class="col-sm-4">CONJUNTO DE PREGUNTAS 2 (Elija una pregunta y la respuesta.) <span class="mandatory">*</span></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<select id="QuestionSet2" name="D2" class="QuestionSet" onchange="clearFields('txtAnswerSet2');">
+                    <option value='0'>Seleccione una pregunta</option>
+                    <option value='104'>&iquest;Cu&aacute;l es el segundo nombre de su hijo mayor? </option>
+                    <option value='105'>&iquest;Cu&aacute;l es el segundo nombre de su hermano mayor?</option>
+                    <option value='106'>&iquest;Cu&aacute;l es el nombre de su mejor amigo de la infancia?</option>
+                </select>
+    </div>
+</div>
+
+<div class="row qborder">
+	<div class="col-sm-4"></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<input class="content-text form-control" id="txtAnswerSet2" type="text" onKeyUp="disableNext();"/>
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-sm-4">CONJUNTO DE PREGUNTAS 3 (Elija una pregunta y la respuesta.) <span class="mandatory">*</span></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<select id="QuestionSet3" name="D3" class="QuestionSet" onchange="clearFields('txtAnswerSet3');">
+                    <option value='0'>Seleccione una pregunta</option>
+                    <option value='107'>&iquest;Cu&aacute;l es el nombre de su primo mayor?</option>
+                    <option value='108'>&iquest;Cu&aacute;l es el apellido de soltera de su abuela materna?</option>                   
+                </select>
+    </div>
+</div>
+
+<div class="row qborder">
+	<div class="col-sm-4"></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<input id="txtAnswerSet3" type="text" class="content-text form-control" onKeyUp="disableNext();" />
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-sm-4">CONJUNTO DE PREGUNTAS 4 (Elija una pregunta y la respuesta.)<span class="mandatory">*</span></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<select id="QuestionSet4" name="D4" class="QuestionSet" onchange="clearFields('txtAnswerSet4');">
+                    <option value='0'>Seleccione una pregunta</option>
+                    <option value='110'>&iquest;Cu&aacute;l era el apellido de su maestro de tercer grado?</option>
+                    <option value='111'>&iquest;Cu&aacute;l es el a&ntilde;o de nacimiento de su hermano mayor? (Por ejemplo, 1969)</option>
+                    <option value='112'>&iquest;En qu&eacute; ciudad o pueblo se conocieron sus padres? </option>
+                </select>
+    </div>
+</div>
+
+<div class="row qborder">
+	<div class="col-sm-4"></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<input class="content-text form-control" id="txtAnswerSet4" type="text" onKeyUp="disableNext();"/>
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-sm-4">CONJUNTO DE PREGUNTAS 5 (Elija una pregunta y la respuesta.)<span class="mandatory">*</span></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<select id="QuestionSet5" name="D5" class="QuestionSet" onchange="clearFields('txtAnswerSet5');">
+                    <option value='0'>Seleccione una pregunta</option>
+                    <option value='113'>&iquest;En qu&eacute; ciudad o pueblo fue su primer trabajo?</option>
+                    <option value='114'>&iquest;Cu&aacute;l es el nombre de una universidad a la que present&oacute; una solicitud pero no asisti&oacute;? </option>
+                    <option value='115'>&iquest;Cu&aacute;l era el nombre de su primer animal de peluche?</option>
+                </select>
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-sm-4"></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<input class="content-text form-control" id="txtAnswerSet5" type="text" onKeyUp="disableNext();"/>
+    </div>
+</div>
+
+
+<div class="row">
+	<div class="col-sm-9">
+	    	<div id="validationIdentityButton">
+            <div id="btnstart">
+             <span id="btnSaveValidityIdentityQuestions"> 
+				<a href="#" type="button" class="cd-btn main-action btn-stem star-rating-readonly">Guardar</a>
+			  </span>
+              <div id="btnend"></div> 
+              </div>
+           </div>
+	</div>
+    <div class="col-sm-3"></div>
+</div>
+
+</div>
+	</div>
+</section>
+
 </body>
 </html>

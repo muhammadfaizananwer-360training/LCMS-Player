@@ -14,9 +14,9 @@
         .mandatory{ color: Red; padding:0px 4px 0px 0px; float: right; *padding:0px 4px 0px 298px; *float:left;}
         .error-meesage{color: Red; padding: 10px 0px 10px 0px; float: left;}
 		table { height:100%; width:100%; margin:auto; padding : 10px 10px 5px 0px}
-		.bottom-spacing{ float: left; margin-bottom: 5px;}
+		.bottom-spacing{ margin-bottom: 10px;}
 		
-		table tr td.style1{ width: 301px !important; /*float: left;*/ margin-left: 5px;}
+		.style1{ width: 310px !important; /*float: left;*/ margin-left: 5px;}
 		/*.table td{width: 70%;}*/
 		
 		h2.sceneTitle { font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 24px; text-decoration : normal; font-weight: normal;}
@@ -63,7 +63,9 @@
              margin-top: 3px\0;
 			 font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; font-size : 13px; text-align: left; margin-bottom: 20px;
         }
-        
+		.scene-wrapper .scene-content p { margin-bottom: 20px!important;}
+        .qborder{border-bottom: 2px dashed #eee; margin-bottom: 20px!important;}
+		.btn-stem { float: right;}
         
     
                                            
@@ -134,7 +136,7 @@ and (max-device-width : 1024px) {
 </head>
 <body>
 
-    
+<!--   
 <table >
         
 
@@ -175,6 +177,8 @@ and (max-device-width : 1024px) {
 				 <div id="btnend" class="btn-end" style="float:left;"></div> 
 			</div>
 			-->
+			
+			<!--
 		  </td>
          
             
@@ -298,6 +302,139 @@ and (max-device-width : 1024px) {
 				</span>
 				 <div id="btnend" class="btn-end" style="float:left;"></div> 
 			</div>
-    
+    -->
+		<section class="scene-wrapper visual-right">
+	<div class="scene-body">
+		<div class="scene-cell">
+			<h1 class="scene-title">Identity Validation</h1>
+            <div class="scene-content">
+                <p> This course requires you to answer identity validation questions. You have not yet 
+        submitted your original answers to these questions. For your convenience, you may 
+        do so here. For each of the five questions sets below, choose one question 
+        from the drop-down and type in your answer to that question. You must fill out 
+        all 5 questions sets. When finished, click <strong>Save</strong>, and these questions and answers 
+        will be saved to your Learner Profile in the LMS, and you may continue in the 
+        course.</p>
+            </div>
+
+<div class="row">
+	<div class="col-sm-4">QUESTION SET 1 (Pick a question and answer.) <span class="mandatory">*</span></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<select id="QuestionSet1" name="D1" class="QuestionSet form-control" onChange="clearFields('txtAnswerSet1');">
+              <option value='0'> Select a Question </option>
+              <option value='101'> What was your childhood nickname? </option>
+              <option value='102'> In what city did you meet your spouse/significant other? </option>
+              <option value='103'> What school did you attend for sixth grade? </option>
+            </select>
+    </div>
+</div>
+
+<div class="row qborder">
+	<div class="col-sm-4"></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<input class="content-text form-control" id="txtAnswerSet1" type="text" onKeyUp="disableNext();" />
+    </div>
+</div>
+
+
+<div class="row">
+	<div class="col-sm-4">QUESTION SET 2 (Pick a question and answer.) <span class="mandatory">*</span></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<select id="QuestionSet2" name="D2" class="QuestionSet form-control" onChange="clearFields('txtAnswerSet2');">
+              <option value='0'>Select a Question</option>
+              <option value='104'>What is the middle name of your oldest child? </option>
+              <option value='105'>What is your oldest sibling's middle name?</option>
+              <option value='106'>What is the name of your favorite childhood friend?</option>
+            </select>
+    </div>
+</div>
+
+<div class="row qborder">
+	<div class="col-sm-4"></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<input class="content-text form-control" id="txtAnswerSet2" type="text" onKeyUp="disableNext();"/>
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-sm-4">QUESTION SET 3 (Pick a question and answer.) <span class="mandatory">*</span></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<select id="QuestionSet3" name="D3" class="QuestionSet form-control" onChange="clearFields('txtAnswerSet3');">
+              <option value='0'>Select a Question</option>
+              <option value='107'>What is your oldest cousin's first name?</option>
+              <option value='108'>What is your maternal grandmother's maiden name?</option>
+            </select>
+    </div>
+</div>
+
+<div class="row qborder">
+	<div class="col-sm-4"></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<input id="txtAnswerSet3" type="text" class="content-text form-control" onKeyUp="disableNext();" />
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-sm-4">QUESTION SET 4 (Pick a question and answer.)<span class="mandatory">*</span></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<select id="QuestionSet4" name="D4" class="QuestionSet form-control" onChange="clearFields('txtAnswerSet4');">
+              <option value='0'>Select a Question</option>
+              <option value='110'>What was the last name of your third grade teacher?</option>
+              <option value='111'>What is your oldest siblings birth year?(e.g., 1969)</option>
+              <option value='112'>In what city or town did your parents meet? </option>
+            </select>
+    </div>
+</div>
+
+<div class="row qborder">
+	<div class="col-sm-4"></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<input class="content-text form-control" id="txtAnswerSet4" type="text" onKeyUp="disableNext();"/>
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-sm-4">QUESTION SET 5 (Pick a question and answer.)<span class="mandatory">*</span></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<select id="QuestionSet5" name="D5" class="QuestionSet form-control" onChange="clearFields('txtAnswerSet5');">
+              <option value='0'>Select a Question</option>
+              <option value='113'>In what city or town was your first job?</option>
+              <option value='114'>What is the name of a college you applied to but didn't attend? </option>
+              <option value='115'>What was the name of your first stuffed animal?</option>
+            </select>
+    </div>
+</div>
+
+<div class="row">
+	<div class="col-sm-4"></div>
+    <div class="col-sm-8 bottom-spacing">
+    	<input class="content-text form-control" id="txtAnswerSet5" type="text" onKeyUp="disableNext();"/>
+    </div>
+</div>
+
+
+<div class="row">
+	<div class="col-sm-9">
+	    	<div id="validationIdentityButton">
+            <div id="btnstart">
+             <span id="btnSaveValidityIdentityQuestions"> 
+				<a href="#" type="button" class="cd-btn main-action btn-stem star-rating-readonly">Save</a>
+			  </span>
+              <div id="btnend"></div> 
+              </div>
+           </div>
+	</div>
+    <div class="col-sm-3"></div>
+</div>
+
+</div>
+	</div>
+</section>
+
+
+
+
 </body>
 </html>
+
+	

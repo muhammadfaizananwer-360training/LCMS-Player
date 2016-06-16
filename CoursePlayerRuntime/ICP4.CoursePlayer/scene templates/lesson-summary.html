@@ -42,6 +42,7 @@ padding:0px;
 
 }
 </style>
+<!--
 <table border="0" width="95%" align="center" valign="center" cellpadding="0" cellspacing="0">
  <tr>
     <td height="40" colspan="3"><span class="sceneTitle">$Heading</span></td>
@@ -57,8 +58,28 @@ padding:0px;
 		<div  id="media" style="width:350px; height:400px; overflow:hidden;">
   <embed src="$VisualTop" width="350" height="400" wmode="transparent">
     			<!-- <noembed><img src="yourimage.gif" ></noembed> -->
+				<!--
     		</embed>
 	</div>
     </td>
   </tr>
   </table>
+  -->
+  <section class="scene-wrapper visual-right">
+	<div class="scene-body">
+		<h1 class="scene-title">$Heading</h1>
+		<div class="scene-cell">
+			<div class="scene-content">
+				$Text
+			</div>
+		</div>
+		<div class="scene-cell visual-element">
+			<img id="image" class="img-responsive" src="$VisualTop" />
+			<div id="media" style="overflow:hidden;">
+				<div id="container" style="display:none;"></div>
+				<embed src="$VisualTop" wmode="transparent"></embed>
+
+		</div>
+		</div>
+	</div>
+</section>
