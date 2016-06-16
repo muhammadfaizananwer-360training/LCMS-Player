@@ -25,14 +25,16 @@
          if ( launchWindow != null ) {
             launchWindow.close();
         }
-        launchWindow=window.open(url,'','menubar=0,scroll bars=no,width=1024,height=660,top=0,left=0,resizable=0,location=0,toolbar=0,directories=0');
+        //launchWindow=window.open(url,'','menubar=0,scroll bars=no,width=1024,height=660,top=0,left=0,resizable=0,location=0,toolbar=0,directories=0');
+        launchWindow=window.open(url,'','');
         }
         else
         {
         if ( launchWindow != null ) {
             launchWindow.close();
             }
-        launchWindow=window.open(url,'','menubar=0,scroll bars=no,width=1024,height=660,top=0,left=0,resizable=1,location=0,toolbar=0,directories=0');
+        //launchWindow=window.open(url,'','menubar=0,scroll bars=no,width=1024,height=660,top=0,left=0,resizable=1,location=0,toolbar=0,directories=0');
+        launchWindow=window.open(url,'','');
         }
         
     }

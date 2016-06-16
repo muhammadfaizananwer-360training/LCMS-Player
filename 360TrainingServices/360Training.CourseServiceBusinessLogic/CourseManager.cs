@@ -34,6 +34,22 @@ namespace _360Training.CourseServiceBusinessLogic
                 return string.Empty;
             }
         }
+
+        public string[] GetCourseNameAndDescription(int courseID)
+        {
+            try
+            {
+                using (CourseDA courseDA = new CourseDA())
+                {
+                    return courseDA.GetCourseNameAndDescription(courseID);
+                }
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+                return new string[2];
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -3054,6 +3070,22 @@ namespace _360Training.CourseServiceBusinessLogic
             {
                 ExceptionPolicyForLCMS.HandleException(ex, "Exception Policy");
                 return false;
+            }
+        }
+
+        public string GetCourseGroupsByCourse(int CourseID)
+        {
+            try
+            {
+                using (CourseDA courseDA = new CourseDA())
+                {
+                    return courseDA.GetCourseGroupsByCourse(CourseID);
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionPolicyForLCMS.HandleException(ex, "Exception Policy");
+                return string.Empty;
             }
         }
 

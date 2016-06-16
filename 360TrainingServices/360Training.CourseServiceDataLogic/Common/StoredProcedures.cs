@@ -142,5 +142,7 @@ namespace _360Training.CourseServiceDataLogic.Common
             //Start
             public static readonly string ICP_CHECK_COURSE_MULTIPLEQUIZCONFIGURATION = "ICP_CHECK_COURSE_MULTIPLEQUIZCONFIGURATION";
             //Stop
+            public static readonly string ICP_SELECT_COURSEGROUPS_BY_COURSE = "SELECT_COURSEGROUPS_BY_COURSE";
+        
     }
 }

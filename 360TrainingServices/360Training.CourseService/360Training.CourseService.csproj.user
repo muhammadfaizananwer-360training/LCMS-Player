@@ -12,7 +12,7 @@
           <NativeDebugging>False</NativeDebugging>
           <SQLDebugging>False</SQLDebugging>
           <PublishCopyOption>RunFiles</PublishCopyOption>
-          <PublishTargetLocation>\\10.0.100.179\lcms\iCP4\CourseService\</PublishTargetLocation>
+          <PublishTargetLocation>D:\WaqasWork\LCMS\SourceCode-4.26.2 Course Player New UI\Publish\26-April-2016\ICP4\Services\CourseService\</PublishTargetLocation>
           <PublishDeleteAllFiles>True</PublishDeleteAllFiles>
           <PublishCopyAppData>True</PublishCopyAppData>
           <ExternalProgram>

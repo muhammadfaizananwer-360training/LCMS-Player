@@ -1,142 +1,9 @@
-
-
 <style >
-.mainimage {
-  max-width: 960px;
-  max-height: 470px;
-  width: expression(this.width > 960 ? "960px" : true);
-  height: expression(this.height > 470 ? "470px" : true);
-
+#finalPPdiv{	
+	width:100%;
+	height:100%;
 }
-
-#contentTable {
-  height:98%;
-  width:100%;
-  margin : auto;
-  border : 10px white solid;
-}
-
-.sceneTitle {
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 36px; 
-  text-decoration : bold;
-  
-}
-
-.sceneTextArea {
-  text-align: left;
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 18px;
-
-}
-
-.sceneTextArea p{
-margin:0px;
-padding:0px;
-}
-
-.sceneClosedCaptioningText {
-  text-align: justify;
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 12px;
-
-}
-.sceneClosedCaptioningText p{
-margin:0px;
-padding:0px;
-
-}
-
-.play{
-	background-image:url("images/play_button.png"); 
-	background-repeat:no-repeat; 
-	background-position:center;
-	position: relative; 
-    height: 7%; 
-	width:10%;  
-	z-index:9999px;
-	margin:0 auto; 
-	top : -33px;       /* old was -23 change to -33 to adjust the button to the bottom of the video   */
-	*top : -36px;	   /* old was -25 change to -35 to adjust the button to the bottom of the video   */
-	
-    outline:  none;
-   ie-dummy: expression(this.hideFocus=true); 
-
-	}	
-	
-.pause{
-	background-image:url("images/pause_button.png"); 
-	background-repeat:no-repeat; 
-	background-position:center;
-	border-collapse:collapse;
-	height: 7%; 
-	width:10%; 
-	z-index:9999px;
-	position: relative;
-	margin:0 auto;
-	top : -33px; /* old was -23 change to -33 to adjust the button to the bottom of the video   */
-	*top : -36px; /* old was -25 change to -35 to adjust the button to the bottom of the video   */
-	
-   outline:  none;
-   ie-dummy: expression(this.hideFocus=true); 
-   
-
-	}
-
-
-.play a{
-		float: left;
-	    height: 100%; 
-		width:100%; 
-		
-		outline:  none;
-        ie-dummy: expression(this.hideFocus=true); 
-		
-	   }
-		
-.pause a{
-		float:left;
-		width:100%;
-		height:100%; 
-		
-		outline:  none;
-        ie-dummy: expression(this.hideFocus=true);
-		
-		}
-
-
-#finalPPdiv
-	{	
-	width:960px;  
-	height:470px;
-	right: 0;
-    top: 0;
-	left: 0px;
-	left: 0px; /* standard */
-	left: 0px\9; /* IE 8 and below */
-	*left: 0px; /* IE 7 and below */
-	_left: 0px; /* IE 6 */	
-	left: 0px*;	
-	bottom: 0px;
-	margin:0 auto;
-	/*z-index:9999px;*/ 
-
-	}
-	
-	
-#media{ 
-
-    width:100%; 
-	height:97%;
-	overflow:hidden;
-	margin:0 auto;
-	left: 0px;  
-	position:absolute;
-	
-}
-
 #container{ 
-
     width:100%; 
 	height:97%;
 	overflow:hidden;
@@ -145,62 +12,45 @@ padding:0px;
 	position:absolute;
 	
 }
-
-
-	
 #toggle{ 
- outline:  none;  
-   }
-
-
-
+	outline: none;  
+}
 </style>
 
-<!--text-transform : capitalize;-->
-<table id="contentTable">
-  <tr>
-    <td valign="top" align="center">
-    <div id="spandiv" align="center">
-        <span id="image">
-            <img src="$VisualTop" class="mainimage" align="top" />
-        </span> 
-    </div> 
-	<div id="media" style="overflow:hidden;" align="center" >
-	   <div id="container" style="display:none"></div>
-		  <embed src="$VisualTop"  wmode="transparent" id="finalPPdiv" name="finalPPdiv" >
-			
-		  </embed>
-		   <div id="toggle">
-               <a href="javascript:pauseFlash();" ></a> 
-            </div> 
-   </div>
-
-
-</div>
-</div>
-
-</td>
-  </tr>
-</table>
-
+<section class="scene-wrapper visual-center" id="contentTable">
+	<div class="scene-body">
+		<div class="visual-element">
+			<img id="image" class="img-responsive" src="$VisualTop" />
+			<div id="media" style="overflow:hidden;">
+				<div id="container" style="display:none;"></div>
+				<embed src="$VisualTop" wmode="transparent" id="finalPPdiv" name="finalPPdiv"></embed>
+				<div id="toggle">
+					<a href="javascript:pauseFlash();"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 <script type="text/javascript">
+
 	var test = 0;
 	
 	  if(playPauseFeature == false) {        		 		  
-		    document.getElementById("media").children[2].remove(); 
+		var listMedia = document.getElementById("media");
+		listMedia.removeChild(listMedia.childNodes[2]);		    
      }	
 	 
         if (JSplayerEnabled == false) {
             if (document.getElementById('media').children[1].src.indexOf(".mp4") > 0) {
-                /*
+              /*  
                 var isSelection = document.getElementById("media").children[0].src; 
                 document.getElementById("media").innerHTML = "";	
                 var embedStr = "<Embed Src='"+isSelection+"' Width=960 Height=470  ></Embed>"; 
-                document.getElementById('media').innerHTML = embedStr; */
-
+                document.getElementById('media').innerHTML = embedStr; 
+*/
             }
         }
-    
+  
 function pauseFlash()
 {
 	if(test == "-1")
@@ -219,10 +69,7 @@ function pauseFlash()
 }
 
 $(document).ready(function() {
-
-  var game=document.getElementById("finalPPdiv");
-
-
+	var game=document.getElementById("finalPPdiv");
     $('#toggle').bind("click", function() {
         if ($(this).attr("class") == "play") 
         {
@@ -230,22 +77,18 @@ $(document).ready(function() {
             $('#toggle a').attr('title', 'Click here to Pause');
         }
         else
-        
+        {
             $(this).attr("class", "play");
             $('#toggle a').attr('title', 'Click here to Play');
-        
-    });
-
-
+        }
+	});
     $('#media').mouseover(function() {
-
         if (test == "0") {
             $('#toggle').addClass("pause");
             $(".pause").css("display", "block");
             $("#toggle").removeClass("play");
             $('#toggle a').attr('title', 'Click here to Pause');
         }
-
         else if (test == "-1") {
             $('#toggle').addClass("play");
             $(".play").css("display", "block");
@@ -253,14 +96,12 @@ $(document).ready(function() {
             $('#toggle a').attr('title', 'Click here to Play'); 
         }
     });
-
     $('#media').mouseout(function() {
-
         if (test == "0") {
             $(".pause").css("display", "none");            
         }
         if (test == "-1") {
-            $(".play").css("display", "none");           
+            $(".play").css("display", "none");            
         }
     });
 });

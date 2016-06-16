@@ -1,20 +1,20 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <StartPageUrl>CoursePlayer.aspx?SESSION=167bc39e-5d17-4c2a-ba6c-714b076a1279&amp;ts=1453215715648</StartPageUrl>
+          <StartPageUrl>CoursePlayer.aspx?COURSEID=215874&amp;VARIANT=En-US&amp;BRANDCODE=DEFAULT&amp;PREVIEW=true&amp;SESSION=19bc62a2-3661-4e12-b162-d5497503e329#</StartPageUrl>
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <NativeDebugging>False</NativeDebugging>
           <SQLDebugging>False</SQLDebugging>
           <PublishCopyOption>RunFiles</PublishCopyOption>
-          <PublishTargetLocation>\\10.0.100.179\lcms\iCP4\player\</PublishTargetLocation>
+          <PublishTargetLocation>\\10.0.100.250\lcms\iCP4\player\</PublishTargetLocation>
           <PublishDeleteAllFiles>True</PublishDeleteAllFiles>
-          <PublishCopyAppData>True</PublishCopyAppData>
+          <PublishCopyAppData>False</PublishCopyAppData>
           <ExternalProgram>
           </ExternalProgram>
           <StartExternalURL>

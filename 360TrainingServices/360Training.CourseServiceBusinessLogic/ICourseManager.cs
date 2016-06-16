@@ -45,6 +45,7 @@ namespace _360Training.CourseServiceBusinessLogic
         /// <param name="courseID">int courseid</param>
         /// <returns>string courseName</returns>
         string GetCourseName(int courseID);
+        string[] GetCourseNameAndDescription(int courseID);
         /// <summary>
         /// This method gets the CourseMaterialInfo objects associated to a Course
         /// </summary>
@@ -95,6 +96,7 @@ namespace _360Training.CourseServiceBusinessLogic
         bool SaveLearnerCourseMessage(int courseID, string learningSessionGuid);
         bool CheckLearnerCourseMessage(int courseID, string learningSessionGuid);
 
+        string GetCourseGroupsByCourse(int CourseID);
 
         //bool ProctorLoginRequirementCriteriaMeets(string learningSessionGuid);
         //int AuthenticateProctor(long courseID, long learnerID, string learningSessionID, string proctorLogin, string proctorPassword);

@@ -765,7 +765,7 @@ namespace _360Training.TrackingServiceDataLogic.StudentTrackingDA
         /// <param name="flashSceneNo">string flashSceneNo</param>
         /// <param name="bookMarkTitle">string bookMarkTitle</param>
         /// <returns>boolean true if suucessfull,else false</returns>
-        public bool SaveLearnerCourseBookmark(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName)
+        public bool SaveLearnerCourseBookmark(int courseID, int learnerID, int enrollmentID, string item_GUID, string sceneGUID, string flashSceneNo, string bookMarkTitle, string lastScene, bool isMovieEnded, bool nextButtonState, string firstSceneName, DateTime createddate)
         {
             DbCommand dbCommand = null;
             bool isInserted = false;
@@ -784,6 +784,7 @@ namespace _360Training.TrackingServiceDataLogic.StudentTrackingDA
                 db.AddInParameter(dbCommand, "@ISMOVIEENDED", DbType.Boolean, isMovieEnded);
                 db.AddInParameter(dbCommand, "@NEXTBUTTONSTATE", DbType.Boolean, nextButtonState);
                 db.AddInParameter(dbCommand, "@FIRSTSCENENAME", DbType.String, firstSceneName);
+                db.AddInParameter(dbCommand, "@CREATEDDATE", DbType.DateTime, createddate);
 
                 if (db.ExecuteNonQuery(dbCommand) > 0)
                     isInserted = true;
@@ -794,6 +795,32 @@ namespace _360Training.TrackingServiceDataLogic.StudentTrackingDA
                 isInserted = false;
             }
             return isInserted;
+        }
+
+        /// <summary>
+        /// This method deleted the bookmark info 
+        /// </summary>
+        /// <param name="ID">int bookmarkID</param>        
+        /// <returns>boolean true if suucessfull,else false</returns>
+        public bool DeleteLearnerCourseBookmark(int bookmarkID)
+        {
+            DbCommand dbCommand = null;
+            bool isDeleted = false;
+            try
+            {
+                //This SP saves the learnercoursebookmarkinfo
+                dbCommand = db.GetStoredProcCommand(StoredProcedures.DELETE_LEARNERCOURSEBOOKMARK);
+                db.AddInParameter(dbCommand, "@ID", DbType.Int32, bookmarkID);                
+
+                if (db.ExecuteNonQuery(dbCommand) > 0)
+                    isDeleted = true;
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+                isDeleted = false;
+            }
+            return isDeleted;
         }
         /// <summary>
         /// This method returns the bookmarkInfo object
@@ -860,6 +887,7 @@ namespace _360Training.TrackingServiceDataLogic.StudentTrackingDA
                         learnerCourseBookMarkInfo = new LearnerCourseBookMarkInfo();
                         learnerCourseBookMarkInfo.BookMarkInfoID = Convert.ToInt32(dataReader["ID"]);
                         learnerCourseBookMarkInfo.BookMarkTitle = dataReader["BOOKMARKTITLE"] == DBNull.Value ? "" : dataReader["BOOKMARKTITLE"].ToString();
+                        learnerCourseBookMarkInfo.CreatedDate = dataReader["CREATED_DATE"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(dataReader["CREATED_DATE"]);
                         bookMarksInfo.Add(learnerCourseBookMarkInfo);
                     }
                 }

@@ -22,6 +22,7 @@ using ICP4.BusinessLogic.IntegerationManager;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using ICP4.BusinessLogic.ICPTrackingService;
 
+
 namespace ICP4.BusinessLogic.CourseManager
 {
 
@@ -170,8 +171,9 @@ namespace ICP4.BusinessLogic.CourseManager
             ICP4.CommunicationLogic.CommunicationCommand.ShowCourseInfo.CourseInfo courseInfo = new ICP4.CommunicationLogic.CommunicationCommand.ShowCourseInfo.CourseInfo();
             if (Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsDemoable"]))
             {
+                
                 int demoCourseID = Convert.ToInt32(System.Web.HttpContext.Current.Session["DemoableCourseID"]);
-
+                GetCourseImage(demoCourseID);
                 int originalCourseID = GetOriginalCourseIDFromSubContentOwner(demoCourseID);
                 if (originalCourseID > 0)
                 {
@@ -215,8 +217,12 @@ namespace ICP4.BusinessLogic.CourseManager
                 {
                     courseService.Url = ConfigurationManager.AppSettings["ICPCourseService"];
                     courseService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
-                    courseInfo.CourseName = courseService.GetCourseName(demoCourseID);
+                    string[] courseNameandDescription = new string[2];
+                    courseNameandDescription=courseService.GetCourseNameAndDescription(demoCourseID);
+                    courseInfo.CourseName = courseNameandDescription[0].ToString();
+                    courseInfo.CourseDescription = courseNameandDescription[1].ToString();
                     HttpContext.Current.Session["CourseName"] = courseInfo.CourseName;
+                    HttpContext.Current.Session["CourseDescription"] = courseInfo.CourseDescription;
                 }
 
                 courseInfo.CourseTimer = -1;
@@ -262,7 +268,8 @@ namespace ICP4.BusinessLogic.CourseManager
                              {
                                 // Changed By Waqas Zakai
                                 // Get Original Course ID from Sub ContentOwner
-                                // Start
+                                // Start                   
+                                 GetCourseImage(Convert.ToInt32(System.Web.HttpContext.Current.Session["DemoableCourseID"]));
                                  int originalCourseID = GetOriginalCourseIDFromSubContentOwner(Convert.ToInt32(System.Web.HttpContext.Current.Session["DemoableCourseID"]));
                                 if (originalCourseID > 0)
                                 {
@@ -348,6 +355,8 @@ namespace ICP4.BusinessLogic.CourseManager
                             System.Web.HttpContext.Current.Session["CourseLockedDuringAssessment"] = learnerCourseTrackInfo.IsLockedCourseDuringAssessment.ToString();
                             courseLocked = IsCourseLocked(learnerCourseTrackInfo.EnrollmentID, out lockingReason);
                             System.Web.HttpContext.Current.Session["CourseLocked"] = courseLocked;
+
+                            GetCourseImage(learnerCourseTrackInfo.CourseID);
 
                             // Changed By Waqas Zakai
                             // Get Original Course ID from Sub ContentOwner
@@ -568,8 +577,12 @@ namespace ICP4.BusinessLogic.CourseManager
                             {
                                 courseService.Url = ConfigurationManager.AppSettings["ICPCourseService"];
                                 courseService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
-                                courseInfo.CourseName = courseService.GetCourseName(courseId);
+                                string[] courseNameandDescription = new string[2];
+                                courseNameandDescription = courseService.GetCourseNameAndDescription(courseId);
+                                courseInfo.CourseName = courseNameandDescription[0].ToString();
+                                courseInfo.CourseDescription = courseNameandDescription[1].ToString();
                                 HttpContext.Current.Session["CourseName"] = courseInfo.CourseName;
+                                HttpContext.Current.Session["CourseDescription"] = courseInfo.CourseDescription;
                             }
 
                             courseInfo.CourseTimer = -1;
@@ -663,8 +676,20 @@ namespace ICP4.BusinessLogic.CourseManager
                                 courseInfo.MinimumTimeBeforeStartingPostAssessment = courseConfiguration.PostAssessmentConfiguration.MinimumTimeBeforeStart;
                                 courseInfo.MinimumTimeBeforeStartingPostAssessmentUnit = courseConfiguration.PostAssessmentConfiguration.MinimumTimeBeforeStartUnit;
                             }
-                            courseInfo.logOutText = logOutText;
+                            courseInfo.logOutText = logOutText;                            
                             courseInfo.ShowInstructorInfo = DisplayInstructorInfo(courseConfiguration);
+                            if (courseInfo.ShowInstructorInfo)
+                            {
+                                courseInfo.ShowInstructorText = courseConfiguration.InstructorInfoText;
+                                courseInfo.ShowInstructorImage = string.Empty;
+
+                                if (Convert.ToString(HttpContext.Current.Session["BrandCode"]).ToLower() != "default" && Convert.ToString(HttpContext.Current.Session["Variant"]).ToLower() != "en-us")
+                                {
+                                    BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager();
+                                    courseInfo.ShowInstructorImage = cacheManager.GetResourceValueByResourceKey(BusinessLogic.BrandManager.ResourceKeyNames.ImageComanyLogo, HttpContext.Current.Session["BrandCode"].ToString(), HttpContext.Current.Session["Variant"].ToString());
+                                }
+                            }
+
                             int sourceLMS = Convert.ToInt32(System.Web.HttpContext.Current.Session["Source"]);
                           
                             bool.TryParse(System.Web.HttpContext.Current.Session["isPreview"].ToString(), out isPreview);
@@ -1525,7 +1550,7 @@ namespace ICP4.BusinessLogic.CourseManager
             bool isPreview = Convert.ToBoolean(System.Web.HttpContext.Current.Session["isPreview"]);
             if (isPreview)
             {
-                return showBookmark;
+                //return showBookmark;
             }
             ///////////////////////////////////////////////////////////////////////////////
 
@@ -1547,6 +1572,16 @@ namespace ICP4.BusinessLogic.CourseManager
                             bookmark = new ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.Bookmark();
                             bookmark.BookMarkID = learnerCourseBookMarkInfo.BookMarkInfoID;
                             bookmark.BookMarkTitle = learnerCourseBookMarkInfo.BookMarkTitle;
+                            if (!learnerCourseBookMarkInfo.CreatedDate.ToString().Equals("1/1/0001 12:00:00 AM"))
+                            {
+                                bookmark.BookMarkDate = string.Format("{0:MM/dd/yyyy}", learnerCourseBookMarkInfo.CreatedDate);
+                                bookmark.BookMarkTime = string.Format("{0:hh:mm tt}", learnerCourseBookMarkInfo.CreatedDate);
+                            }
+                            else
+                            {
+                                bookmark.BookMarkDate = string.Empty;
+                                bookmark.BookMarkTime = string.Empty;
+                            }
                             bookmarks.Add(bookmark);
                         }
                         showBookmark.Bookmarks = bookmarks;
@@ -1665,7 +1700,7 @@ namespace ICP4.BusinessLogic.CourseManager
             {
                 trackingService.Url = ConfigurationManager.AppSettings["ICPTrackingService"];
                 trackingService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
-                isSaved = trackingService.SaveLearnerCourseBookmark(courseID, studentID,enrollmentID, item_GUID, scene_GUID, flashSceneNo, bookMarkTitle, lastScene, isMovieEnded, nextButtonState, firstSceneName);
+                isSaved = trackingService.SaveLearnerCourseBookmark(courseID, studentID,enrollmentID, item_GUID, scene_GUID, flashSceneNo, bookMarkTitle, lastScene, isMovieEnded, nextButtonState, firstSceneName,DateTime.Now);
             }
 
             if (isSaved)
@@ -1691,6 +1726,16 @@ namespace ICP4.BusinessLogic.CourseManager
                                 bookmark = new ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.Bookmark();
                                 bookmark.BookMarkID = learnerCourseBookMarkInfo.BookMarkInfoID;
                                 bookmark.BookMarkTitle = learnerCourseBookMarkInfo.BookMarkTitle;
+                                if (!learnerCourseBookMarkInfo.CreatedDate.ToString().Equals("1/1/0001 12:00:00 AM"))
+                                {
+                                    bookmark.BookMarkDate = string.Format("{0:MM/dd/yyyy}", learnerCourseBookMarkInfo.CreatedDate);
+                                    bookmark.BookMarkTime = string.Format("{0:hh:mm tt}", learnerCourseBookMarkInfo.CreatedDate);
+                                }
+                                else
+                                {
+                                    bookmark.BookMarkDate = string.Empty;
+                                    bookmark.BookMarkTime = string.Empty;
+                                }                                
                                 bookmarks.Add(bookmark);
                             }
                             showBookmark.Bookmarks = bookmarks;
@@ -1718,6 +1763,94 @@ namespace ICP4.BusinessLogic.CourseManager
             }
 
 
+        }
+
+        /// <summary>
+        /// This method delete the student bookmark against the bookmarkID 
+        /// </summary>
+        /// <param name="courseID">CourseID integer value</param>
+        /// <param name="studentID">StudentID integer value</param>
+        /// <param name="enrollmentID">EnrollmentID int value whcih represent the integer value</param>        
+        /// <returns>If successfully execute returns ShowBookmark command object</returns>
+        public object DeleteStudentBookmark(int courseID, int studentID, int enrollmentID, int bookmarkID)
+        {
+            //Code for preview mode as in preview mode we do not want to save bookmarks
+            bool isPreview = Convert.ToBoolean(System.Web.HttpContext.Current.Session["isPreview"]);
+            if (isPreview)
+            {
+                ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.ShowBookmark showBookmark = new ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.ShowBookmark();
+                showBookmark.CommandName = ICP4.CommunicationLogic.CommunicationCommand.CommandNames.ShowBookMark;
+                showBookmark.Bookmarks = new List<ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.Bookmark>();
+                return showBookmark;
+            }
+            ///////////////////////////////////////////////////////////////////////////////
+
+            bool isDeleted = false;
+            using (ICPTrackingService.TrackingService trackingService = new ICP4.BusinessLogic.ICPTrackingService.TrackingService())
+            {
+                trackingService.Url = ConfigurationManager.AppSettings["ICPTrackingService"];
+                trackingService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
+                isDeleted = trackingService.DeleteLearnerCourseBookMarksInfo(bookmarkID);
+            }
+
+            if (isDeleted)
+            {
+                ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.ShowBookmark showBookmark = new ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.ShowBookmark();
+                showBookmark.CommandName = ICP4.CommunicationLogic.CommunicationCommand.CommandNames.ShowBookMark;
+                showBookmark.Bookmarks = new List<ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.Bookmark>();
+                List<ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.Bookmark> bookmarks = new List<ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.Bookmark>();
+                ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.Bookmark bookmark = new ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.Bookmark();
+
+                try
+                {
+                    using (ICPTrackingService.TrackingService trackingService = new ICP4.BusinessLogic.ICPTrackingService.TrackingService())
+                    {
+                        trackingService.Url = ConfigurationManager.AppSettings["ICPTrackingService"];
+                        trackingService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
+
+                        ICPTrackingService.LearnerCourseBookMarkInfo[] learnerBookmarks = trackingService.GetAllLearnerCourseBookMarksInfo(courseID, studentID, enrollmentID);
+                        if (learnerBookmarks.Length > 0)
+                        {
+                            foreach (ICPTrackingService.LearnerCourseBookMarkInfo learnerCourseBookMarkInfo in learnerBookmarks)
+                            {
+                                bookmark = new ICP4.CommunicationLogic.CommunicationCommand.ShowBookmark.Bookmark();
+                                bookmark.BookMarkID = learnerCourseBookMarkInfo.BookMarkInfoID;
+                                bookmark.BookMarkTitle = learnerCourseBookMarkInfo.BookMarkTitle;
+                                if (!learnerCourseBookMarkInfo.CreatedDate.ToString().Equals("1/1/0001 12:00:00 AM"))
+                                {
+                                    bookmark.BookMarkDate = string.Format("{0:MM/dd/yyyy}", learnerCourseBookMarkInfo.CreatedDate);
+                                    bookmark.BookMarkTime = string.Format("{0:hh:mm tt}", learnerCourseBookMarkInfo.CreatedDate);
+                                }
+                                else
+                                {
+                                    bookmark.BookMarkDate = string.Empty;
+                                    bookmark.BookMarkTime = string.Empty;
+                                }                                
+                                bookmarks.Add(bookmark);
+                            }
+                            showBookmark.Bookmarks = bookmarks;
+                        }
+
+                    }
+                    return showBookmark;
+                }
+                catch (Exception ex)
+                {
+                    ExceptionPolicyForLCMS.HandleException(ex, "ICPException");
+                    throw ex;
+
+                }
+            }
+            else
+            {
+                using (CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
+                {
+                    string brandCode = System.Web.HttpContext.Current.Session["BrandCode"].ToString();
+                    string variant = System.Web.HttpContext.Current.Session["Variant"].ToString();
+                    return CreateErrorMessage(courseID, cacheManager.GetResourceValueByResourceKey(BrandManager.ResourceKeyNames.HeadingGlossaryBoxTitle, brandCode, variant));
+                }
+
+            }
         }
 
         /// <summary>
@@ -7050,7 +7183,7 @@ namespace ICP4.BusinessLogic.CourseManager
                             // LCMS-11305 Start Waqas Zakai
                             assessmentMastery = assessmentMastery.Replace("<br/><br/>", "");
                             // LCMS-11305 END here
-                            ProctorMessageText = ProctorMessageText.Replace("$MASTERYSCORETEXT", assessmentMastery);
+                            ProctorMessageText = ProctorMessageText.Replace("$MASTERYSCORETEXT", "<p class='sceneTextArea'>" + assessmentMastery + "</p>");
                             ///LCMS-10542 End-- Fahad Mukhtar
 
                             proctorMessage.ProctorMessageText = ProctorMessageText;
@@ -8981,6 +9114,7 @@ namespace ICP4.BusinessLogic.CourseManager
             string brandCode = System.Web.HttpContext.Current.Session["BrandCode"].ToString();
             string variant = System.Web.HttpContext.Current.Session["Variant"].ToString();
             string courseName = HttpContext.Current.Session["CourseName"].ToString();
+            string courseDescription = HttpContext.Current.Session["CourseDescription"].ToString();
 
             ICP4.CommunicationLogic.CommunicationCommand.ShowSlide.ShowSlide showSlide = new ICP4.CommunicationLogic.CommunicationCommand.ShowSlide.ShowSlide();
             ICP4.CommunicationLogic.CommunicationCommand.ShowSlide.SlideMediaAsset slideMediaAsset = new ICP4.CommunicationLogic.CommunicationCommand.ShowSlide.SlideMediaAsset();
@@ -9074,9 +9208,30 @@ namespace ICP4.BusinessLogic.CourseManager
                 slideMediaAsset.DisableBackButton = !isNotFirstViewableObjectInSequence(sequence, sequenceItem);
 
                 StringBuilder sb = new StringBuilder(HTML);
-                sb.Replace("$Heading", cacheManager.GetResourceValueByResourceKey(BrandManager.ResourceKeyNames.CourseIntroductionHeading, brandCode, variant));
-                sb.Replace("$VisualTop", cacheManager.GetResourceValueByResourceKey(BrandManager.ResourceKeyNames.CourseIntroductionImage, brandCode, variant));
-                sb.Replace("$Text", courseName);
+                sb.Replace("$Heading", courseName);
+                if(System.Web.HttpContext.Current.Session["CourseImage"]!=null)
+                {
+                    sb.Replace("$VisualTop", System.Web.HttpContext.Current.Session["CourseImage"].ToString());
+                }
+                //sb.Replace("$VisualTop", cacheManager.GetResourceValueByResourceKey(BrandManager.ResourceKeyNames.CourseIntroductionImage, brandCode, variant));
+
+                if (courseName.Length > 150)
+                {
+                    sb.Replace("$CSSNAME", "heading-exceeding");
+                }
+                else
+                {
+                    sb.Replace("$CSSNAME", "");
+                }
+
+                if (courseDescription.Length > 210)
+                {
+                    sb.Replace("$Text", courseDescription.Substring(0, 210).ToString() + " ... " + "<a href='javascript:;' id='read-more-2' data-group='modal-dynamic' data-trg='course-read-more' data-type='cd-modal-trigger'><span id='coursedescreadMoreText'>Read more</span></a>");
+                }
+                else
+                {
+                    sb.Replace("$Text", courseDescription);
+                }
                 HTML = sb.ToString();
             }
 
@@ -11453,6 +11608,99 @@ namespace ICP4.BusinessLogic.CourseManager
             return originalCourseID;
         }
 
+        #region Course Background Image
+        /// <summary>
+        /// This method Getting the course background image from Store Front
+        /// </summary>
+        /// <param name="courseID">int courseID</param>
+        /// <returns></returns>
+        /// <Description>LCMS-13988 Author: Waqas Zakai Date : 21-April-2016</Description>
+        private void GetCourseImage(int courseID) 
+        {
+            string courseImage = null;
+            string defaultCourseImage = ConfigurationManager.AppSettings["DefaultCourseImage"].ToString();
+            try
+            {                
+                if (Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsDemoable"]) == false)
+                {
+                    if (Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsPreview"]) == false)
+                    {
+                        using (ICP4.BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
+                        {
+                            courseImage = cacheManager.GetIFCourseImageExistInCache(courseID);
+                            if (courseImage == null)
+                            {
+                                ICPCourseService.CourseService courseService = new ICP4.BusinessLogic.ICPCourseService.CourseService();
+                                courseService.Url = ConfigurationManager.AppSettings["ICPCourseService"];
+                                courseService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
+
+                                string courseGroupGUID = courseService.GetCourseGroupsByCourse(courseID);
+                                string courseGUID = courseService.GetCourseGUID(courseID);
+                                string courseImageURLPrefix = ConfigurationManager.AppSettings["StoreFrontCourseImageURLPrefix"].ToString();    
+                                using (WebClient client = new WebClient())
+                                {
+                                    string serviceURL = ConfigurationManager.AppSettings["StoreFrontServiceCallsURL_CourseImage"].ToString();
+                                    serviceURL = serviceURL.Replace("{0}", courseGUID + courseGroupGUID);                                     
+                                    try
+                                    {
+                                        var content = client.DownloadString(serviceURL);
+                                        Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+                                        ICP4.BusinessLogic.CourseManager.RootObject myDeserializedObj = (ICP4.BusinessLogic.CourseManager.RootObject)Newtonsoft.Json.JavaScriptConvert.DeserializeObject(content, typeof(ICP4.BusinessLogic.CourseManager.RootObject));
+                                        if (myDeserializedObj != null)
+                                        {
+                                            if (myDeserializedObj.catalogEntryView != null && myDeserializedObj.catalogEntryView.Count > 0)
+                                            {
+                                                if (myDeserializedObj.catalogEntryView[0].UserData != null && myDeserializedObj.catalogEntryView[0].UserData.Count > 0)
+                                                {
+                                                    courseImage = "{0}" + myDeserializedObj.catalogEntryView[0].UserData[0].WLCMS_THUMBNAIL.ToString();
+
+                                                    if (courseImage.Contains("http://") || courseImage.Contains("https://"))
+                                                    {
+                                                        courseImage = courseImage.Replace("{0}", "");
+                                                    }
+                                                    else
+                                                    {
+                                                        courseImage = courseImage.Replace("{0}", courseImageURLPrefix);
+                                                    }
+
+                                                    if (courseImage != null && courseImage.Length > 0)
+                                                    {
+                                                        cacheManager.CreateCourseImageInCache(courseID, courseImage);
+                                                    }
+                                                }
+                                            }                                            
+                                        }
+                                        if (courseImage == null)
+                                        {
+                                            courseImage = defaultCourseImage;
+                                        }
+                                    }
+                                    catch(Exception ex)
+                                    {
+                                        courseImage = defaultCourseImage;
+                                    }
+                                }                                
+                            }
+                        }
+                    }
+                    else
+                    {
+                        courseImage = defaultCourseImage;
+                    }
+                }
+                else
+                {
+                    courseImage = defaultCourseImage;
+                }
+                System.Web.HttpContext.Current.Session["CourseImage"] = courseImage;
+            }
+            catch (Exception exp)
+            {
+                System.Web.HttpContext.Current.Session["CourseImage"] = defaultCourseImage;                          
+            }
+        }
+        #endregion
+
 
         #region Course Evaluation
         public object ResumeCourseFromCourseEvaluation(bool isNormalDirection)
@@ -13110,6 +13358,7 @@ namespace ICP4.BusinessLogic.CourseManager
             int.TryParse(ConfigurationManager.AppSettings["ProctorLoginAttempt"].ToString(), out proctorLoginAttempt);
 
             bool isPreview = Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsPreview"]);
+            
             if (isPreview)
             {
                 object assessmentStartCommand = System.Web.HttpContext.Current.Session["CurrentCommandProctor"];
