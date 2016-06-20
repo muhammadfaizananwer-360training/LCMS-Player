@@ -68,11 +68,12 @@ Main Components
 
 -------------------------------- */
 .cd-tour-wrapper {
-  overflow:hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   position: fixed;
   z-index: 2;
-  height: 90%;
-  width: 90%;
+  height: 100%;
+  width: 100%;
   left: 50%;
   top: 50%;
   bottom: auto;
@@ -94,18 +95,29 @@ Main Components
   display: none;
   content: 'mobile';
 }
-.cd-tour-wrapper.active {
+.cd-tour-wrapper.active{
+	display:none;
+	z-index:100;
+	-webkit-transition: opacity 0.4s 0s, visibility 0s 0s;
+	-moz-transition: opacity 0.4s 0s, visibility 0s 0s;
+	transition: opacity 0.4s 0s, visibility 0s 0s;
+}
+.toggled-bottom.toggled-top .cd-tour-wrapper.active {
   visibility: visible;
   opacity: 1;
-  z-index:100;
-  -webkit-transition: opacity 0.4s 0s, visibility 0s 0s;
-  -moz-transition: opacity 0.4s 0s, visibility 0s 0s;
-  transition: opacity 0.4s 0s, visibility 0s 0s;
+  display: block;
 }
-@media only screen and (min-width: 600px) {
-  .cd-tour-wrapper {
+@media only screen and (max-width: 1100px) {
+  /*.cd-tour-wrapper {
     max-width: 500px;
     max-height: 600px;
+  }*/
+  
+  .active .cd-single-step.is-selected{
+	left: 20px;
+	top: 20px;
+	margin-bottom: 20px;
+	width: 95%;
   }
 }
 @media only screen and (min-width: 1100px) {
@@ -168,7 +180,7 @@ Main Components
   width: 10px;
   height: 10px;
   border-radius: inherit;
-  background: #ff962c;
+  background: #ed3124;
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -255,31 +267,91 @@ Main Components
   }
   
   #guide-menu{
-	top: 100px;
+	top: 120px;
     left: 50px;
-  }
-  .toggled-left #guide-menu{
-    left: 430px !important;
   }
   #guide-menu .cd-more-info::before{
 	top:15px !Important;
   }
   #guide-menu > span{
-	top: -68px;
+	top: -88px;
 	right: -6px;
   }
   
+  #guide-menu-expend{
+	top: 110px;
+    left: 430px;
+  }
+  #guide-menu-expend .cd-more-info::before{
+	top:15px !Important;
+  }
+  #guide-menu-expend  > span{
+	top: -78px;
+	right: -6px;
+  }
+  
+  #guide-timeline{
+	bottom: 18px;
+    left: 62%;
+  }
+  #guide-timeline .cd-more-info::before{
+	bottom:15px !Important;
+  }
+  
+  #guide-config{
+	bottom: 25px;
+    right: 0;
+    padding-right: 400px;
+  }
+  #guide-config .cd-more-info::before{
+	left: 252px !Important;
+  }
+  #guide-config > span{
+	left: 286px;
+    top: -6px;
+  }
+  
+  
   #guide-save{
-	top: 100px;
+	top: 120px;
     right: 50px;
   }
   #guide-save .cd-more-info::before{
 	top:15px !Important;
   }
   #guide-save > span{
-	top: -68px;
+	top: -88px;
 	right: 6px;
   }
+    
+  #guide-bookmarks{
+	top: 18px;
+    right: 50%;
+    left: 50%;
+    padding-right: 595px;
+  }
+  #guide-bookmarks .cd-more-info::before{
+	top:-12px !Important;
+  }
+  #guide-bookmarks > span{
+	left: 293px;
+    top: 5px;
+  }
+  
+  #guide-time-spent{
+	top: 18px;
+    right: 50%;
+    left: 50%;
+    padding-right: 370px;
+  }
+  #guide-time-spent .cd-more-info::before{
+	top:-12px !Important;
+  }
+  #guide-time-spent > span{
+	left: 180px;
+    top: 5px;
+  }
+  
   
   #guide-next{
 	bottom: 25px;
@@ -378,6 +450,7 @@ Main Components
   z-index: 1;
   padding: 1.5em;
   width: 100%;
+  border:2px solid #ccc;
 }
 .cd-single-step .cd-more-info::after {
   clear: both;
@@ -397,6 +470,10 @@ Main Components
   font-size: 2rem;
   line-height: 1.2;
   margin: 0 15px 10px 0;
+  color:#0280d4;
+}
+.cd-single-step .cd-actual-step{
+	color:#0280d4;
 }
 /*.cd-single-step .cd-more-info p {
   font-size: 1.3rem;
@@ -406,8 +483,11 @@ Main Components
   color: #7f7f7d;
 }*/
 .cd-single-step .cd-more-info img {
-  margin-bottom: 1.4em;
-   max-width: 100%;
+	margin-bottom: 1.4em;
+	max-width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
 }
 .cd-single-step .cd-more-info .cd-close {
   /* 'X' icon to skip the tour */
@@ -472,7 +552,6 @@ Main Components
     -webkit-transition: opacity 0.4s;
     -moz-transition: opacity 0.4s;
     transition: opacity 0.4s;
-    border-color: #fefffb;
   }
   /*.cd-single-step .cd-more-info p {
     margin-bottom: 2.5em;

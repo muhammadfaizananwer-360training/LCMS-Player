@@ -18,8 +18,9 @@ namespace _360Training.CourseServiceDataLogic.Common
             public static readonly string SELECT_LEARNER_VALIDATIONQUESTIONS = "ICP_SELECT_LEARNER_VALIDATIONQUESTIONS";
             public static readonly string SELECT_LEARNER_VALIDATIONQUESTIONOPTIONS = "ICP_SELECT_LEARNER_VALIDATIONQUESTIONOPTIONS";
             public static readonly string SELECT_COURSE_ID = "ICP_SELECT_COURSE_ID";
-            public static readonly string SELECT_COURSE_ROOT_CONTENTOBJECT = "ICP_SELECT_COURSE_ROOT_CONTENTOBJECT";
+            public static readonly string SELECT_COURSE_ROOT_CONTENTOBJECT = "ICP_SELECT_COURSE_ROOT_CONTENTOBJECT";        
             public static readonly string GET_VSC_INFO = "GET_VSC_INFO";
+            public static readonly string SELECT_ORIGINAL_COURSE_ID = "ICP_SELECT_ORIGINAL_COURSE_ID";
            
             #endregion
 

@@ -7,13 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     
-    <title>360training | Course Player</title>
+    <title>LCMS Course Player</title>
 	<!-- BEGIN CSS -->
+	<% string g = "course player testing"; %>
     <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap-3.3.5-dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="assets/plugins/tour-guide/css/style.css" />
 	<link rel="stylesheet" href="assets/plugins/bootstrap-switch/static/stylesheets/bootstrap-switch-metro.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/circle.css" />
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+	<link rel="stylesheet" type="text/css" href='<%="assets/css/style.css?g=" + g %>'/>
 	
     <link rel="shortcut icon" href="favicon.ico" />
     <!-- END CSS -->
@@ -37,14 +38,14 @@
 	<script type="text/javascript" src="assets/plugins/bootstrap-slider/js/bootstrap-slider.js"></script>
 	<script type="text/javascript" src="assets/plugins/isotope.pkgd.min.js"></script>
 	<script type="text/javascript" src="assets/plugins/BrowserDetect.js"></script>	
-    <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="Script1" data-app-key="5ep2lw0rah3qmbk"></script>
+    <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="5ep2lw0rah3qmbk"></script>
 	<script type="text/javascript" src="assets/scripts/JSON.js"></script>	
 	<script type="text/javascript" src="assets/scripts/json2.js"></script>
 	
-	<% string g = "course player testing"; %>
-    <script type='text/javascript' src="assets/scripts/ui.js"></script>
-    <script type="text/javascript" src='<%="JSPlayer/j360player.js"%>'></script>
-    <script type="text/javascript" src='<%="JSPlayer/init.js"%>'></script>    
+	
+    <script type='text/javascript' src='<%="assets/scripts/ui.js?g=" + g %>'></script>
+    <script type="text/javascript" src='<%="JSPlayer/j360player.js?g=" + g%>'></script>
+    <script type="text/javascript" src='<%="JSPlayer/init.js?g=" + g%>'></script>    
     <script type="text/javascript" src="assets/scripts/Chart.js"></script>
     <script type="text/javascript" src="assets/scripts/AC_RunActiveContent.js"></script>
     <script type="text/javascript" src='<%="assets/scripts/com/CoursePlayerEngine.js?g=" + g %>'></script>
@@ -166,7 +167,7 @@
     </div> 
                           
 	<!-- BEGIN WRAPPER -->
-    <div id="wrapper" class="outline">
+    <div id="wrapper" class="options">
 	
 		<!-- BEGIN SLIDE LOADER OVERLAY -->
 		<div id="svg-loader-bg" class="cd-svg-cover" data-step1="M1402,800h-2V0.6c0-0.3,0-0.3,0-0.6h2v294V800z" data-step2="M1400,800H383L770.7,0.6c0.2-0.3,0.5-0.6,0.9-0.6H1400v294V800z" data-step3="M1400,800H0V0.6C0,0.4,0,0.3,0,0h1400v294V800z" data-step4="M615,800H0V0.6C0,0.4,0,0.3,0,0h615L393,312L615,800z" data-step5="M0,800h-2V0.6C-2,0.4-2,0.3-2,0h2v312V800z" data-step6="M-2,800h2L0,0.6C0,0.3,0,0.3,0,0l-2,0v294V800z" data-step7="M0,800h1017L629.3,0.6c-0.2-0.3-0.5-0.6-0.9-0.6L0,0l0,294L0,800z" data-step8="M0,800h1400V0.6c0-0.2,0-0.3,0-0.6L0,0l0,294L0,800z" data-step9="M785,800h615V0.6c0-0.2,0-0.3,0-0.6L785,0l222,312L785,800z" data-step10="M1400,800h2V0.6c0-0.2,0-0.3,0-0.6l-2,0v312V800z">
@@ -177,43 +178,110 @@
 			</svg>
 		</div>
 		<!-- END SLIDE LOADER OVERLAY -->
+
+        <!-- BEGIN MODALS -->
+		<div class="modals">			
+			<!-- BEGIN DYNAMIC -->
+			<div class="modal fade" id="dynamicModal">
+			  <div class="modal-dialog modal-md">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+					<h3 class="modal-title">
+						<!-- Dynamic Title -->						
+					</h3>
+				  </div>
+				  <div class="modal-body">				
+					<!-- Dynamic Message -->					
+				  </div>
+				  <div class="modal-footer">				  
+					<!-- Dynamic Action Buttons -->					
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<!-- END DYNAMIC -->			
+		</div>
+		<!-- END MODALS -->
 		
-        <!-- BEGIN TOUR GUIDE -->
+		<!-- BEGIN TOUR GUIDE -->
 		<ul class="cd-tour-wrapper">
 			<li id="guide-menu" class="cd-single-step">
-				<span>Step 1</span>
+				<span></span>
 				<div class="cd-more-info right">
-					<h2>Step Number 1</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi alias animi molestias in, aperiam.</p>
-					<img src="assets/img/step-1.png" alt="step 1">
+					<h2>The Main Menu</h2>
+					<p>This button allows for you to expand and collapse the main menu of your course, which includes the course outline, glossary, downloads, and other important features of your course.</p>
+					<img src="assets/img/step-1.png" alt="step 1">					
 				</div>
 			</li>
-			<li id="guide-save" class="cd-single-step">
-				<span>Step 2</span>
-				<div class="cd-more-info left">
-					<h2>Step Number 2</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi alias animi molestias in, aperiam.</p>
+			<li id="guide-menu-expend" class="cd-single-step">
+				<span></span>
+				<div class="cd-more-info right">
+					<h2>Expanding The Menu</h2>
+					<p>When clicked or tapped, the main areas of your course become visible. You can expand and collapse this menu at any time during your learning experience.</p>
 					<img src="assets/img/step-2.png" alt="step 2">
 				</div>
 			</li>
-			<li id="guide-next" class="cd-single-step">
-				<span>Step 3</span>
+			<li id="guide-prev" class="cd-single-step">
+				<span></span>
 				<div class="cd-more-info top">
-					<h2>Step Number 3</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi alias animi molestias in, aperiam.</p>
+					<h2>Previous</h2>
+					<p>This allows for you to navigate backwards in the course, one slide or module at a time.</p>
 					<img src="assets/img/step-3.png" alt="step 3">
 				</div>
 			</li>
-			<li id="guide-prev" class="cd-single-step">
-				<span>Step 4</span>
+			<li id="guide-next" class="cd-single-step">
+				<span></span>
 				<div class="cd-more-info top">
-					<h2>Step Number 4</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi alias animi molestias in, aperiam.</p>
-					<img src="assets/img/step-3.png" alt="step 4">
+					<h2>Next</h2>
+					<p>This allows for you to navigate forward in the course, one slide or module at a time.</p>
+					<img src="assets/img/step-4.png" alt="step 4">
 				</div>
 			</li>
+			<li id="guide-timeline" class="cd-single-step">
+				<span></span>
+				<div class="cd-more-info top">
+					<h2>Course Time Line</h2>
+					<p>The course time line gives you a visual of how much progress you have made through the course. Use the course outline in the main menu to easily access lessons, quizzes, and final exams.</p>
+					<img src="assets/img/step-5.png" alt="step 5">
+				</div>
+			</li>
+			<li id="guide-config" class="cd-single-step">
+				<span></span>
+				<div class="cd-more-info top">
+					<h2>Volume Settings</h2>
+					<p>This menu gives you access to the volume controls for the course, including the ability to adjust the volume or turn it completely off. It also allows for the ability to show or hide closed captioning support.</p>
+					<img src="assets/img/step-6.png" alt="step 6">
+				</div>
+			</li>
+			<li id="guide-save" class="cd-single-step">
+				<span></span>
+				<div class="cd-more-info left">
+					<h2>Saving Your Course</h2>
+					<p>This button allows you to save your course progress. You can also exit the course with this option. If you save and exit your course while taking assessments and exams, progress will not be saved.</p>
+					<img src="assets/img/step-7.png" alt="step 7">
+				</div>
+			</li>
+			<li id="guide-bookmarks" class="cd-single-step">
+				<span></span>
+				<div class="cd-more-info bottom">
+					<h2>Bookmarks</h2>
+					<p>This allows you to bookmark sections of the course  you may need to reference at a later point. You can customize all of your bookmarks by giving them a title. Bookmarks are organized by order.</p>
+					<img src="assets/img/step-8.png" alt="step 8">
+				</div>
+			</li>
+			<li id="guide-time-spent" class="cd-single-step">
+				<span></span>
+				<div class="cd-more-info bottom">
+					<h2>Time Spent</h2>
+					<p>This area shows you the total amount of time spent on this course, from start to finish. You must hit the save and close menu in order to record the latest amount of time spent.</p>
+					<img src="assets/img/step-9.png" alt="step 9">
+				</div>
+			</li>
+			
+			
 		</ul>
-		<!-- END TOUR GUIDE -->	
+		<!-- END TOUR GUIDE -->
 		
         <!-- BEGIN CD MODALS -->
         <div class="cd-modals">
@@ -234,7 +302,7 @@
 						<path id="cd-changing-path-3" d="M341.1,797.5l-0.9-1.4c-0.1-0.1,0-0.3,0.1-0.3L1265.8,216c0.1-0.1,0.3,0,0.3,0.1l0.9,1.4c0.1,0.1,0,0.3-0.1,0.3L341.5,797.6 C341.4,797.7,341.2,797.7,341.1,797.5z"/>
 					</svg>
 				</div>
-				<a href="javascript:ui.svgModal.close('modal-dynamic');" class="modal-close" title="Close">Close</a>
+				<a href="javascript:ui.svgModal.close('modal-dynamic');" class="modal-close" title="Close"></a>
 				<div class="cd-modal-content">
 					
 				</div>
@@ -257,7 +325,7 @@
 						<path id="cd-changing-path-9" d="M341.1,797.5l-0.9-1.4c-0.1-0.1,0-0.3,0.1-0.3L1265.8,216c0.1-0.1,0.3,0,0.3,0.1l0.9,1.4c0.1,0.1,0,0.3-0.1,0.3L341.5,797.6 C341.4,797.7,341.2,797.7,341.1,797.5z"/>
 					</svg>
 				</div>
-				<a href="javascript:ui.svgModal.close('modal-trigger-report');" class="modal-close" title="Close Modal">Close</a>
+				<a href="javascript:ui.svgModal.close('modal-trigger-report');" class="modal-close" title="Close Modal"></a>
 				<div class="cd-modal-content" id="CompletionReport">
 					<h1><span id="CourseCompletionModalHeading"></span></h1>
 					<div class="row cHolders text-center">
@@ -360,7 +428,7 @@
 						<path id="cd-changing-path-12" d="M341.1,797.5l-0.9-1.4c-0.1-0.1,0-0.3,0.1-0.3L1265.8,216c0.1-0.1,0.3,0,0.3,0.1l0.9,1.4c0.1,0.1,0,0.3-0.1,0.3L341.5,797.6 C341.4,797.7,341.2,797.7,341.1,797.5z"/>
 					</svg>
 				</div>
-				<a href="javascript:ui.svgModal.close('modal-trigger-feeds');" class="modal-close" title="Close Modal">Close</a>
+				<a href="javascript:ui.svgModal.close('modal-trigger-feeds');" class="modal-close" title="Close Modal"></a>
 				<div class="cd-modal-content">
 					<h1>The Feeds</h1>
 					<h2>Heading 1</h2>
@@ -390,7 +458,7 @@
 						<path id="cd-changing-path-15" d="M341.1,797.5l-0.9-1.4c-0.1-0.1,0-0.3,0.1-0.3L1265.8,216c0.1-0.1,0.3,0,0.3,0.1l0.9,1.4c0.1,0.1,0,0.3-0.1,0.3L341.5,797.6 C341.4,797.7,341.2,797.7,341.1,797.5z"/>
 					</svg>
 				</div>
-				<a href="javascript:ui.svgModal.close('modal-trigger-rec');" class="modal-close" title="Close Modal">Close</a>
+				<a href="javascript:ui.svgModal.close('modal-trigger-rec');" class="modal-close" title="Close Modal"></a>
 				<div class="cd-modal-content">
 					<h1>Recommendations</h1>
 					<p>Based on the course, you may be interested in some of the following:</p>
@@ -457,7 +525,7 @@
 						<path id="cd-changing-path-18" d="M341.1,797.5l-0.9-1.4c-0.1-0.1,0-0.3,0.1-0.3L1265.8,216c0.1-0.1,0.3,0,0.3,0.1l0.9,1.4c0.1,0.1,0,0.3-0.1,0.3L341.5,797.6 C341.4,797.7,341.2,797.7,341.1,797.5z"/>
 					</svg>
 				</div>
-				<a href="javascript:ui.svgModal.close('modal-trigger-bookmark');" class="modal-close" title="Close Modal">Close</a>
+				<a href="javascript:ui.svgModal.close('modal-trigger-bookmark');" class="modal-close" title="Close Modal"></a>
 				<div class="cd-modal-content">
 					<h1><span id="bookmarkModalHeading"></span></h1>
 					<div class="input-group" id="bookmarkDialogue">
@@ -492,7 +560,7 @@
 				</div>
 				<a class="hide" data-group="modal-idle" data-trg="idle" data-type="cd-modal-trigger"></a>
 				
-				<a href="javascript:ui.svgModal.close('modal-idle');IdleTimerReset();" class="modal-close" title="Close">Close</a>
+				<a href="javascript:ui.svgModal.close('modal-idle');IdleTimerReset();" class="modal-close" title="Close"></a>
 				
 				<div class="cd-modal-content">    
                     <h1><span id="idleTimeHeading"></span></h1>                                           
@@ -524,7 +592,7 @@
 				</div>
 				<a class="hide" data-group="modal-Expire" data-trg="Expire" data-type="cd-modal-trigger"></a>
 				
-				<a href="javascript:ui.svgModal.close('modal-Expire');IdleTimerReset();" class="modal-close" id="expireClose" title="Close">Close</a>
+				<a href="javascript:ui.svgModal.close('modal-Expire');IdleTimerReset();" class="modal-close" id="expireClose" title="Close"></a>
 				
 				<div class="cd-modal-content">    
                     <h1><span id="timerExpireHeading"></span></h1>                                           
@@ -554,7 +622,7 @@
 				</div>
 				<a class="hide" data-group="modal-ClickAway" data-trg="ClickAway" data-type="cd-modal-trigger"></a>
 				
-				<a href="javascript:;" class="modal-close" id="ClickAwayClose" title="Close">Close</a>
+				<a href="javascript:;" class="modal-close" id="ClickAwayClose" title="Close"></a>
 				
 				<div class="cd-modal-content">    
                     <h1><span id="warning"></span></h1>
@@ -811,8 +879,7 @@
                             <section id="QuestionRemediationContainer" class="scene-wrapper">
                                 <div class="scene-body">
                                     <div id="QuestionRemediationContainerHeader">                                        
-                                        <div id="QuestionRemediationFeedback">
-                                            &nbsp;</div>
+                                        <h1 id="QuestionRemediationFeedback" class="scene-title">&nbsp;</h1>
                                     </div>
                                     <div class="quizresultRemediation"><div id="divIncorrectRemediation"></div><div id="divCorrectRemediation"></div></div>
                                     <div id="questionRemediationTemplate">
@@ -831,25 +898,22 @@
                                         </p>
                                     </div>
                                     <div id="buttoncontainer">
-                                        <button class="cd-btn button">Answer Remaining Questions</button>
-                                        <button class="cd-btn main-action button">Continue Grading Without Answering</button>
+										<div><button class="cd-btn button">Answer Remaining Questions</button></div>
+										<div><button class="cd-btn main-action button">Continue Grading Without Answering</button></div>
                                     </div>
                                 </div>
                             </section>
                             <!-- Irfan Assessment Result End -->
                             <!-- Irfan ShowProctorMessage Start -->
-                            <section id="ShowProctorMessageContainer" class="scene-wrapper visual-left">
-                                <div  id="ShowProctorMessageHeading" class="scene-body">                                    
-                                        <h1 class="scene-title">
-                                        </h1>                                    
+                            <section id="ShowProctorMessageContainer" class="scene-wrapper">
+                                <div id="ShowProctorMessageHeading" class="scene-body">
+                                    <h1 class="scene-title"></h1>                                    
                                     <div id="ShowProctorMessageContent" class="scene-content">
                                         <p>
                                         </p>
                                     </div>
-                                    <div id="ShowProctorMessageButtons" style="position: relative; bottom: 3px;">
-                                        <div class="floatright">
-                                            <button class="cd-btn main-action button">
-                                                Begin Assessment</button></div>
+                                    <div id="ShowProctorMessageButtons">
+                                        <button class="cd-btn main-action button">Begin Assessment</button>
                                     </div>
                                 </div>
                             </section>
@@ -1100,14 +1164,14 @@
                     <div class="t-col timeline">
 						<span class="question-counter"></span>						
 					</div>
-                    <div class="t-col option-next">
+                    <div class="t-col configures">
                         <div id="buttoncontainerAnswerReview" style="display: none;">
 							<div id="buttoncontainerAnswerReviewPage" style="display: none;">
 								<button class="btn ctrl button">Return to Answer Review Page</button>
 							</div>
 						</div>
 						<div id="QuestionRemediationButtons">
-						    <div>
+						    <div style="float:left;margin-left:-105px;">
 							    <button class="btn ctrl button" id="ShowContentRemediation">Show Contents</button>
 							</div>
 							<div>
@@ -1127,13 +1191,13 @@
 		</div> 	
 		<!-- END BOTTOM -->
 	
-		<div id="ValidationControlBar">
+		<div id="ValidationControlBar" class="bottom-wrapper for-assessment">
 			<div class="wrapper-body">
-				<div id="ValidationControlPanel" class="t-row">                                             
+				<div id="ValidationControlPanel" class="t-row" style="float:right;">
 					<div id="ValidationPlaybuttonEn" class="t-col option-next assessmentNext">
 						<a  href="javascript:;" title="" class="btn ctrl"><span id="VNextQuestionButtonEnText">NEXT</span><i class="glyphicon glyphicon-triangle-right"></i></a>                            
 					</div>
-					<div id="ValidationTimer" class="timer-bar assessmentTimer">
+					<div id="ValidationTimer" class="timer-bar assessmentTimer" style="float:right;">
 						<div class="progress"><div class="progress-bar" style="width:100%"></div></div>
 						<label><span id="vTimer">00:00</span></label>
 					</div>
@@ -1195,8 +1259,8 @@
 							</button>					    
 						</div>
 					</div>
-					<div class="t-col" id="ShowQuestionButton" style="display:none">
-						<button class="button">Show Question</button>
+					<div class="t-col" id="ShowQuestionButton" style="display:none;">
+						<button style="display: inline-block;padding:5px" class="btn ctrl button">Show Question</button>
 					</div>
 					<div class="t-col option-next">
 						<span id="PlaybuttonEn"><a  href="javascript:;" title="" class="btn ctrl"><span id="PlaybuttonEnText"></span><i class="glyphicon glyphicon-triangle-right"></i></a></span>
@@ -1293,7 +1357,8 @@
 			//	this should be call when all information saved
 			ui.loader("show", function()
 			{
-				window.open("CoursePlayerExit.aspx","_self");
+			    window.close();
+				//window.open("CoursePlayerExit.aspx","_self");
 			},"saving");
 		}	
 		
@@ -1354,7 +1419,7 @@
 					$thisModal.addClass('pre-loader please-wait');
 						//setTimeout(function(){
 							var bodyHtml =	'<h1><i class="glyphicon glyphicon-picture"></i> '+heading+'</h1>'+
-											'<p>This image is a sample of the best way to interact with PowerShell and WMI, even though its just abstractness at play. This is the metadata associated with this image.</p>'+
+											'<p></p>'+
 											'<div class="image-asset">'+
 												'<img class="img-responsive" src="'+url+'" alt="'+heading+'">'+
 											'</div>'+
@@ -1373,7 +1438,7 @@
 					$thisModal.addClass('pre-loader please-wait');
 						//setTimeout(function(){
 							var bodyHtml =	'<h1><i class="glyphicon glyphicon-file"></i> '+heading+'</h1>'+
-											'<p>This document contains all the tips and tricks when understanding PowerShell and Microsofts way of developing for the world to take over.</p>'+
+											'<p></p>'+
 											'<div id="cd-modal-pdf">It appears you don\'t have Adobe Reader or PDF support in this web browser. Click below to download the PDF</div>'+
 											'<div>'+
 												'<a href="'+url+'" target="_blank" class="cd-btn main-action" download="pdf">Download File</a>'+
@@ -1391,7 +1456,7 @@
 					$thisModal.addClass('pre-loader please-wait');
 						//setTimeout(function(){
 							var bodyHtml =	'<h1><i class="glyphicon glyphicon-list"></i> '+heading+'</h1>'+
-											'<p>An zip file, which is a compressed file format that can contain not only video, but also audio and subtitles.</p>'+
+											'<p></p>'+
 											'<div>'+
 												'<a href="'+url+'" target="_blank" class="cd-btn main-action" download="doc">Download File</a>'+
 												'<a id="dropbox-saver-0" href="javascript:;" class="cd-btn dropbox-saver">Save To Dropbox</a>'+
@@ -1407,7 +1472,7 @@
 					$thisModal.addClass('pre-loader please-wait');
 						//setTimeout(function(){
 							var bodyHtml =	'<h1><i class="glyphicon glyphicon-list"></i> '+heading+'</h1>'+
-											'<p>An MPEG-4 Video file, which is a compressed file format that can contain not only video, but also audio and subtitles.</p>'+
+											'<p></p>'+
 											'<div class="jwmovie">'+
 												'<div id="material-video-player"></div>'+
 											'</div>'+

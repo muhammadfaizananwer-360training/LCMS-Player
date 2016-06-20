@@ -780,8 +780,7 @@ function CommunicationEngine() {
 					  data: "{'timer':'"+timer+"'}",
 					  contentType: "application/json; charset=utf-8",
 					  dataType: "json",
-					  success: function(msg) {
-					    window.open("CoursePlayerExit.aspx","_self");
+					  success: function(msg) {					   
 						//var endSessionCommand = eval('(' + msg.d + ')'); 
 						//returnPacket = endSessionCommand;
 						

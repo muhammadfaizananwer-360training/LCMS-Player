@@ -23,10 +23,10 @@ var ui = function () {
 					color: '#fff',
 					alwaysVisible: true
 				});
-				$(".wrapper-body").on("touchmove", function(event) {
+				/*$(".wrapper-body").on("touchmove", function(event) {
 					event.preventDefault();
 					event.stopPropagation();
-				});
+				});*/
 			}
 			
 			ui.guide.init();
@@ -108,8 +108,21 @@ var ui = function () {
 		
 		video:{
 			instance:'',
-			player:function(path,id)
+			player:function(path,id,_w,_h,_auto)
 			{
+				if(typeof _auto == "undefined")
+				{
+					_auto = false;
+				}
+				if(typeof _h == "undefined")
+				{
+					_h = 260;
+				}
+				if(typeof _w == "undefined")
+				{
+					_w = "100%";
+				}
+				
 				if(typeof id != "undefined")
 				{
 					jwplayer.key="NWa+NruTBASm39QxfCBvuv1UblvSsMtD+mrZiJgnxNI=";
@@ -118,13 +131,14 @@ var ui = function () {
 				
 				ui.video.instance.setup({
 					file: path,//assets/uploads/fields.mp4',
-					aspectratio: "16:9",
-					height: 260,
+					/*aspectratio: "16:9",*/
+					height: _h,
 					repeat: false,
 					skin: {"name": "bekle"},
 					stagevideo: false,
 					stretching: "uniform",
-					width: "100%"
+					width: _w,
+					autostart: _auto
 				});
 			}
 		},
@@ -308,7 +322,6 @@ var ui = function () {
 						ui.nav.cache = $('#wrapper').attr('class');
 						$('#wrapper').removeClass('toggled-top toggled-left toggled-bottom');
 						ui.mouseAnalyzer(1);
-						
 					});
 					ui.mouseAnalyzer(1);
 				break;
@@ -691,44 +704,88 @@ var ui = function () {
 		},
 		
 		guide:{
+			trg:{tourWrapper:'',tourSteps:'',stepsNumber:''},
 			init:function()
 			{
-				var tourWrapper = $('.cd-tour-wrapper'),
-					tourSteps = tourWrapper.children('li'),
-					stepsNumber = tourSteps.length,
-					tourStepInfo = $('.cd-more-info');
+				ui.guide.trg.tourWrapper = $('.cd-tour-wrapper');
+				ui.guide.trg.tourSteps = ui.guide.trg.tourWrapper.children('li');
+				ui.guide.trg.stepsNumber = ui.guide.trg.tourSteps.length;
+				var tourStepInfo = $('.cd-more-info');
 
 				//create the navigation for each step of the tour
-				ui.guide.createNav(tourSteps, stepsNumber);
+				ui.guide.createNav(ui.guide.trg.tourSteps, ui.guide.trg.stepsNumber);
 				
 				$('#cd-tour-trigger').on('click', function(){
-					//start tour
-					if(!tourWrapper.hasClass('active')) {
-						//in that case, the tour has not been started yet
-						tourWrapper.addClass('active');
-						ui.guide.showStep(tourSteps.eq(0));
-					}
+					
+					//	BEGIN - MODAL BOX -------------------------------
+					var $trgModal = $("#dynamicModal");
+				
+					//	BEGIN TITLE, MESSAGE AND BUTTONS
+					var title = 'Welcome To The New Course Player';
+					var msg = "<p class='guide-content'>This guided tour will walk you through all the new functionality, look, and feel included in the new course player experience.</p>";
+					var btns = '<button type="button" class="cd-btn main-action" onclick="ui.guide.begin();" data-dismiss="modal">Start Tutorial</button>';
+					//	END TITLE, MESSAGE AND BUTTONS
+					
+					$trgModal.find(".modal-title").html(title);
+					$trgModal.find(".modal-body").html(msg);
+					$trgModal.find(".modal-footer").html(btns);
+					
+					$trgModal.modal('show');
+					//	END - MODAL BOX --------------------------------
+					
 				});
 
 				//change visible step
 				tourStepInfo.on('click', '.cd-prev', function(event){
 					//go to prev step - if available
-					( !$(event.target).hasClass('inactive') ) && ui.guide.changeStep(tourSteps, 'prev');
+					( !$(event.target).hasClass('inactive') ) && ui.guide.changeStep(ui.guide.trg.tourSteps, 'prev');
 				});
 				tourStepInfo.on('click', '.cd-next', function(event){
 					//go to next step - if available
-					( !$(event.target).hasClass('inactive') ) && ui.guide.changeStep(tourSteps, 'next');
+					if($(event.target).hasClass('end'))
+					{
+						//	BEGIN - MODAL BOX -------------------------------
+						var $trgModal = $("#dynamicModal");
+					
+						//	BEGIN TITLE, MESSAGE AND BUTTONS
+						var title = "That's It. Start Learning.";
+						var msg = "<p class='guide-content'>In an effort to keep the course player as simple as possible, we've created an easy to use interface for your learning experience. We hope you enjoy it.</p>";
+						var btns = '<button type="button" class="cd-btn main-action" data-dismiss="modal">Close Tour</button>';
+						//	END TITLE, MESSAGE AND BUTTONS
+						
+						$trgModal.find(".modal-title").html(title);
+						$trgModal.find(".modal-body").html(msg);
+						$trgModal.find(".modal-footer").html(btns);
+						
+						$trgModal.modal('show');
+						ui.guide.close(ui.guide.trg.tourSteps, ui.guide.trg.tourWrapper);
+						//	END - MODAL BOX --------------------------------
+					}
+					else
+					{
+						(!$(event.target).hasClass('inactive') ) && ui.guide.changeStep(ui.guide.trg.tourSteps, 'next');
+					}
 				});
 
 				//close tour
 				tourStepInfo.on('click', '.cd-close', function(event){
-					ui.guide.close(tourSteps, tourWrapper);
+					ui.guide.close(ui.guide.trg.tourSteps, ui.guide.trg.tourWrapper);
 				});
+			},
+			
+			begin:function()
+			{
+				//start tour
+				if(!ui.guide.trg.tourWrapper.hasClass('active')) {
+					//in that case, the tour has not been started yet
+					ui.guide.trg.tourWrapper.addClass('active');
+					ui.guide.showStep(ui.guide.trg.tourSteps.eq(0));
+				}
 			},
 
 			createNav:function(steps, n)
 			{
-				var tourNavigationHtml = '<div class="cd-nav"><span><b class="cd-actual-step">1</b> of '+n+'</span><ul class="cd-tour-nav"><li><a href="javascript:;" class="cd-prev">&#171; Previous</a></li><li><a href="javascript:;" class="cd-next">Next &#187;</a></li></ul></div><a href="javascript:;" class="cd-close">Close</a>';
+				var tourNavigationHtml = '<div class="cd-nav"><span><b class="cd-actual-step">1</b> of '+n+'</span><ul class="cd-tour-nav"><li><a href="javascript:;" class="cd-prev">&#171; Previous</a></li><li><a href="javascript:;" class="cd-next">Next &#187;</a></li></ul></div><a href="javascript:;" class="cd-close"></a>';
 
 				steps.each(function(index){
 					var step = $(this),
@@ -741,6 +798,17 @@ var ui = function () {
 
 			showStep:function(step)
 			{
+				switch(step.attr("id")){
+					case "guide-menu":
+						$("#wrapper").removeClass("toggled-left");
+					break;
+					case "guide-menu-expend":
+						$("#wrapper").addClass("toggled-left");
+					break;
+					case "guide-time-spent":
+						step.find(".cd-next.inactive").removeClass("inactive").addClass("end");
+					break;
+				}
 				step.addClass('is-selected').removeClass('move-left');
 				ui.guide.smoothScroll(step.children('.cd-more-info'));
 			},

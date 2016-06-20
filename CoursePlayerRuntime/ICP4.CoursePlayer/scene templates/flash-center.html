@@ -44,9 +44,8 @@
 <script type="text/javascript">
 var test = 0;	
   
-  if(playPauseFeature == false) {
-		var listMedia = document.getElementById("media");
-		listMedia.removeChild(listMedia.childNodes[1]);  		    
+  if(playPauseFeature == false) {		
+		$('#toggle').remove();
      }	
 function pauseFlash()
 {

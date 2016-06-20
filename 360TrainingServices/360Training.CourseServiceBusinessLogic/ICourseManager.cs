@@ -98,6 +98,7 @@ namespace _360Training.CourseServiceBusinessLogic
 
         string GetCourseGroupsByCourse(int CourseID);
 
+        int GetOriginalCourseID(int offeredcourseID);
         //bool ProctorLoginRequirementCriteriaMeets(string learningSessionGuid);
         //int AuthenticateProctor(long courseID, long learnerID, string learningSessionID, string proctorLogin, string proctorPassword);
 

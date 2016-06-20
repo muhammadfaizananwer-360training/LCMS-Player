@@ -220,7 +220,7 @@ h1,h2,h3,h4,h5,p,div{
     text-decoration: none;
 	cursor:not-allowed;
 }
-.no-touch .side-menu-nav li a:hover {
+.no-touch .side-menu-nav li.active a:hover {
 	text-decoration: none;
     color: #000;
 	outline:medium none;
@@ -676,7 +676,7 @@ h1,h2,h3,h4,h5,p,div{
     background-color: #fff;
 }
 .configures .volume-ctrl{
-	background-color: #333;
+	background-color: #222;
     padding: 4px 0;
     border-radius: 16px;
     padding-bottom: 10px;
@@ -938,9 +938,9 @@ h1,h2,h3,h4,h5,p,div{
 	padding: 0 5% 5% 0;
 	max-width: 720px;
 }
-.jwmovie .jwplayer,
+.jwplayer,
 .cd-modal-content > .image-asset > img{
-	border:2px solid #0280D4;
+	border:2px solid #0280D4 !important;
 }
 .jwmovie .jw-tab-focus:focus{
 	outline:none !important;
@@ -1242,8 +1242,8 @@ svg {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;
-  /*background: rgba(255, 255, 255, 0.3) url('../../assets/img/cd-icon-close.svg') no-repeat center center;*/
+  /*background: rgba(255, 255, 255, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;*/
+  background: rgba(255, 255, 255, 0.3) url('../../assets/img/cd-icon-close.svg') no-repeat center center;
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
@@ -1541,8 +1541,8 @@ svg {
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;
-  /*background: rgba(0, 0, 0, 0.5) url('../../assets/img/cd-icon-close.svg') no-repeat center center;*/
+  /*background: rgba(0, 0, 0, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;*/
+  background: rgba(0, 0, 0, 0.5) url('../../assets/img/cd-icon-close.svg') no-repeat center center;
   background-size: 25px;
   overflow: hidden;
   text-indent: 100%;
@@ -1695,8 +1695,8 @@ svg {
 }
 .pre-loader::after{
 	content:"";
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
-	/*background-image:url("../../assets/img/oval.svg");*/
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
+	background-image:url("../../assets/img/oval.svg");
 	background-size: cover;
     width: 200px;
     height: 200px;
@@ -1765,8 +1765,8 @@ svg {
 }
 .elm-loader::after{
 	content:"";
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
-	/*background-image:url("../../assets/img/oval.svg");*/
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
+	background-image:url("../../assets/img/oval.svg");
 	background-size: cover;
     width: 40px;
     height: 40px;
@@ -1787,8 +1787,8 @@ svg {
 
 .static-loader::after{
 	content:"Please wait.";
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
-	/*background-image:url("../../assets/img/oval.svg");*/
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
+	background-image:url("../../assets/img/oval.svg");
 	background-size: cover;
     width: 150px;
     height: 150px;
@@ -1836,8 +1836,8 @@ svg {
 }
 .cd-svg-cover.loader::after{
 	content: "Please wait";
-    background-image: url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
-	/*background-image:url("../../assets/img/oval.svg");*/
+    /*background-image: url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
+	background-image:url("../../assets/img/oval.svg");
     background-size: cover;
     width: 100px;
     height: 100px;
@@ -1968,6 +1968,10 @@ svg {
 	font-size: 12px;
 	margin-top: 10px;
 }
+.scene-wrapper pre{
+	background: none !important;
+    border: none !important;
+}
 
 /* visual left and right scene template */
 .scene-wrapper.visual-left .visual-element{
@@ -1991,7 +1995,7 @@ svg {
 }
 .scene-wrapper.visual-left .visual-element #media,
 .scene-wrapper.visual-right .visual-element #media{
-	background-color:#f6f6f6;
+	background-color:#fff;
 }
 
 /* visual top and bottom scene template */
@@ -2024,13 +2028,16 @@ svg {
     margin: 0 auto;
 }
 .scene-wrapper.visual-center .visual-element #media{
-	width: 100%;
-	/*width:960px; old ICP*/
-	height:443px;
+	/*width: 100%;
+	width:960px; old ICP
+	height:443px;*/
     position: relative;
     margin: auto;
     text-align: center;
 	background-color:#f6f6f6;
+}
+.visual-center #media > #toggle{
+	position:static !important;
 }
 
 /* visual activity scene template */
@@ -2259,25 +2266,106 @@ h1.heading-exceeding{
 }
 
 /* assessments */
+#QuestionRemediationQuestion{
+	display: table;
+    width: 100%;
+}
+
+#QuestionRemediationQuestion .cd-drag-btn{
+	position:relative;
+	cursor:default;
+}
+.up.disabled,
+.down.disabled{
+	color: #eee !important;
+    pointer-events: none;
+    -moz-opacity:0.5; 
+	filter:alpha(opacity=50); 
+	opacity:0.5;
+	
+}
+#QuestionRemediationIncorrect{
+	color: #fff;
+    position: absolute;
+    right: 0;
+	top:0;
+    background-color: #ed3124;
+    padding: 5px;
+    padding-right: 32px;
+    border-radius: 5px;
+}
+#incorrect{
+	color: #fff;
+    position: absolute;
+    right: 20px;
+    background-color: #ed3124;
+    padding: 5px;
+    padding-right: 32px;
+    border-radius: 5px;
+}
+#QuestionRemediationIncorrect::after,
+#incorrect::after{
+	position: absolute;
+    content: "\e083";
+    font-family: "Glyphicons Halflings";
+    font-size: 24px;
+    top: -2px;
+    padding-left: 4px;
+}
+
+#QuestionRemediationCorrect{
+	color: #fff;
+    position: absolute;
+    right: 0;
+	top:0;
+    background-color: #4db53c;
+    padding: 5px;
+    padding-right: 32px;
+    border-radius: 5px;
+}
+#correct{
+	color: #fff;
+    position: absolute;
+    right: 20px;
+    background-color: #4db53c;
+    padding: 5px;
+    padding-right: 32px;
+    border-radius: 5px;
+}
+#QuestionRemediationCorrect::after,
+#correct::after{
+	position: absolute;
+    content: "\e084";
+    font-family: "Glyphicons Halflings";
+    font-size: 24px;
+    top: -2px;
+    padding-left: 4px;
+}
 .flagged{
 	background-color: #0280D4 !important;
 }
 .glyphicon-flag.filled{
-	color: #ddd !important;
+	color: #0280D4 !important;
 }
 .glyphicon-flag.unfilled{
-	color: #0280D4 !important;
+	color: #ddd !important;
+}
+
+#GradeAssessment .btn.ctrl,
+#QuestionRemediationButtons .btn.ctrl,
+#buttoncontainerAnswerReview .btn.ctrl{
+	padding:5px;
 }
 
 .question-counter{
 	color: #000;
     font-size: 14px;
-    position: relative;
-    left: -18px;
-	padding: 10px 14px;
+    background-color: #f6f6f6;
+    border-radius: 4px;
+    padding: 2px 5px;
 }
 .not-for-assessment{
-	display:none;
+	
 }
 .for-assessment{
 	
@@ -2502,10 +2590,10 @@ h1.heading-exceeding{
     background-position: bottom;
     position: absolute;
     margin: auto;
-    top: 0px;
     right: 0;
     left: 0;
     bottom: 0px;
+	height: 30px;
     padding: 10px;
     margin-bottom: 10px;
 }
@@ -2737,6 +2825,11 @@ h1.heading-exceeding{
 	}
 	.toggled-left .cd-modal-with-nav .cd-cover-layer{
 		left:280px;
+	}
+
+	#media.responsive-video,
+	.responsive-video{
+		width:100% !important;
 	}
 }
 

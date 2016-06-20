@@ -154,6 +154,8 @@ namespace _360Training.CourseServiceDataLogic.CourseDA
         /// <returns></returns>
         bool SelectCourseApprovalMessage(string CourseID, string LearnerID, string CourseApprovalID, string learnerSessionGUID);
 
+        int GetOriginalCourseID(int offeredcourseID);
+
         #region DocuSign LCMS-11217
         DocuSignLearner GetLearnerData(int CourseID, string LearnerSessionID, int LearnerID, int EnrollmentID);
         int SaveEnvelopeId(int EnrollmentID, string EnvelopeId);

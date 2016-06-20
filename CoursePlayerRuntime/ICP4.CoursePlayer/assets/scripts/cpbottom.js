@@ -60,7 +60,7 @@
                 $("#focusOutLockedOutMessage").find("#warning").text(assessment_focusOutLockedOutMessage_warning);
                 $("#focusOutLockedOutMessage").find("#focusOutLockedOutMessageText").html(assessment_focusOutLockedOutMessage_text);
                 $("#focusOutLockedOutMessage").find("#focusOutLockedOutMessageTimer").html(assessment_focusOutLockedOutMessage_timer);
-                $("#focusOutLockedOutMessage").find("focusOutLockedOutButtonNo").text(assessment_focusOutLockedOutButtonNo_text);
+                $("#focusOutLockedOutMessage").find("#focusOutLockedOutButtonNo").text(assessment_focusOutLockedOutButtonNo_text);
                 $("#focusOutLockedOutMessage").find("#focusOutLockedOutButtonYes").text(assessment_focusOutLockedOutButtonYes_text);
                 ui.svgModal.open($("<a data-group='modal-ClickAway'></a>"));
 

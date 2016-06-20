@@ -155,6 +155,7 @@ function initialize(server, application, video,displayratio ) {
     }
 }
 
+/*
 function thisMovie(movieName) {
     if (navigator.appName.indexOf("Microsoft") != -1) {
         return window[movieName];
@@ -162,6 +163,21 @@ function thisMovie(movieName) {
     else {
         return document.embeds[movieName];
     }
+}*/
+/*FOR NEW COURSE PLAYER IE9, IE10*/
+function thisMovie(movieName) { 
+	if(String(document[movieName])!="undefined")
+	{ 
+    	return document[movieName];
+    }
+	else if(String(document.embeds[movieName]) != "undefined")
+	{ 
+    	return document.embeds[movieName];
+    }
+	else
+	{ 
+    	return window[movieName]; 
+    }; 
 }
 
 
@@ -207,23 +223,55 @@ function RenderEngine() {
         $(htmlContentContainer).show();
         $('#NYInsuranceValidation').hide();
         $('#CARealStateValidation').hide();
+        
         isMovieEnded = true;
         $(htmlContentContainer).html(ShowSeatTimeExceed.SeatTimeExceedMessage.TemplateHtml);
         
-        $(controlPanel).find("#IcoInstructorInformation").hide();
-        $(controlPanel).find("#IcoInstructorInformationDs").show();
+            if ($('#Glossary').is(':visible') == true) {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").show(); 
+            }
+            else
+            {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").hide();           
+            }
+            
+            if ($('#InstructorInformation').is(':visible') == true) {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").hide();           
+            }  
+            
+            if ($('#Material').is(':visible') == true) {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").hide();         
+            } 
+            
+            if ($('#modal-trigger-rec').is(':visible') == true) {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").hide();         
+            }         
         
         $(controlPanel).find("#IcoTOC").hide();
-        $(controlPanel).find("#IcoTOCDs").show();        
-        
-        $(controlPanel).find("#IcoGlossary").hide();
-        $(controlPanel).find("#IcoGlossaryDs").show();                
-        
-        $(controlPanel).find("#IcoCourseMaterial").hide();
-        $(controlPanel).find("#IcoCourseMaterialDs").show();                        
+        $(controlPanel).find("#IcoTOCDs").show(); 
 
-        $(controlPanel).find("#modal-trigger-bookmark").hide();
-        $(controlPanel).find("#cd-tour-trigger").hide();
+        $("#modal-trigger-bookmark").hide();
+        $("#cd-tour-trigger").hide();
 
         $(controlPanel).find("#IcoConfigure").hide();
         $(controlPanel).find("#IcoConfigureDs").show();
@@ -860,7 +908,7 @@ function RenderEngine() {
         
         if(bookmarksList == undefined)
         {
-            //$(bookmarksh3).attr('style','display:none');             
+            $(bookmarks).html('');         
         }
         else
         {	
@@ -969,18 +1017,18 @@ function RenderEngine() {
             if (showSlideObject.MediaAsset.RemidiationMode) {
 
 
-                $(controlPanel).find("#ShowQuestionButton").show();
-                $(controlPanel).find("#ShowQuestionButton").css('margin-left', '325px');
+                $("#controlPanel").find("#ShowQuestionButton").show();
+                //$("#controlPanel").find("#ShowQuestionButton").css('margin-left', '325px');
                 //$('#odometerContainter').css('margin-top', '-27px');
-                $(controlPanel).find("#CourseMenuIcons").hide();
+                //$("#controlPanel").find("#CourseMenuIcons").hide();
                 $("#timer").hide();
                 //$(controlPanel).find("#timer").hide();
                 $(ProgressBarContainer).hide();
             } else {
-                $(controlPanel).find("#ShowQuestionButton").hide();
+                $("#controlPanel").find("#ShowQuestionButton").hide();
 
                 if (!demo) {
-                    $(controlPanel).find("#CourseMenuIcons").show();
+                    $("#controlPanel").find("#CourseMenuIcons").show();
                 }
 
                 // $(controlPanel).find("#timer").show();
@@ -990,10 +1038,13 @@ function RenderEngine() {
 
             
 
-            $(controlPanel).find("#ShowQuestionButton").unbind('click.namespace');
-            $(controlPanel).find("#ShowQuestionButton").bind('click.namespace', function() {
-                $(controlPanel).find("#ShowQuestionButton").unbind('click.namespace');
-                cp.GoContentTOQuestion();
+            $("#controlPanel").find("#ShowQuestionButton").unbind('click.namespace');
+            $("#controlPanel").find("#ShowQuestionButton").bind('click.namespace', function() {
+                $("#controlPanel").find("#ShowQuestionButton").unbind('click.namespace');
+                ui.slide.next(function()
+                {
+	                cp.GoContentTOQuestion();                
+                });                
                 return false;
             });
 
@@ -1112,20 +1163,51 @@ function RenderEngine() {
         $(htmlContentContainer).html(htmlData);
         isMovieEnded = true;
 
-        $(controlPanel).find("#IcoInstructorInformation").hide();
-        $(controlPanel).find("#IcoInstructorInformationDs").show();        
+            if ($('#Glossary').is(':visible') == true) {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").show(); 
+            }
+            else
+            {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").hide();           
+            }
+            
+            if ($('#InstructorInformation').is(':visible') == true) {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").hide();           
+            }  
+            
+            if ($('#Material').is(':visible') == true) {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").hide();         
+            } 
+            
+            if ($('#modal-trigger-rec').is(':visible') == true) {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").hide();         
+            }         
 
         $(controlPanel).find("#IcoTOC").hide();
-        $(controlPanel).find("#IcoTOCDs").show();        
-
-        $(controlPanel).find("#IcoGlossary").hide();
-        $(controlPanel).find("#IcoGlossaryDs").show();        
-
-        $(controlPanel).find("#IcoCourseMaterial").hide();
-        $(controlPanel).find("#IcoCourseMaterialDs").show();        
+        $(controlPanel).find("#IcoTOCDs").show(); 
                 
-        $(controlPanel).find("#modal-trigger-bookmark").hide();
-        $(controlPanel).find("#cd-tour-trigger").hide();
+        $("#modal-trigger-bookmark").hide();
+        $("#cd-tour-trigger").hide();
 
         $(controlPanel).find("#IcoConfigure").hide();
         $(controlPanel).find("#IcoConfigureDs").show();
@@ -1170,15 +1252,15 @@ function RenderEngine() {
         htmlData = CourseCertificateObj.Certificates.TemplateHtml;
 
         if (CourseCertificateObj.Certificates.DownloadButtonEnabled == false) {
-            htmlData = htmlData.replace('<div class="btn-start"></div>', '<div class="btn-start-ds"></div>');
-            htmlData = htmlData.replace('<div class="btn-end"></div>', '<div class="btn-end-ds"></div>');
+            //htmlData = htmlData.replace('<div class="btn-start"></div>', '<div class="btn-start-ds"></div>');
+            //htmlData = htmlData.replace('<div class="btn-end"></div>', '<div class="btn-end-ds"></div>');
         }
         $(htmlContentContainer).html(htmlData);
 
         isMovieEnded = true;
 
         if (CourseCertificateObj.Certificates.DownloadButtonEnabled == true) {
-            $(IAgreeButton).find("a").bind('click.namespace', function() {
+            $(IAgreeButton).bind('click.namespace', function() {
                 if (CourseCertificateObj.Certificates.CertificateURL != "") {
                     cp.DownloadCourseApprovalCertificate(CourseCertificateObj.Certificates.CertificateURL);
                 }
@@ -1189,8 +1271,8 @@ function RenderEngine() {
             });
         }
         else {
-            $(IAgreeButton).find("a").unbind('click.namespace');
-            $(IAgreeButton).find("a").attr("class", "btn-stem-ds");
+            $(IAgreeButton).unbind('click.namespace');
+            $(IAgreeButton).attr("class", "btn-stem-ds");
         }
 
         $("#NextQuestionButtonEn").hide();
@@ -1299,6 +1381,9 @@ function RenderEngine() {
         $(htmlContentContainer).show();
         $('#NYInsuranceValidation').hide();
         $('#CARealStateValidation').hide();
+        $('#controlPanel').hide();
+        $('#cd-tour-trigger').hide();
+        $('#modal-trigger-bookmark').hide();        
         isMovieEnded = true;
         var htmlData = "";
 
@@ -1308,29 +1393,58 @@ function RenderEngine() {
         $(controlPanel).find("#IcoCourseCompletion").hide();
         $(controlPanel).find("#IcoCourseCompletionDs").show();
 
-        $(controlPanel).find("#IcoInstructorInformation").hide();
-        $(controlPanel).find("#IcoInstructorInformationDs").show();        
+            if ($('#Glossary').is(':visible') == true) {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").show(); 
+            }
+            else
+            {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").hide();           
+            }
+            
+            if ($('#InstructorInformation').is(':visible') == true) {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").hide();           
+            }  
+            
+            if ($('#Material').is(':visible') == true) {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").hide();         
+            } 
+            
+            if ($('#modal-trigger-rec').is(':visible') == true) {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").hide();         
+            } 
 
         $(controlPanel).find("#IcoTOC").hide();
-        $(controlPanel).find("#IcoTOCDs").show();        
-
-        $(controlPanel).find("#IcoGlossary").hide();
-        $(controlPanel).find("#IcoGlossaryDs").show();        
-
-        $(controlPanel).find("#IcoCourseMaterial").hide();
-        $(controlPanel).find("#IcoCourseMaterialDs").show(); 
+        $(controlPanel).find("#IcoTOCDs").show(); 
 
         $(controlPanel).find("#modal-trigger-bookmark").hide();
         $(controlPanel).find("#cd-tour-trigger").hide();
 
-        $(controlPanel).find("#IcoConfigure").hide();
-        $(controlPanel).find("#IcoConfigureDs").show();
+        $("#IcoConfigure").hide();
+        $("#IcoConfigureDs").show();
 
         $(controlPanel).find("#IcoHelp").hide();
         $(controlPanel).find("#IcoHelpDs").show();
-
-
-
+        
         $(ValidationPlaybuttonEn).hide();
         $(PlaybuttonEn).hide();
         $(PlaybuttonDs).show();
@@ -1366,7 +1480,7 @@ function RenderEngine() {
         $('#CARealStateValidation').hide();
         isMovieEnded = true;
         //var htmlData = '<style>table {  height:100%;  width:100%;  margin:auto;  padding : 10px 10px 5px 10px}.mainimage {  max-width: 350px;  vertical-align:top;}.sceneTitle {  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif;   font-size : 30px;   text-decoration : bold;  vertical-align:top;}.sceneTextArea {  font-family : Arial;   font-size : 16px;  font:bold;  text-align: left;  vertical-align:top;  }</style><!--style="text-align:justify;"--><table border="0" width="95%" height="100" align="center" valign="center" cellpadding="0" cellspacing="0" style="height:100px !important;"><tr><td valign="top" style="height:30px !important;"><table border="0" cellpadding="0" cellspacing="0">  <tr>    <td width="10%"  valign="top"><img  class="mainimage" src="' + FinalExamLockedObj.FinalExamLocked.FinalExamLockedImage + '" /></td><td width="90%"  valign="top" style="padding-top:30px;"><span class="sceneTitle">' + FinalExamLockedObj.FinalExamLocked.FinalExamLockedHeading + '</span></td></tr></table></td></tr><tr><td colspan="3" valign="top" height="10%"><span class="sceneTextArea">' + FinalExamLockedObj.FinalExamLocked.FinalExamLockedHelpText + '</span></td></tr><tr><td colspan="3" valign="top"></td></tr><tr><td colspan="3" valign="top"></td></tr></table>';
-        var htmlData = '<section class="scene-wrapper visual-left"><div class="scene-body"><div class="scene-cell"><img class="img-responsive mainimage"  src="' + FinalExamLockedObj.FinalExamLocked.FinalExamLockedImage + '" /></div><div class="scene-cell"><h1 class="scene-title">' + FinalExamLockedObj.FinalExamLocked.FinalExamLockedHeading + '</h1><div class="scene-content"><p> ' + FinalExamLockedObj.FinalExamLocked.FinalExamLockedHelpText + '</p></div></div></div></section>';
+        var htmlData = '<section class="scene-wrapper visual-left"><div class="scene-body"><div class="scene-cell"><h1 class="scene-title"><img class="img-responsive mainimage" style="display:inline"  src="' + FinalExamLockedObj.FinalExamLocked.FinalExamLockedImage + '" />' + FinalExamLockedObj.FinalExamLocked.FinalExamLockedHeading + '</h1><div class="scene-content"><p> ' + FinalExamLockedObj.FinalExamLocked.FinalExamLockedHelpText + '</p></div></div></div></section>';
         $(htmlContentContainer).html(htmlData);
         $(NextQuestionButtonEn).hide();
         $(controlPanel).show();
@@ -1389,7 +1503,7 @@ function RenderEngine() {
         isMovieEnded = true;
         //var htmlData = '<style>table {  height:100%;  width:100%;  margin:auto;  padding : 10px 10px 5px 10px}.mainimage {  max-width: 350px;  vertical-align:top;}.sceneTitle {  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif;   font-size : 30px;   text-decoration : bold;  vertical-align:top;}.sceneTextArea {  font-family : Arial;   font-size : 16px;  font:bold;  text-align: left;  vertical-align:top;  }</style><!--style="text-align:justify;"--><table border="0" width="95%" height="100" align="center" valign="center" cellpadding="0" cellspacing="0" style="height:100px !important;"><tr><td valign="top" style="height:30px !important;"><table border="0" cellpadding="0" cellspacing="0"><tr><td width="10%"  valign="top"><img  class="mainimage" src="' + showCourseEvaluationObj.CourseEvaluation.ImageURL + '"/></td><td width="90%"  valign="top" style="padding-top:30px;"><span class="sceneTitle">' + showCourseEvaluationObj.CourseEvaluation.Heading + '</span></td></tr></table></td></tr><tr><td colspan="3" valign="top" height="10%"><span class="sceneTextArea">' + showCourseEvaluationObj.CourseEvaluation.ContentText + '</span></td></tr><tr><td colspan="3" valign="top"><div id="divStartCourseEvaluation"style="float:right; vertical-align:top; padding-left:8px; padding-right:12px; padding-top:30px;"><div class="btn-start"></div><span id="btnStartCourseEvaluation"><a class="btn-stem" href="#">' + showCourseEvaluationObj.CourseEvaluation.CourseEvaluationStartButton + '</a></span><div class="btn-end"></div></div><div id="divSkipCourseEvaluation"style="float:right; vertical-align:top; padding-left:8px; padding-top:30px;"><div class="btn-start"></div><span id="btnSkipEvaluation"><a class="btn-stem" href="#">' + showCourseEvaluationObj.CourseEvaluation.CourseEvaluationSkipButton + '</a></span><div class="btn-end"></div></div></td></tr><tr><td colspan="3" valign="top"></td></tr><tr><td colspan="3" valign="top"></td></tr></table>';
         //var htmlData = '<section class="scene-wrapper visual-right"><div class="scene-body"><div class="scene-cell"><img id="image" class="img-responsive"  src="' + showCourseEvaluationObj.CourseEvaluation.ImageURL + '" /></div><div class="scene-cell"><h1 class="scene-title">' + showCourseEvaluationObj.CourseEvaluation.Heading + '</h1><div class="scene-content"><p>' + showCourseEvaluationObj.CourseEvaluation.ContentText + '</p><p><div id="divStartCourseEvaluation"style="float:right; vertical-align:top; padding-left:8px; padding-right:12px; padding-top:30px;"><div id="btnStartCourseEvaluation"><a href="#" class="cd-btn main-action button btn-stem">' + showCourseEvaluationObj.CourseEvaluation.CourseEvaluationStartButton + '</a></div></div></p><p><div id="divSkipCourseEvaluation"style="float:right; vertical-align:top; padding-left:8px; padding-top:30px;"><div id="btnSkipEvaluation"><a class="cd-btn main-action button btn-stem" href="#">' + showCourseEvaluationObj.CourseEvaluation.CourseEvaluationSkipButton + '</a></div></div></p></div></div></div></section>';
-        var htmlData = '<section class="scene-wrapper visual-right"><div class="scene-body"><div class="scene-cell"><h1 class="scene-title"><img id="image" class="img-responsive" style="display:inline;"  src="' + showCourseEvaluationObj.CourseEvaluation.ImageURL + '" />' + showCourseEvaluationObj.CourseEvaluation.Heading + '</h1><div class="scene-content"><p></p><p>' + showCourseEvaluationObj.CourseEvaluation.ContentText + '</p><div id="divStartCourseEvaluation" style="float: left;margin-top:20px;"><div id="btnStartCourseEvaluation"><a href="#" class="cd-btn button btn-stem">' + showCourseEvaluationObj.CourseEvaluation.CourseEvaluationStartButton + '</a></div></div><div id="divSkipCourseEvaluation" style="float: left;margin-top:20px;"><div id="btnSkipEvaluation"><a class="cd-btn main-action button btn-stem" href="#">' + showCourseEvaluationObj.CourseEvaluation.CourseEvaluationSkipButton + '</a><div></div></div></div></div></div></section>';
+        var htmlData = '<section class="scene-wrapper visual-right"><div class="scene-body"><div class="scene-cell"><h1 class="scene-title"><img id="image" class="img-responsive" style="display:inline;"  src="' + showCourseEvaluationObj.CourseEvaluation.ImageURL + '" />' + showCourseEvaluationObj.CourseEvaluation.Heading + '</h1><div class="scene-content"><p></p><p>' + showCourseEvaluationObj.CourseEvaluation.ContentText + '</p><div id="divStartCourseEvaluation" style="float: left;margin-top:20px;"><div id="btnStartCourseEvaluation"><a href="#" class="cd-btn main-action button">' + showCourseEvaluationObj.CourseEvaluation.CourseEvaluationStartButton + '</a></div></div><div id="divSkipCourseEvaluation" style="float: left;margin-top:20px;"><div id="btnSkipEvaluation"><a class="cd-btn main-action button" href="#">' + showCourseEvaluationObj.CourseEvaluation.CourseEvaluationSkipButton + '</a><div></div></div></div></div></div></section>';
         $(htmlContentContainer).html(htmlData);
         $(NextQuestionButtonEn).hide();
         $(controlPanel).show();
@@ -1441,7 +1555,7 @@ function RenderEngine() {
     //		
     //	}
     ///
-
+/*
     function getMovieName(movieName) {
 
         if (navigator.appVersion.indexOf("10.0") != -1) {
@@ -1454,7 +1568,22 @@ function RenderEngine() {
             return document.embeds[movieName];
         }
 
-    }
+    }*/
+    
+	function getMovieName(movieName) { 	
+		if(String(document[movieName])!="undefined")
+		{ 
+	    	return document[movieName];
+	    }
+		else if(String(document.embeds[movieName]) != "undefined")
+		{ 
+	    	return document.embeds[movieName];
+	    }
+		else
+		{ 
+	    	return window[movieName]; 
+	    }; 
+	}    
 
     function initializeIt(val) {
         return val;
@@ -1465,6 +1594,7 @@ function RenderEngine() {
         thisMovie("videoplayer").debug(msg);
     }
 
+/*
     function thisMovie(movieName) {
         if (navigator.appName.indexOf("Microsoft") != -1) {
             return window[movieName];
@@ -1472,7 +1602,21 @@ function RenderEngine() {
         else {
             return document[movieName];
         }
-    }
+    }*/
+function thisMovie(movieName) { 
+	if(String(document[movieName])!="undefined")
+	{ 
+    	return document[movieName];
+    }
+	else if(String(document.embeds[movieName]) != "undefined")
+	{ 
+    	return document.embeds[movieName];
+    }
+	else
+	{ 
+    	return window[movieName]; 
+    }; 
+}    
 
     //LCMS-11870 starts
     function isIE() {
@@ -1542,14 +1686,14 @@ function RenderEngine() {
         if (playerFileName == "player_as2") {
 
 
-            strHtml += "<div id=\"flashContent\">";
+            strHtml += "<div id=\"flashContent\" style=\"width:100%;height:100%\">";
             strHtml += "<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" width=\"100%\" height=\"100%\" id=\"NewPlayer\">";
             strHtml += "<param name=\"movie\" value=\"" + playerFileName + ".swf\" />";
             strHtml += "<param name=\"quality\" value=\"high\" />";
             strHtml += "<param name=\"bgcolor\" value=\"#ffffff\" />";
             strHtml += "<param name=\"play\" value=\"true\" />";
             strHtml += "<param name=\"loop\" value=\"false\" />";
-            strHtml += "<param name=\"wmode\" value=\"window\" />";
+            strHtml += "<param name=\"wmode\" value=\"opaque\" />";
             strHtml += "<param name=\"scale\" value=\"noscale\" />";
             strHtml += "<param name=\"menu\" value=\"false\" />";
             strHtml += "<param name=\"devicefont\" value=\"false\" />";
@@ -1563,7 +1707,7 @@ function RenderEngine() {
             strHtml += "<param name=\"bgcolor\" value=\"#ffffff\" />";
             strHtml += "<param name=\"play\" value=\"true\" />";
             strHtml += "<param name=\"loop\" value=\"false\" />";
-            strHtml += "<param name=\"wmode\" value=\"window\" />";
+            strHtml += "<param name=\"wmode\" value=\"opaque\" />";
             strHtml += "<param name=\"scale\" value=\"noscale\" />";
             strHtml += "<param name=\"menu\" value=\"false\" />";
             strHtml += "<param name=\"devicefont\" value=\"false\" />";
@@ -1624,14 +1768,14 @@ function RenderEngine() {
         }
         else if (playerFileName == "videoplayer") {
 
-            strHtml += "<div id=\"flashContent\">";
+            strHtml += "<div id=\"flashContent\" style=\"width:100%;height:100%\">";
             strHtml += "<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" width=\"100%\" height=\"100%\" id=\"NewPlayer\">";
             strHtml += "<param name=\"movie\" value=\"" + playerFileName + ".swf\" />";
             strHtml += "<param name=\"quality\" value=\"high\" />";
             strHtml += "<param name=\"bgcolor\" value=\"#ffffff\" />";
             strHtml += "<param name=\"play\" value=\"true\" />";
             strHtml += "<param name=\"loop\" value=\"true\" />";
-            strHtml += "<param name=\"wmode\" value=\"window\" />";
+            strHtml += "<param name=\"wmode\" value=\"opaque\" />";
             strHtml += "<param name=\"scale\" value=\"showall\" />";
             strHtml += "<param name=\"menu\" value=\"true\" />";
             strHtml += "<param name=\"devicefont\" value=\"false\" />";
@@ -1646,7 +1790,7 @@ function RenderEngine() {
             strHtml += "<param name=\"bgcolor\" value=\"#ffffff\" />";
             strHtml += "<param name=\"play\" value=\"true\" />";
             strHtml += "<param name=\"loop\" value=\"true\" />";
-            strHtml += "<param name=\"wmode\" value=\"window\" />";
+            strHtml += "<param name=\"wmode\" value=\"opaque\" />";
             strHtml += "<param name=\"scale\" value=\"showall\" />";
             strHtml += "<param name=\"menu\" value=\"true\" />";
             strHtml += "<param name=\"devicefont\" value=\"false\" />";
@@ -1865,29 +2009,31 @@ function RenderEngine() {
 
             if (showHTMLObject.MediaAsset.RemidiationMode) {
 
-                $(controlPanel).find("#ShowQuestionButton").show();
-                $(controlPanel).find("#ShowQuestionButton").css('margin-left', '325px');
+                $("#controlPanel").find("#ShowQuestionButton").show();
+                //$("#controlPanel").find("#ShowQuestionButton").css('margin-left', '325px');
                 //$('#odometerContainter').css('margin-top', '-27px');
-                $(controlPanel).find("#CourseMenuIcons").hide();
+                //$("#controlPanel").find("#CourseMenuIcons").hide();
                 $("#timer").hide();
                 //$(controlPanel).find("#timer").hide();
                 $(ProgressBarContainer).hide();
             }
             else {
-                $(controlPanel).find("#ShowQuestionButton").hide();
+                $("#controlPanel").find("#ShowQuestionButton").hide();
 
                 if (!demo) {
 
-                    $(controlPanel).find("#CourseMenuIcons").show();
+                    $("#controlPanel").find("#CourseMenuIcons").show();
                 }
 
             }
 
-            $(controlPanel).find("#ShowQuestionButton").unbind('click.namespace');
-            $(controlPanel).find("#ShowQuestionButton").bind('click.namespace', function() {
-                $(controlPanel).find("#ShowQuestionButton").unbind('click.namespace');
-                //$('#odometerContainter').css('margin-top', '0px');
-                cp.GoContentTOQuestion();
+            $("#controlPanel").find("#ShowQuestionButton").unbind('click.namespace');
+            $("#controlPanel").find("#ShowQuestionButton").bind('click.namespace', function() {
+                $("#controlPanel").find("#ShowQuestionButton").unbind('click.namespace');                
+                ui.slide.next(function()
+                {
+	                cp.GoContentTOQuestion();
+                });
                 return false;
             });
             findToc(showHTMLObject.MediaAsset);
@@ -1918,8 +2064,7 @@ function RenderEngine() {
                     playerFileName = "player_as2";
                 }
 
-                if (showHTMLObject.MediaAsset.VisualTopType == "swf") {
-
+                if (showHTMLObject.MediaAsset.VisualTopType == "swf") {        
                     // LCMS-12341 Waqas Zakai-21Nov2013 START
                     //var timerCancellingSWF = AC_FL_RunContentSWF('codebase', 'https://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0', 'width', '1', 'height', '1', 'src', 'flashplugin', 'quality', 'high', 'pluginspage', 'https://www.macromedia.com/go/getflashplayer', 'salign', '', 'play', 'true', 'loop', 'true', 'scale', 'noborder', 'wmode', 'transparent', 'devicefont', 'false', 'id', 'flashplugin', 'bgcolor', '#ffffff', 'name', 'flashplugin', 'menu', 'true', 'allowFullScreen', 'false', 'allowScriptAccess', 'sameDomain', 'movie', 'flashplugin', 'salign', '');                    
                     var timerCancellingSWF = AC_FL_RunContentSWF('width', '1', 'height', '1', 'movie', 'flashplugin');
@@ -1957,7 +2102,7 @@ function RenderEngine() {
                         // $('.pause').removeAttr("id"); 
                         // $('#media').removeClass("pause");
 
-                        $('#media').find('embed').hide();
+                        $('#media').find('embed').remove();
                         javascriptPlayer(url, "swf");
 
                     }
@@ -1976,29 +2121,20 @@ function RenderEngine() {
             }
             else if (showHTMLObject.MediaAsset.VisualTopType == "mp4" && (isMobile.iOS() || isMobile.Android() || isMobile.BlackBerry())) {
                 if (showHTMLObject.MediaAsset.IsJSPlayerEnabled == true && $('#container').length > 0) {
-
-
                     $(htmlContentContainer).html(htmlString);
                     var url = $('#media').find('embed').attr("src");
                     $('#container').show();
-                    $('#media').find('embed').hide();
+                    $('#media').find('embed').remove();                    
                     javascriptPlayer(url, "mp4");
                 }
                 else {
 
                     $(htmlContentContainer).html(htmlString);
-                    var url = $('#media').find('embed').attr("src");
+                    /*var url = $('#media').find('embed').attr("src");
                     var swfhtml = RenderNewPlayerForMobile(url);
                     document.getElementById("media").innerHTML = '';
-                    document.getElementById("media").innerHTML = swfhtml;
-
-
+                    document.getElementById("media").innerHTML = swfhtml;*/
                 }
-
-
-
-
-
             }
 
             else if (showHTMLObject.MediaAsset.VisualTopType == "flv") {
@@ -2031,7 +2167,7 @@ function RenderEngine() {
                     $('#container').show();
                     // $('#media').find('#toggle').hide();
                     $('#media').find('#toggle').remove();
-                    $('#media').find('embed').hide();
+                    $('#media').find('embed').remove();
                     javascriptPlayer(url, "flv");
                 }
 
@@ -2039,7 +2175,7 @@ function RenderEngine() {
                     var swfhtml = RenderNewPlayer(playerFileName);
                     document.getElementById("media").innerHTML = '';
                     document.getElementById("media").innerHTML = swfhtml;
-                }
+                   }
 
 
             }
@@ -2055,7 +2191,7 @@ function RenderEngine() {
                     //                        var max_width = $(htmlString).find('embed').attr("width;")
                     //                        $('#media').find('container').show();
                     //                        $('#media').find('#toggle').hide();
-                    //                        $('#media').find('embed').hide();
+                    //                        $('#media').find('embed').remove();
                     //                        javascriptPlayer(url, "swf");
                     //                    }
                     //                    else {
@@ -2086,11 +2222,10 @@ function RenderEngine() {
                         var element = document.getElementById("toggle");
                         element.parentNode.removeChild(element);
                     }
-                    if (showHTMLObject.MediaAsset.IsJSPlayerEnabled == true && $('#container').length > 0) {
-
+                    if (showHTMLObject.MediaAsset.IsJSPlayerEnabled == true && $('#container').length > 0) {                        
                         var url = $('#media').find('embed').attr("src");
                         $('#container').show();
-                        $('#media').find('embed').hide();
+                        $('#media').find('embed').remove();
                         javascriptPlayer(url, "mp4");
                     }
                     //LCMS-12333 Implemented checked by Waqas Zakai 19-Nov-2013 Start
@@ -2126,7 +2261,7 @@ function RenderEngine() {
                     $('#container').show();
                     $('#media').find('#toggle').hide();
 
-                    $('#media').find('embed').hide();
+                    $('#media').find('embed').remove();
                     javascriptPlayer(videoFileName, ext, "rtmp://" + streamingServerURL + "/" + streamingApplication, "rtmp");
                     if (fullScreen == true) {
                         $('#media').attr('style', 'width:100%; height:100%; overflow:hidden;');
@@ -2144,7 +2279,7 @@ function RenderEngine() {
 
                         var streamingURL = 'http://' + streamingServerURL + '/vod/' + streamingApplication + '/' + videoFileName;
                         $('#container').show();
-                        $('#media').find('embed').hide();
+                        $('#media').find('embed').remove();
                         javascriptPlayerMp4(streamingURL, ext);
 
                     }
@@ -2170,7 +2305,7 @@ function RenderEngine() {
                         }
 
                         //setTimeout(initialize,500,streamingServerURL,streamingApplication,videoFileName);
-                        var funcName = "initialize('" + streamingServerURL + "','" + streamingApplication + "','" + videoFileName + "','" + displayratio + "')";
+                        var funcName = "initialize('" + streamingServerURL + "','" + streamingApplication + "','" + videoFileName + "','" + displayratio + "')";                        
                         setTimeout(funcName, 500);
                     }
 					}	
@@ -2349,7 +2484,7 @@ function RenderEngine() {
                     var resumeButtonPlacementPoint = htmlString.toLowerCase().indexOf("<button");
 
 
-                    var beforeButton = htmlString.substr(0, resumeButtonPlacementPoint) + "<button class=\"button\">" + btnResumeAssessmentText + "</button>&nbsp;&nbsp;&nbsp;";
+                    var beforeButton = htmlString.substr(0, resumeButtonPlacementPoint) + "<button class=\"cd-btn main-action button\">" + btnResumeAssessmentText + "</button>&nbsp;&nbsp;&nbsp;";
                     var afterButton = htmlString.substr(resumeButtonPlacementPoint);
 
                     htmlString = beforeButton + afterButton;
@@ -2361,6 +2496,7 @@ function RenderEngine() {
                         $(htmlContentContainer).find("button").eq(0).unbind('click.namespace');
 
                         if (showHTMLObject.MediaAsset.AssessmentTimer != -1) {
+                            $("#assessmentTimer").show();
                             $(assessmentTimer).show();
                             assessmentTimerObj.TimerContainer(assessmentTimer);
                             assessmentTimerObj.InitializeTimer(showHTMLObject.MediaAsset.AssessmentTimer);
@@ -2368,7 +2504,7 @@ function RenderEngine() {
                         else {
 
                             $(assessmentTimer).hide();
-
+                            $("#assessmentTimer").hide();
                         }
 
 
@@ -2388,12 +2524,13 @@ function RenderEngine() {
 
                         if (showHTMLObject.MediaAsset.AssessmentTimer != -1) {
                             $(assessmentTimer).show();
+                            $("#assessmentTimer").show();
                             assessmentTimerObj.TimerContainer(assessmentTimer);
                             assessmentTimerObj.InitializeTimer(showHTMLObject.MediaAsset.InitialAssessmentTimerValue);
                         } else {
 
                             $(assessmentTimer).hide();
-
+                            $("#assessmentTimer").hide();
                         }
 
 
@@ -2435,13 +2572,13 @@ function RenderEngine() {
                     $(htmlContentContainer).find("button").unbind('click.namespace');
 
                     if (showHTMLObject.MediaAsset.AssessmentTimer != -1) {
-                        $(assessmentTimer).show();
+                        $("#assessmentTimer").show();
+                        $(assessmentTimer).show();                        
                         assessmentTimerObj.TimerContainer(assessmentTimer);
                         assessmentTimerObj.InitializeTimer(showHTMLObject.MediaAsset.AssessmentTimer);
-                    } else {
-
+                    } else {                        
                         $(assessmentTimer).hide();
-
+                        $("#assessmentTimer").hide();
                     }
 
 
@@ -2615,8 +2752,7 @@ function RenderEngine() {
 						'<a href="assets/uploads/fields.mp4" class="cd-btn dropbox-saver">Save To Dropbox</a>' +
 					'</div>';
             $('.cd-modal[data-modal="modal-material"] > .cd-modal-content').removeClass('pre-loader please-wait')
-		    .html('<h1>'+replaceSpacesAndLineBreaks()+'</h1><p>'+ InsertEscapeSequence(replaceSpacesAndLineBreaks(courseMaterialObject.GlossaryDetail.GlossaryDefinition),"'") +'</p>'+ material_content);
-		    alert("contetn" + material_content);
+		    .html('<h1>'+replaceSpacesAndLineBreaks()+'</h1><p>'+ InsertEscapeSequence(replaceSpacesAndLineBreaks(courseMaterialObject.GlossaryDetail.GlossaryDefinition),"'") +'</p>'+ material_content);		    
     } // showMaterialItem end
 
     this.ShowErrorMessageRendering = function(errorObj) {
@@ -2672,13 +2808,13 @@ function RenderEngine() {
                 {
                     ui.svgModal.close('modal-Expire');
                 }                
-                window.open("CoursePlayerExit.aspx","_self");
+                window.close();
             }
             return;
             //window.close();
         }
         else if (customObj.CustomMessage.CustomMessageType == "CourseEnd") {
-            var html = "<section class='scene-wrapper visual-left'><div class='scene-body'><div class='scene-cell'><img class='img-responsive mainimage'  src='" + customObj.CustomMessage.MessageImageURL + "'/></div><div class='scene-cell'><h1 class='scene-title'>'"+ customObj.CustomMessage.MessageHeading +"'</h1><div class='scene-content'><p> '"+ customObj.CustomMessage.MessageHeading +"'</p></div><div class='scene-content'><p>&copy; 2006 - 2010 360training.com &trade; All Rights Reserved</p></div></div></div></section>";
+            var html = "<section class='scene-wrapper visual-left'><div class='scene-body'><div class='scene-cell'><h1 class='scene-title'><img class='img-responsive mainimage' style='display:inline' style=  src='" + customObj.CustomMessage.MessageImageURL + "'/>'"+ customObj.CustomMessage.MessageHeading +"'</h1><div class='scene-content'><p> '"+ customObj.CustomMessage.MessageHeading +"'</p><p>&copy; 2006 - 2010 360training.com &trade; All Rights Reserved</p></div></div></div></section>";
 //            html += "<section class='scene-wrapper visual-left'>";
 //            html += "<div class='scene-body'>";
 //            html += "<div class='scrollable'>";
@@ -2734,7 +2870,7 @@ function RenderEngine() {
         $(swfContainer).empty();
 
         //if(!isDialogueOpen){
-        jQuery().ready(function() {
+        //jQuery().ready(function() {
             //$(overlay).css({ "opacity": "0.7" });
             //$(overlay).fadeIn("slow");
             //$(dialog).fadeIn("slow");
@@ -2749,7 +2885,7 @@ function RenderEngine() {
 
             $(dialog).find("button").bind('click.namespace', function() {
                 $(dialog).find("button").unbind('click.namespace');
-                $(dialog).fadeOut("slow");
+                //$(dialog).fadeOut("slow");
                 //$(overlay).fadeOut("slow");
 
                 if (customObj.CustomMessage.CustomMessageType == "SessionEnd") {
@@ -2780,7 +2916,7 @@ function RenderEngine() {
                         {
                             ui.svgModal.close('modal-Expire');
                         }                                        
-                        window.open("CoursePlayerExit.aspx","_self");
+                        window.close();
                     }
                 }
                 else {
@@ -2793,7 +2929,7 @@ function RenderEngine() {
                 }
             });
 
-        });
+        //});
 
         //}// if end
 
@@ -2888,8 +3024,8 @@ function RenderEngine() {
             $('#assesmentcontainer').hide();
             $('#AnswerReviewContainer').hide();
             $('#IndividualScoreContainer').hide();
-            $('#correct').hide();
-            $('#incorrect').hide();
+            $('#correct').addClass("hide");
+            $('#incorrect').addClass("hide");
             $('#questiondescription').hide();
             $('#questionfeedback').hide();
             $('#toogle-flag').addClass('hide'); //Added By Abdus Samad LCMS-12105
@@ -2899,8 +3035,8 @@ function RenderEngine() {
             $('#buttoncontainerAnswerReviewPage').hide();
 
 
-            $('#incorrect').css('backgroundImage', 'url(\'\')');
-            $('#correct').css('backgroundImage', 'url(\'\')');
+            //$('#incorrect').css('backgroundImage', 'url(\'\')');
+            //$('#correct').css('backgroundImage', 'url(\'\')');
             //$(PlaybuttonEn).hide();
             //$(PlaybuttonDs).hide();
             //alert("this is here");
@@ -3213,14 +3349,16 @@ function RenderEngine() {
 
                 case "Ordering":
                     //$('#quiz_container').find('#question').removeAttr('disabled');	
-                    if (document.getElementById('ListBox') != null)
+                    /*if (document.getElementById('ListBox') != null)
                         document.getElementById('ListBox').disabled = true;
 
                     if (document.getElementById('btnA') != null)
                         document.getElementById('btnA').disabled = true;
 
                     if (document.getElementById('btnB') != null)
-                        document.getElementById('btnB').disabled = true;
+                        document.getElementById('btnB').disabled = true;*/
+                   $(".scene-option").find('.down').addClass('disabled');
+                   $(".scene-option").find('.up').addClass('disabled');
 
                     //$('#quiz_container').find('#quizcolumn1').find('h3').find('#A1').removeAttr('disabled');
                     //$('#quiz_container').find('#question').find('#orderbuttons').find('#btnA').removeAttr('disabled');
@@ -3233,9 +3371,27 @@ function RenderEngine() {
                     break;
 
                 case "Matching":
-                    //$('#quiz_container').find('#question').removeAttr('disabled');	             
+                    //$('#quiz_container').find('#question').removeAttr('disabled');
+                        $('.cd-drag-btn').draggable("destroy");
+                        $('.cd-drop-holder').droppable("destroy");
+                        /*
+                        $('.cd-drag-btn').draggable({				
+	                        start: function(event, ui) {					
+	                        },
+	                        stop: function(event, ui)
+	                        {					
+	                        }
+                        });
 
 
+                        $('.cd-drop-holder').droppable({				
+	                        over: function(event,ui){					
+	                        },
+	                        out: function(event,ui){					
+	                        },
+	                        drop: function(event,ui){
+	                        }
+                        });  */                               
                     SubmitMatching(assesmentId, arrAnswers, "submitAssessment");
                     //	            $('.drag').unbind('dragstart.namespace');
                     //	            $('.drag').unbind('drag.namespace');
@@ -3254,17 +3410,17 @@ function RenderEngine() {
 
                 case "Single Select MCQ":
 
-                    if (document.getElementById('single') != null)
-                        document.getElementById('single').disabled = true;
+                    $(".scene-option").find("input").attr('disabled', 'disabled');
                     //$('#quiz_container').find('#question').removeAttr('disabled');
 
                     SubmitSingleSelectMCQ(assesmentId, "submitAssessment");
                     break;
 
-                case "Multiple Select MCQ":
-
+                case "Multiple Select MCQ":                         
                     if (document.getElementById('multi') != null)
-                        document.getElementById('multi').disabled = true;
+                    {
+                        $('#multi').find("input").attr('disabled', 'disabled');                         
+                    }
 
                     SubmitMultiSelectMCQ(assesmentId, "submitAssessment");
                     //$('#quiz_container').find('#question').find('#multi').attr('disabled','disabled');        	   
@@ -3685,16 +3841,53 @@ function RenderEngine() {
 
     this.ShowSeatTimeCourseLaunch = function(seattimecourselaunch) {
         $(NextQuestionButtonEn).hide();
-        $(controlPanel).find("#IcoInstructorInformation").hide();
-        $(controlPanel).find("#IcoInstructorInformationDs").show();        
+        
+            if ($('#Glossary').is(':visible') == true) {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").show(); 
+            }
+            else
+            {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").hide();           
+            }
+            
+            if ($('#InstructorInformation').is(':visible') == true) {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").hide();           
+            }  
+            
+            if ($('#Material').is(':visible') == true) {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").hide();         
+            } 
+            
+            if ($('#modal-trigger-rec').is(':visible') == true) {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").hide();         
+            } 
+                    
         $(controlPanel).find("#IcoTOC").hide();
         $(controlPanel).find("#IcoTOCDs").show();        
-        $(controlPanel).find("#IcoGlossary").hide();
-        $(controlPanel).find("#IcoGlossaryDs").show();
-        $(controlPanel).find("#IcoCourseMaterial").hide();
-        $(controlPanel).find("#IcoCourseMaterialDs").show();          
-        $(controlPanel).find("#modal-trigger-bookmark").hide();
-        $(controlPanel).find("#cd-tour-trigger").hide();
+        $('#controlPanel').show();
+        $("#modal-trigger-bookmark").hide();
+        $("#cd-tour-trigger").hide();
+        
         $(controlPanel).find("#IcoConfigure").hide();
         $(controlPanel).find("#IcoConfigureDs").show();
         $(controlPanel).find("#IcoHelp").hide();
@@ -3823,7 +4016,7 @@ function RenderEngine() {
         var checked = "";
         isSkipping = true;
         $('toggle-flag').removeClass('hide');
-        if (arrStudentAnswers.length > 0) {           
+        if (arrStudentAnswers.length > 0) {
             for (var i = 0; i < arrAnswers.length; i++) {
                 for (var x = 0; x < arrAnswers.length; x++) {
                     if (arrStudentAnswers[x] == arrAnswers[i].AssessmentItemAnswerID) {
@@ -4801,7 +4994,7 @@ function RenderEngine() {
 
 
 
-    this.ShowQuestionResultRendering = function(objQuestionResult) {
+    this.ShowQuestionResultRendering = function(objQuestionResult) {        
         $(quiz_container).show();
         $('.drag').unbind('dragstart.namespace');
         $('.drag').unbind('drag.namespace');
@@ -4821,8 +5014,8 @@ function RenderEngine() {
         $('#questiondescription').hide();
 
         if (objQuestionResult.QuestionResult.IsCorrectlyAnswered == true) {
-            $('#correct').css('backgroundImage', "url('" + ImageCorrect + "')");
-            $('#correct').show();
+            //$('#correct').css('backgroundImage', "url('" + ImageCorrect + "')");
+            $('#correct').removeClass("hide");
             if (feedbackDescription != "") {
                             
                 $('#questiondescription').html("<strong>" + FeedbackICP4 + ":</strong> <br />" + replaceSpacesAndLineBreaks(feedbackDescription));  // Modified by Mustafa On Sep 2nd 2009 //Yasin LCMS-12913      
@@ -4831,8 +5024,8 @@ function RenderEngine() {
             }
         }
         else if (objQuestionResult.QuestionResult.IsCorrectlyAnswered == false) {
-            $('#incorrect').css("backgroundImage", "url('" + ImageIncorrect + "')");
-            $('#incorrect').show();
+            //$('#incorrect').css("backgroundImage", "url('" + ImageIncorrect + "')");
+            $('#incorrect').removeClass("hide");
             if (feedbackDescription != "") {            
             
                 $('#questiondescription').html("<strong>" + FeedbackICP4 + ":</strong> <br />" + replaceSpacesAndLineBreaks(feedbackDescription)); // Modified by Mustafa On Sep 2nd 2009 //Yasin LCMS-12913
@@ -4887,7 +5080,8 @@ function RenderEngine() {
         $("#CARealStateValidation").hide();
         $("#NYInsuranceValidation").hide();
         $("#assessmentItemResult").hide();
-        
+        $("#ShowProctorMessageContainer").show();
+        $("#ShowProctorMessageContainer").attr('style','display:block;');
 
         // Ticket ID: LCMS-10358
         // Description: Navigation buttons bar is hidden 
@@ -4912,6 +5106,7 @@ function RenderEngine() {
         $("#assessmentItemResult").hide();
         $("#controlPanel").hide();
         $("#cd-tour-trigger").hide();
+        $("#modal-trigger-bookmark").hide();
         $(gradeAssessment).hide();
 
 
@@ -4935,15 +5130,15 @@ function RenderEngine() {
 
         //Fix for LCMS-10546
         //Reset the buttons to initial state before executing further  
-        $('#ShowProctorMessageButtons').find("div").eq(0).empty();
-        $('#ShowProctorMessageButtons').find("div").eq(0).html('<div class="floatright"><button class="cd-btn main-action button">Begin Assessment</button></div>');
+        $('#ShowProctorMessageButtons').empty();
+        $('#ShowProctorMessageButtons').html('<div><button class="cd-btn main-action button">Begin Assessment</button><div>');
         //End Fix for LCMS-10546
 
-        $('#ShowProctorMessageButtons').find("div").eq(0).find("button").html(objectData.ProctorMessage.ProctorMessageButtonText);
+        $('#ShowProctorMessageButtons').find("button").html(objectData.ProctorMessage.ProctorMessageButtonText);
 
         $("#ShowProctorMessageIcon").css("backgroundImage", "url('" + imageUrl + "')");
 
-        $("#ShowProctorMessageContainer").show();
+        
         $("#proctor_login_screen").hide();
 
         if (objectData.ProctorMessage.IsRestrictiveAssessmentEngine) {
@@ -4977,9 +5172,6 @@ function RenderEngine() {
             $('#security').hide();
         }
 
-
-
-
         // Ticket ID: LCMS-9834
         // Description: LCMS - Pause Resume Functionality 
         // not working with "Enable Proctored Assessment 
@@ -5001,14 +5193,15 @@ function RenderEngine() {
             $('#ShowProctorMessageButtons').find("div").eq(0).find("button").unbind('click.namespace');
 
             //$(overlay).css("display", "none");
-            $(dialog).css("display", "none");
-
+            //$(dialog).css("display", "none");            
             if (objectData.ProctorMessage.AssessmentTimer != -1) {
-                $(assessmentTimer).show();
+                $("#assessmentTimer").show();
+                $(assessmentTimer).show();                
                 assessmentTimerObj.TimerContainer(assessmentTimer);
                 assessmentTimerObj.InitializeTimer(objectData.ProctorMessage.AssessmentTimer);
             } else {
                 $(assessmentTimer).hide();
+                $("#assessmentTimer").hide();
 
 
             }
@@ -5037,7 +5230,7 @@ function RenderEngine() {
 
             // Hide Proctor container (div) to visible
             // questionnaire
-            $("#ShowProctorMessageContainer").hide();
+            $("#ShowProctorMessageContainer").hide();            
             // alert('Hello');
             //$("#NYInsuranceValidation").hide(); // temporarily added by yasin
             return false;
@@ -5049,13 +5242,13 @@ function RenderEngine() {
             // As this is a resumable assessment
             // and user can 'Start Assessment Over'
             // We need to add a button here for that
-            var startOverButton = $("<button class='button'>Start Assessment Over</button>");
+            var startOverButton = $("<button class='cd-btn main-action button'>Start Assessment Over</button>");
 
             // Define operation for 'Start Assessment Over'
             startOverButton.click(function() {
 
                 if (objectData.ProctorMessage.AssessmentTimer != -1) {
-
+                    $("#assessmentTimer").show();
                     $(assessmentTimer).show();
                     assessmentTimerObj.TimerContainer(assessmentTimer);
                     assessmentTimerObj.InitializeTimer(objectData.ProctorMessage.AssessmentTimer);
@@ -5063,6 +5256,7 @@ function RenderEngine() {
                 } else {
 
                     $(assessmentTimer).hide();
+                    $("#assessmentTimer").hide();
 
                 }
 
@@ -5076,14 +5270,12 @@ function RenderEngine() {
             });
 
             // Add 'Start Assessment Over' button after 'Resume Assessment from Previous Session'
-            $('#ShowProctorMessageButtons').find("div").eq(0).find("button").after(startOverButton);
+            $('#ShowProctorMessageButtons').find("button").after(startOverButton);
 
             // Aligned buttons similar to non-proctor exams
-            $('#ShowProctorMessageButtons').find("div").eq(0).find("button").eq(0).after("   ");
-            $('#ShowProctorMessageButtons').find("div").removeClass("floatright");
-
+            $('#ShowProctorMessageButtons').find("button").eq(0).after("   ");
         }
-
+		
         // p.sceneTextArea shows text in bold 
         // and in bigger font which needs to be
         // corrected to normal and uniform 
@@ -6144,6 +6336,8 @@ function RenderEngine() {
         $('#CARealStateValidation').hide();
         $("#ValidationTimer").hide();
         $('#controlPanel').hide();
+        $('#cd-tour-trigger').hide();
+        $('#modal-trigger-bookmark').hide(); 
         //$(quiz_container).find('#assessmentQuestionTemplate').empty();
         $(quiz_container).hide();
         //$("#ImageDiv").hide();
@@ -6216,6 +6410,9 @@ function RenderEngine() {
         // $("#quiz_container").hide();
         $("#AnswerReviewContainer").hide();
         $("#assessmentincomplete").hide();
+        $('#controlPanel').hide();
+        $('#cd-tour-trigger').hide();
+        $('#modal-trigger-bookmark').hide();         
 
         if (document.getElementById('media') != null)
             document.getElementById('media').innerHTML = "";
@@ -6402,6 +6599,7 @@ function RenderEngine() {
         //$(BackQuestionButtonEn).hide();
         $(BackQuestionButtonEn).addClass("hide");
         $(assessmentTimer).hide();
+        $("#assessmentTimer").hide();
         $(NextQuestionButtonDs).hide();
         $(NextQuestionButtonEn).show();
         $('#AssessmentInProgress').hide();
@@ -6706,7 +6904,7 @@ function RenderEngine() {
 
 
         var dynamicHtml = "";
-        var drawn = false;
+        var drawn = false;        
         for (i = 0; i < arrAnswers.length; i++) {
             drawn = false;
             for (n = 0; n < arrStudentAnswers.AnswerIDs.length; n++) {
@@ -6978,20 +7176,51 @@ function RenderEngine() {
             $(BackQuestionButtonEn).removeClass("hide");
 
 
-            $(controlPanel).find("#IcoInstructorInformation").hide();
-            $(controlPanel).find("#IcoInstructorInformationDs").show();        
+            if ($('#Glossary').is(':visible') == true) {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").show(); 
+            }
+            else
+            {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").hide();           
+            }
+            
+            if ($('#InstructorInformation').is(':visible') == true) {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").hide();           
+            }  
+            
+            if ($('#Material').is(':visible') == true) {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").hide();         
+            } 
+            
+            if ($('#modal-trigger-rec').is(':visible') == true) {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").hide();         
+            }             
 
             $(controlPanel).find("#IcoTOC").hide();
-            $(controlPanel).find("#IcoTOCDs").show();        
-
-            $(controlPanel).find("#IcoGlossary").hide();
-            $(controlPanel).find("#IcoGlossaryDs").show();        
-
-            $(controlPanel).find("#IcoCourseMaterial").hide();
-            $(controlPanel).find("#IcoCourseMaterialDs").show();        
+            $(controlPanel).find("#IcoTOCDs").show();
                     
-            $(controlPanel).find("#modal-trigger-bookmark").hide();
-            $(controlPanel).find("#cd-tour-trigger").hide();
+            $("#modal-trigger-bookmark").hide();
+            $("#cd-tour-trigger").hide();
 
             $(controlPanel).find("#IcoConfigure").hide();
             $(controlPanel).find("#IcoConfigureDs").show();
@@ -7001,9 +7230,6 @@ function RenderEngine() {
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();	
-            
-            $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
-            $(controlPanel).find("#IcoRecommendationCoursePanelDs").show();	
                     
             if ($('#controlPanel').is(':hidden') == true) {
                 //$('#odometerContainter').css('background', 'url()');
@@ -7019,8 +7245,8 @@ function RenderEngine() {
             $('#assesmentcontainer').hide();
             $('#AnswerReviewContainer').hide();
             $('#IndividualScoreContainer').hide();
-            $('#correct').hide();
-            $('#incorrect').hide();
+            $('#correct').addClass("hide");
+            $('#incorrect').addClass("hide");
             $('#questiondescription').hide();
             $('#questionfeedback').hide();
             $('#toogle-flag').addClass('hide'); //Added By Abdus Samad LCMS-12105
@@ -7031,8 +7257,8 @@ function RenderEngine() {
             $('#QuestionRemediationButtons').find("div").eq(1).find("button").show();
 
 
-            $('#incorrect').css('backgroundImage', 'url("")');
-            $('#correct').css('backgroundImage', 'url("")');
+            //$('#incorrect').css('backgroundImage', 'url("")');
+            //$('#correct').css('backgroundImage', 'url("")');
 
             if (objectQuestions.AssessmentItem.ContentRemidiationAvailable) {
                 if (objectQuestions.AssessmentType == "PreAssessment")
@@ -7157,7 +7383,7 @@ function RenderEngine() {
         $('#QuestionRemediationButtons').find("div").eq(0).find("button").unbind('click.namespace');
         $('#QuestionRemediationButtons').find("div").eq(0).find("button").bind('click.namespace', function() {
             $('#QuestionRemediationButtons').find("div").eq(0).find("button").unbind('click.namespace');
-            $(NextQuestionButtonEn).unbind('click.namespace');
+            $(NextQuestionButtonEn).unbind('click.namespace');            
             $('#QuestionRemediationButtons').hide();
             $('#QuestionRemediationContainer').hide();
 
@@ -7258,8 +7484,8 @@ function RenderEngine() {
             // -------------------------------------------
 
             //var htmlData = '<style>table {  height:100%;  width:100%;  margin:auto;  padding : 10px 10px 5px 10px}.mainimage {  max-width: 350px;  vertical-align:top;}.sceneTitle {  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif;   font-size : 30px;   text-decoration : bold;  vertical-align:top;}.sceneTextArea1 {  font-family : Arial;   font-size : 16px;  font:bold;  text-align: left; overflow: hidden;   }</style><!--style="text-align:justify;"--><table border="0" width="95%" height="100" align="center" valign="center" cellpadding="0" cellspacing="0" style="height:100px !important;"><tr><td valign="top" style="height:30px !important;"><table border="0" cellpadding="0" cellspacing="0"><tr><td width="10%"  valign="top"><img  class="mainimage" src="' + lockCourseCommandObject.CourseLockedMessage.CourseLockedMessageImageUrl + '"/></td><td width="90%"  valign="top" style="padding-top:30px;"><span class="sceneTitle">' + lockCourseCommandObject.CourseLockedMessage.CourseLockedMessageHeading + '</span>';
-            
-            var htmlData = '<section class="scene-wrapper visual-left"><div class="scene-body"><div class="scene-cell"><img class="img-responsive mainimage"  src="' + lockCourseCommandObject.CourseLockedMessage.CourseLockedMessageImageUrl + '" /></div><div class="scene-cell"><h1 class="scene-title">' + lockCourseCommandObject.CourseLockedMessage.CourseLockedMessageHeading + '</h1><div class="scene-content"><p>' + lockCourseCommandObject.CourseLockedMessage.CourseLockedMessageText + '</p><p><div id="divStartCourseEvaluation"style="float:left; vertical-align:top; padding-left:8px; padding-top:30px;"><div id="btnUnlockMyCourse"><a href="#" class="cd-btn main-action button btn-stem">' + lockCourseCommandObject.CourseLockedMessage.ContentUnlockCourseButton + '</a></div></div></p></div></div></div></section>';
+            var htmlData = '<section class="scene-wrapper visual-right"><div class="scene-body"><div class="scene-cell"><h1 class="scene-title"><img id="image" class="img-responsive" style="display:inline;"  src="' + lockCourseCommandObject.CourseLockedMessage.CourseLockedMessageImageUrl+ '" />' + lockCourseCommandObject.CourseLockedMessage.CourseLockedMessageHeading + '</h1><div class="scene-content"><p></p><p>' + lockCourseCommandObject.CourseLockedMessage.CourseLockedMessageText + '</p><div id="divStartCourseEvaluation" style="float: left;margin-top:20px;"><div id="btnUnlockMyCourse"><a href="#" class="cd-btn main-action button">' + lockCourseCommandObject.CourseLockedMessage.ContentUnlockCourseButton + '</a></div></div></div></div></div></div></div></section>';
+            //var htmlData = '<section class="scene-wrapper visual-left"><div class="scene-body"><div class="scene-cell"><img class="img-responsive mainimage"  src="' + lockCourseCommandObject.CourseLockedMessage.CourseLockedMessageImageUrl + '" /></div><div class="scene-cell"><h1 class="scene-title">' + lockCourseCommandObject.CourseLockedMessage.CourseLockedMessageHeading + '</h1><div class="scene-content"><p>' + lockCourseCommandObject.CourseLockedMessage.CourseLockedMessageText + '</p><p><div id="divStartCourseEvaluation"style="float:left; vertical-align:top; padding-left:8px; padding-top:30px;"><div id="btnUnlockMyCourse"><a href="#" class="cd-btn main-action button btn-stem">' + lockCourseCommandObject.CourseLockedMessage.ContentUnlockCourseButton + '</a></div></div></p></div></div></div></section>';
 
 
 
@@ -7275,28 +7501,59 @@ function RenderEngine() {
             $(htmlContentContainer).html('');
             $(htmlContentContainer).html(htmlData);
             $(NextQuestionButtonEn).hide();
-
-            $(controlPanel).find("#IcoInstructorInformation").hide();
-            $(controlPanel).find("#IcoInstructorInformationDs").show();        
+            
+            if ($('#Glossary').is(':visible') == true) {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").show(); 
+            }
+            else
+            {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").hide();           
+            }
+            
+            if ($('#InstructorInformation').is(':visible') == true) {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").hide();           
+            }  
+            
+            if ($('#Material').is(':visible') == true) {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").hide();         
+            } 
+            
+            if ($('#modal-trigger-rec').is(':visible') == true) {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").hide();         
+            }                                     
+      
 
             $(controlPanel).find("#IcoTOC").hide();
-            $(controlPanel).find("#IcoTOCDs").show();        
+            $(controlPanel).find("#IcoTOCDs").show();
 
-            $(controlPanel).find("#IcoGlossary").hide();
-            $(controlPanel).find("#IcoGlossaryDs").show();        
-
-            $(controlPanel).find("#IcoCourseMaterial").hide();
-            $(controlPanel).find("#IcoCourseMaterialDs").show();             
-
-            $(controlPanel).find("#modal-trigger-bookmark").hide();
-            $(controlPanel).find("#cd-tour-trigger").hide();
+            $("#modal-trigger-bookmark").hide();
+            $("#cd-tour-trigger").hide();
 
             $(controlPanel).find("#IcoConfigure").hide();
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
             $(controlPanel).find("#IcoHelpDs").show();
-
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -7321,6 +7578,7 @@ function RenderEngine() {
                 $("#divCourseLocked").hide();
                 $(gradeAssessment).hide();
                 $(assessmentTimer).hide();
+                $("#assessmentTimer").hide();
                 //$("#odometer").html('00 minute');
             }
 
@@ -7329,6 +7587,7 @@ function RenderEngine() {
                 $("#divCourseLocked").hide();
                 $(gradeAssessment).hide();
                 $(assessmentTimer).hide();
+                $("#assessmentTimer").hide();
                 $("#NextQuestionButtonEn").hide();
                 //$("#BackQuestionButtonEn").hide();
                 $("#BackQuestionButtonEn").addClass("hide");
@@ -7346,6 +7605,7 @@ function RenderEngine() {
                 $("#assessmentControlPanel").hide();
                 $(gradeAssessment).hide();
                 $(assessmentTimer).hide();
+                $("#assessmentTimer").hide();
                 $("#NextQuestionButtonEn").hide();
                 //$("#BackQuestionButtonEn").hide();
                 $("#BackQuestionButtonEn").addClass("hide");
@@ -7366,6 +7626,7 @@ function RenderEngine() {
                 $("#divCourseLocked").hide();
                 $(gradeAssessment).hide();
                 $(assessmentTimer).hide();
+                $("#assessmentTimer").hide();
                 //$("#odometer").html('00 minute');
             }
 
@@ -7421,6 +7682,7 @@ function RenderEngine() {
                 $("#divCourseLocked").hide();
                 $(gradeAssessment).hide();
                 $(assessmentTimer).hide();
+                $("#assessmentTimer").hide();
 
             }
 
@@ -7464,27 +7726,57 @@ function RenderEngine() {
             $("#CourseApproval").html(htmlData);
             $(NextQuestionButtonEn).hide();
 
-            $(controlPanel).find("#IcoInstructorInformation").hide();
-            $(controlPanel).find("#IcoInstructorInformationDs").show();        
+            if ($('#Glossary').is(':visible') == true) {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").show(); 
+            }
+            else
+            {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").hide();           
+            }
+            
+            if ($('#InstructorInformation').is(':visible') == true) {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").hide();           
+            }  
+            
+            if ($('#Material').is(':visible') == true) {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").hide();         
+            } 
+            
+            if ($('#modal-trigger-rec').is(':visible') == true) {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").hide();         
+            }             
 
             $(controlPanel).find("#IcoTOC").hide();
-            $(controlPanel).find("#IcoTOCDs").show();        
-
-            $(controlPanel).find("#IcoGlossary").hide();
-            $(controlPanel).find("#IcoGlossaryDs").show();        
-
-            $(controlPanel).find("#IcoCourseMaterial").hide();
-            $(controlPanel).find("#IcoCourseMaterialDs").show();               
+            $(controlPanel).find("#IcoTOCDs").show(); 
                 
-            $(controlPanel).find("#modal-trigger-bookmark").hide();
-            $(controlPanel).find("#cd-tour-trigger").hide();
+            $("#modal-trigger-bookmark").hide();
+            $("#cd-tour-trigger").hide();
 
             $(controlPanel).find("#IcoConfigure").hide();
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
             $(controlPanel).find("#IcoHelpDs").show();
-
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -7500,6 +7792,7 @@ function RenderEngine() {
             $("#divCourseLocked").hide();
             $(gradeAssessment).hide();
             $(assessmentTimer).hide();
+            $("#assessmentTimer").hide();
             $("#NextQuestionButtonEn").hide();
             //$("#BackQuestionButtonEn").hide();
             $("#BackQuestionButtonEn").addClass("hide");
@@ -7544,10 +7837,7 @@ function RenderEngine() {
         $(PlaybuttonEn).hide();
         $(PlaybuttonDs).show();
 
-        $(controlPanel).find("#IcoBookMark").hide();
-        $(controlPanel).find("#IcoBookMarkDs").show();
-
-
+        $("#modal-trigger-bookmark").hide();
 
         if (!CourseApprovalAffidavitCommandObject.Affidavit.IsDocuSignAffidavit) {
             $(htmlContentContainer).show();
@@ -7567,7 +7857,8 @@ function RenderEngine() {
 
 
             $(IAgreeButton).find("a").attr("target", "_blank");
-            $('<div id="PlaybuttonDocuSign"><a href="#" title="Next"></a></div>').insertAfter(PlaybuttonEn);
+            $('<span id="PlaybuttonDocuSign"><a href="javascript:;" title="Next" class="btn ctrl"><span id="PlaybuttonEnText">NEXT</span><i class="glyphicon glyphicon-triangle-right"></i></a></span>').insertAfter(PlaybuttonEn);
+            $('#PlaybuttonDocuSign').show();
             $('#PlaybuttonDocuSign').bind('click.namespace', function() {
                 ui.slide.next(function()
                 {
@@ -7658,10 +7949,14 @@ function RenderEngine() {
 
 
 
-            $('<div id="PlaybuttonDocuSign"><a href="#" title="Next"></a></div>').insertAfter(PlaybuttonEn);
+            $('<span id="PlaybuttonDocuSign"><a href="javascript:;" title="Next" class="btn ctrl"><span id="PlaybuttonEnText">NEXT</span><i class="glyphicon glyphicon-triangle-right"></i></a></span>').insertAfter(PlaybuttonEn);
+            $('#PlaybuttonDocuSign').show();
             $('#PlaybuttonDocuSign').bind('click.namespace', function() {
-                cp.ContinueAfterAffidavit(function() {
-                    $('#PlaybuttonDocuSign').remove();
+                ui.slide.next(function()
+                {
+	                 cp.ContinueAfterAffidavit(function() {
+                        $('#PlaybuttonDocuSign').remove();
+                    });
                 });
             });
             $('#PlaybuttonDocuSign').hide();
@@ -7692,7 +7987,7 @@ function RenderEngine() {
         $(htmlContentContainer).show();
         $('#NYInsuranceValidation').hide();
         $('#CARealStateValidation').hide();
-
+        $("#modal-trigger-bookmark").hide();
         var htmlData = "";
 
         isMovieEnded = true;
@@ -7706,11 +8001,14 @@ function RenderEngine() {
         $(PlaybuttonEn).hide();
         $(PlaybuttonDs).hide();
 
-        $('<div id="PlaybuttonDocuSign"><a href="#" title="Next"></a></div>').insertAfter(PlaybuttonEn);
+        $('<span id="PlaybuttonDocuSign"><a href="javascript:;" title="Next" class="btn ctrl"><span id="PlaybuttonDocuSignText">NEXT</span><i class="glyphicon glyphicon-triangle-right"></i></a></span>').insertAfter(PlaybuttonEn);
+        $('#PlaybuttonDocuSign').show();
         $('#PlaybuttonDocuSign').bind('click.namespace', function() {
-            $('#PlaybuttonDocuSign').remove();
-            cp.ContinueAfterDocuSignRequirementAffidavit(function() {
-
+            ui.slide.next(function()
+            {
+	            $('#PlaybuttonDocuSign').remove();
+                cp.ContinueAfterDocuSignRequirementAffidavit(function() {
+                });
             });
         });
     }
@@ -7722,6 +8020,7 @@ function RenderEngine() {
 
         $(htmlContentContainer).show();
         $('#InstructorInformation').hide();
+        $("#modal-trigger-bookmark").hide();
 
         var htmlData = "";
 
@@ -7744,26 +8043,62 @@ function RenderEngine() {
         $(PlaybuttonEn).hide();
         $(PlaybuttonDs).show();
 
-        $(controlPanel).find("#IcoInstructorInformation").hide();
-        $(controlPanel).find("#IcoInstructorInformationDs").show();        
+            if ($('#Glossary').is(':visible') == true) {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").show(); 
+            }
+            else
+            {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").hide();           
+            }
+            
+            if ($('#InstructorInformation').is(':visible') == true) {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").hide();           
+            }  
+            
+            if ($('#Material').is(':visible') == true) {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").hide();         
+            } 
+            
+            if ($('#modal-trigger-rec').is(':visible') == true) {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").hide();         
+            }         
 
         $(controlPanel).find("#IcoTOC").hide();
-        $(controlPanel).find("#IcoTOCDs").show();        
-
-        $(controlPanel).find("#IcoGlossary").hide();
-        $(controlPanel).find("#IcoGlossaryDs").show();        
-
-        $(controlPanel).find("#IcoCourseMaterial").hide();
-        $(controlPanel).find("#IcoCourseMaterialDs").show();
+        $(controlPanel).find("#IcoTOCDs").show(); 
 
         $('#btnSubmit').attr("disabled", 'disabled');
 
-        $('<div id="PlaybuttonDocuSign"><a href="#" title="Next"></a></div>').insertAfter(PlaybuttonEn);
+        $('<span id="PlaybuttonDocuSign"><a href="javascript:;" title="" class="btn ctrl"><span id="PlaybuttonEnText">NEXT</span><i class="glyphicon glyphicon-triangle-right"></i></a></span>').insertAfter(PlaybuttonEn);
+        $('#PlaybuttonDocuSign').show();
         $('#PlaybuttonDocuSign').bind('click.namespace', function() {
             // debugger;
             // ------------------------------------
-            cp.ContinueAfterDocuSignProcess(function() {
-                $('#PlaybuttonDocuSign').remove();
+                ui.slide.next(function()
+                {
+	                cp.ContinueAfterDocuSignProcess(function() {
+                    $('#PlaybuttonDocuSign').remove();
+                });            
+
                 //$('#btnStartDocuSignProcess').attr('disabled', 'disabled');
                 //$(controlPanel).hide();
             });
@@ -7773,27 +8108,58 @@ function RenderEngine() {
         //For LCMS-11217 (LCMS-11282)
         $(".startDocuSignProcess").bind('click.namespace', function() {
             //debugger;         
-            $(controlPanel).find("#IcoInstructorInformation").hide();
-            $(controlPanel).find("#IcoInstructorInformationDs").show();        
+
+            if ($('#Glossary').is(':visible') == true) {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").show(); 
+            }
+            else
+            {                
+                $(controlPanel).find("#IcoGlossary").hide();
+                $(controlPanel).find("#IcoGlossaryDs").hide();           
+            }
+            
+            if ($('#InstructorInformation').is(':visible') == true) {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoInstructorInformation").hide();
+                $(controlPanel).find("#IcoInstructorInformationDs").hide();           
+            }  
+            
+            if ($('#Material').is(':visible') == true) {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoCourseMaterial").hide();
+                $(controlPanel).find("#IcoCourseMaterialDs").hide();         
+            } 
+            
+            if ($('#modal-trigger-rec').is(':visible') == true) {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").show();  
+            }
+            else
+            {
+                $(controlPanel).find("#IcoRecommendationCoursePanel").hide();
+                $(controlPanel).find("#IcoRecommendationCoursePanelDs").hide();         
+            }        
 
             $(controlPanel).find("#IcoTOC").hide();
-            $(controlPanel).find("#IcoTOCDs").show();        
+            $(controlPanel).find("#IcoTOCDs").show(); 
 
-            $(controlPanel).find("#IcoGlossary").hide();
-            $(controlPanel).find("#IcoGlossaryDs").show();        
-
-            $(controlPanel).find("#IcoCourseMaterial").hide();
-            $(controlPanel).find("#IcoCourseMaterialDs").show();   
-
-            $(controlPanel).find("#modal-trigger-bookmark").hide();
-            $(controlPanel).find("#cd-tour-trigger").hide();
+            $("#modal-trigger-bookmark").hide();
+            $("#cd-tour-trigger").hide();
 
             $(controlPanel).find("#IcoConfigure").hide();
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
             $(controlPanel).find("#IcoHelpDs").show();
-
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -8184,11 +8550,11 @@ function AllowTOCDisplaySlidesTrue(mediaAsset) {
             //$("#contentObjectName").html($("#"+tocArray[x]).find("span").eq(0).html());
         
             if (tocID == tocArray[x][0]) {
-            atTOC = tocID;
+            atTOC = tocID;              
              $("#" + tocArray[x][0]).addClass("at");
-               	//var container = $('#toc');
+               	var container = $('#course-outline');
 				var scrollTo = $('#' + tocID +'');
-				ui.nav.move("outline",scrollTo.offset().top - toc.offset().top + toc.scrollTop() - (toc.height()/2));
+				ui.nav.move("outline",scrollTo.offset().top - container.offset().top + container.scrollTop() - (container.height()/2));
 				
                 /*toc.scrollTop(0); 
 				 
@@ -8292,9 +8658,14 @@ function AllowTOCDisplaySlidesTrue(mediaAsset) {
 
 //}
 ///*NEW TOC*/
+var tocID=0
 function AllowTOCDisplaySlidesFalse(mediaAsset) {
-
-  var tocID = mediaAsset.ExamID > 0 ? mediaAsset.ExamID : mediaAsset.ContentObjectID;   //mediaAsset.SceneSequenceID;
+    if(tocID > 0)
+    {
+        $("#" + tocID).removeClass("at");       
+    }
+    
+   tocID= mediaAsset.ExamID > 0 ? mediaAsset.ExamID : mediaAsset.ContentObjectID;   //mediaAsset.SceneSequenceID;
 
     if (tocID <= 0) {
         return false;
@@ -8316,81 +8687,20 @@ function AllowTOCDisplaySlidesFalse(mediaAsset) {
     }
 
     if (tocID != 0 && isExistsinTOC == true) {
-
-
         var x = 0;
-
-
-
         for (x = 0; x < tocArray.length; x++) {
-
-            /*var arrclass = $("#" + tocArray[x][0]).attr("class");
-            if (arrclass == "disable expandable")
-                arrclass = "active hasChildren";
-                //arrclass = "enable expandable"
-                
-                
-
-          if (arrclass == "disable collapsable")
-                arrclass = "active hasChildren"
-                //arrclass = "enable collapsable"
-
-
-            if (arrclass == "disable collapsable lastCollapsable")
-                arrclass = "active hasChildren"
-                //arrclass = "enable collapsable lastCollapsable"
-
-            if (arrclass == "disable last")
-                arrclass = "active";
-                //arrclass = "enable last";
-
-            if (arrclass == "disable")
-                arrclass = "active";
-                //arrclass = "enable";
-                
-            if (arrclass == "disable expandable lastExpandable")
-                arrclass = "active hasChildren expand"
-                //arrclass = "enable expandable lastExpandable"
-*/
-
-            //alert(arrclass);
-           // $("#" + tocArray[x][0]).removeAttr("class");
-            //$("#"+tocArray[x]).addClass("enable");
-            //$("#" + tocArray[x][0]).addClass(arrclass);
-            
             $("#" + tocArray[x][0]).addClass("active").removeClass("at");
-
             $("#" + tocArray[x][0]).find("a").eq(0).removeAttr("href");
             $("#" + tocArray[x][0]).find("a").eq(0).attr("href", "javascript:tocClick('" + tocArray[x][0] + "', '" + tocArray[x][1] + "');resetCPIdleTimer();");
 
             //this has been commented to as now contentobject title will come from Scene rendering Command
-
-            //$("#contentObjectName").html($("#"+tocArray[x]).find("span").eq(0).html());
-            
             if (tocID == tocArray[x][0]) {
-            atTOC = tocID;
+            atTOC = tocID;            
             $("#" + tocArray[x][0]).addClass("at").parent().parent().addClass("expand");
-               	//var container = $('#toc');
-               	/*
-				var scrollTo = $('#' + tocID +'');
-				  
-                toc.scrollTop(0); 
-				 
-			    toc.scrollTop(
-				scrollTo.offset().top - toc.offset().top + toc.scrollTop() - (toc.height()/2)
-				); 
-				  */
-				//container.scrollTop(
-				//	(scrollTo.offset().top) - container.offset().top + container.scrollTop()
-				//);				  						
-			
-			  break;
+			break;
             }
-            
-        }
-    }
-
-
+        }        
+    }    
 }
 
 /*OLD TOC*/
@@ -8956,7 +9266,14 @@ function courseApprovalAffidavitClick(affidavitURL) {
 
 
 function resumeAssessmentMessageClick() {
-    cp.ResumeAssessment();
+
+    ui.slide.next(function()
+    {
+        $('#wrapper').removeClass('toggled-left')        
+        $('.cd-nav-trigger').hide();
+        $("#toogle-flag").removeClass('hide');
+        cp.ResumeAssessment();
+    });
     if (isLockoutClickAwayToActiveWindowStart) {
         initiateSelfLockingDueToClickingAwayToActvieWindow();
     }
@@ -9782,7 +10099,10 @@ function ContinueAfterAssessmentScore() {
     ui.slide.next(function()
     {    
         $('.cd-nav-trigger').show();
+        $('#cd-tour-trigger').hide();
+        $('#modal-trigger-bookmark').hide();        
         cp.ContinueAfterAssessmentScore();
+        
     });		
 }
 
@@ -9818,7 +10138,10 @@ function GetPreviousRemidiationQuestion() {
 }
 
 function ShowContent(AssessmentItemID) {
-    cp.ShowContent(AssessmentItemID);
+    ui.slide.next(function()
+    {
+	    cp.ShowContent(AssessmentItemID);
+    });    
 }
 
 function ShowHideNextQuestionButton() {
