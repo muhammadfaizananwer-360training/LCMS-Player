@@ -232,6 +232,20 @@ namespace _360Training.CourseService
         /// <param name="?"></param>
         /// <returns></returns>
         [WebMethod]
+        public int GetOriginalCourseID(int offeredcourseID)
+        {
+            using (CourseManager courseManager = new CourseManager())
+            {
+                return courseManager.GetOriginalCourseID(offeredcourseID);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        [WebMethod]
         public string GetCourseGUID(int courseID)
         {
             using (CourseManager courseManager = new CourseManager())

@@ -315,7 +315,7 @@ function CoursePlayerEngine() {
         var commandObject = com.CourseLockDueToInActiveCurrentWindow();
 		ui.slide.loader.hide(function()
 		{				
-		},'templateName');           
+		},'');           
         if (commandObject != null) {
             this.CommandHelper(commandObject);
         }
@@ -484,8 +484,8 @@ function CoursePlayerEngine() {
     this.getQueryString = function() {
 
 
-          var _queryString = window.location.search.substring(1);
-         //var _queryString = "SESSION=a3afe893-419b-4aac-acc5-75ab59c25dc4&ts=1460554096402#";
+         var _queryString = window.location.search.substring(1);
+         //var _queryString = "SESSION=04c3e66a-2738-418c-929b-842d7f9fa727&ts=1465367461442";
          //var _queryString = "COURSEID=117960&VARIANT=En-US&BRANDCODE=DEFAULT&PREVIEW=true&SESSION=ee9074c0-2f3b-4561-8c5b-ce9dbd2eaa2c"; //Yasin
 
         //  var _queryString = window.location.search.substring(1);
@@ -1354,7 +1354,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
             ui.slide.loader.hide(function()
 			{				
-			},'templateName');            
+			},'');            
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -1370,6 +1370,9 @@ function CoursePlayerEngine() {
         var packet = com.ResumeAssessment(function(packet) {
             loadingEngine.OnReadyContentArea();
             cpEngine.CommandHelper(packet);
+            ui.slide.loader.hide(function()
+			{				
+			},'');             
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -1411,7 +1414,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
 			ui.slide.loader.hide(function()
 			{				
-			},'templateName');               
+			},'');               
             if (onComplete) {
                 onComplete();
             }
@@ -1427,6 +1430,9 @@ function CoursePlayerEngine() {
         var packet = com.ContinueAfterDocuSignRequirementAffidavit(function(packet) {
             loadingEngine.OnReadyContentArea();
             cpEngine.CommandHelper(packet);
+            ui.slide.loader.hide(function()
+			{				
+			},'');
             if (onComplete) {
                 onComplete();
             }
@@ -1441,6 +1447,9 @@ function CoursePlayerEngine() {
         var packet = com.ContinueAfterDocuSignProcess(function(packet) {
             loadingEngine.OnReadyContentArea();
             cpEngine.CommandHelper(packet);
+            ui.slide.loader.hide(function()
+            {
+            },'');            
             if (onComplete) {
                 onComplete();
             }
@@ -1504,7 +1513,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
             ui.slide.loader.hide(function()
 			{				
-			},'templateName');            
+			},'');            
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -1529,7 +1538,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
             ui.slide.loader.hide(function()
 			{				
-			},'templateName');              
+			},'');              
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -1752,7 +1761,7 @@ function CoursePlayerEngine() {
 				ui.slide.loader.hide(function()
 				{	
 				//	go ahead, template is ready....
-				},'templateName');
+				},'');
 
                 
             }
@@ -1773,7 +1782,7 @@ function CoursePlayerEngine() {
 			ui.slide.loader.hide(function()
 			{	
 			//	go ahead, template is ready....
-			},'templateName');            
+			},'');            
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -1788,7 +1797,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
 			ui.slide.loader.hide(function()
 			{				
-			},'templateName');            
+			},'');            
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -1803,6 +1812,7 @@ function CoursePlayerEngine() {
         $(IcoBookMark).show();
         $(controlPanel).find("#modal-trigger-bookmark").show();
         $(controlPanel).find("#cd-tour-trigger").show();
+        $('.cd-nav-trigger').show();
 
         $('.CourseLevelRating div').remove();
 
@@ -1830,6 +1840,9 @@ function CoursePlayerEngine() {
                     $(controlPanel).find("#IcoCourseMaterial").show();
                     $(controlPanel).find("#IcoCourseMaterialDs").hide();
                     
+                    $('#cd-tour-trigger').show();
+                    $('#modal-trigger-bookmark').show();  
+        
                     $(controlPanel).find("#modal-trigger-bookmark").show();
                     $(controlPanel).find("#cd-tour-trigger").show();
                     
@@ -1879,7 +1892,7 @@ function CoursePlayerEngine() {
                         content_resize();
                         $("#NYInsuranceValidation").hide();
                         $("#proctor_login_screen").hide();
-                        $("#CARealStateValidation").hide();
+                        $("#CARealStateValidation").hide();                        
                     }
                     break;
                 }
@@ -2149,7 +2162,7 @@ function CoursePlayerEngine() {
                                         cpEngine.CommandHelper(packet);
                                         ui.slide.loader.hide(function()
 			                            {				
-			                            },'templateName');                                         
+			                            },'');                                         
                                     }
                                 }, function() {
                                     loadingEngine.OnLoadContentArea('');
@@ -2255,7 +2268,7 @@ function CoursePlayerEngine() {
                 cpEngine.CommandHelper(packet);
 			    ui.slide.loader.hide(function()
 			    {				
-			    },'templateName');                 
+			    },'');                 
             }
         }, function() {
             loadingEngine.OnLoadContentArea('');
@@ -2277,7 +2290,7 @@ function CoursePlayerEngine() {
 	                                cpEngine.CommandHelper(packet);
 			                        ui.slide.loader.hide(function()
 			                        {				
-			                        },'templateName');  	                                
+			                        },'');  	                                
 	                            }, function() {
 	                                loadingEngine.OnLoadContentArea('');
 	                            });
@@ -2292,7 +2305,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
 			ui.slide.loader.hide(function()
 			{				
-			},'templateName');               
+			},'');               
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -2331,7 +2344,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
 			ui.slide.loader.hide(function()
 			{				
-			},'templateName');             
+			},'');             
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -2345,7 +2358,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
 			ui.slide.loader.hide(function()
 			{				
-			},'templateName');             
+			},'');             
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -2357,7 +2370,7 @@ function CoursePlayerEngine() {
         com.SynchToExternalSystem(mileStone);
 		ui.slide.loader.hide(function()
 		{				
-		},'templateName');         
+		},'');         
     }
 
     //LCMS-11877
@@ -2367,7 +2380,7 @@ function CoursePlayerEngine() {
         com.SaveCourseRating(Rating);
 		ui.slide.loader.hide(function()
 		{				
-		},'templateName');         
+		},'');         
     }
 
     this.SaveCourseRatingNPS = function(NPS_RATING,USER_REVIEW_TEXT,RATING_SHOPPINGEXP,RATING_COURSE,RATING_LEARNINGTECH,RATING_CS,RATING_SHOPPINGEXP_SECONDARY,RATING_COURSE_SECONDARY,RATING_LEARNINGTECH_SECONDARY,RATING_CS_SECONDARY,   RATING_SHOPPINGEXP_SECONDARY_Q, RATING_COURSE_SECONDARY_Q,RATING_LEARNINGTECH_SECONDARY_Q,RATING_CS_SECONDARY_Q) {
@@ -2379,7 +2392,6 @@ function CoursePlayerEngine() {
     //LCMS-12532 Yasin
     this.SaveValidationIdentityQuestion = function() {
 
-
         var txtAnswerSet1 = document.getElementById("txtAnswerSet1").value;
         var txtAnswerSet2 = document.getElementById("txtAnswerSet2").value;
         var txtAnswerSet3 = document.getElementById("txtAnswerSet3").value;
@@ -2387,7 +2399,7 @@ function CoursePlayerEngine() {
         var txtAnswerSet5 = document.getElementById("txtAnswerSet5").value;
 
         var QuestionSet1 = document.getElementById("QuestionSet1");
-        var QS1 = QuestionSet1.options[QuestionSet1.selectedIndex].value;
+        var QS1 = QuestionSet1.options[QuestionSet1.selectedIndex].value;        
 
         var QuestionSet2 = document.getElementById("QuestionSet2");
         var QS2 = QuestionSet2.options[QuestionSet2.selectedIndex].value;
@@ -2403,78 +2415,79 @@ function CoursePlayerEngine() {
         var errordiv = document.getElementById("RequiredValidationQuestion");
 
 
+
         if (QS1 === '0') {
-            $("#RequiredValidationQuestion").text(Validation_Message1);
             ui.slide.loader.hide(function()
             {	
             },'');
+            $("#RequiredValidationQuestion").html(Validation_Message1);            
             return false;
         }
-        if (QS2 === '0') {
-            $("#RequiredValidationQuestion").text(Validation_Message2);
+        if (QS2 === '0') {            
             ui.slide.loader.hide(function()
             {	
             },'');
+            $("#RequiredValidationQuestion").html(Validation_Message2);
             return false;
         }
-        if (QS3 === '0') {
-            $("#RequiredValidationQuestion").text(Validation_Message3);
+        if (QS3 === '0') {            
+            ui.slide.loader.hide(function()
+            {	
+            },'');        
+            $("#RequiredValidationQuestion").html(Validation_Message3);    
+            return false;
+        }
+        if (QS4 === '0') {            
+            ui.slide.loader.hide(function()
+            {	
+            },'');        
+            $("#RequiredValidationQuestion").html(Validation_Message4);    
+            return false;
+        }
+        if (QS5 === '0') {            
             ui.slide.loader.hide(function()
             {	
             },'');            
-            return false;
-        }
-        if (QS4 === '0') {
-            $("#RequiredValidationQuestion").text(Validation_Message4);
-            ui.slide.loader.hide(function()
-            {	
-            },'');            
-            return false;
-        }
-        if (QS5 === '0') {
-            $("#RequiredValidationQuestion").text(Validation_Message5);
-            ui.slide.loader.hide(function()
-            {	
-            },'');            
-            return false;
-        }
-
-
-        if (txtAnswerSet1 === '') {
-            $("#RequiredValidationQuestion").text(Validation_Message_Must);
-            ui.slide.loader.hide(function()
-            {	
-            },'');            
+            $("#RequiredValidationQuestion").html(Validation_Message5);
             return false;
         }
 
-        if (txtAnswerSet2 === '') {
-            $("#RequiredValidationQuestion").text(Validation_Message_Must);
+
+        if (txtAnswerSet1 === '') {            
             ui.slide.loader.hide(function()
             {	
             },'');            
+            $("#RequiredValidationQuestion").html(Validation_Message_Must);
             return false;
         }
 
-        if (txtAnswerSet3 === '') {
-            $("#RequiredValidationQuestion").text(Validation_Message_Must);
+        if (txtAnswerSet2 === '') {            
             ui.slide.loader.hide(function()
             {	
             },'');            
+            $("#RequiredValidationQuestion").html(Validation_Message_Must);
             return false;
         }
-        if (txtAnswerSet4 === '') {
-            $("#RequiredValidationQuestion").text(Validation_Message_Must);
+
+        if (txtAnswerSet3 === '') {            
             ui.slide.loader.hide(function()
             {	
             },'');            
+            $("#RequiredValidationQuestion").html(Validation_Message_Must);
             return false;
         }
-        if (txtAnswerSet5 === '') {
-            $("#RequiredValidationQuestion").text(Validation_Message_Must);
+        if (txtAnswerSet4 === '') {            
             ui.slide.loader.hide(function()
             {	
             },'');            
+            $("#RequiredValidationQuestion").html(Validation_Message_Must);
+            return false;
+        }
+        if (txtAnswerSet5 === '') {            
+            ui.slide.loader.hide(function()
+            {	
+            },'');            
+            $("#RequiredValidationQuestion").html(Validation_Message_Must);
             return false;
         }
 
@@ -2540,7 +2553,7 @@ function CoursePlayerEngine() {
         cp.CommandHelper(packet);
 		ui.slide.loader.hide(function()
 		{				
-		},'templateName');         
+		},'');         
     }
 
     this.AssessmentTimerExpire = function() {
@@ -2555,7 +2568,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
 			ui.slide.loader.hide(function()
 			{				
-			},'templateName');             
+			},'');             
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -2572,7 +2585,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
 			ui.slide.loader.hide(function()
 			{				
-			},'templateName');
+			},'');
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -2586,7 +2599,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
 			ui.slide.loader.hide(function()
 			{				
-			},'templateName');             
+			},'');             
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -2599,6 +2612,9 @@ function CoursePlayerEngine() {
         var packet = com.ShowContent(AssessmentItemID, function(packet) {
             loadingEngine.OnReadyContentArea();
             cpEngine.CommandHelper(packet);
+            ui.slide.loader.hide(function()
+            {
+            },'');            
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -2612,7 +2628,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
 			ui.slide.loader.hide(function()
 			{				
-			},'templateName');               
+			},'');               
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -2628,6 +2644,9 @@ function CoursePlayerEngine() {
         packet = com.GoContentTOQuestion(function(packet) {
             loadingEngine.OnReadyContentArea();
             cpEngine.CommandHelper(packet);
+            ui.slide.loader.hide(function()
+            {	            
+            },'');            
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -2647,7 +2666,7 @@ function CoursePlayerEngine() {
         this.CommandHelper(packet);
         ui.slide.loader.hide(function()
 		{				
-		},'templateName');         
+		},'');         
     }
     //zaheer code
 
@@ -2822,7 +2841,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
 			ui.slide.loader.hide(function()
 			{				
-			},'templateName');               
+			},'');               
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -2836,7 +2855,7 @@ function CoursePlayerEngine() {
             cpEngine.CommandHelper(packet);
 			ui.slide.loader.hide(function()
 			{				
-			},'templateName');               
+			},'');               
         }, function() {
             loadingEngine.OnLoadContentArea('');
         });
@@ -3578,6 +3597,7 @@ var tocArray = [];
 //sound variable
 var IsSoundPlaying = false;
 
+/*
 function getMovieName(movieName) {
     if (navigator.appVersion.indexOf("10.0") != -1) {
         return document[movieName];
@@ -3591,7 +3611,22 @@ function getMovieName(movieName) {
         return document.embeds[movieName];
     }
 
-}
+}*/
+
+	function getMovieName(movieName) { 	
+		if(String(document[movieName])!="undefined")
+		{ 
+	    	return document[movieName];
+	    }
+		else if(String(document.embeds[movieName]) != "undefined")
+		{ 
+	    	return document.embeds[movieName];
+	    }
+		else
+		{ 
+	    	return window[movieName]; 
+	    }; 
+	} 
 
 function initializeIt(val) {
     return val;

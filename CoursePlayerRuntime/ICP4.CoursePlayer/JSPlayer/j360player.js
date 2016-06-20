@@ -1,14 +1,16 @@
-if (typeof j360player == "undefined") {
+if (typeof j360player === "undefined") {
     var j360player = function (a) {
             if (j360player.api) {
-                return j360player.api.selectPlayer(a)
+                return j360player.api.selectPlayer(a);
             }
         };
     var $j360 = j360player;
-    j360player.version = "1.0.0.0";
+    j360player.version = "2.0.1.6";
     j360player.vid = document.createElement("video");
     j360player.audio = document.createElement("audio");
     j360player.source = document.createElement("source");
+	
+	
     (function (b) {
         b.utils = function () {};
         b.utils.typeOf = function (d) {
@@ -16,76 +18,76 @@ if (typeof j360player == "undefined") {
             if (c === "object") {
                 if (d) {
                     if (d instanceof Array) {
-                        c = "array"
+                        c = "array";
                     }
                 } else {
-                    c = "null"
+                    c = "null";
                 }
             }
-            return c
+            return c;
         };
         b.utils.extend = function () {
             var c = b.utils.extend["arguments"];
             if (c.length > 1) {
                 for (var e = 1; e < c.length; e++) {
                     for (var d in c[e]) {
-                        c[0][d] = c[e][d]
+                        c[0][d] = c[e][d];
                     }
                 }
-                return c[0]
+                return c[0];
             }
-            return null
+            return null;
         };
         b.utils.clone = function (f) {
             var c;
             var d = b.utils.clone["arguments"];
-            if (d.length == 1) {
+            if (d.length === 1) {
                 switch (b.utils.typeOf(d[0])) {
                 case "object":
                     c = {};
                     for (var e in d[0]) {
-                        c[e] = b.utils.clone(d[0][e])
+                        c[e] = b.utils.clone(d[0][e]);
                     }
                     break;
                 case "array":
                     c = [];
                     for (var e in d[0]) {
-                        c[e] = b.utils.clone(d[0][e])
+                        c[e] = b.utils.clone(d[0][e]);
                     }
                     break;
                 default:
                     return d[0];
-                    break
+                    break;
                 }
             }
-            return c
+            return c;
         };
         b.utils.extension = function (c) {
             if (!c) {
-                return ""
+                return "";
             }
             c = c.substring(c.lastIndexOf("/") + 1, c.length);
             c = c.split("?")[0];
             if (c.lastIndexOf(".") > -1) {
-                return c.substr(c.lastIndexOf(".") + 1, c.length).toLowerCase()
+                return c.substr(c.lastIndexOf(".") + 1, c.length).toLowerCase();
             }
-            return
+            return;
         };
         b.utils.html = function (c, d) {
-            c.innerHTML = d
+            c.innerHTML = d;
         };
         b.utils.wrap = function (c, d) {
             if (c.parentNode) {
-                c.parentNode.replaceChild(d, c)
+                c.parentNode.replaceChild(d, c);
             }
-            d.appendChild(c)
+            d.appendChild(c);
         };
         b.utils.ajax = function (g, f, c) {
             var e;
             if (window.XMLHttpRequest) {
-                e = new XMLHttpRequest()
+                e = new XMLHttpRequest();
             } else {
-                e = new ActiveXObject("Microsoft.XMLHTTP")
+                e = new ActiveXObject("Microsoft.XMLHTTP");
             }
             e.onreadystatechange = function () {
                 if (e.readyState === 4) {
@@ -98,7 +100,7 @@ if (typeof j360player == "undefined") {
                                         if (h) {
                                             e = b.utils.extend({}, e, {
                                                 responseXML: h
-                                            })
+                                            });
                                         }
                                     } else {
                                         h = new ActiveXObject("Microsoft.XMLDOM");
@@ -106,89 +108,89 @@ if (typeof j360player == "undefined") {
                                         h.loadXML(e.responseText);
                                         e = b.utils.extend({}, e, {
                                             responseXML: h
-                                        })
+                                        });
                                     }
                                 } catch (j) {
                                     if (c) {
-                                        c(g)
+                                        c(g);
                                     }
                                 }
                             }
-                            f(e)
+                            f(e);
                         }
                     } else {
                         if (c) {
-                            c(g)
+                            c(g);
                         }
                     }
                 }
             };
             try {
                 e.open("GET", g, true);
-                e.send(null)
+                e.send(null);
             } catch (d) {
                 if (c) {
-                    c(g)
+                    c(g);
                 }
             }
-            return e
+            return e;
         };
         b.utils.load = function (d, e, c) {
             d.onreadystatechange = function () {
                 if (d.readyState === 4) {
                     if (d.status === 200) {
                         if (e) {
-                            e()
+                            e();
                         }
                     } else {
                         if (c) {
-                            c()
+                            c();
                         }
                     }
                 }
-            }
+            };
         };
         b.utils.find = function (d, c) {
-            return d.getElementsByTagName(c)
+            return d.getElementsByTagName(c);
         };
         b.utils.append = function (c, d) {
-            c.appendChild(d)
+            c.appendChild(d);
         };
         b.utils.isIE = function () {
-            return ((!+"\v1") || (typeof window.ActiveXObject != "undefined"))
+            return ((!+"\v1") || (typeof window.ActiveXObject != "undefined"));
         };
         b.utils.userAgentMatch = function (d) {
             var c = navigator.userAgent.toLowerCase();
-            return (c.match(d) !== null)
+            return (c.match(d) !== null);
         };
         b.utils.isIOS = function () {
-            return b.utils.userAgentMatch(/iP(hone|ad|od)/i)
+            return false//b.utils.userAgentMatch(/iP(hone|ad|od)/i);
         };
         b.utils.isIPad = function () {
-            return b.utils.userAgentMatch(/iPad/i)
+            return false//b.utils.userAgentMatch(/iPad/i);
         };
         b.utils.isIPod = function () {
-            return b.utils.userAgentMatch(/iP(hone|od)/i)
+            return false//b.utils.userAgentMatch(/iP(hone|od)/i);
         };
         b.utils.isAndroid = function () {
-            return b.utils.userAgentMatch(/android/i)
+            return false//b.utils.userAgentMatch(/android/i);
         };
         b.utils.isLegacyAndroid = function () {
-            return b.utils.userAgentMatch(/android 2.[012]/i)
+            return false//b.utils.userAgentMatch(/android 2.[012]/i);
         };
         b.utils.isBlackberry = function () {
-            return b.utils.userAgentMatch(/blackberry/i)
+            return false//b.utils.userAgentMatch(/blackberry/i);
         };
         b.utils.isMobile = function () {
-            return b.utils.userAgentMatch(/(iP(hone|ad|od))|android/i)
+            return false//b.utils.userAgentMatch(/(iP(hone|ad|od))|android/i);
         };
         b.utils.getFirstPlaylistItemFromConfig = function (c) {
             var d = {};
             var e;
             if (c.playlist && c.playlist.length) {
-                e = c.playlist[0]
+                e = c.playlist[0];
             } else {
-                e = c
+                e = c;
             }
             d.file = e.file;
             d.levels = e.levels;
@@ -199,32 +201,32 @@ if (typeof j360player == "undefined") {
                 /*if (d.file && (d.file.toLowerCase().indexOf("youtube.com") > -1 || d.file.toLowerCase().indexOf("youtu.be") > -1)) {
                     d.provider = "youtube"
                 }*/
-                if (d.streamer && d.streamer.toLowerCase().indexOf("rtmp://") == 0) {
-                    d.provider = "rtmp"
+                if (d.streamer && d.streamer.toLowerCase().indexOf("rtmp://") === 0) {
+                    d.provider = "rtmp";
                 }
                 if (e.type) {
-                    d.provider = e.type.toLowerCase()
+                    d.provider = e.type.toLowerCase();
                 }
             }
-            if (d.provider == "audio") {
-                d.provider = "sound"
+            if (d.provider === "audio") {
+                d.provider = "sound";
             }
-            return d
+            return d;
         };
         b.utils.getOuterHTML = function (c) {
             if (c.outerHTML) {
-                return c.outerHTML
+                return c.outerHTML;
             } else {
                 try {
-                    return new XMLSerializer().serializeToString(c)
+                    return new XMLSerializer().serializeToString(c);
                 } catch (d) {
-                    return ""
+                    return "";
                 }
             }
         };
         b.utils.setOuterHTML = function (f, e) {
             if (f.outerHTML) {
-                f.outerHTML = e
+                f.outerHTML = e;
             } else {
                 var g = document.createElement("div");
                 g.innerHTML = e;
@@ -232,92 +234,92 @@ if (typeof j360player == "undefined") {
                 c.selectNodeContents(g);
                 var d = c.extractContents();
                 f.parentNode.insertBefore(d, f);
-                f.parentNode.removeChild(f)
+                f.parentNode.removeChild(f);
             }
         };
         b.utils.hasFlash = function () {
             if (typeof navigator.plugins != "undefined" && typeof navigator.plugins["Shockwave Flash"] != "undefined") {
-                return true
+                return true;
             }
             if (typeof window.ActiveXObject != "undefined") {
                 try {
                     new ActiveXObject("ShockwaveFlash.ShockwaveFlash");
-                    return true
+                    return true;
                 } catch (c) {}
             }
-            return false
+            return false;
         };
         b.utils.getPluginName = function (c) {
             if (c.lastIndexOf("/") >= 0) {
-                c = c.substring(c.lastIndexOf("/") + 1, c.length)
+                c = c.substring(c.lastIndexOf("/") + 1, c.length);
             }
             if (c.lastIndexOf("-") >= 0) {
-                c = c.substring(0, c.lastIndexOf("-"))
+                c = c.substring(0, c.lastIndexOf("-"));
             }
             if (c.lastIndexOf(".swf") >= 0) {
-                c = c.substring(0, c.lastIndexOf(".swf"))
+                c = c.substring(0, c.lastIndexOf(".swf"));
             }
             if (c.lastIndexOf(".js") >= 0) {
-                c = c.substring(0, c.lastIndexOf(".js"))
+                c = c.substring(0, c.lastIndexOf(".js"));
             }
-            return c
+            return c;
         };
         b.utils.getPluginVersion = function (c) {
             if (c.lastIndexOf("-") >= 0) {
                 if (c.lastIndexOf(".js") >= 0) {
-                    return c.substring(c.lastIndexOf("-") + 1, c.lastIndexOf(".js"))
+                    return c.substring(c.lastIndexOf("-") + 1, c.lastIndexOf(".js"));
                 } else {
                     if (c.lastIndexOf(".swf") >= 0) {
-                        return c.substring(c.lastIndexOf("-") + 1, c.lastIndexOf(".swf"))
+                        return c.substring(c.lastIndexOf("-") + 1, c.lastIndexOf(".swf"));
                     } else {
-                        return c.substring(c.lastIndexOf("-") + 1)
+                        return c.substring(c.lastIndexOf("-") + 1);
                     }
                 }
             }
-            return ""
+            return "";
         };
         b.utils.getAbsolutePath = function (j, h) {
             if (!b.utils.exists(h)) {
-                h = document.location.href
+                h = document.location.href;
             }
             if (!b.utils.exists(j)) {
-                return undefined
+                return undefined;
             }
             if (a(j)) {
-                return j
+                return j;
             }
             var k = h.substring(0, h.indexOf("://") + 3);
             var g = h.substring(k.length, h.indexOf("/", k.length + 1));
             var d;
             if (j.indexOf("/") === 0) {
-                d = j.split("/")
+                d = j.split("/");
             } else {
                 var e = h.split("?")[0];
                 e = e.substring(k.length + g.length + 1, e.lastIndexOf("/"));
-                d = e.split("/").concat(j.split("/"))
+                d = e.split("/").concat(j.split("/"));
             }
             var c = [];
             for (var f = 0; f < d.length; f++) {
-                if (!d[f] || !b.utils.exists(d[f]) || d[f] == ".") {
-                    continue
+                if (!d[f] || !b.utils.exists(d[f]) || d[f] === ".") {
+                    continue;
                 } else {
-                    if (d[f] == "..") {
-                        c.pop()
+                    if (d[f] === "..") {
+                        c.pop();
                     } else {
-                        c.push(d[f])
+                        c.push(d[f]);
                     }
                 }
             }
-            return k + g + "/" + c.join("/")
+            return k + g + "/" + c.join("/");
         };
 
         function a(d) {
             if (!b.utils.exists(d)) {
-                return
+                return;
             }
             var e = d.indexOf("://");
             var c = d.indexOf("?");
-            return (e > 0 && (c < 0 || (c > e)))
+            return (e > 0 && (c < 0 || (c > e)));
         }
         b.utils.pluginPathType = {
             ABSOLUTE: "ABSOLUTE",
@@ -326,39 +328,39 @@ if (typeof j360player == "undefined") {
         };
         b.utils.getPluginPathType = function (d) {
             if (typeof d != "string") {
-                return
+                return;
             }
             d = d.split("?")[0];
             var e = d.indexOf("://");
             if (e > 0) {
-                return b.utils.pluginPathType.ABSOLUTE
+                return b.utils.pluginPathType.ABSOLUTE;
             }
             var c = d.indexOf("/");
             var f = b.utils.extension(d);
             if (e < 0 && c < 0 && (!f || !isNaN(f))) {
-                return b.utils.pluginPathType.CDN
+                return b.utils.pluginPathType.CDN;
             }
-            return b.utils.pluginPathType.RELATIVE
+            return b.utils.pluginPathType.RELATIVE;
         };
         b.utils.mapEmpty = function (c) {
             for (var d in c) {
-                return false
+                return false;
             }
-            return true
+            return true;
         };
         b.utils.mapLength = function (d) {
             var c = 0;
             for (var e in d) {
-                c++
+                c++;
             }
-            return c
+            return c;
         };
         b.utils.log = function (d, c) {
             if (typeof console != "undefined" && typeof console.log != "undefined") {
                 if (c) {
-                    console.log(d, c)
+                    console.log(d, c);
                 } else {
-                    console.log(d)
+                    console.log(d);
                 }
             }
         };
@@ -367,54 +369,54 @@ if (typeof j360player == "undefined") {
                 for (var e in g) {
                     try {
                         if (typeof g[e] === "undefined") {
-                            continue
+                            continue;
                         } else {
-                            if (typeof g[e] == "number" && !(e == "zIndex" || e == "opacity")) {
+                            if (typeof g[e] === "number" && !(e === "zIndex" || e === "opacity")) {
                                 if (isNaN(g[e])) {
-                                    continue
+                                    continue;
                                 }
                                 if (e.match(/color/i)) {
-                                    g[e] = "#" + b.utils.strings.pad(g[e].toString(16), 6)
+                                    g[e] = "#" + b.utils.strings.pad(g[e].toString(16), 6);
                                 } else {
-                                    g[e] = Math.ceil(g[e]) + "px"
+                                    g[e] = Math.ceil(g[e]) + "px";
                                 }
                             }
                         }
-                        d.style[e] = g[e]
+                        d.style[e] = g[e];
                     } catch (f) {}
                 }
             }
         };
         b.utils.isYouTube = function (c) {
-            return (c.indexOf("youtube.com") > -1 || c.indexOf("youtu.be") > -1)
+            return (c.indexOf("youtube.com") > -1 || c.indexOf("youtu.be") > -1);
         };
         b.utils.transform = function (e, d, c, g, h) {
             if (!b.utils.exists(d)) {
-                d = 1
+                d = 1;
             }
             if (!b.utils.exists(c)) {
-                c = 1
+                c = 1;
             }
             if (!b.utils.exists(g)) {
-                g = 0
+                g = 0;
             }
             if (!b.utils.exists(h)) {
-                h = 0
+                h = 0;
             }
-            if (d == 1 && c == 1 && g == 0 && h == 0) {
+            if (d === 1 && c === 1 && g === 0 && h === 0) {
                 e.style.webkitTransform = "";
                 e.style.MozTransform = "";
-                e.style.OTransform = ""
+                e.style.OTransform = "";
             } else {
                 var f = "scale(" + d + "," + c + ") translate(" + g + "px," + h + "px)";
                 e.style.webkitTransform = f;
                 e.style.MozTransform = f;
-                e.style.OTransform = f
+                e.style.OTransform = f;
             }
         };
         b.utils.stretch = function (k, q, p, g, n, h) {
-            if (typeof p == "undefined" || typeof g == "undefined" || typeof n == "undefined" || typeof h == "undefined") {
-                return
+            if (typeof p === "undefined" || typeof g === "undefined" || typeof n === "undefined" || typeof h === "undefined") {
+                return;
             }
             var d = p / n;
             var f = g / h;
@@ -423,7 +425,7 @@ if (typeof j360player == "undefined") {
             var e = false;
             var c = {};
             if (q.parentElement) {
-                q.parentElement.style.overflow = "hidden"
+                q.parentElement.style.overflow = "hidden";
             }
             b.utils.transform(q);
             switch (k.toUpperCase()) {
@@ -441,7 +443,7 @@ if (typeof j360player == "undefined") {
                         e = true;
                         d = Math.ceil(100 * p / c.width) / 100;
                         f = 1;
-                        c.width = p
+                        c.width = p;
                     }
                 } else {
                     c.width = n * d;
@@ -450,7 +452,7 @@ if (typeof j360player == "undefined") {
                         e = true;
                         d = 1;
                         f = Math.ceil(100 * g / c.height) / 100;
-                        c.height = g
+                        c.height = g;
                     }
                 }
                 c.top = (g - c.height) / 2;
@@ -459,10 +461,10 @@ if (typeof j360player == "undefined") {
             case b.utils.stretching.FILL:
                 if (d > f) {
                     c.width = n * d;
-                    c.height = h * d
+                    c.height = h * d;
                 } else {
                     c.width = n * f;
-                    c.height = h * f
+                    c.height = h * f;
                 }
                 c.top = (g - c.height) / 2;
                 c.left = (p - c.width) / 2;
@@ -476,12 +478,12 @@ if (typeof j360player == "undefined") {
                 c.top = c.left = 0;
                 break;
             default:
-                break
+                break;
             }
             if (e) {
-                b.utils.transform(q, d, f, o, j)
+                b.utils.transform(q, d, f, o, j);
             }
-            b.utils.css(q, c)
+            b.utils.css(q, c);
         };
         b.utils.stretching = {
             NONE: "NONE",
@@ -493,7 +495,7 @@ if (typeof j360player == "undefined") {
             switch (b.utils.typeOf(k)) {
             case "array":
                 for (var g = 0; g < k.length; g++) {
-                    k[g] = b.utils.deepReplaceKeyName(k[g], e, c)
+                    k[g] = b.utils.deepReplaceKeyName(k[g], e, c);
                 }
                 break;
             case "object":
@@ -501,38 +503,38 @@ if (typeof j360player == "undefined") {
                     var j, h;
                     if (e instanceof Array && c instanceof Array) {
                         if (e.length != c.length) {
-                            continue
+                            continue;
                         } else {
                             j = e;
-                            h = c
+                            h = c;
                         }
                     } else {
                         j = [e];
-                        h = [c]
+                        h = [c];
                     }
                     var d = f;
                     for (var g = 0; g < j.length; g++) {
-                        d = d.replace(new RegExp(e[g], "g"), c[g])
+                        d = d.replace(new RegExp(e[g], "g"), c[g]);
                     }
                     k[d] = b.utils.deepReplaceKeyName(k[f], e, c);
                     if (f != d) {
-                        delete k[f]
+                        delete k[f];
                     }
                 }
-                break
+                break;
             }
-            return k
+            return k;
         };
         b.utils.isInArray = function (e, d) {
             if (!(e) || !(e instanceof Array)) {
-                return false
+                return false;
             }
             for (var c = 0; c < e.length; c++) {
                 if (d === e[c]) {
-                    return true
+                    return true;
                 }
             }
-            return false
+            return false;
         };
         b.utils.exists = function (c) {
             switch (typeof (c)) {
@@ -542,30 +544,30 @@ if (typeof j360player == "undefined") {
             case "object":
                 return (c !== null);
             case "undefined":
-                return false
+                return false;
             }
-            return true
+            return true;
         };
         b.utils.empty = function (c) {
-            if (typeof c.hasChildNodes == "function") {
+            if (typeof c.hasChildNodes === "function") {
                 while (c.hasChildNodes()) {
-                    c.removeChild(c.firstChild)
+                    c.removeChild(c.firstChild);
                 }
             }
         };
         b.utils.parseDimension = function (c) {
-            if (typeof c == "string") {
+            if (typeof c === "string") {
                 if (c === "") {
-                    return 0
+                    return 0;
                 } else {
                     if (c.lastIndexOf("%") > -1) {
-                        return c
+                        return c;
                     } else {
-                        return parseInt(c.replace("px", ""), 10)
+                        return parseInt(c.replace("px", ""), 10);
                     }
                 }
             }
-            return c
+            return c;
         };
         b.utils.getDimensions = function (c) {
             if (c && c.style) {
@@ -574,25 +576,25 @@ if (typeof j360player == "undefined") {
                     y: b.utils.parseDimension(c.style.top),
                     width: b.utils.parseDimension(c.style.width),
                     height: b.utils.parseDimension(c.style.height)
-                }
+                };
             } else {
-                return {}
+                return {};
             }
         };
         b.utils.getElementWidth = function (c) {
             if (!c) {
-                return null
+                return null;
             } else {
-                if (c == document.body) {
-                    return b.utils.parentNode(c).clientWidth
+                if (c === document.body) {
+                    return b.utils.parentNode(c).clientWidth;
                 } else {
                     if (c.clientWidth > 0) {
-                        return c.clientWidth
+                        return c.clientWidth;
                     } else {
                         if (c.style) {
-                            return b.utils.parseDimension(c.style.width)
+                            return b.utils.parseDimension(c.style.width);
                         } else {
-                            return null
+                            return null;
                         }
                     }
                 }
@@ -600,18 +602,18 @@ if (typeof j360player == "undefined") {
         };
         b.utils.getElementHeight = function (c) {
             if (!c) {
-                return null
+                return null;
             } else {
-                if (c == document.body) {
-                    return b.utils.parentNode(c).clientHeight
+                if (c === document.body) {
+                    return b.utils.parentNode(c).clientHeight;
                 } else {
                     if (c.clientHeight > 0) {
-                        return c.clientHeight
+                        return c.clientHeight;
                     } else {
                         if (c.style) {
-                            return b.utils.parseDimension(c.style.height)
+                            return b.utils.parseDimension(c.style.height);
                         } else {
-                            return null
+                            return null;
                         }
                     }
                 }
@@ -621,30 +623,30 @@ if (typeof j360player == "undefined") {
             str = "00:00";
             if (c > 0) {
                 str = Math.floor(c / 60) < 10 ? "0" + Math.floor(c / 60) + ":" : Math.floor(c / 60) + ":";
-                str += Math.floor(c % 60) < 10 ? "0" + Math.floor(c % 60) : Math.floor(c % 60)
+                str += Math.floor(c % 60) < 10 ? "0" + Math.floor(c % 60) : Math.floor(c % 60);
             }
-            return str
+            return str;
         };
         b.utils.useNativeFullscreen = function () {
-            return (navigator && navigator.vendor && navigator.vendor.indexOf("Apple") == 0)
+            return (navigator && navigator.vendor && navigator.vendor.indexOf("Apple") === 0);
         };
         b.utils.parentNode = function (c) {
             if (!c) {
-                return document.body
+                return document.body;
             } else {
                 if (c.parentNode) {
-                    return c.parentNode
+                    return c.parentNode;
                 } else {
                     if (c.parentElement) {
-                        return c.parentElement
+                        return c.parentElement;
                     } else {
-                        return c
+                        return c;
                     }
                 }
             }
         };
         b.utils.getBoundingClientRect = function (c) {
-            if (typeof c.getBoundingClientRect == "function") {
+            if (typeof c.getBoundingClientRect === "function") {
                 return c.getBoundingClientRect()
             } else {
                 return {
@@ -657,15 +659,16 @@ if (typeof j360player == "undefined") {
         };
         b.utils.translateEventResponse = function (e, c) {
             var g = b.utils.extend({}, c);
-            if (e == b.api.events.J360PLAYER_FULLSCREEN && !g.fullscreen) {
-                g.fullscreen = g.message == "true" ? true : false;
+            if (e === b.api.events.J360PLAYER_FULLSCREEN && !g.fullscreen) {
+				
+                g.fullscreen = g.message === "true" ? true : false;
                 delete g.message
             } else {
-                if (typeof g.data == "object") {
+                if (typeof g.data === "object") {
                     g = b.utils.extend(g, g.data);
                     delete g.data
                 } else {
-                    if (typeof g.metadata == "object") {
+                    if (typeof g.metadata === "object") {
                         b.utils.deepReplaceKeyName(g.metadata, ["__dot__", "__spc__", "__dsh__"], [".", " ", "-"])
                     }
                 }
@@ -686,7 +689,7 @@ if (typeof j360player == "undefined") {
             var e = document.cookie.split("; ");
             for (var d = 0; d < e.length; d++) {
                 var c = e[d].split("=");
-                if (c[0].indexOf("j360player.") == 0) {
+                if (c[0].indexOf("j360player.") === 0) {
                     f[c[0].substring(9, c[0].length)] = c[1]
                 }
             }
@@ -716,7 +719,7 @@ if (typeof j360player == "undefined") {
                     if (!j360player.utils.exists(_listeners[type])) {
                         _listeners[type] = []
                     }
-                    if (typeof (listener) == "string") {
+                    if (typeof (listener) === "string") {
                         eval("listener = " + listener)
                     }
                     _listeners[type].push({
@@ -734,7 +737,7 @@ if (typeof j360player == "undefined") {
                 }
                 try {
                     for (var listenerIndex = 0; listenerIndex < _listeners[type].length; listenerIndex++) {
-                        if (_listeners[type][listenerIndex].listener.toString() == listener.toString()) {
+                        if (_listeners[type][listenerIndex].listener.toString() === listener.toString()) {
                             _listeners[type].splice(listenerIndex, 1);
                             break
                         }
@@ -1030,7 +1033,7 @@ if (typeof j360player == "undefined") {
             },
             media: {
                 src: "file",
-                preload: "preload",
+                /*preload: "preload",*/
                 autoplay: "autostart",
                 loop: "repeat",
                 controls: "controls"
@@ -2576,7 +2579,7 @@ if (typeof j360player == "undefined") {
                 b.j360InstreamSeek(r)
             };
             this.destroy = function () {
-                b.j360InstreamDestroy()
+                //b.j360InstreamDestroy()
             };
             this.getState = function () {
                 return b.j360InstreamGetState()
@@ -3290,9 +3293,11 @@ if (typeof j360player == "undefined") {
                     if (h) {
                         m.appendChild(k)
                     }
+					
                     j.resize(m.clientWidth, m.clientHeight);
                     k.left = m.style.left;
                     k.top = m.style.top
+					
                 }
             }
             this.embed = function () {
@@ -3310,7 +3315,7 @@ if (typeof j360player == "undefined") {
                         j.sources = b.levels
                     }
                     if (j.skin && j.skin.toLowerCase().indexOf(".zip") > 0) {
-                        j.skin = j.skin.replace(/\.zip/i, ".xml")
+                       // j.skin = j.skin.replace(/\.zip/i, ".xml")
                     }
                     var l = new(a.html5(c)).setup(j);
                     f.container = document.getElementById(f.id);
@@ -3479,6 +3484,7 @@ if (typeof j360player == "undefined") {
     (function (a) {
         a.html5 = function (b) {
             var c = b;
+			
             this.setup = function (d) {
                 a.utils.extend(this, new a.html5.api(c, d));
                 return this
@@ -3489,7 +3495,7 @@ if (typeof j360player == "undefined") {
     (function (a) {
         var d = a.utils;
         var b = d.css;
-        var c = d.isIOS();
+        var c = false//= d.isIOS();
         a.html5.view = function (n, H, h) {
             var m = n;
             var y = H;
@@ -3550,6 +3556,13 @@ if (typeof j360player == "undefined") {
                 o = document.createElement("div");
                 o.id = R.id + "_displayarea";
                 R.appendChild(o);
+				
+				setTimeout(function(){
+					
+					document.getElementById("container_j360player_dock").style.display = "block";
+					document.getElementById("container_j360player_dock").style.zIndex = 7;
+					
+					},100);
                 _instreamArea = document.createElement("div");
                 _instreamArea.id = R.id + "_instreamarea";
                 b(_instreamArea, {
@@ -3579,6 +3592,7 @@ if (typeof j360player == "undefined") {
             function s(U) {
                 x = j.fullscreen
 				
+				
             }
             function p(U) {
                 if (S) {
@@ -3587,7 +3601,7 @@ if (typeof j360player == "undefined") {
                 switch (U.newstate) {
                 case a.api.events.state.PLAYING:
                     if (j.getMedia() && j.getMedia().hasChrome()) {
-                        o.style.display = "none"
+                        o.style.display = "block"
                     }
                     break;
                 default:
@@ -3661,6 +3675,7 @@ if (typeof j360player == "undefined") {
                     if (m.j360GetState() != a.api.events.state.IDLE && m.j360GetState() != a.api.events.state.PAUSED) {
                         m.j360Pause()
                     } else {
+						
                         m.j360Play()
                     }
                     break
@@ -3681,7 +3696,17 @@ if (typeof j360player == "undefined") {
                     } catch (aa) {}
                 }
                 if (!j.fullscreen) {
-					
+					if (document.cancelFullScreen) {
+					document.cancelFullScreen();}
+					else if (document.mozCancelFullScreen) {
+					document.mozCancelFullScreen();
+					}
+					else if (document.webkitCancelFullScreen) {
+					document.webkitCancelFullScreen();
+					}
+					else if (document.msExitFullscreen) {
+					document.msExitFullscreen();
+					} 
                     g = U;
                     t = ad;
                     if (typeof U == "string" && U.indexOf("%") > 0) {
@@ -3735,7 +3760,21 @@ if (typeof j360player == "undefined") {
                     A = d.getElementWidth(o);
                     N = d.getElementHeight(o)
                 } else {
-					
+			
+
+					var docElm = document.documentElement;
+				
+					if (docElm.requestFullscreen) {
+						docElm.requestFullscreen();
+				
+					} else if (docElm.mozRequestFullScreen) {
+						docElm.mozRequestFullScreen();
+					} else if (docElm.webkitRequestFullScreen) {
+						docElm.webkitRequestFullScreen();
+					}
+
+				
+
 					//------------------------------------------------------ edit for full screen
 					if (!B() && !c) {
                         w(e, X, true)
@@ -3832,7 +3871,7 @@ if (typeof j360player == "undefined") {
                             W.parentNode.style.left = o.style.left;
                             W.parentNode.style.top = o.style.top
                         }
-                        if (j.fullscreen && m.j360GetStretching() == a.utils.stretching.EXACTFIT && !d.isMobile()) {
+                        if (j.fullscreen && m.j360GetStretching() == a.utils.stretching.EXACTFIT /*&& !d.isMobile()*/) {
                             var U = document.createElement("div");
                             d.stretch(a.utils.stretching.UNIFORM, U, d.getElementWidth(o), d.getElementHeight(o), A, N);
                             d.stretch(a.utils.stretching.EXACTFIT, W, d.parseDimension(U.style.width), d.parseDimension(U.style.height), W.videoWidth ? W.videoWidth : 400, W.videoHeight ? W.videoHeight : 300);
@@ -4102,7 +4141,8 @@ if (typeof j360player == "undefined") {
             })
         };
         a.html5.controlbar = function (m, Y) {
-            window.controlbar = this;
+			
+			window.controlbar = this;
             var l = m;
             var D = _utils.extend({}, b, l.skin.getComponentSettings("controlbar"), Y);
             if (D.position == a.html5.view.positions.NONE || typeof a.html5.view.positions[D.position] == "undefined") {
@@ -4717,7 +4757,8 @@ if (typeof j360player == "undefined") {
                     var an = isNaN(Math.round(ap * g / 100)) ? 0 : Math.round(ap * g / 100);
                     _css(S.timeSliderBuffer, {
                         width: an,
-                        left: aq ? aq.width : 0
+                        left: aq ? aq.width : 0,
+						opacity:0.4
                     })
                 }
             }
@@ -4768,6 +4809,7 @@ if (typeof j360player == "undefined") {
                 }))
             }
             function J(at) {
+				
                 if (_utils.exists(at.position)) {
                     k = at.position
                 }
@@ -4795,7 +4837,7 @@ if (typeof j360player == "undefined") {
                     }
                 }
                 if (S.durationText) {
-                    S.durationText.innerHTML = _utils.timeFormat(ah)
+                    S.durationText.innerHTML = _utils.timeFormat(ah-0.5);	
                 }
                 if (S.elapsedText) {
                     var an = _utils.timeFormat(k);
@@ -4958,6 +5000,7 @@ if (typeof j360player == "undefined") {
     (function (b) {
         var a = ["width", "height", "state", "playlist", "item", "position", "buffer", "duration", "volume", "mute", "fullscreen"];
         var c = b.utils;
+		
         b.html5.controller = function (o, K, f, h) {
             var n = o,
                 m = f,
@@ -4996,7 +5039,7 @@ if (typeof j360player == "undefined") {
                         var V = C.shift();
                         N.sendEvent(V.type, V)
                     }
-                    if (f.config.autostart && !b.utils.isIOS()) {
+                    if (f.config.autostart /*&& !b.utils.isIOS()*/) {
                         O()
                     }
                     while (x.length > 0) {
@@ -5319,7 +5362,7 @@ if (typeof j360player == "undefined") {
                     m.loadPlaylist(T);
                     if (m.playlist[m.item].provider) {
                         v(m.item);
-                        if (m.config.autostart.toString().toLowerCase() == "true" && !c.isIOS() && !A) {
+                        if (m.config.autostart.toString().toLowerCase() == "true" /*&& !c.isIOS() && !A*/) {
                             F()
                         }
                         return true
@@ -5334,7 +5377,7 @@ if (typeof j360player == "undefined") {
             function O(T) {
                 if (!c.isIOS()) {
                     v(m.item);
-                    if (m.config.autostart.toString().toLowerCase() == "true" && !c.isIOS()) {
+                    if (m.config.autostart.toString().toLowerCase() == "true" /*&& !c.isIOS()*/) {
                         F()
                     }
                 }
@@ -5442,8 +5485,17 @@ if (typeof j360player == "undefined") {
         }
     })(j360player);
     (function (a) {
+		a.html5.jsplayerui = "";
+		a.html5.checkIf = function(){
+			/*if((j360player.utils.userAgentMatch(/(iP(hone|ad|od))|android/i))){
+				a.html5.jsplayerui = "JSPlayer/ui/ios";
+			}else{*/
+				a.html5.jsplayerui = "JSPlayer/ui/";
+			//}	
+		}
         a.html5.defaultSkin = function () {
-            this.text = '<?xml version="1.0" ?>';
+			a.html5.checkIf();
+			this.text = '<?xml version="1.0" ?>';
 			this.text +='<skin version="1.0">';
 			this.text +='<components><component name="controlbar">';
 			this.text +='<settings><setting name="margin" value="5"/>';
@@ -5460,31 +5512,31 @@ if (typeof j360player == "undefined") {
 			this.text +='<divider name="divider"/><button name="mute"/>';
 			this.text +='<slider name="volume"/><divider name="divider"/>';
 			this.text +='<button name="fullscreen"/></group></layout>';
-			this.text +='<elements><element name="background" src="JSPlayer/ui/controllerBG.png"/>';
-			this.text +='<element name="blankButton" src="JSPlayer/ui/blank.png"/>';
+			this.text +='<elements><element name="background" src="'+a.html5.jsplayerui+'controllerBG.png"/>';
+			this.text +='<element name="blankButton" src="'+a.html5.jsplayerui+'blank.png"/>';
 			this.text +='<element name="capLeft" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAYCAYAAAA7zJfaAAAAQElEQVQIWz3LsRGAMADDQJ0XB5bMINABZ9GENGrszxhjT2WLSqxEJG2JQrTMdV2q5LpOAvyRaVmsi7WdeZ/7+AAaOTq7BVrfOQAAAABJRU5ErkJggg=="/>';
 			this.text +='<element name="capRight" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAYCAYAAAA7zJfaAAAAQElEQVQIWz3LsRGAMADDQJ0XB5bMINABZ9GENGrszxhjT2WLSqxEJG2JQrTMdV2q5LpOAvyRaVmsi7WdeZ/7+AAaOTq7BVrfOQAAAABJRU5ErkJggg=="/>';
 			this.text +='<element name="divider" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAYCAIAAAC0rgCNAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADhJREFUCB0FwcENgEAAw7Aq+893g8APUILNOQcbFRktVGqUVFRkWNz3xTa2sUaLNUosKlRUvvf5AdbWOTtzmzyWAAAAAElFTkSuQmCC"/>';
-			this.text +='<element name="playButton" src="JSPlayer/ui/playBtn.png"/>';
-			this.text +='<element name="pauseButton" src="JSPlayer/ui/pasueBtn.png"/>';
+			this.text +='<element name="playButton" src="'+a.html5.jsplayerui+'playBtn.png"/>';
+			this.text +='<element name="pauseButton" src="'+a.html5.jsplayerui+'pasueBtn.png"/>';
 			this.text +='<element name="prevButton" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAYCAYAAAAVibZIAAAAQklEQVQ4y2NgGAWjYOiD/1AMA/JAfB5NjCJD/YH4PRaLyDa0H4lNNUP/DxlD59PCUBCIp3ZEwYA+NZLUKBgFgwEAAN+HLX9sB8u8AAAAAElFTkSuQmCC"/>';
 			this.text +='<element name="nextButton" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAYCAYAAAAVibZIAAAAQElEQVQ4y2NgGAWjYOiD/0B8Hojl0cT+U2ooCL8HYn9qGwrD/bQw9P+QMXQ+tSMqnpoRBUpS+tRMUqNgFAwGAADxZy1/mHvFnAAAAABJRU5ErkJggg=="/>';
 			this.text +='<element name="timeSliderRail" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAOElEQVRIDe3BwQkAIRADwAhhw/nU/kWwUK+KPITMABFh19Y+F0acY8CJvX9wYpXgRElwolSIiMf9ZWEDhtwurFsAAAAASUVORK5CYII="/>';
-			this.text +='<element name="timeSliderBuffer" src="JSPlayer/ui/bufferProgress.png"/>';
-			this.text +='<element name="timeSliderProgress" src="JSPlayer/ui/scrollProgress.png"/>';
-			this.text +='<element name="timeSliderThumb" src="JSPlayer/ui/progressScroller.png"/>';
-			this.text +='<element name="muteButton" src="JSPlayer/ui/mute.png"/>';
-			this.text +='<element name="unmuteButton" src="JSPlayer/ui/unmute.png"/>';
-			this.text +='<element name="volumeSliderRail" src="JSPlayer/ui/volumeSliderRail.png"/>';
-			this.text +='<element name="volumeSliderProgress" src="JSPlayer/ui/volumeSliderProgress.png"/>';
+			this.text +='<element name="timeSliderBuffer" src="'+a.html5.jsplayerui+'bufferProgress.png"/>';
+			this.text +='<element name="timeSliderProgress" src="'+a.html5.jsplayerui+'scrollProgress.png"/>';
+			this.text +='<element name="timeSliderThumb" src="'+a.html5.jsplayerui+'progressScroller.png"/>';
+			this.text +='<element name="muteButton" src="'+a.html5.jsplayerui+'mute.png"/>';
+			this.text +='<element name="unmuteButton" src="'+a.html5.jsplayerui+'unmute.png"/>';
+			this.text +='<element name="volumeSliderRail" src="'+a.html5.jsplayerui+'volumeSliderRail.png"/>';
+			this.text +='<element name="volumeSliderProgress" src="'+a.html5.jsplayerui+'volumeSliderProgress.png"/>';
 			this.text +='<element name="volumeSliderCapRight" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAYCAYAAAAyJzegAAAAFElEQVQYV2P8//8/AzpgHBUc7oIAGZdH0RjKN8EAAAAASUVORK5CYII="/>';
-			this.text +='<element name="fullscreenButton" src="JSPlayer/ui/fullScreen.png"/>';
-			this.text +='<element name="normalscreenButton" src="JSPlayer/ui/normalScreen.png"/></elements></component>';
-			this.text +='<component name="display"><elements><element name="background" src="JSPlayer/ui/iconBG.png"/>';
-			this.text +='<element name="playIcon" src="JSPlayer/ui/playB.png"/>';
+			this.text +='<element name="fullscreenButton" src="'+a.html5.jsplayerui+'fullScreen.png"/>';
+			this.text +='<element name="normalscreenButton" src="'+a.html5.jsplayerui+'normalScreen.png"/></elements></component>';
+			this.text +='<component name="display"><elements><element name="background" src="'+a.html5.jsplayerui+'iconBG.png"/>';
+			this.text +='<element name="playIcon" src="'+a.html5.jsplayerui+'playB.png"/>';
 			this.text +='<element name="muteIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAVUlEQVR42u3WMQrAIAxAUW/g/SdvGmvpoOBeSHgPsjj5QTANAACARCJilIhYM0tEvJM+Ik3Id9E957kQIb+F3OdCPC0hPkQriqWx9hp/x/QGAABQyAPLB22VGrpLDgAAAABJRU5ErkJggg=="/>';
 			this.text +='<element name="errorIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAA/0lEQVR42u2U0QmEMBAF7cASLMESUoIlpARLSCkpwRJSgiWkhOvAXD4WsgRkyaG5DbyB+Yvg8KITAAAAAAAYk+u61mwk15EjPtlEfihmqIiZR1Qx80ghjgdUuiHXGHSVsoag0x6x8DUoyjD5KovmEJ9NTDMRPIT0mtdIUkjlonuNohO+Ha99DTmkuGgKCTcvebAzx82ZoCWC3/3aIMWSRucaxcjORSFY4xpFdjYJGp1rFGcyCYZ/RVh6AUnfcNZ2zih3/mGj1jVCdiNDwyrq1rA/xMdeEXvDVdnYc1vDc3uPkDObXrlaxbNHSOohQhr/WOeLEWfWTgAAAAAAADzNF9sHJ7PJ57MlAAAAAElFTkSuQmCC"/>';
-			this.text +='<element name="bufferIcon" src="JSPlayer/ui/bufferIcon.png"/></elements></component>';
+			this.text +='<element name="bufferIcon" src="'+a.html5.jsplayerui+'bufferIcon.png"/></elements></component>';
 			this.text +='<component name="dock"><settings>';
 			this.text +='<setting name="fontcolor" value="0x000000"/></settings><elements>';
 			this.text +='<element name="button" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyAQMAAAAk8RryAAAABlBMVEUAAAAAAAClZ7nPAAAAAnRSTlOZpuml+rYAAAASSURBVBhXY2AYJuA/GBwY6jQAyDyoK8QcL4QAAAAASUVORK5CYII="/></elements></component>';
@@ -5503,15 +5555,19 @@ if (typeof j360player == "undefined") {
                 this.xml.async = "false";
                 this.xml.loadXML(this.text)
             }
+			
             return this
         }
     })(j360player);
+	//--check
     (function (a) {
         _utils = a.utils;
         _css = _utils.css;
+		
         _hide = function (b) {
+			
             _css(b, {
-                display: "none"
+                display: "block"
             })
         };
         _show = function (b) {
@@ -5520,6 +5576,7 @@ if (typeof j360player == "undefined") {
             })
         };
         a.html5.display = function (k, K) {
+			
             var j = {
                 icons: true,
                 showmute: false
@@ -5625,7 +5682,6 @@ if (typeof j360player == "undefined") {
             Q();
 
             function Q() {
-				//alert(W);
                 W.display = G("div", "display");
                 W.display_text = G("div", "display_text");
                 W.display.appendChild(W.display_text);
@@ -5639,6 +5695,7 @@ if (typeof j360player == "undefined") {
                 W.display.appendChild(W.display_image);
                 W.display_iconBackground.appendChild(W.display_icon);
                 W.display.appendChild(W.display_iconBackground);
+				
                 f();
                 setTimeout((function () {
                     o = true;
@@ -5651,7 +5708,7 @@ if (typeof j360player == "undefined") {
                 return W.display
             };
             this.resize = function (Z, Y) {
-                if (h.j360GetFullscreen() && _utils.isMobile()) {
+                if (h.j360GetFullscreen() /*&& _utils.isMobile()*/) {
                     return
                 }
                 _css(W.display, {
@@ -6091,7 +6148,6 @@ if (typeof j360player == "undefined") {
                         if (!L || (N.x >= L.x && N.y >= L.y)) {
                             L = N
                         }
-						//alert(K)
                         K.style.width = O + "px";
                         K.style.height = Q + "px";
                         S += w.skin.getSkinElement("dock", "button").height + I
@@ -6123,15 +6179,15 @@ if (typeof j360player == "undefined") {
                 }
             }
             function q(H) {
-                if (c.isMobile()) {
+               /* if (c.isMobile()) {
                     if (H.newstate == a.api.events.state.IDLE) {
                         v()
                     } else {
                         e()
                     }
-                } else {
+                } else {*/
                     B()
-                }
+               // }
             }
             function B(H) {
                 if (f) {
@@ -6268,6 +6324,7 @@ if (typeof j360player == "undefined") {
                 H = r.src ? r.src : r.currentSrc;
                 o = r.innerHTML;
                 G = r.currentTime;
+			
 				q = new a.html5.display(n, b.extend({}, E.plugins.config.display));
                 q.setAlternateClickHandler(function (N) {
                     if (_fakemodel.state == a.api.events.state.PAUSED) {
@@ -6277,7 +6334,7 @@ if (typeof j360player == "undefined") {
                     }
                 });
                 d.appendChild(q.getDisplayElement());
-                if (!b.isMobile()) {
+                //if (!b.isMobile()) {
                     l = new a.html5.controlbar(n, b.extend({}, E.plugins.config.controlbar, {}));
                     if (E.plugins.config.controlbar.position == a.html5.view.positions.OVER) {
                         d.appendChild(l.getDisplayElement())
@@ -6285,7 +6342,7 @@ if (typeof j360player == "undefined") {
                         var L = E.plugins.object.controlbar.getDisplayElement().parentNode;
                         L.appendChild(l.getDisplayElement())
                     }
-                }
+                //}
                 j.setupInstream(d, r);
                 p();
                 g.load(v)
@@ -6399,7 +6456,7 @@ if (typeof j360player == "undefined") {
             function u(K) {
                 if (h) {
                     setTimeout(function () {
-                        n.j360InstreamDestroy(true)
+                        //n.j360InstreamDestroy(true)
                     }, 10)
                 }
             }
@@ -6445,8 +6502,8 @@ if (typeof j360player == "undefined") {
             };
             this.j360Stop = function () {
                 if (A.controlbarstoppable.toString().toLowerCase() == "true") {
-                    this.j360InstreamDestroy();
-                    C.j360Stop()
+                   // this.j360InstreamDestroy();
+                    //C.j360Stop()
                 }
             };
             this.j360Seek = function (K) {
@@ -6625,10 +6682,12 @@ if (typeof j360player == "undefined") {
                 }
             }
             function j(v) {
-                if (v.newstate == a.api.events.state.BUFFERING) {
-                    clearTimeout(u);
-                    m()
-                }
+                try{
+					if (v.newstate == a.api.events.state.BUFFERING) {
+						clearTimeout(u);
+						m()
+					}
+				}catch(e){}
             }
             return this
         }
@@ -6645,7 +6704,7 @@ if (typeof j360player == "undefined") {
         var g, e;
         var c = {};
         b.html5.mediavideo = function (k, I) {
-            var M = {
+			var M = {
                 abort: A,
                 canplay: r,
                 canplaythrough: r,
@@ -6694,7 +6753,7 @@ if (typeof j360player == "undefined") {
                 }
                 W = Y;
                 z = (W.duration > 0);
-                l.duration = W.duration;
+				l.duration = W.duration;
                 f.empty(o);
                 o.style.display = "block";
                 o.style.opacity = 1;
@@ -6706,9 +6765,9 @@ if (typeof j360player == "undefined") {
                 T = 0;
                 s(Y.levels);
                 if (Y.levels && Y.levels.length > 0) {
-                    if (Y.levels.length == 1 || f.isIOS()) {
+                    /*if (Y.levels.length == 1 || f.isIOS()) {
                         o.src = Y.levels[0].file
-                    } else {
+                    } else {*/
                         if (o.src) {
                             o.removeAttribute("src")
                         }
@@ -6718,10 +6777,12 @@ if (typeof j360player == "undefined") {
                             o.appendChild(aa);
                             T++
                         }
-                    }
+                    //}
                 } else {
                     o.src = Y.file
+					//o.autoplay = "autoplay"
                 }
+
                 o.volume = l.volume / 100;
                 o.muted = l.mute;
                 if (a) {
@@ -6748,38 +6809,78 @@ if (typeof j360player == "undefined") {
                 if (o.videoWidth > 0 && o.videoHeight > 0) {
                     w()
                 }
+				
             };
             this.play = function () {
+				this.buffering();
                 if (!v) {
                     return
                 }
                 C();
+				
                 if (J) {
-                    y(b.api.events.state.PLAYING)
+                    y(b.api.events.state.PLAYING);
                 } else {
-                    o.load();
-                    y(b.api.events.state.BUFFERING)
+                    o.load();					
                 }
-                o.play()
+				this.buffering();
+                o.play();
+				b.onclick = function(){
+					//alert(true)
+					o.play();
+					y(b.api.events.state.PLAYING);
+				}
+				//alert(true)
+				if((j360player.utils.userAgentMatch(/iPad/i))){
+					//y(b.api.events.state.PAUSED);
+				}
+				
+				var eve = document.createEvent("TouchEvent");
+				eve.touches = ["runit"];
+				eve.touches(0)
+				function runit(){
+					alert(true)	
+				}
+				var setInt = setInterval(callnow,10);
+				function callnow(){
+					$(b).trigger("click")
+					//b.onclick.apply();					
+					if(o.currentTime>2){
+						clearInterval(setInt);
+						//alert(true);
+					}else if(o.duration>0){
+						o.currentTime+=0.01;	
+					}
+				}
+				
             };
+			this.buffering = function(){
+				y(b.api.events.state.BUFFERING)
+			}
             this.pause = function () {
                 if (!v) {
+					
                     return
                 }
                 o.pause();
                 y(b.api.events.state.PAUSED)
             };
             this.seek = function (X) {
+				
                 if (!v) {
                     return
                 }
                 if (!F && o.readyState > 0) {
+					
                     if (!(l.duration <= 0 || isNaN(l.duration)) && !(l.position <= 0 || isNaN(l.position))) {
                         o.currentTime = X;
                         o.play()
                     }
+					
                 } else {
-                    P = X
+					
+                    P = X;
+					
                 }
             };
             var B = this.stop = function (X) {
@@ -6816,9 +6917,9 @@ if (typeof j360player == "undefined") {
                         o.style.height = 0
                     } else {
                         if (f.isIPad()) {
-                            o.style.display = "none";
+                           // o.style.display = "none";
                             try {
-                                o.webkitExitFullscreen()
+                                //o.webkitExitFullscreen()
                             } catch (aa) {}
                         }
                     }
@@ -6926,7 +7027,9 @@ if (typeof j360player == "undefined") {
                         break;
                     case b.api.events.state.BUFFERING:
                     case b.api.events.state.PAUSED:
+					
                         x();
+						
                         break
                     }
                 }
@@ -6992,15 +7095,18 @@ if (typeof j360player == "undefined") {
                     return
                 }
                 if (f.exists(Y) && f.exists(Y.target)) {
+					j360VideoStr = Y.target
                     if (z > 0) {
                         if (!isNaN(Y.target.duration) && (isNaN(l.duration) || l.duration < 1)) {
                             if (Y.target.duration == Infinity) {
                                 l.duration = 0
                             } else {
-                                l.duration = Math.round(Y.target.duration * 10) / 10
+								
+                                l.duration = Math.round(Y.target.duration * 10) / 10;
                             }
                         }
                     }
+					
                     if (!F && o.readyState > 0) {
                         y(b.api.events.state.PLAYING)
                     }
@@ -7013,11 +7119,17 @@ if (typeof j360player == "undefined") {
                                     P = -1
                                 }
                             } catch (X) {}
+							
                             o.volume = l.volume / 100;
                             o.muted = l.mute
                         }
                         l.position = l.duration > 0 ? (Math.round(Y.target.currentTime * 10) / 10) : 0;
-                        u(b.api.events.J360PLAYER_MEDIA_TIME, {
+						
+						
+						Y.target.currentTime <(l.duration-0.5)?0:(Y.target.pause(),startAgain = true, checkDur = false);//----edited
+                        
+						
+						u(b.api.events.J360PLAYER_MEDIA_TIME, {
                             position: l.position,
                             duration: l.duration
                         });
@@ -7234,7 +7346,7 @@ if (typeof j360player == "undefined") {
             this.play = function () {
                 if (g == a.api.events.state.IDLE) {
                     f.sendEvent(a.api.events.J360PLAYER_MEDIA_BUFFER, {
-                        bufferPercent: 100
+                        bufferPercent: 0
                     });
                     f.sendEvent(a.api.events.J360PLAYER_MEDIA_BUFFER_FULL);
                     k(a.api.events.state.PLAYING)
@@ -7403,6 +7515,7 @@ if (typeof j360player == "undefined") {
                     screencolor: undefined
                 }
             };
+			
             var _media;
             var _eventDispatcher = new j360player.html5.eventdispatcher();
             var _components = ["display", "logo", "controlbar", "playlist", "dock"];
@@ -7632,7 +7745,7 @@ if (typeof j360player == "undefined") {
                 } else {
                     if (_media != _mediaProviders[provider]) {
                         if (_media) {
-                            _media.stop()
+                            _media.pause();
                         }
                         _media = _mediaProviders[provider]
                     }
@@ -8309,9 +8422,8 @@ if (typeof j360player == "undefined") {
                 var t = y.getAttribute("name");
                 var v = y.getAttribute("src");
                 var A; 
-                if (v.indexOf("JSPlayer/ui/") === 0) {
+				if (v.indexOf(a.html5.jsplayerui) === 0) {
                     A = v;
-					//alert(A);
                 }else if (v.indexOf("data:image/png;base64,") === 0) {
                     A = v;
 				//	k(A);
@@ -8422,6 +8534,10 @@ if (typeof j360player == "undefined") {
                 if (m.state == a.api.events.state.PLAYING || m.state == a.api.events.state.BUFFERING) {
                     l.pause()
                 } else {
+					try{
+						startAgain?(j360VideoStr.currentTime = 0):false;
+					}catch(err){}
+					startAgain = false;
                     l.play()
                 }
             }
@@ -8558,7 +8674,7 @@ if (typeof j360player == "undefined") {
                 };
                 l.playerReady(q)
             }
-            if (m.config.chromeless && !a.utils.isIOS()) {
+            if (m.config.chromeless /*&& !a.utils.isIOS()*/) {
                 b()
             } else {
                 n.skin.load(m.config.skin, b)

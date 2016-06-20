@@ -38,10 +38,10 @@ namespace ICP4.CoursePlayer
             string brandCode = null;
             string variant = null;
 
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cache.SetExpires(DateTime.Now.AddSeconds(-1));
-            Response.Cache.SetNoStore();
-            Response.AppendHeader("Pragma", "no-cache");
+            //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            //Response.Cache.SetExpires(DateTime.Now.AddSeconds(-1));
+            //Response.Cache.SetNoStore();
+            //Response.AppendHeader("Pragma", "no-cache");
             //if (isPageExpired())
             //{
             //    Response.Redirect("CoursePlayerExit.aspx");
@@ -931,7 +931,7 @@ namespace ICP4.CoursePlayer
                             customMessage.MessageImageURL = "";
                             customMessage.ButtonText = "";
                             customMessage.CustomMessageType = "SessionEnd";
-                            customMessage.RedirectURL = "CoursePlayerExit.aspx";
+                            customMessage.RedirectURL = string.Empty;
                             showCustomMessage.CommandName = ICP4.CommunicationLogic.CommunicationCommand.CommandNames.ShowCustomMessage;
                             showCustomMessage.CustomMessage = customMessage;
                             //System.Diagnostics.Trace.WriteLine("Turning isAbondoned to true at LogoutcoursePlayer if (commandObject == null)");
@@ -962,7 +962,7 @@ namespace ICP4.CoursePlayer
                         customMessage.MessageImageURL = "";
                         customMessage.ButtonText = "";
                         customMessage.CustomMessageType = "SessionEnd";
-                        customMessage.RedirectURL = "CoursePlayerExit.aspx";
+                        customMessage.RedirectURL = string.Empty;
                         showCustomMessage.CommandName = ICP4.CommunicationLogic.CommunicationCommand.CommandNames.ShowCustomMessage;
                         showCustomMessage.CustomMessage = customMessage;
                         //System.Diagnostics.Trace.WriteLine("Turning isAbondoned to true at LogoutcoursePlayer (outer else)");

@@ -1134,6 +1134,35 @@ namespace _360Training.CourseServiceDataLogic.CourseDA
                 return string.Empty;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        public int GetOriginalCourseID(int offeredcourseID)
+        {
+            DbCommand dbCommand = null;
+            int originalCourseID = 0;
+            try
+            {
+                dbCommand = db.GetStoredProcCommand(StoredProcedures.SELECT_ORIGINAL_COURSE_ID);
+                db.AddInParameter(dbCommand, "@OFFERED_COURSE_ID", DbType.Int32, offeredcourseID);
+                using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+                {
+                    while (dataReader.Read())
+                    {
+                        originalCourseID = dataReader["ORIGINAL_COURSE_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dataReader["ORIGINAL_COURSE_ID"]);                        
+                    }
+                }
+                return originalCourseID;
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+                return 0;
+            }
+        }
         /// <summary>
         /// Gets the course type by course guid
         /// </summary>
