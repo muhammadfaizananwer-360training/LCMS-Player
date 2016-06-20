@@ -70,6 +70,27 @@ namespace _360Training.CourseServiceBusinessLogic
                 return string.Empty;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        public int GetOriginalCourseID(int offeredcourseID)
+        {
+            try
+            {
+                using (CourseDA courseDA = new CourseDA())
+                {
+                    return courseDA.GetOriginalCourseID(offeredcourseID);
+                }
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+                return 0;
+            }
+        }
         /// <summary>
         /// 
         /// </summary>

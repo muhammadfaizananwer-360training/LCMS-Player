@@ -202,7 +202,7 @@
     //    getMovieName('player1').SetVariable("movieClipName",document.getElementById("txtURL").value);
     //      }
 
-
+/*
     function getMovieName(movieName) {
         if (navigator.appVersion.indexOf("10.0") != -1) {
             return document[movieName];
@@ -212,7 +212,22 @@
         } else {
             return document.embeds[movieName];
         }
-    }
+    }*/
+    
+	function getMovieName(movieName) { 	
+		if(String(document[movieName])!="undefined")
+		{ 
+	    	return document[movieName];
+	    }
+		else if(String(document.embeds[movieName]) != "undefined")
+		{ 
+	    	return document.embeds[movieName];
+	    }
+		else
+		{ 
+	    	return window[movieName]; 
+	    }; 
+	}    
 
     function initializeIt(val) {
         return val;

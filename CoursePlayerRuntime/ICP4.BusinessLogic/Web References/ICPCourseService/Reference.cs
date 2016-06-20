@@ -59,6 +59,8 @@ namespace ICP4.BusinessLogic.ICPCourseService {
         
         private System.Threading.SendOrPostCallback GetCourseDemoSequenceOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetOriginalCourseIDOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetCourseGUIDOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetCourseTypeByGUIDOperationCompleted;
@@ -235,6 +237,9 @@ namespace ICP4.BusinessLogic.ICPCourseService {
         
         /// <remarks/>
         public event GetCourseDemoSequenceCompletedEventHandler GetCourseDemoSequenceCompleted;
+        
+        /// <remarks/>
+        public event GetOriginalCourseIDCompletedEventHandler GetOriginalCourseIDCompleted;
         
         /// <remarks/>
         public event GetCourseGUIDCompletedEventHandler GetCourseGUIDCompleted;
@@ -823,6 +828,35 @@ namespace ICP4.BusinessLogic.ICPCourseService {
             if ((this.GetCourseDemoSequenceCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetCourseDemoSequenceCompleted(this, new GetCourseDemoSequenceCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.360training.com/GetOriginalCourseID", RequestNamespace="http://www.360training.com/", ResponseNamespace="http://www.360training.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int GetOriginalCourseID(int offeredcourseID) {
+            object[] results = this.Invoke("GetOriginalCourseID", new object[] {
+                        offeredcourseID});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetOriginalCourseIDAsync(int offeredcourseID) {
+            this.GetOriginalCourseIDAsync(offeredcourseID, null);
+        }
+        
+        /// <remarks/>
+        public void GetOriginalCourseIDAsync(int offeredcourseID, object userState) {
+            if ((this.GetOriginalCourseIDOperationCompleted == null)) {
+                this.GetOriginalCourseIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetOriginalCourseIDOperationCompleted);
+            }
+            this.InvokeAsync("GetOriginalCourseID", new object[] {
+                        offeredcourseID}, this.GetOriginalCourseIDOperationCompleted, userState);
+        }
+        
+        private void OnGetOriginalCourseIDOperationCompleted(object arg) {
+            if ((this.GetOriginalCourseIDCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetOriginalCourseIDCompleted(this, new GetOriginalCourseIDCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5925,6 +5959,32 @@ namespace ICP4.BusinessLogic.ICPCourseService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Sequence)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.5483")]
+    public delegate void GetOriginalCourseIDCompletedEventHandler(object sender, GetOriginalCourseIDCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.5483")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetOriginalCourseIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetOriginalCourseIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

@@ -430,11 +430,13 @@ padding:0px;
 	margin-top:10px;
  }
  
+ #wrapper{background-color:#ffffff;}
+ 
 </style>
 </head>
 	
 <div class="rating_sub_screen">
-	<table border="0" cellpadding="0" cellspacing="0" class="table">
+	<table border="0" cellpadding="0" cellspacing="0" class="table table-responsive">
 		<tr>
 			<td style="padding-right: 15px; width: 1px;"><img src="$VisualImage" alt="" class="mainimage" /></td>
 			<td><h1 class="scene-title">$RatingScreen1Heading</h1></td>
@@ -443,7 +445,7 @@ padding:0px;
 	
 	<div id="rating_screen_1" style="padding:10px; font-size:16px !important;">
 		<span>$RatingScreen1Text</span>
-		<table width="100%" cellspacing="0" class="rating_table_num">
+		<table width="100%" cellspacing="0" class="rating_table_num table-responsive">
 			<tr id='divstarRating_0'>
 				<td><label><input type="radio" name="r0" value="0"/><br>0</label></td>
 				<td><label><input type="radio" name="r0" value="1"/><br>1</label></td>
@@ -474,7 +476,7 @@ padding:0px;
 	
 	<div id="rating_screen_2" style="display:none">
 		<span class="rating_inst">$RatingScreen2Text</span>
-		<table width="100%" cellspacing="0" class="rating_table">
+		<table width="100%" cellspacing="0" class="rating_table table-responsive">
 		    <tr class="rating_table_strip">
 				<td width="40%" style="min-width:220px;">
 					<div>$RatingScreen2RateCourseText</div>
@@ -541,11 +543,10 @@ padding:0px;
 			</tr>
 		</table>
 
-		<div><!-- id="CourseLevelRatingButton" -->
-			<div id="ratingresult" class="sceneHelpText">$RatingSubmitSuccess</div>		
+		<div style="float:left; display:block-inline;"><!-- id="CourseLevelRatingButton" -->
 			<input type="button" value="$RatingScreen1BackButtonText" class="button cd-btn main-action" onclick="further_rating_questions(false)"/>
 			<input type="button" id="SubmitRatingBtn" value="$RatingScreen1SubmitButtonText" class="button star-rating-readonly cd-btn main-action" onclick="SubmitRating()"/>
-			
+			<div id="ratingresult" class="sceneHelpText" style="float:right;margin-left:5px;" >$RatingSubmitSuccess</div>		
 		<!--<div id="btnstart" class="btn-start" style="float:left;"></div> 
 			<span id="SubmitRating"><a class="btn-stem star-rating-readonly" href="#">$submit</a></span>
 			<div id="btnend" class="btn-end" style="float:left;"></div> -->

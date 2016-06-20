@@ -1,30 +1,4 @@
 <style>
-table {
-  height:100%;
-  width:100%;
-  margin:auto;
-  padding : 10px 10px 5px 10px
-}
-
-.mainimage {
-  max-width: 350px;
-  max-height: 400px;
-  width: expression(this.width > 350 ? "350px" : true);
-  height: expression(this.height > 400 ? "400px" : true);
-}
-
-.sceneTitle {
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 36px; 
-  text-decoration : bold;
-}
-
-.sceneTextArea {
-  text-align: left;
-  font-family : Tahoma, Arial, Verdana, Helvetica, sans-serif; 
-  font-size : 18px;
-
-}
 
 .sceneTextArea p{
 margin:0px;
@@ -42,30 +16,7 @@ padding:0px;
 
 }
 </style>
-<!--
-<table border="0" width="95%" align="center" valign="center" cellpadding="0" cellspacing="0">
- <tr>
-    <td height="40" colspan="3"><span class="sceneTitle">$Heading</span></td>
-  </tr>
-  <tr>
-    <td height="15" colspan="3"><img height="15" src="images/pixel.gif" /></td>
-  </tr>
-  <tr>
-    <td width="65%"  style="text-align:justify" valign="top"><div class="sceneTextArea">$Text</div> </td>
-    <td valign="top"><img width="15" src="images/pixel.gif" /></td>
-    <td align="center" valign="top">
-    <span id="image"><img src="$VisualTop" class="mainimage" align="top" /></span>
-		<div  id="media" style="width:350px; height:400px; overflow:hidden;">
-  <embed src="$VisualTop" width="350" height="400" wmode="transparent">
-    			<!-- <noembed><img src="yourimage.gif" ></noembed> -->
-				<!--
-    		</embed>
-	</div>
-    </td>
-  </tr>
-  </table>
-  -->
-  <section class="scene-wrapper visual-right">
+  <section class="scene-wrapper">
 	<div class="scene-body">
 		<h1 class="scene-title">$Heading</h1>
 		<div class="scene-cell">

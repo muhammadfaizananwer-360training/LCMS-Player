@@ -11,6 +11,11 @@
 	left: 0px;  
 	position:absolute;
 }
+#media.responsive-video{
+	overflow:auto;
+	width:960px;
+	height:100%;
+}
 </style>
 
 <section class="scene-wrapper visual-center" id="contentTable">
@@ -33,25 +38,24 @@
  var test = 0;
      
 	 if(playPauseFeature == false) {        		 		  
-		var listMedia = document.getElementById("media");
-		listMedia.removeChild(listMedia.childNodes[2]);		    
+		$('#toggle').remove();	    
      }	
  
      if (JSplayerEnabled == false) {
          if (document.getElementById('media').children[1].src.indexOf(".mp4") < 0) {
            
 			document.getElementById('media').children[1].width = 960;
-             document.getElementById('media').children[1].height = 425;
+            document.getElementById('media').children[1].height = 425;
 			 
          }
 
-         else {
-/*
-             var isSelection = document.getElementById("media").children[0].src; 
-             document.getElementById("media").innerHTML = "";	
-             var embedStr = "<Embed Src='"+isSelection+"' Width=1000 Height=425 ></Embed>"; 
-             document.getElementById('media').innerHTML = embedStr; 
-*/
+         else {			
+            var isSelection = document.getElementById("media").children[1].src; 
+            document.getElementById("media").innerHTML = "";	
+			var embedStr = "<div id='scene-video-player'></div>";
+			document.getElementById('media').innerHTML = embedStr;
+			$("#media").addClass("responsive-video");
+			ui.video.player(isSelection,'scene-video-player','100%','425px',true);
          }
      }
 	 

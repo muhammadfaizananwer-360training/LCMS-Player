@@ -16,6 +16,11 @@
 #toggle{ 
 	outline:none;  
 }
+#media.responsive-video{
+	overflow:auto;
+	width:975px;
+	height:100%;
+}
 </style>
 
 <section class="scene-wrapper visual-right" id="contentTable">
@@ -40,18 +45,17 @@
 var test = 0;
 
    	if(playPauseFeature == false) {	
-		var listMedia = document.getElementById("media");
-		listMedia.removeChild(listMedia.childNodes[2]);		   
+		$('#toggle').remove();   
      }	
 
     if (JSplayerEnabled == false) {
-        if (document.getElementById("media").children[1].src.indexOf(".mp4") > 0) {
-            document.getElementById("media").style.width = "975px";
-            document.getElementById("media").style.height = "460px";
+        if (document.getElementById("media").children[1].src.indexOf(".mp4") > 0) {            
             var isSelection = document.getElementById("media").children[1].src;
             document.getElementById("media").innerHTML = "";
-            var embedStr = "<Embed Src='" + isSelection + "' Width=975 Height=460 ></Embed>";
-            document.getElementById('media').innerHTML = embedStr;
+			$("#media").addClass("responsive-video");
+			var embedStr = "<div id='scene-video-player'></div>";
+			document.getElementById('media').innerHTML = embedStr;
+			ui.video.player(isSelection,'scene-video-player','975px','460px',true);
         }
     }
 

@@ -35,5 +35,6 @@ namespace ICP4.BusinessLogic.CourseManager
         public const string ORIENTATION = "Orientation";
         public const string VSC = "VSC";
         public const string HTML5 = "HTML5";
+        public const string MC = "MC";
     }
 }

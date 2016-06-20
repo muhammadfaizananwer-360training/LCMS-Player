@@ -2261,6 +2261,26 @@ namespace ICP4.BusinessLogic.CourseManager
                                             break;
 
                                         }
+                                    case SceneTemplateType.MC:
+                                        {
+                                            slideMediaAsset.MCSceneXml = sequenceItem.MCSceneXml;
+                                            if (isShowHeading == true)
+                                            {
+                                                string sceneBreadcrumb = string.Empty;
+                                                if (isShowTopicTitle == true && isDemoable == false)
+                                                {
+                                                    string topicTitle = GetSceneBreadCrumb(courseID, seqNo);
+                                                    if (sceneName != string.Empty)
+                                                        sceneBreadcrumb = topicTitle + ": ";
+                                                    else
+                                                        sceneBreadcrumb = topicTitle;
+                                                }
+                                                sceneBreadcrumb += sceneName;
+                                                sb.Replace("$Heading", sceneBreadcrumb);
+                                            }                                            
+                                            break;
+
+                                        }
                                     default:
                                         {
                                             if (isVisualTopFound == false)
@@ -2294,7 +2314,7 @@ namespace ICP4.BusinessLogic.CourseManager
 
                             slideMediaAsset.TemplateHtml = HTML;
                             slideMediaAsset.TemplateHtml = slideMediaAsset.TemplateHtml.Replace("\n", "");
-                        }
+                        }                       
 
                     }
 
@@ -11619,68 +11639,78 @@ namespace ICP4.BusinessLogic.CourseManager
         {
             string courseImage = null;
             string defaultCourseImage = ConfigurationManager.AppSettings["DefaultCourseImage"].ToString();
+            bool isServiceCall = Convert.ToBoolean(ConfigurationManager.AppSettings["StoreFrontServiceCall"].ToString());
             try
             {                
                 if (Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsDemoable"]) == false)
                 {
                     if (Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsPreview"]) == false)
                     {
-                        using (ICP4.BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
+                        if (isServiceCall)
                         {
-                            courseImage = cacheManager.GetIFCourseImageExistInCache(courseID);
-                            if (courseImage == null)
+                            using (ICP4.BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
                             {
-                                ICPCourseService.CourseService courseService = new ICP4.BusinessLogic.ICPCourseService.CourseService();
-                                courseService.Url = ConfigurationManager.AppSettings["ICPCourseService"];
-                                courseService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
-
-                                string courseGroupGUID = courseService.GetCourseGroupsByCourse(courseID);
-                                string courseGUID = courseService.GetCourseGUID(courseID);
-                                string courseImageURLPrefix = ConfigurationManager.AppSettings["StoreFrontCourseImageURLPrefix"].ToString();    
-                                using (WebClient client = new WebClient())
+                                courseImage = cacheManager.GetIFCourseImageExistInCache(courseID);
+                                if (courseImage == null)
                                 {
-                                    string serviceURL = ConfigurationManager.AppSettings["StoreFrontServiceCallsURL_CourseImage"].ToString();
-                                    serviceURL = serviceURL.Replace("{0}", courseGUID + courseGroupGUID);                                     
-                                    try
+                                    ICPCourseService.CourseService courseService = new ICP4.BusinessLogic.ICPCourseService.CourseService();
+                                    courseService.Url = ConfigurationManager.AppSettings["ICPCourseService"];
+                                    courseService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
+
+                                    int originalCourseID = courseService.GetOriginalCourseID(courseID);
+                                    if (originalCourseID > 0)
                                     {
-                                        var content = client.DownloadString(serviceURL);
-                                        Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
-                                        ICP4.BusinessLogic.CourseManager.RootObject myDeserializedObj = (ICP4.BusinessLogic.CourseManager.RootObject)Newtonsoft.Json.JavaScriptConvert.DeserializeObject(content, typeof(ICP4.BusinessLogic.CourseManager.RootObject));
-                                        if (myDeserializedObj != null)
+                                        courseID = originalCourseID;
+                                    }
+                                    string courseGroupGUID = courseService.GetCourseGroupsByCourse(courseID);
+                                    string courseGUID = courseService.GetCourseGUID(courseID);
+
+                                    string courseImageURLPrefix = ConfigurationManager.AppSettings["StoreFrontCourseImageURLPrefix"].ToString();
+                                    using (WebClient client = new WebClient())
+                                    {
+                                        string serviceURL = ConfigurationManager.AppSettings["StoreFrontServiceCallsURL_CourseImage"].ToString();
+                                        serviceURL = serviceURL.Replace("{0}", courseGUID + courseGroupGUID);
+                                        try
                                         {
-                                            if (myDeserializedObj.catalogEntryView != null && myDeserializedObj.catalogEntryView.Count > 0)
+                                            string content = client.DownloadString(serviceURL);
+                                            object objcontent = Newtonsoft.Json.JavaScriptConvert.DeserializeObject(content);
+                                            Newtonsoft.Json.Linq.JObject json = Newtonsoft.Json.Linq.JObject.Parse(content);
+                                            string wLCMS_Thumbnail = json["catalogEntryView"][0]["UserData"][0]["WLCMS_THUMBNAIL"].ToString();
+                                            wLCMS_Thumbnail = wLCMS_Thumbnail.Replace("\"", "");
+                                            if (!wLCMS_Thumbnail.Equals(""))
                                             {
-                                                if (myDeserializedObj.catalogEntryView[0].UserData != null && myDeserializedObj.catalogEntryView[0].UserData.Count > 0)
+                                                courseImage = "{0}" + wLCMS_Thumbnail.ToString();
+                                                if (courseImage.Contains("http://") || courseImage.Contains("https://"))
                                                 {
-                                                    courseImage = "{0}" + myDeserializedObj.catalogEntryView[0].UserData[0].WLCMS_THUMBNAIL.ToString();
-
-                                                    if (courseImage.Contains("http://") || courseImage.Contains("https://"))
-                                                    {
-                                                        courseImage = courseImage.Replace("{0}", "");
-                                                    }
-                                                    else
-                                                    {
-                                                        courseImage = courseImage.Replace("{0}", courseImageURLPrefix);
-                                                    }
-
-                                                    if (courseImage != null && courseImage.Length > 0)
-                                                    {
-                                                        cacheManager.CreateCourseImageInCache(courseID, courseImage);
-                                                    }
+                                                    courseImage = courseImage.Replace("{0}", "");
                                                 }
-                                            }                                            
+                                                else
+                                                {
+                                                    courseImage = courseImage.Replace("{0}", courseImageURLPrefix);
+                                                }
+
+                                                if (courseImage != null && courseImage.Length > 0)
+                                                {
+                                                    cacheManager.CreateCourseImageInCache(courseID, courseImage);
+                                                }
+                                            }
+
+                                            if (courseImage == null)
+                                            {
+                                                courseImage = defaultCourseImage;
+                                            }
                                         }
-                                        if (courseImage == null)
+                                        catch (Exception ex)
                                         {
                                             courseImage = defaultCourseImage;
                                         }
                                     }
-                                    catch(Exception ex)
-                                    {
-                                        courseImage = defaultCourseImage;
-                                    }
-                                }                                
+                                }
                             }
+                        }
+                        else
+                        {
+                            courseImage = defaultCourseImage;
                         }
                     }
                     else
