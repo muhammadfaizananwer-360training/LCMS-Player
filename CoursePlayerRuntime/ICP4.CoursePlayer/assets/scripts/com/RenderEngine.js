@@ -277,7 +277,8 @@ function RenderEngine() {
         $(controlPanel).find("#IcoConfigureDs").show();
 
         $(controlPanel).find("#IcoHelp").hide();
-        $(controlPanel).find("#IcoHelpDs").show();
+        //$(controlPanel).find("#IcoHelpDs").show();
+        $(controlPanel).find("#IcoHelpDs").hide();
 
         $(controlPanel).find("#IcoCourseCompletion").hide();
         $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -1213,7 +1214,8 @@ function RenderEngine() {
         $(controlPanel).find("#IcoConfigureDs").show();
 
         $(controlPanel).find("#IcoHelp").hide();
-        $(controlPanel).find("#IcoHelpDs").show();
+        //$(controlPanel).find("#IcoHelpDs").show();
+        $(controlPanel).find("#IcoHelpDs").hide();
 
         $(controlPanel).find("#IcoCourseCompletion").hide();
         $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -1443,7 +1445,8 @@ function RenderEngine() {
         $("#IcoConfigureDs").show();
 
         $(controlPanel).find("#IcoHelp").hide();
-        $(controlPanel).find("#IcoHelpDs").show();
+        //$(controlPanel).find("#IcoHelpDs").show();
+        $(controlPanel).find("#IcoHelpDs").hide();
         
         $(ValidationPlaybuttonEn).hide();
         $(PlaybuttonEn).hide();
@@ -3891,7 +3894,8 @@ function thisMovie(movieName) { 
         $(controlPanel).find("#IcoConfigure").hide();
         $(controlPanel).find("#IcoConfigureDs").show();
         $(controlPanel).find("#IcoHelp").hide();
-        $(controlPanel).find("#IcoHelpDs").show();
+        //$(controlPanel).find("#IcoHelpDs").show();
+        $(controlPanel).find("#IcoHelpDs").hide();
         $(controlPanel).find("#IcoCourseCompletion").hide();
         $(controlPanel).find("#IcoCourseCompletionDs").show();
 
@@ -7226,7 +7230,8 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            $(controlPanel).find("#IcoHelpDs").show();
+            //$(controlPanel).find("#IcoHelpDs").show();
+            $(controlPanel).find("#IcoHelpDs").hide();
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();	
@@ -7553,7 +7558,8 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            $(controlPanel).find("#IcoHelpDs").show();
+            //$(controlPanel).find("#IcoHelpDs").show();
+            $(controlPanel).find("#IcoHelpDs").hide();
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -7776,7 +7782,8 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            $(controlPanel).find("#IcoHelpDs").show();
+            //$(controlPanel).find("#IcoHelpDs").show();
+            $(controlPanel).find("#IcoHelpDs").hide();
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -8159,7 +8166,8 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            $(controlPanel).find("#IcoHelpDs").show();
+            //$(controlPanel).find("#IcoHelpDs").show();
+            $(controlPanel).find("#IcoHelpDs").hide();
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -8204,7 +8212,8 @@ function thisMovie(movieName) { 
                 $(controlPanel).find("#IcoConfigure").show();
                 $(controlPanel).find("#IcoConfigureDs").hide();
 
-                $(controlPanel).find("#IcoHelp").show();
+                //$(controlPanel).find("#IcoHelp").show();
+                $(controlPanel).find("#IcoHelp").hide();
                 $(controlPanel).find("#IcoHelpDs").hide();
 
                 $(controlPanel).find("#IcoCourseCompletion").show();

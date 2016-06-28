@@ -735,7 +735,7 @@
 								<a href="javascript:;">About The Author</a>
 							</div>
 						</li>													
-						<li class="active" id="IcoHelp">
+						<li class="active" id="IcoHelp" style="display: none;">
 							<div>
 								<a href="javascript:;" data-group="modal-dynamic" data-trg="support" data-type="cd-modal-trigger"><span id="HeadingSupport">Support</span></a>
 							</div>
