@@ -1849,8 +1849,7 @@ function CoursePlayerEngine() {
                     $(controlPanel).find("#IcoConfigure").show();
                     $(controlPanel).find("#IcoConfigureDs").hide();
                     
-                    //$(controlPanel).find("#IcoHelp").show();
-                    $(controlPanel).find("#IcoHelp").hide();
+                    $(controlPanel).find("#IcoHelp").show();                    
                     $(controlPanel).find("#IcoHelpDs").hide();
 
                     $(controlPanel).find("#IcoCourseCompletion").show();
@@ -1933,8 +1932,7 @@ function CoursePlayerEngine() {
                     $(controlPanel).find("#cd-tour-trigger").hide();
                     $(controlPanel).find("#IcoConfigure").show();
                     $(controlPanel).find("#IcoConfigureDs").hide();
-                    //$(controlPanel).find("#IcoHelp").show();
-                    $(controlPanel).find("#IcoHelp").hide();
+                    $(controlPanel).find("#IcoHelp").show();                    
                     $(controlPanel).find("#IcoHelpDs").hide();
                     $(controlPanel).find("#IcoCourseCompletion").show();
                     $(controlPanel).find("#IcoCourseCompletionDs").hide();
@@ -2032,8 +2030,7 @@ function CoursePlayerEngine() {
         $(controlPanel).find("#IcoConfigure").show();
         $(controlPanel).find("#IcoConfigureDs").hide();
         
-        //$(controlPanel).find("#IcoHelp").show();
-        $(controlPanel).find("#IcoHelp").hide();
+        $(controlPanel).find("#IcoHelp").show();        
         $(controlPanel).find("#IcoHelpDs").hide();
 
         $(controlPanel).find("#IcoCourseCompletion").show();

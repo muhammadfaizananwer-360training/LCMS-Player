@@ -640,7 +640,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\circle.css" />
-    <Content Include="assets\css\jquery-ui.min.css" />
     <Content Include="assets\css\style.css" />
     <Content Include="assets\fonts\font.css" />
     <Content Include="assets\fonts\Open-Sans\Bold\OpenSans-Bold.svg" />

@@ -735,7 +735,7 @@
 								<a href="javascript:;">About The Author</a>
 							</div>
 						</li>													
-						<li class="active" id="IcoHelp" style="display: none;">
+						<li class="active" id="IcoHelp">
 							<div>
 								<a href="javascript:;" data-group="modal-dynamic" data-trg="support" data-type="cd-modal-trigger"><span id="HeadingSupport">Support</span></a>
 							</div>
@@ -803,7 +803,7 @@
 				</div>
 			</div>
 			<div class="side-menu-logo">
-				<img id="side-menu-inside-logo" src="assets/img/360trainingr-white.png" alt="360training"/>
+				<img id="side-menu-inside-logo" src="" alt="360training"/>
 				<div class="copyright">Copyright 2016. All Rights Reserved.</div>
 			</div>
 		</div>		

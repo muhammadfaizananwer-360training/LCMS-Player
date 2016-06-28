@@ -1574,3 +1574,26 @@ width:83%;
 z-index:1;
 }
 #timerCancelling {position: absolute;}
+
+/*Added by Abdus Samad for  LCMS-14523 START   */
+.icon-correct, .icon-incorrect {
+    background-repeat: no-repeat;
+    float: left;
+    height: 18px;
+    margin-left: 15px;
+    margin-right: 8px;
+    margin-top: 2px;
+    text-indent: 25px;
+    width: 18px;
+}
+
+
+
+.icon-correct {
+    background-image: url("../images/ico_correct.png");
+}
+.icon-incorrect {
+    background-image: url("../images/ico_incorrect.png");
+}
+
+/*Added by Abdus Samad for  LCMS-14523 END   */

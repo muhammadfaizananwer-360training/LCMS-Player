@@ -277,8 +277,7 @@ function RenderEngine() {
         $(controlPanel).find("#IcoConfigureDs").show();
 
         $(controlPanel).find("#IcoHelp").hide();
-        //$(controlPanel).find("#IcoHelpDs").show();
-        $(controlPanel).find("#IcoHelpDs").hide();
+        $(controlPanel).find("#IcoHelpDs").show();        
 
         $(controlPanel).find("#IcoCourseCompletion").hide();
         $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -381,9 +380,11 @@ function RenderEngine() {
                     }                    
                 case "ImageComanyLogo":
                     {
-                        $(header + " img").attr('src', resourceInfo.ResourceInfo[index].ResourceValue);
+                        $('#side-menu-inside-logo').attr('src', resourceInfo.ResourceInfo[index].ResourceValue);
+                        $('#side-menu-inside-logo').attr('height', 25);
+                        //$(header + " img").attr('src', resourceInfo.ResourceInfo[index].ResourceValue);
                         //$(header+" img").attr('width', 177);
-                        $(header + " img").attr('height', 25);
+                        //$(header + " img").attr('height', 25);
                         break;
                     }
                 case "ImageLogoutButton":
@@ -1214,8 +1215,7 @@ function RenderEngine() {
         $(controlPanel).find("#IcoConfigureDs").show();
 
         $(controlPanel).find("#IcoHelp").hide();
-        //$(controlPanel).find("#IcoHelpDs").show();
-        $(controlPanel).find("#IcoHelpDs").hide();
+        $(controlPanel).find("#IcoHelpDs").show();        
 
         $(controlPanel).find("#IcoCourseCompletion").hide();
         $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -1445,8 +1445,7 @@ function RenderEngine() {
         $("#IcoConfigureDs").show();
 
         $(controlPanel).find("#IcoHelp").hide();
-        //$(controlPanel).find("#IcoHelpDs").show();
-        $(controlPanel).find("#IcoHelpDs").hide();
+        $(controlPanel).find("#IcoHelpDs").show();        
         
         $(ValidationPlaybuttonEn).hide();
         $(PlaybuttonEn).hide();
@@ -3894,8 +3893,7 @@ function thisMovie(movieName) { 
         $(controlPanel).find("#IcoConfigure").hide();
         $(controlPanel).find("#IcoConfigureDs").show();
         $(controlPanel).find("#IcoHelp").hide();
-        //$(controlPanel).find("#IcoHelpDs").show();
-        $(controlPanel).find("#IcoHelpDs").hide();
+        $(controlPanel).find("#IcoHelpDs").show();        
         $(controlPanel).find("#IcoCourseCompletion").hide();
         $(controlPanel).find("#IcoCourseCompletionDs").show();
 
@@ -7230,8 +7228,7 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            //$(controlPanel).find("#IcoHelpDs").show();
-            $(controlPanel).find("#IcoHelpDs").hide();
+            $(controlPanel).find("#IcoHelpDs").show();            
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();	
@@ -7558,8 +7555,7 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            //$(controlPanel).find("#IcoHelpDs").show();
-            $(controlPanel).find("#IcoHelpDs").hide();
+            $(controlPanel).find("#IcoHelpDs").show();            
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -7782,8 +7778,7 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            //$(controlPanel).find("#IcoHelpDs").show();
-            $(controlPanel).find("#IcoHelpDs").hide();
+            $(controlPanel).find("#IcoHelpDs").show();            
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -8166,8 +8161,7 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            //$(controlPanel).find("#IcoHelpDs").show();
-            $(controlPanel).find("#IcoHelpDs").hide();
+            $(controlPanel).find("#IcoHelpDs").show();            
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -8212,8 +8206,7 @@ function thisMovie(movieName) { 
                 $(controlPanel).find("#IcoConfigure").show();
                 $(controlPanel).find("#IcoConfigureDs").hide();
 
-                //$(controlPanel).find("#IcoHelp").show();
-                $(controlPanel).find("#IcoHelp").hide();
+                $(controlPanel).find("#IcoHelp").show();                
                 $(controlPanel).find("#IcoHelpDs").hide();
 
                 $(controlPanel).find("#IcoCourseCompletion").show();
