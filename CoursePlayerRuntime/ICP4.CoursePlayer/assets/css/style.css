@@ -115,7 +115,7 @@ h1,h2,h3,h4,h5,p,div{
 
 /* left and right menu */
 .side-menu-container{
-	bottom: 66px;
+	bottom: 128px;
     left: 0;
     position: absolute;
     right: 0;
@@ -142,6 +142,31 @@ h1,h2,h3,h4,h5,p,div{
 	height: 65px;
 	background: rgba(36,36,36,1.0);
 	width:380px;
+}
+.side-menu-social{
+	border-top:2px solid #333;
+	position:absolute;
+	bottom:65px;
+	width:100%;
+	height:43px;
+	background-color:#000;
+	width:380px;
+	display:table;
+}
+.side-menu-social .social-label{
+	color: #0280D4;
+    padding: 20px 20px 20px 40px;
+	display:table-cell;
+}
+.side-menu-social ul{
+	display:table-cell;
+}
+.side-menu-social ul > li{
+	display:table-cell;
+}
+.side-menu-social ul > li > a{
+	position:relative;
+	padding: 12px;
 }
 #side-menu-inside-logo{
           margin-top: 10px;
@@ -1242,8 +1267,8 @@ svg {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  /*background: rgba(255, 255, 255, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;*/
-  background: rgba(255, 255, 255, 0.3) url('../../assets/img/cd-icon-close.svg') no-repeat center center;
+  background: rgba(255, 255, 255, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;
+  /*background: rgba(255, 255, 255, 0.3) url('../../assets/img/cd-icon-close.svg') no-repeat center center;*/
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
@@ -1541,8 +1566,8 @@ svg {
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  /*background: rgba(0, 0, 0, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;*/
-  background: rgba(0, 0, 0, 0.5) url('../../assets/img/cd-icon-close.svg') no-repeat center center;
+  background: rgba(0, 0, 0, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;
+  /*background: rgba(0, 0, 0, 0.5) url('../../assets/img/cd-icon-close.svg') no-repeat center center;*/
   background-size: 25px;
   overflow: hidden;
   text-indent: 100%;
@@ -1695,8 +1720,8 @@ svg {
 }
 .pre-loader::after{
 	content:"";
-	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
-	background-image:url("../../assets/img/oval.svg");
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
+	/*background-image:url("../../assets/img/oval.svg");*/
 	background-size: cover;
     width: 200px;
     height: 200px;
@@ -1765,8 +1790,8 @@ svg {
 }
 .elm-loader::after{
 	content:"";
-	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
-	background-image:url("../../assets/img/oval.svg");
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
+	/*background-image:url("../../assets/img/oval.svg");*/
 	background-size: cover;
     width: 40px;
     height: 40px;
@@ -1787,8 +1812,8 @@ svg {
 
 .static-loader::after{
 	content:"Please wait.";
-	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
-	background-image:url("../../assets/img/oval.svg");
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
+	/*background-image:url("../../assets/img/oval.svg");*/
 	background-size: cover;
     width: 150px;
     height: 150px;
@@ -1836,8 +1861,8 @@ svg {
 }
 .cd-svg-cover.loader::after{
 	content: "Please wait";
-    /*background-image: url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
-	background-image:url("../../assets/img/oval.svg");
+    background-image: url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
+	/*background-image:url("../../assets/img/oval.svg");*/
     background-size: cover;
     width: 100px;
     height: 100px;
@@ -2598,6 +2623,222 @@ h1.heading-exceeding{
     margin-bottom: 10px;
 }
 
+/* social sharing */
+.side-menu-nav.items > li > div > .social-share{
+	position: absolute;
+	padding: 0px;
+    top: 0;
+    bottom: 0;
+	left:0;
+	overflow:hidden;
+	background-color: #0280D4;
+	-webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.side-menu-nav.items > li.active > div:hover > .social-share{
+	padding: 16px;
+	cursor:pointer;
+}
+.side-menu-nav.items > li.active > div:hover > .social-share:hover{
+	background-color: #0A5891;
+}
+.side-menu-nav.items > li.active > div > .social-share::before{
+	content:"";
+	/*background-image:url("../../assets/img/share-black-solid-social-symbol.svg");*/
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/share-black-solid-social-symbol.svg");
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 8px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 8px;
+}
+
+.three-sixty-social::before{
+	content:"";
+	/*background-image:url("../../assets/img/logo-symbol.svg");*/
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/logo-symbol.svg");
+	background-position: 0 center;
+    background-repeat: no-repeat;
+	background-size: contain;
+    padding: 18px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 8px;
+}
+.fb-social::before{
+	content:"";
+	/*background-image:url("../../assets/img/facebook-symbol.svg");*/
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/facebook-symbol.svg");
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 8px;
+}
+.tr-social::before{
+	content:"";
+	/*background-image:url("../../assets/img/twitter-symbol.svg");*/
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/twitter-symbol.svg");
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 8px;
+}
+.ln-social::before{
+	content:"";
+	/*background-image:url("../../assets/img/linkedin-symbol.svg");*/
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/linkedin-symbol.svg");
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 8px;
+}
+.gp-social::before{
+	content:"";
+	/*background-image:url("../../assets/img/google-plus-symbol.svg");*/
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/google-plus-symbol.svg");
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 8px;
+}
+
+.ts-symbol::before{
+	content:"";
+	/*background-image:url("../../assets/img/logo-symbol.svg");*/
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/logo-symbol.svg");
+	/*background-position: center center;
+    background-repeat: no-repeat;
+	top: 0;
+    bottom: 0;*/
+    background-size: cover;
+    padding: 10px;
+    position: absolute;
+    top: 10px;
+	background-position: 0 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+	border-radius:50%;
+	background-color:#333;
+}
+.fb-symbol::before{
+	content:"";
+	/*background-image:url("../../assets/img/facebook-symbol.svg");*/
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/facebook-symbol.svg");
+	/*background-position: center center;
+    background-repeat: no-repeat;
+	top: 0;
+    bottom: 0;*/
+    background-size: contain;
+    padding: 8px;
+    position: absolute;
+	top: 13px;
+	background-position: 0 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.tr-symbol::before{
+	content:"";
+	/*background-image:url("../../assets/img/twitter-symbol.svg");*/
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/twitter-symbol.svg");
+	/*background-position: center center;
+    background-repeat: no-repeat;
+	top: 0;
+    bottom: 0;*/
+    background-size: contain;
+    padding: 8px;
+    position: absolute;
+	top: 14px;
+	background-position: 0 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.ln-symbol::before{
+	content:"";
+	/*background-image:url("../../assets/img/linkedin-symbol.svg");*/
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/linkedin-symbol.svg");
+	/*background-position: center center;
+    background-repeat: no-repeat;
+	top: 0;
+    bottom: 0;*/
+    background-size: contain;
+    padding: 8px;
+    position: absolute;
+	top: 13px;
+	background-position: 0 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.gp-symbol::before{
+	content:"";
+	/*background-image:url("../../assets/img/google-plus-symbol.svg");*/
+	background-image:url("http://10.0.100.250/ICPBrands/1/Images/google-plus-symbol.svg");
+	/*background-position: center center;
+    background-repeat: no-repeat;
+	top: 0;
+    bottom: 0;*/
+    background-size: contain;
+    padding: 8px;
+    position: absolute;
+	top: 13px;
+	background-position: 0 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.tr-symbol:hover::before{
+	background-position: 0 16px;
+	background-color: #55ACEE;
+}
+.ln-symbol:hover::before{
+	background-position: 0 16px;
+	background-color: #007AB9;
+}
+.fb-symbol:hover::before{
+	background-position: 0 16px;
+	background-color: #3B5998;
+}
+.gp-symbol:hover::before{
+	background-position: 0 16px;
+	background-color: #DC4E41;
+}
+.ts-symbol:hover::before{
+	background-position: 0 20.5px;
+	background-color: #EE3224;
+}
+
+
 
 /* all css3 animations */
 @-webkit-keyframes cd-mask-wrapper {
@@ -2773,6 +3014,9 @@ h1.heading-exceeding{
 	}
 	
 	/* left menu body brand adjustment */
+	.side-menu-container{
+		bottom: 108px;
+	}
 	.side-menu-brand{
 		width: 280px;
 		padding: 7px 20px;
@@ -2780,6 +3024,15 @@ h1.heading-exceeding{
 	}
 	.side-menu-logo{
 		width: 280px;
+	}
+	.side-menu-social{
+		width: 280px;
+	}
+	.side-menu-social .social-label{
+		padding: 10px 10px 10px 20px;
+	}
+	.side-menu-social ul{
+		padding: 0;
 	}
 	
 	/* left menu body adjustment */

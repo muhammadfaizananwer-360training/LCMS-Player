@@ -51,11 +51,8 @@
     <script type="text/javascript" src='<%="assets/scripts/com/CoursePlayerEngine.js?g=" + g %>'></script>
     <script type="text/javascript" src='<%="assets/scripts/com/CommunicationEngine.js?g=" + g %>'></script>
     <script type="text/javascript" src='<%="assets/scripts/com/RenderEngine.js?g=" + g %>'></script>
-    <script type="text/javascript" src='<%="assets/scripts/cptop.js?g=" + g %>'></script>    
-    
-	
+    <script type="text/javascript" src='<%="assets/scripts/cptop.js?g=" + g %>'></script>
 	<!-- END SCRIPTS -->
-
 </head>
 <body class="pre-loader launching" onunload="windowClosed();" onmousedown="checkPressedKeys();"
     onkeydown="storeKeyPress(event);" onkeyup="onKeyUp(event);" onfocus="storeKeyUp();">        
@@ -802,6 +799,16 @@
 					</ul>
 				</div>
 			</div>
+			<div class="side-menu-social">
+				<div class="social-label">Share Course</div>
+				<ul>
+					<li><a href="javascript:ui.social.fb.share(1);"" title="Share on Facebook" class="fb-symbol"></a></li>
+					<li><a href="javascript:ui.social.in.share(1)" title="Share on LindeIn" class="ln-symbol"></a></li>
+					<li><a href="#" title="Share on Twitter" class="hide tr-symbol"></a></li>
+					<li><a href="#" title="Share on Google Plus" class="hide gp-symbol"></a></li>
+					<li><a href="#" title="Share on 360Connect" class="hide ts-symbol"></a></li>
+				</ul>
+			</div>
 			<div class="side-menu-logo">
 				<img id="side-menu-inside-logo" src="" alt="360training"/>
 				<div class="copyright">Copyright 2016. All Rights Reserved.</div>
@@ -1342,6 +1349,11 @@
 		
 		function course_launch()
 		{
+		    $(".social-share").click(function(){
+				ui.social.specificTitle = $(this).data("title");
+				ui.svgModal.open($("<a data-group='modal-dynamic' data-trg='social-sharing'></a>"));
+			});
+			
 			ui.init();			
 			ui.loader("hide", function()
 			{
@@ -1576,7 +1588,34 @@
 												'</div>';
 								$thisModal.removeClass('pre-loader please-wait').html(bodyHtml);
 							//},100);
-				break;								
+				break;
+				case "social-sharing":
+					$(".cd-modals").addClass("cd-modal-with-nav");
+					var $thisModal = $('.cd-modal[data-modal="'+ attr +'"] > .cd-modal-content');
+						$thisModal.addClass('pre-loader please-wait');
+							//setTimeout(function(){
+								var bodyHtml =	'<h1>Social Sharing</h1>'+
+												'<h2>What\'s on your mind?</h2>'+
+												'<div class="blockquote-list interactive">'+
+													'<blockquote class="hide">'+
+														'<a href="javascript:;" class="three-sixty-social">Share on 360Connect</a>'+
+													'</blockquote>'+
+													'<blockquote>'+
+														'<a href="javascript:ui.social.fb.share(2);" class="fb-social">Share on Facebook</a>'+
+													'</blockquote>'+
+													'<blockquote>'+
+														'<a href="javascript:ui.social.in.share(2);" class="ln-social">Share on Linkedin</a>'+
+													'</blockquote>'+
+													'<blockquote class="hide">'+
+														'<a href="javascript:;" class="tr-social">Share on Twitter</a>'+
+													'</blockquote>'+
+													'<blockquote class="hide">'+
+														'<a href="javascript:;" class="gp-social">Share on Google Plus</a>'+
+													'</blockquote>'+
+												'</div>';
+								$thisModal.removeClass('pre-loader please-wait').html(bodyHtml);
+							//},100);
+				break;
 			}
 		}
 		
