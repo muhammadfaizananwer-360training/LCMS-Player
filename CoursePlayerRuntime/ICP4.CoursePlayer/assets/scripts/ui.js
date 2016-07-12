@@ -883,15 +883,7 @@ var ui = function () {
 			
 			fb:
 			{
-				/*
-				ui = 1210481435650319
-				localhost = 1226415294056933
-				dev = 1226413724057090
-				qa = 1219762514722211
-				live = 1073273936037737
-				*/
-				
-				key:'1226413724057090',
+				key:'',
 				init: function(){
 				  window.fbAsyncInit = function() {
 					FB.init({
@@ -926,6 +918,11 @@ var ui = function () {
 					});
 				}
 				
+			},
+		
+			click:function(e){
+				ui.social.specificTitle = $(e).data("title");
+				ui.svgModal.open($("<a data-group='modal-dynamic' data-trg='social-sharing'></a>"));
 			}
 		}
 	}

@@ -1349,11 +1349,6 @@
 		
 		function course_launch()
 		{
-		    $(".social-share").click(function(){
-				ui.social.specificTitle = $(this).data("title");
-				ui.svgModal.open($("<a data-group='modal-dynamic' data-trg='social-sharing'></a>"));
-			});
-			
 			ui.init();			
 			ui.loader("hide", function()
 			{
