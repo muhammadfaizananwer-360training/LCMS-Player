@@ -781,7 +781,29 @@ function RenderEngine() {
 			uat = 1226425764055886
 			live = 1073273936037737
 		*/
-		ui.social.fb.key = 1226413724057090;
+		
+		if (document.location.href.indexOf('/player') > 0) {
+		    ui.social.fb.key = 1073273936037737;
+		}
+		
+		if (document.location.href.indexOf('/qa-player') > 0) {
+		    ui.social.fb.key = 1219762514722211;
+		}
+		
+		if (document.location.href.indexOf('/uat-player') > 0) {
+		    ui.social.fb.key = 1226425764055886;
+		}	
+		
+		if (document.location.href.indexOf('/kar-dev-4') > 0) {
+		    ui.social.fb.key = 1226413724057090;
+		}
+		
+		if (document.location.href.indexOf('/localhost') > 0) {
+		    ui.social.fb.key = 1226415294056933;
+		}		
+		
+		
+		
         ui.social.title = CourseName;
 		ui.social.desc = result;
 		ui.social.url = CourseProductPageURL;
