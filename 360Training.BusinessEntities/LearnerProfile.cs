@@ -170,6 +170,22 @@ namespace _360Training.BusinessEntities
             set { businessKey = value; }
         }
 
+        private string storeName;
+
+        public string StoreName
+        {
+            get { return storeName; }
+            set { storeName = value; }
+        }
+
+        private string customerType;
+
+        public string CustomerType
+        {
+            get { return customerType; }
+            set { customerType = value; }
+        }
+
 
         public LearnerProfile()
         {
@@ -194,6 +210,8 @@ namespace _360Training.BusinessEntities
             this.variant = string.Empty;
             this.brandCode = string.Empty;
             this.fullName = string.Empty;
+            this.storeName = string.Empty;
+            this.customerType = string.Empty;
             
         }
     }

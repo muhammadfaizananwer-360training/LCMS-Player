@@ -2068,6 +2068,31 @@ namespace _360Training.TrackingServiceBusinessLogic
         }
         //Stop
 
+        public LearnerProfile GetLearnerInformationForMarketo(int learnerID)
+        {
+            try
+            {
+                using (StudentTrackingDA studentTrackingDA = new StudentTrackingDA())
+                {
+                    return studentTrackingDA.GetLearnerInformationForMarketo(learnerID);
+                }
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+                return null;
+            }
+        }
+
+        public bool SavePlayerMarketoLog(string eventTYPE, int enrollmentID, string packetJSON)
+        {
+            using (StudentTrackingDA studentTrackingDA = new StudentTrackingDA())
+            {
+                return studentTrackingDA.SavePlayerMarketoLog(eventTYPE, enrollmentID, packetJSON);
+            }
+        }
+
+        
 
         //LCMS-12502
         //Abdus Samad Start

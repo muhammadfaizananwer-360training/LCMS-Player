@@ -3517,6 +3517,8 @@ namespace _360Training.TrackingServiceDataLogic.StudentTrackingDA
                         learnerProfile.LastName = dataReader["LASTNAME"] == DBNull.Value ? "" : Convert.ToString(dataReader["LASTNAME"]);
                         learnerProfile.MobilePhone = dataReader["MOBILEPHONE"] == DBNull.Value ? "" : Convert.ToString(dataReader["MOBILEPHONE"]);
                         //Stop
+
+
                     }
                 }
 
@@ -3775,5 +3777,60 @@ namespace _360Training.TrackingServiceDataLogic.StudentTrackingDA
            return TotalTimeShouldAdjusted;
 
        }
+
+    
+       //Abdus Samad Start
+       public LearnerProfile GetLearnerInformationForMarketo(int learnerID)
+       {
+           DbCommand dbCommand = null;
+           string customerName = string.Empty;
+           LearnerProfile learnerProfile = new LearnerProfile();
+
+           try
+           {
+               dbCommand = db.GetStoredProcCommand(StoredProcedures.ICP_GET_CUSTOMERNAME);
+               db.AddInParameter(dbCommand, "@LEARNERID", DbType.Int32, learnerID);
+               using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+               {
+                   while (dataReader.Read())
+                   {
+                       learnerProfile.CompanyName = dataReader["COMPANYNAME"] == DBNull.Value ? "" : Convert.ToString(dataReader["COMPANYNAME"]);
+                       learnerProfile.StoreName = dataReader["DISTRIBUTORNAME"] == DBNull.Value ? "" : Convert.ToString(dataReader["DISTRIBUTORNAME"]);
+                       learnerProfile.CustomerType = dataReader["CUSTOMERTYPE"] == DBNull.Value ? "" : Convert.ToString(dataReader["CUSTOMERTYPE"]);
+                   }
+               }
+
+           }
+           catch (Exception exp)
+           {
+               ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+
+           }
+           return learnerProfile; 
+       }
+
+       public bool SavePlayerMarketoLog(string eventTYPE, int enrollmentID, string packetJSON)
+       {
+           DbCommand dbCommand = null;
+           bool isInserted = false;
+           try
+           {
+               //This SP saves the learningsesion info
+               dbCommand = db.GetStoredProcCommand(StoredProcedures.ICP_INSERT_PLAYERLOGS);
+               db.AddInParameter(dbCommand, "@TYPE", DbType.String, eventTYPE);
+               db.AddInParameter(dbCommand, "@ENROLLMENTID", DbType.Int32, enrollmentID);
+               db.AddInParameter(dbCommand, "@PACKET", DbType.String, packetJSON);
+
+               if (db.ExecuteNonQuery(dbCommand) > 0)
+                   isInserted = true;
+           }
+           catch (Exception exp)
+           {
+               ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+               isInserted = false;
+           }
+           return isInserted;
+       }
+
     }
 }

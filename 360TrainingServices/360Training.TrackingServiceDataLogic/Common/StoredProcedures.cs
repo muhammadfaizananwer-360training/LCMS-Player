@@ -128,5 +128,10 @@ namespace _360Training.TrackingServiceDataLogic.Common
         public static readonly string ICP_GET_COURSEID_BY_LEARNINGSESSIONGUID = "ICP_GET_COURSEID_BY_LEARNINGSESSIONGUID";
 
         public static readonly string ICP_GET_LEARNER_TIMESPENT = "ICP_GET_LEARNER_TIMESPENT";
+
+
+        public static readonly string ICP_GET_CUSTOMERNAME = "ICP_GET_CUSTOMERNAME";
+
+        public static readonly string ICP_INSERT_PLAYERLOGS = "ICP_INSERT_PLAYER_MARKETO";
     }
 }
