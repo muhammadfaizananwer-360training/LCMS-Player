@@ -455,10 +455,11 @@
 						<path id="cd-changing-path-15" d="M341.1,797.5l-0.9-1.4c-0.1-0.1,0-0.3,0.1-0.3L1265.8,216c0.1-0.1,0.3,0,0.3,0.1l0.9,1.4c0.1,0.1,0,0.3-0.1,0.3L341.5,797.6 C341.4,797.7,341.2,797.7,341.1,797.5z"/>
 					</svg>
 				</div>
-				<a href="javascript:ui.svgModal.close('modal-trigger-rec');" class="modal-close" title="Close Modal"></a>
+				<a href="javascript:ui.svgModal.close('modal-trigger-rec');" class="modal-close" title="Close"></a>
 				<div class="cd-modal-content">
 					<h1>Recommendations</h1>
-					<p>Based on the course, you may be interested in some of the following:</p>
+					<p>Coming Soon</p>
+					<!--
 					<div class="isotope-filter-btns">
 					  <button type="button">All</button>
 					  <button type="button">Popular</button>
@@ -502,6 +503,7 @@
 						<p>200.59</p>
 					  </div>
 					</div>
+					-->
 				</div>
 			</div>
 			<!-- END CD MODAL -->

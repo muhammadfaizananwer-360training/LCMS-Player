@@ -1151,7 +1151,8 @@ function CoursePlayerEngine() {
 
 
         // Recommandation Course Panel button start
-        $(IcoRecommendationCoursePanel).bind('click.namespace', function() {
+        // Close on Temporary basis 
+        /*$(IcoRecommendationCoursePanel).bind('click.namespace', function() {
             //debugger;
             //if(IsAmazonAffiliatePanel==true)
             if ($("#contentWrapperReco").is(":visible")) {
@@ -1207,6 +1208,7 @@ function CoursePlayerEngine() {
                 }
             }
         }); // Recommandation Course Panel button end
+        */
 
 
 
