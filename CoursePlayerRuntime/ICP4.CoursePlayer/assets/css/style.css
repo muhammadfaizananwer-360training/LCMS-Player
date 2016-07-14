@@ -1267,8 +1267,8 @@ svg {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;
-  /*background: rgba(255, 255, 255, 0.3) url('../../assets/img/cd-icon-close.svg') no-repeat center center;*/
+  /*background: rgba(255, 255, 255, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;*/
+  background: rgba(255, 255, 255, 0.3) url('../../assets/img/cd-icon-close.svg') no-repeat center center;
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
@@ -1566,8 +1566,8 @@ svg {
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;
-  /*background: rgba(0, 0, 0, 0.5) url('../../assets/img/cd-icon-close.svg') no-repeat center center;*/
+  /*background: rgba(0, 0, 0, 0.3) url('http://10.0.100.250/ICPBrands/1/Images/cd-icon-close.svg') no-repeat center center;*/
+  background: rgba(0, 0, 0, 0.5) url('../../assets/img/cd-icon-close.svg') no-repeat center center;
   background-size: 25px;
   overflow: hidden;
   text-indent: 100%;
@@ -1720,8 +1720,8 @@ svg {
 }
 .pre-loader::after{
 	content:"";
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
-	/*background-image:url("../../assets/img/oval.svg");*/
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
+	background-image:url("../../assets/img/oval.svg");
 	background-size: cover;
     width: 200px;
     height: 200px;
@@ -1790,8 +1790,8 @@ svg {
 }
 .elm-loader::after{
 	content:"";
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
-	/*background-image:url("../../assets/img/oval.svg");*/
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
+	background-image:url("../../assets/img/oval.svg");
 	background-size: cover;
     width: 40px;
     height: 40px;
@@ -1812,8 +1812,8 @@ svg {
 
 .static-loader::after{
 	content:"Please wait.";
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
-	/*background-image:url("../../assets/img/oval.svg");*/
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
+	background-image:url("../../assets/img/oval.svg");
 	background-size: cover;
     width: 150px;
     height: 150px;
@@ -1861,8 +1861,8 @@ svg {
 }
 .cd-svg-cover.loader::after{
 	content: "Please wait";
-    background-image: url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");
-	/*background-image:url("../../assets/img/oval.svg");*/
+    /*background-image: url("http://10.0.100.250/ICPBrands/1/Images/oval.svg");*/
+	background-image:url("../../assets/img/oval.svg");
     background-size: cover;
     width: 100px;
     height: 100px;
@@ -2646,8 +2646,8 @@ h1.heading-exceeding{
 }
 .side-menu-nav.items > li.active > div > .social-share::before{
 	content:"";
-	/*background-image:url("../../assets/img/share-black-solid-social-symbol.svg");*/
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/share-black-solid-social-symbol.svg");
+	background-image:url("../../assets/img/share-black-solid-social-symbol.svg");
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/share-black-solid-social-symbol.svg");*/
 	background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -2660,8 +2660,8 @@ h1.heading-exceeding{
 
 .three-sixty-social::before{
 	content:"";
-	/*background-image:url("../../assets/img/logo-symbol.svg");*/
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/logo-symbol.svg");
+	background-image:url("../../assets/img/logo-symbol.svg");
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/logo-symbol.svg");*/
 	background-position: 0 center;
     background-repeat: no-repeat;
 	background-size: contain;
@@ -2673,8 +2673,8 @@ h1.heading-exceeding{
 }
 .fb-social::before{
 	content:"";
-	/*background-image:url("../../assets/img/facebook-symbol.svg");*/
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/facebook-symbol.svg");
+	background-image:url("../../assets/img/facebook-symbol.svg");
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/facebook-symbol.svg");*/
 	background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -2686,8 +2686,8 @@ h1.heading-exceeding{
 }
 .tr-social::before{
 	content:"";
-	/*background-image:url("../../assets/img/twitter-symbol.svg");*/
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/twitter-symbol.svg");
+	background-image:url("../../assets/img/twitter-symbol.svg");
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/twitter-symbol.svg");*/
 	background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -2699,8 +2699,8 @@ h1.heading-exceeding{
 }
 .ln-social::before{
 	content:"";
-	/*background-image:url("../../assets/img/linkedin-symbol.svg");*/
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/linkedin-symbol.svg");
+	background-image:url("../../assets/img/linkedin-symbol.svg");
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/linkedin-symbol.svg");*/
 	background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -2712,8 +2712,8 @@ h1.heading-exceeding{
 }
 .gp-social::before{
 	content:"";
-	/*background-image:url("../../assets/img/google-plus-symbol.svg");*/
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/google-plus-symbol.svg");
+	background-image:url("../../assets/img/google-plus-symbol.svg");
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/google-plus-symbol.svg");*/
 	background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -2726,8 +2726,8 @@ h1.heading-exceeding{
 
 .ts-symbol::before{
 	content:"";
-	/*background-image:url("../../assets/img/logo-symbol.svg");*/
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/logo-symbol.svg");
+	background-image:url("../../assets/img/logo-symbol.svg");
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/logo-symbol.svg");*/
 	/*background-position: center center;
     background-repeat: no-repeat;
 	top: 0;
@@ -2746,8 +2746,8 @@ h1.heading-exceeding{
 }
 .fb-symbol::before{
 	content:"";
-	/*background-image:url("../../assets/img/facebook-symbol.svg");*/
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/facebook-symbol.svg");
+	background-image:url("../../assets/img/facebook-symbol.svg");
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/facebook-symbol.svg");*/
 	/*background-position: center center;
     background-repeat: no-repeat;
 	top: 0;
@@ -2764,8 +2764,8 @@ h1.heading-exceeding{
 }
 .tr-symbol::before{
 	content:"";
-	/*background-image:url("../../assets/img/twitter-symbol.svg");*/
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/twitter-symbol.svg");
+	background-image:url("../../assets/img/twitter-symbol.svg");
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/twitter-symbol.svg");*/
 	/*background-position: center center;
     background-repeat: no-repeat;
 	top: 0;
@@ -2782,8 +2782,8 @@ h1.heading-exceeding{
 }
 .ln-symbol::before{
 	content:"";
-	/*background-image:url("../../assets/img/linkedin-symbol.svg");*/
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/linkedin-symbol.svg");
+	background-image:url("../../assets/img/linkedin-symbol.svg");
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/linkedin-symbol.svg");*/
 	/*background-position: center center;
     background-repeat: no-repeat;
 	top: 0;
@@ -2800,8 +2800,8 @@ h1.heading-exceeding{
 }
 .gp-symbol::before{
 	content:"";
-	/*background-image:url("../../assets/img/google-plus-symbol.svg");*/
-	background-image:url("http://10.0.100.250/ICPBrands/1/Images/google-plus-symbol.svg");
+	background-image:url("../../assets/img/google-plus-symbol.svg");
+	/*background-image:url("http://10.0.100.250/ICPBrands/1/Images/google-plus-symbol.svg");*/
 	/*background-position: center center;
     background-repeat: no-repeat;
 	top: 0;
