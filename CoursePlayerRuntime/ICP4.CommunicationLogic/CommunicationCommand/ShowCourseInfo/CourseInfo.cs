@@ -25,6 +25,30 @@ namespace ICP4.CommunicationLogic.CommunicationCommand.ShowCourseInfo
             set { courseDescription = value; }
         }
 
+        private string courseImage;
+
+        public string CourseImage
+        {
+            get { return courseImage; }
+            set { courseImage = value; }
+        }
+
+        private string courseDefaultImage;
+
+        public string CourseDefaultImage
+        {
+            get { return courseDefaultImage; }
+            set { courseDefaultImage = value; }
+        }
+
+        private string courseProductPageURL;
+
+        public string CourseProductPageURL
+        {
+            get { return courseProductPageURL; }
+            set { courseProductPageURL = value; }
+        }
+
         private int idleTimeOut;
 
         public int IdleTimeOut

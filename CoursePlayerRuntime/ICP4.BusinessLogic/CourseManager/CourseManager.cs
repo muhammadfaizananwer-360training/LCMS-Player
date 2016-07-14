@@ -173,7 +173,7 @@ namespace ICP4.BusinessLogic.CourseManager
             {
                 
                 int demoCourseID = Convert.ToInt32(System.Web.HttpContext.Current.Session["DemoableCourseID"]);
-                GetCourseImage(demoCourseID);
+                //GetCourseImage(demoCourseID);
                 int originalCourseID = GetOriginalCourseIDFromSubContentOwner(demoCourseID);
                 if (originalCourseID > 0)
                 {
@@ -269,7 +269,7 @@ namespace ICP4.BusinessLogic.CourseManager
                                 // Changed By Waqas Zakai
                                 // Get Original Course ID from Sub ContentOwner
                                 // Start                   
-                                 GetCourseImage(Convert.ToInt32(System.Web.HttpContext.Current.Session["DemoableCourseID"]));
+                                 //GetCourseImage(Convert.ToInt32(System.Web.HttpContext.Current.Session["DemoableCourseID"]));
                                  int originalCourseID = GetOriginalCourseIDFromSubContentOwner(Convert.ToInt32(System.Web.HttpContext.Current.Session["DemoableCourseID"]));
                                 if (originalCourseID > 0)
                                 {
@@ -356,7 +356,7 @@ namespace ICP4.BusinessLogic.CourseManager
                             courseLocked = IsCourseLocked(learnerCourseTrackInfo.EnrollmentID, out lockingReason);
                             System.Web.HttpContext.Current.Session["CourseLocked"] = courseLocked;
 
-                            GetCourseImage(learnerCourseTrackInfo.CourseID);
+                            //GetCourseImage(learnerCourseTrackInfo.CourseID);
 
                             // Changed By Waqas Zakai
                             // Get Original Course ID from Sub ContentOwner
@@ -581,6 +581,29 @@ namespace ICP4.BusinessLogic.CourseManager
                                 courseNameandDescription = courseService.GetCourseNameAndDescription(courseId);
                                 courseInfo.CourseName = courseNameandDescription[0].ToString();
                                 courseInfo.CourseDescription = courseNameandDescription[1].ToString();
+
+                                
+            
+                                string courseImagePrefix = ConfigurationManager.AppSettings["ICPFileSystem"].ToString();            
+                                courseImagePrefix = courseImagePrefix.Replace("ICPFileSystem", "ICP4");            
+                                string defaultCourseImage = courseImagePrefix + "/" + ConfigurationManager.AppSettings["DefaultCourseImage"].ToString();
+
+                                courseInfo.CourseDefaultImage = defaultCourseImage;
+
+                                using (ICP4.BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
+                                {
+                                    string courseImage = cacheManager.GetIFCourseImageExistInCache(courseId);
+                                    if (courseImage == null)
+                                    {
+                                        courseInfo.CourseImage = "";
+                                    }
+                                    else
+                                    {
+                                        courseInfo.CourseImage = courseImage;
+                                    }
+                                }
+                                
+                                courseInfo.CourseProductPageURL = "https://www.360training.com";
                                 HttpContext.Current.Session["CourseName"] = courseInfo.CourseName;
                                 HttpContext.Current.Session["CourseDescription"] = courseInfo.CourseDescription;
                             }
@@ -9222,6 +9245,7 @@ namespace ICP4.BusinessLogic.CourseManager
             //}
             using (CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
             {
+                GetCourseImage(courseID);
                 int source = Convert.ToInt32(System.Web.HttpContext.Current.Session["Source"]);
                 int courseConfigurationID = Convert.ToInt32(System.Web.HttpContext.Current.Session["CourseConfigurationID"]);                
                 ICPCourseService.Sequence sequence = cacheManager.GetIFSequenceExistInCache(courseID, source, courseConfigurationID);
@@ -11638,7 +11662,9 @@ namespace ICP4.BusinessLogic.CourseManager
         private void GetCourseImage(int courseID) 
         {
             string courseImage = null;
-            string defaultCourseImage = ConfigurationManager.AppSettings["DefaultCourseImage"].ToString();
+            string courseImagePrefix = ConfigurationManager.AppSettings["ICPFileSystem"].ToString();
+            courseImagePrefix = courseImagePrefix.Replace("ICPFileSystem", "ICP4");
+            string defaultCourseImage = courseImagePrefix + "/" + ConfigurationManager.AppSettings["DefaultCourseImage"].ToString();
             bool isServiceCall = Convert.ToBoolean(ConfigurationManager.AppSettings["StoreFrontServiceCall"].ToString());
             try
             {                
@@ -11689,10 +11715,10 @@ namespace ICP4.BusinessLogic.CourseManager
                                                     courseImage = courseImage.Replace("{0}", courseImageURLPrefix);
                                                 }
 
-                                                if (courseImage != null && courseImage.Length > 0)
-                                                {
-                                                    cacheManager.CreateCourseImageInCache(courseID, courseImage);
-                                                }
+                                                //if (courseImage != null && courseImage.Length > 0)
+                                                //{
+                                                //    cacheManager.CreateCourseImageInCache(courseID, courseImage);
+                                                //}
                                             }
 
                                             if (courseImage == null)
@@ -11722,6 +11748,15 @@ namespace ICP4.BusinessLogic.CourseManager
                 {
                     courseImage = defaultCourseImage;
                 }
+
+                using (ICP4.BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
+                {
+                    if (courseImage != null && courseImage.Length > 0)
+                    {
+                        cacheManager.CreateCourseImageInCache(courseID, courseImage);
+                    }
+                }
+
                 System.Web.HttpContext.Current.Session["CourseImage"] = courseImage;
             }
             catch (Exception exp)

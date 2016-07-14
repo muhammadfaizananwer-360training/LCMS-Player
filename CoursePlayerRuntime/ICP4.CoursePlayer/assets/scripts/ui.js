@@ -32,6 +32,7 @@ var ui = function () {
 			ui.guide.init();
 			ui.svgModal.init();
 			ui.slide.init();
+			ui.social.fb.init();
 			
 			//ui.warning.init();
 			
@@ -106,7 +107,8 @@ var ui = function () {
 			$("#"+id).remove();
 		},
 		
-		video:{
+		video:
+		{
 			instance:'',
 			player:function(path,id,_w,_h,_auto)
 			{
@@ -243,7 +245,8 @@ var ui = function () {
 			}
 		},
 		
-		warning:{
+		warning:
+		{
 			instance:'',
 			count:0,
 			step:0,
@@ -336,7 +339,8 @@ var ui = function () {
 			}
 		},
 	
-		svgModal:{
+		svgModal:
+		{
 			coverLayer:'',
 			duration:0,
 			epsilon:0,
@@ -498,7 +502,8 @@ var ui = function () {
 			
 		},
 		
-		slide:{
+		slide:
+		{
 			intervalObj:'',
 			sceneDuration:0,
 			counter:0,
@@ -844,6 +849,80 @@ var ui = function () {
 			{
 				/* retrieve the content value of .cd-main::before to check the actua mq */
 				return window.getComputedStyle(document.querySelector('.cd-tour-wrapper'), '::before').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
+			}
+		},
+		
+		social:
+		{
+			title:"",
+			specificTitle:"",
+			desc:"",
+			url:"",
+			img:"",
+			
+			in:{
+				init:function()
+				{
+					IN.Event.on(IN, "auth", ui.social.in.share);
+                },
+				
+				share:function(caseNum)
+				{
+					var obj = {
+						url: ui.social.url,
+						title:(caseNum == 1?ui.social.title:ui.social.specificTitle+' of '+ui.social.title),
+						summary: ui.social.desc,
+						source: ui.social.url
+					}
+					window.open('http://www.linkedin.com/shareArticle?mini=true&url='+obj.url+'&title='+obj.title+'&summary='+obj.summary+'&source='+obj.source+'', "", "width=600,height=400");
+					
+					//IN.UI.Share().params(obj).place();
+				}
+
+			},
+			
+			fb:
+			{
+				key:'',
+				init: function(){
+				  window.fbAsyncInit = function() {
+					FB.init({
+					  appId      : ui.social.fb.key,
+					  xfbml      : true,
+					  version    : 'v2.6'
+					});
+				  };
+
+				  (function(d, s, id){
+					 var js, fjs = d.getElementsByTagName(s)[0];
+					 if (d.getElementById(id)) {return;}
+					 js = d.createElement(s); js.id = id;
+					 js.src = "//connect.facebook.net/en_US/sdk.js";
+					 fjs.parentNode.insertBefore(js, fjs);
+				   }(document, 'script', 'facebook-jssdk'));
+				},
+				
+				share:function(caseNum)
+				{
+					FB.ui({
+						method: 'feed',
+						app_id: ui.social.fb.key,
+						name: (caseNum == 1?ui.social.title:ui.social.specificTitle+' of '+ui.social.title),
+						link: ui.social.url,
+						picture: ui.social.img,
+						caption: "To find more details, click on this post",
+						description: ui.social.desc
+					},
+					function(response){
+						
+					});
+				}
+				
+			},
+		
+			click:function(e){
+				ui.social.specificTitle = $(e).data("title");
+				ui.svgModal.open($("<a data-group='modal-dynamic' data-trg='social-sharing'></a>"));
 			}
 		}
 	}
