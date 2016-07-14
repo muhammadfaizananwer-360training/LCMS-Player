@@ -3455,11 +3455,11 @@ namespace ICP4.CoursePlayer
                     //CourseLevelRatingWeb.CourseLevelRatingResponse response = clrService.NewOperation(request);
                     CourseGuid = courseRating.CourseGuid;
                     AvgRating = courseRating.AvgRating;
-                    TotalRating = courseRating.TotalRating;
-
-                    SyncCourseRatingWithSF(AvgRating, CourseGuid, TotalRating);
+                    TotalRating = courseRating.TotalRating;                                 
 
                     SyncCourseRatingWithMarketo(courseRating);
+
+                    SyncCourseRatingWithSF(AvgRating, CourseGuid, TotalRating);
 
                 }
             }
