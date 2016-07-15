@@ -3645,13 +3645,13 @@ namespace ICP4.CoursePlayer
                             NPSScore = courseRating.NPS_RATING,
                             review = courseRating.USER_REVIEW_TEXT,
                             course5StarRating = courseRating.RATING_COURSE,
-                            course5StarComment = courseRating.RATING_COURSE_SECONDARY_Q + "</br>" + courseRating.RATING_COURSE_SECONDARY ,
+                            course5StarComment = courseRating.RATING_COURSE_SECONDARY_Q + "<br>" + courseRating.RATING_COURSE_SECONDARY ,
                             shopping5StarRating = courseRating.RATING_SHOPPINGEXP,
-                            shopping5StarComment = courseRating.RATING_SHOPPINGEXP_SECONDARY_Q + "</br>" + courseRating.RATING_SHOPPINGEXP_SECONDARY ,
+                            shopping5StarComment = courseRating.RATING_SHOPPINGEXP_SECONDARY_Q + "<br>" + courseRating.RATING_SHOPPINGEXP_SECONDARY ,
                             technology5StarRating = courseRating.RATING_LEARNINGTECH,
-                            technology5StarComment = courseRating.RATING_LEARNINGTECH_SECONDARY_Q + "</br>" + courseRating.RATING_LEARNINGTECH_SECONDARY,
+                            technology5StarComment = courseRating.RATING_LEARNINGTECH_SECONDARY_Q + "<br>" + courseRating.RATING_LEARNINGTECH_SECONDARY,
                             support5StarRating = courseRating.RATING_CS,
-                            support5StarComment = courseRating.RATING_CS_SECONDARY_Q + "</br>" + courseRating.RATING_CS_SECONDARY  
+                            support5StarComment = courseRating.RATING_CS_SECONDARY_Q + "<br>" + courseRating.RATING_CS_SECONDARY  
 
                         };
 
