@@ -11669,7 +11669,8 @@ namespace ICP4.BusinessLogic.CourseManager
             try
             {                
                 if (Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsDemoable"]) == false)
-                {   
+                {
+
                     if (isServiceCall)
                     {
                         using (ICP4.BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
@@ -11735,8 +11736,7 @@ namespace ICP4.BusinessLogic.CourseManager
                     else
                     {
                         courseImage = defaultCourseImage;
-                    }
-                    
+                    }                  
                 }
                 else
                 {
