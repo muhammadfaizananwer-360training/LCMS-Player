@@ -6,13 +6,13 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <StartPageUrl>CoursePlayer.aspx?COURSEID=215879&amp;VARIANT=En-US&amp;BRANDCODE=DEFAULT&amp;PREVIEW=true&amp;SESSION=44896b1e-ccf8-48dd-b0d8-3bbeb9430f44</StartPageUrl>
+          <StartPageUrl>CoursePlayer.aspx?COURSEID=95749&amp;VARIANT=En-US&amp;BRANDCODE=DEFAULT&amp;PREVIEW=true&amp;SESSION=44896b1e-ccf8-48dd-b0d8-3bbeb9430f44</StartPageUrl>
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <NativeDebugging>False</NativeDebugging>
           <SQLDebugging>False</SQLDebugging>
           <PublishCopyOption>RunFiles</PublishCopyOption>
-          <PublishTargetLocation>D:\WaqasWork\LCMS\SourceCode-4.26.2 Course Player New UI\Publish\UAT_20_MAY_2016\ICP4\player\</PublishTargetLocation>
+          <PublishTargetLocation>\\10.0.100.250\lcms\iCP4\player\</PublishTargetLocation>
           <PublishDeleteAllFiles>True</PublishDeleteAllFiles>
           <PublishCopyAppData>False</PublishCopyAppData>
           <ExternalProgram>

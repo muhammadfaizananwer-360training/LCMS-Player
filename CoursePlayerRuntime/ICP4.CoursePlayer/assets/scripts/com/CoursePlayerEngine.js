@@ -485,7 +485,7 @@ function CoursePlayerEngine() {
 
 
          var _queryString = window.location.search.substring(1);
-         //var _queryString = "SESSION=04c3e66a-2738-418c-929b-842d7f9fa727&ts=1465367461442";
+         //var _queryString = "SESSION=576d2f86-ff97-48eb-a199-03c190f637cc&ts=1467356365269";
          //var _queryString = "COURSEID=117960&VARIANT=En-US&BRANDCODE=DEFAULT&PREVIEW=true&SESSION=ee9074c0-2f3b-4561-8c5b-ce9dbd2eaa2c"; //Yasin
 
         //  var _queryString = window.location.search.substring(1);
@@ -1151,7 +1151,8 @@ function CoursePlayerEngine() {
 
 
         // Recommandation Course Panel button start
-        $(IcoRecommendationCoursePanel).bind('click.namespace', function() {
+        // Close on Temporary basis 
+        /*$(IcoRecommendationCoursePanel).bind('click.namespace', function() {
             //debugger;
             //if(IsAmazonAffiliatePanel==true)
             if ($("#contentWrapperReco").is(":visible")) {
@@ -1207,6 +1208,7 @@ function CoursePlayerEngine() {
                 }
             }
         }); // Recommandation Course Panel button end
+        */
 
 
 
@@ -1849,7 +1851,7 @@ function CoursePlayerEngine() {
                     $(controlPanel).find("#IcoConfigure").show();
                     $(controlPanel).find("#IcoConfigureDs").hide();
                     
-                    $(controlPanel).find("#IcoHelp").show();
+                    $(controlPanel).find("#IcoHelp").show();                    
                     $(controlPanel).find("#IcoHelpDs").hide();
 
                     $(controlPanel).find("#IcoCourseCompletion").show();
@@ -1932,7 +1934,7 @@ function CoursePlayerEngine() {
                     $(controlPanel).find("#cd-tour-trigger").hide();
                     $(controlPanel).find("#IcoConfigure").show();
                     $(controlPanel).find("#IcoConfigureDs").hide();
-                    $(controlPanel).find("#IcoHelp").show();
+                    $(controlPanel).find("#IcoHelp").show();                    
                     $(controlPanel).find("#IcoHelpDs").hide();
                     $(controlPanel).find("#IcoCourseCompletion").show();
                     $(controlPanel).find("#IcoCourseCompletionDs").hide();
@@ -2030,7 +2032,7 @@ function CoursePlayerEngine() {
         $(controlPanel).find("#IcoConfigure").show();
         $(controlPanel).find("#IcoConfigureDs").hide();
         
-        $(controlPanel).find("#IcoHelp").show();
+        $(controlPanel).find("#IcoHelp").show();        
         $(controlPanel).find("#IcoHelpDs").hide();
 
         $(controlPanel).find("#IcoCourseCompletion").show();

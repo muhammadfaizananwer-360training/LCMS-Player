@@ -277,7 +277,7 @@ function RenderEngine() {
         $(controlPanel).find("#IcoConfigureDs").show();
 
         $(controlPanel).find("#IcoHelp").hide();
-        $(controlPanel).find("#IcoHelpDs").show();
+        $(controlPanel).find("#IcoHelpDs").show();        
 
         $(controlPanel).find("#IcoCourseCompletion").hide();
         $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -380,9 +380,11 @@ function RenderEngine() {
                     }                    
                 case "ImageComanyLogo":
                     {
-                        $(header + " img").attr('src', resourceInfo.ResourceInfo[index].ResourceValue);
+                        $('#side-menu-inside-logo').attr('src', resourceInfo.ResourceInfo[index].ResourceValue);
+                        $('#side-menu-inside-logo').attr('height', 25);
+                        //$(header + " img").attr('src', resourceInfo.ResourceInfo[index].ResourceValue);
                         //$(header+" img").attr('width', 177);
-                        $(header + " img").attr('height', 25);
+                        //$(header + " img").attr('height', 25);
                         break;
                     }
                 case "ImageLogoutButton":
@@ -740,6 +742,9 @@ function RenderEngine() {
         $("#ValidationControlBar").hide();
         var CourseName = obj.CourseInfo.CourseName;
         CourseDescription = obj.CourseInfo.CourseDescription;
+        var CourseImage = obj.CourseInfo.CourseImage;
+        var CourseDefaultImage = obj.CourseInfo.CourseDefaultImage;
+        var CourseProductPageURL = obj.CourseInfo.CourseProductPageURL;        
         var IdleTimeOut = obj.CourseInfo.IdleTimeOut;
         var ExpireTimeout = obj.CourseInfo.ExpireTimeout;
         var CourseTimer = obj.CourseInfo.CourseTimer;
@@ -763,6 +768,54 @@ function RenderEngine() {
             $('#read-more-1').hide();
         }
         
+        //  Social Data
+        var regex = /(<([^>]+)>)/ig
+        var body = CourseDescription;
+        var result = body.replace(regex, "");
+        
+        /*
+			ui = 1210481435650319
+			localhost = 1226415294056933
+			dev = 1226413724057090
+			qa = 1219762514722211
+			uat = 1226425764055886
+			live = 1073273936037737
+		*/
+		
+		if (document.location.href.indexOf('/player') > 0) {
+		    ui.social.fb.key = 1073273936037737;
+		}
+		
+		if (document.location.href.indexOf('/qa-player') > 0) {
+		    ui.social.fb.key = 1219762514722211;
+		}
+		
+		if (document.location.href.indexOf('/uat-player') > 0) {
+		    ui.social.fb.key = 1226425764055886;
+		}	
+		
+		if (document.location.href.indexOf('/kar-dev-4') > 0) {
+		    ui.social.fb.key = 1226413724057090;
+		}
+		
+		if (document.location.href.indexOf('/localhost') > 0) {
+		    ui.social.fb.key = 1226415294056933;
+		}		
+		
+		
+		
+        ui.social.title = CourseName;
+		ui.social.desc = result;
+		ui.social.url = CourseProductPageURL;
+		
+		if(CourseImage.length > 0)
+		{
+		    ui.social.img = CourseImage;
+		}
+		else
+		{
+		    ui.social.img = CourseDefaultImage;
+		}
         //Waqas Zakai
         //LCMS-14012
         //Start     
@@ -1213,7 +1266,7 @@ function RenderEngine() {
         $(controlPanel).find("#IcoConfigureDs").show();
 
         $(controlPanel).find("#IcoHelp").hide();
-        $(controlPanel).find("#IcoHelpDs").show();
+        $(controlPanel).find("#IcoHelpDs").show();        
 
         $(controlPanel).find("#IcoCourseCompletion").hide();
         $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -1443,7 +1496,7 @@ function RenderEngine() {
         $("#IcoConfigureDs").show();
 
         $(controlPanel).find("#IcoHelp").hide();
-        $(controlPanel).find("#IcoHelpDs").show();
+        $(controlPanel).find("#IcoHelpDs").show();        
         
         $(ValidationPlaybuttonEn).hide();
         $(PlaybuttonEn).hide();
@@ -3891,7 +3944,7 @@ function thisMovie(movieName) { 
         $(controlPanel).find("#IcoConfigure").hide();
         $(controlPanel).find("#IcoConfigureDs").show();
         $(controlPanel).find("#IcoHelp").hide();
-        $(controlPanel).find("#IcoHelpDs").show();
+        $(controlPanel).find("#IcoHelpDs").show();        
         $(controlPanel).find("#IcoCourseCompletion").hide();
         $(controlPanel).find("#IcoCourseCompletionDs").show();
 
@@ -7226,7 +7279,7 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            $(controlPanel).find("#IcoHelpDs").show();
+            $(controlPanel).find("#IcoHelpDs").show();            
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();	
@@ -7553,7 +7606,7 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            $(controlPanel).find("#IcoHelpDs").show();
+            $(controlPanel).find("#IcoHelpDs").show();            
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -7776,7 +7829,7 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            $(controlPanel).find("#IcoHelpDs").show();
+            $(controlPanel).find("#IcoHelpDs").show();            
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -8159,7 +8212,7 @@ function thisMovie(movieName) { 
             $(controlPanel).find("#IcoConfigureDs").show();
 
             $(controlPanel).find("#IcoHelp").hide();
-            $(controlPanel).find("#IcoHelpDs").show();
+            $(controlPanel).find("#IcoHelpDs").show();            
 
             $(controlPanel).find("#IcoCourseCompletion").hide();
             $(controlPanel).find("#IcoCourseCompletionDs").show();
@@ -8204,7 +8257,7 @@ function thisMovie(movieName) { 
                 $(controlPanel).find("#IcoConfigure").show();
                 $(controlPanel).find("#IcoConfigureDs").hide();
 
-                $(controlPanel).find("#IcoHelp").show();
+                $(controlPanel).find("#IcoHelp").show();                
                 $(controlPanel).find("#IcoHelpDs").hide();
 
                 $(controlPanel).find("#IcoCourseCompletion").show();
@@ -8688,6 +8741,7 @@ function AllowTOCDisplaySlidesFalse(mediaAsset) {
 
     if (tocID != 0 && isExistsinTOC == true) {
         var x = 0;
+        
         for (x = 0; x < tocArray.length; x++) {
             $("#" + tocArray[x][0]).addClass("active").removeClass("at");
             $("#" + tocArray[x][0]).find("a").eq(0).removeAttr("href");
@@ -8697,6 +8751,13 @@ function AllowTOCDisplaySlidesFalse(mediaAsset) {
             if (tocID == tocArray[x][0]) {
             atTOC = tocID;            
             $("#" + tocArray[x][0]).addClass("at").parent().parent().addClass("expand");
+            
+            //to be continue                        
+            if(!$("#" + tocArray[x][0] + " > div").find("i").hasClass("social-share"))
+            {                
+                $("#" + tocArray[x][0] + " > div").append( "<i class=\"social-share\" onclick=\"ui.social.click(this)\" data-title=\""+ $("#" + tocArray[x][0]).find("a").eq(0).attr('title') +"\" title=\"Share on Social Networks\"></i>");                
+            }
+            //<i class="social-share" data-title="Topic 1" title="Share on Social Networks"></i>
 			break;
             }
         }        
@@ -9069,7 +9130,7 @@ function parseTocJson(json) {
                     
                     
                         if (!json[x].TOCItems[i].IsDisabled) {
-                            tocStr = tocStr + "<li id=\"" + json[x].TOCItems[i].ID + "\" class=\"active" + hasChild +"\"><div><a title=\"" + json[x].TOCItems[i].Title.replace(new RegExp("<", "g"), "&lt;").replace(new RegExp(">", "g"), "&gt;").replace(new RegExp("'", "g"), "&#39").replace(new RegExp("\"", "g"), "&quot;") + "\" href=\"javascript:tocClick('" + json[x].TOCItems[i].ID + "', '" + json[x].TOCItems[i].Type + "');resetCPIdleTimer();\">" + json[x].TOCItems[i].Title.replace(new RegExp("<", "g"), "&lt;").replace(new RegExp(">", "g"), "&gt;").replace(new RegExp("'", "g"), "&#39").replace(new RegExp("\"", "g"), "&quot;") + "</a>"+spanStr+"</div>" + parseJsonChild(json[x].TOCItems[i].TOCItems) + "</li>";
+                            tocStr = tocStr + "<li id=\"" + json[x].TOCItems[i].ID + "\" class=\"active" + hasChild +"\"><div><i class=\"social-share\" onclick=\"ui.social.click(this)\" data-title='"+json[x].TOCItems[i].Title.replace(new RegExp("<", "g"), "&lt;").replace(new RegExp(">", "g"), "&gt;").replace(new RegExp("'", "g"), "&#39").replace(new RegExp("\"", "g"), "&quot;")+"' title=\"Share on Social Networks\"></i><a title=\"" + json[x].TOCItems[i].Title.replace(new RegExp("<", "g"), "&lt;").replace(new RegExp(">", "g"), "&gt;").replace(new RegExp("'", "g"), "&#39").replace(new RegExp("\"", "g"), "&quot;") + "\" href=\"javascript:tocClick('" + json[x].TOCItems[i].ID + "', '" + json[x].TOCItems[i].Type + "');resetCPIdleTimer();\">" + json[x].TOCItems[i].Title.replace(new RegExp("<", "g"), "&lt;").replace(new RegExp(">", "g"), "&gt;").replace(new RegExp("'", "g"), "&#39").replace(new RegExp("\"", "g"), "&quot;") + "</a>"+spanStr+"</div>" + parseJsonChild(json[x].TOCItems[i].TOCItems) + "</li>";
                             //"<span>" + json[x].TOCItems[i].BreadCrumb + "</span>"
                             
                             //tocStr = tocStr + "<li id=\"" + json[x].TOCItems[i].ID + "\" class=\"enable\"><a title=\"" + json[x].TOCItems[i].Title.replace(new RegExp("<", "g"), "&lt;").replace(new RegExp(">", "g"), "&gt;").replace(new RegExp("'", "g"), "&#39").replace(new RegExp("\"", "g"), "&quot;") + "\" href=\"javascript:tocClick('" + json[x].TOCItems[i].ID + "', '" + json[x].TOCItems[i].Type + "');resetCPIdleTimer();\"><strong class=folder>" + json[x].TOCItems[i].Title.replace(new RegExp("<", "g"), "&lt;").replace(new RegExp(">", "g"), "&gt;").replace(new RegExp("'", "g"), "&#39").replace(new RegExp("\"", "g"), "&quot;") + "</strong><span>" + json[x].TOCItems[i].BreadCrumb + "</span></a>" + parseJsonChild(json[x].TOCItems[i].TOCItems) + "</li>";

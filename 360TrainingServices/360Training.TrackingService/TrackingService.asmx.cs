@@ -1056,6 +1056,26 @@ namespace _360Training.TrackingService
 
         //STOP
 
+
+
+        [WebMethod]
+        public LearnerProfile GetLearnerInformationForMarketo(int learnerID)
+        {
+            using (TrackingManager trackingManager = new TrackingManager())
+            {
+                return trackingManager.GetLearnerInformationForMarketo(learnerID);
+            }
+        }
+
+        [WebMethod]
+        public bool SavePlayerMarketoLog(string eventTYPE, int enrollmentID, string packetJSON)
+        {
+            using (TrackingManager trackingManager = new TrackingManager())
+            {
+                return trackingManager.SavePlayerMarketoLog(eventTYPE, enrollmentID, packetJSON);
+            }
+        }
+
         //LCMS-12502
         //Abdus Samad
         //Start

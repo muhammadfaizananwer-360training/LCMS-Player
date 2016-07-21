@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{472AA97A-6014-44E8-99E5-F8A16699C677}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -537,10 +537,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>ICP4_BusinessLogic_ICPBrandingService_BrandingService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="https://10.0.100.250/ICPCourseService/CourseService.asmx">
+    <WebReferenceUrl Include="https://10.0.100.179/ICPCourseService/CourseService.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\ICPCourseService\</RelPath>
-      <UpdateFromURL>https://10.0.100.250/ICPCourseService/CourseService.asmx</UpdateFromURL>
+      <UpdateFromURL>https://10.0.100.179/ICPCourseService/CourseService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -548,10 +548,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>ICP4_BusinessLogic_ICPCourseService_CourseService</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="https://10.0.100.250/ICPTrackingService/TrackingService.asmx">
+    <WebReferenceUrl Include="https://10.0.100.179/ICPTrackingService/TrackingService.asmx">
       <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\ICPTrackingService\</RelPath>
-      <UpdateFromURL>https://10.0.100.250/ICPTrackingService/TrackingService.asmx</UpdateFromURL>
+      <UpdateFromURL>https://10.0.100.179/ICPTrackingService/TrackingService.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
