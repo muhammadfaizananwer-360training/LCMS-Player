@@ -805,7 +805,7 @@
 				<div class="social-label">Share Course</div>
 				<ul>
 					<li><a href="javascript:ui.social.fb.share(1);"" title="Share on Facebook" class="fb-symbol"></a></li>
-					<li><a href="javascript:ui.social.in.share(1)" title="Share on LindeIn" class="ln-symbol"></a></li>
+					<li><a href="javascript:ui.social.in.share(1)" title="Share on LinkedIn" class="ln-symbol"></a></li>
 					<li><a href="#" title="Share on Twitter" class="hide tr-symbol"></a></li>
 					<li><a href="#" title="Share on Google Plus" class="hide gp-symbol"></a></li>
 					<li><a href="#" title="Share on 360Connect" class="hide ts-symbol"></a></li>

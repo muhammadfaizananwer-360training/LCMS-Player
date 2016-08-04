@@ -1252,7 +1252,20 @@ namespace ICP4.BusinessLogic.CourseManager
                         sequenceItem = GetNextBackItem(courseID, direction, seqNo);
                     }
                     else
+                    {
                         sequenceItem = GetNextBackItem(courseID, direction, seqNo);
+                        while (sequenceItem.IsNotActive == true && sequenceItem.SequenceItemType!="ContentObject")
+                        {
+                            if (direction > 0)
+                            {
+                                sequenceItem = GetNextBackItem(courseID, direction, seqNo++);
+                            }
+                            else
+                            {
+                                sequenceItem = GetNextBackItem(courseID, direction, seqNo--);
+                            }
+                        }
+                    }
 
                     System.Web.HttpContext.Current.Session["IsAssessmentStarting"] = false;
                 }

@@ -793,7 +793,7 @@ namespace ICP4.BusinessLogic.CacheManager
             {
                 //if (sequence.SequenceItems[index].SequenceItemType == "ContentAsset" || sequence.SequenceItems[index].SequenceItemType == "FlashAsset")
                 if (sequence.SequenceItems[index].SequenceItemType != "ContentObject" && sequence.SequenceItems[index].SequenceItemType != "Quiz"
-                    && sequence.SequenceItems[index].SequenceItemType != "PreAssessment" && sequence.SequenceItems[index].SequenceItemType != "PostAssessment" && sequence.SequenceItems[index].ExamType != "PreAssessment" && sequence.SequenceItems[index].ExamType != "Quiz" && sequence.SequenceItems[index].ExamType != "PostAssessment")
+                    && sequence.SequenceItems[index].SequenceItemType != "PreAssessment" && sequence.SequenceItems[index].SequenceItemType != "PostAssessment" && sequence.SequenceItems[index].ExamType != "PreAssessment" && sequence.SequenceItems[index].ExamType != "Quiz" && sequence.SequenceItems[index].ExamType != "PostAssessment" && sequence.SequenceItems[index].IsNotActive==false)
                 {
                     return index;
                 }
@@ -811,7 +811,7 @@ namespace ICP4.BusinessLogic.CacheManager
             ICPCourseService.Sequence sequence = (ICPCourseService.Sequence)HttpRuntime.Cache["COURSESEQUENCE" + "_" + courseID.ToString() + "_" + courseConfigurationID.ToString() + "_" + sourse.ToString()];
             for(int index=seqNo+1;index<sequence.SequenceItems.Length;index++)
             {
-                if (sequence.SequenceItems[index].SequenceItemType != "ContentObject")
+                if (sequence.SequenceItems[index].SequenceItemType != "ContentObject" && sequence.SequenceItems[index].IsNotActive==false)
                 {
                     return index;
                 }

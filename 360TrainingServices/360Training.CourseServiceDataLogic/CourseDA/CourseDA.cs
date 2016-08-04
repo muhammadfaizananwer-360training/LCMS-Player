@@ -116,6 +116,7 @@ namespace _360Training.CourseServiceDataLogic.CourseDA
                             sequanceItem.Item_GUID = dataReader["ITEM_GUID"].ToString();
                             sequanceItem.ContentObjectName = dataReader["CONTENTOBJECTNAME"].ToString();
                             sequanceItem.IsAllowQuizInContentObject = dataReader["QUIZENABLED"] == DBNull.Value ? false : Convert.ToBoolean(dataReader["QUIZENABLED"]);
+                            sequanceItem.IsNotActive = dataReader["ISNOTACTIVE"] == DBNull.Value ? false : Convert.ToBoolean(dataReader["ISNOTACTIVE"]);
                         }
 
                         if (dataReader["ITEMTYPE"].ToString().Equals(SequenceItemType.Scene))
@@ -131,7 +132,8 @@ namespace _360Training.CourseServiceDataLogic.CourseDA
                                 sequanceItem.sceneID = Convert.ToInt32(dataReader["SCENE_ID"]);
                                 sequanceItem.IsViewStreamingInScene = dataReader["IsViewStreamingInScene"] == DBNull.Value ? false : Convert.ToBoolean(dataReader["IsViewStreamingInScene"]);
                                 sequanceItem.IsPlayPauseFeatureInScene = dataReader["IsPlayPauseFeatureInScene"] == DBNull.Value ? false : Convert.ToBoolean(dataReader["IsPlayPauseFeatureInScene"]); //Added By Abdus Samad For LCMS-12267
-                                sequanceItem.SceneName = dataReader["SCENE_NAME"].ToString();                                
+                                sequanceItem.SceneName = dataReader["SCENE_NAME"].ToString();
+                                sequanceItem.IsNotActive = dataReader["ISNOTACTIVE"] == DBNull.Value ? false : Convert.ToBoolean(dataReader["ISNOTACTIVE"]);
                             }
                             else
                             {
@@ -159,6 +161,7 @@ namespace _360Training.CourseServiceDataLogic.CourseDA
                                 sequanceItem.isTopicTitleVisible = dataReader["TOPICTITLEVISIBLE"] == DBNull.Value ? false : Convert.ToBoolean(dataReader["TOPICTITLEVISIBLE"]);
 
                                 sequanceItem.MCSceneXml = dataReader["MC_SCENE_XML"] == DBNull.Value ? "" : Convert.ToString(dataReader["MC_SCENE_XML"]); // MC
+                                sequanceItem.IsNotActive = dataReader["ISNOTACTIVE"] == DBNull.Value ? false : Convert.ToBoolean(dataReader["ISNOTACTIVE"]);
 
                                 if (dataReader["SCENETEMPLATETYPE"].ToString().Equals(SceneTemplateType.VSC))
                                 {
@@ -258,6 +261,7 @@ namespace _360Training.CourseServiceDataLogic.CourseDA
                                 if (sequanceItem.ExamType == SequenceItemType.Quiz)
                                     sequanceItem.IsValidQuiz = true;
                                 sequanceItem.SceneTemplateID = Convert.ToInt32(dataReader["EXAMTemplateID"]);
+                                sequanceItem.IsNotActive = dataReader["ISNOTACTIVE"] == DBNull.Value ? false : Convert.ToBoolean(dataReader["ISNOTACTIVE"]);
                             }
                         }
                         

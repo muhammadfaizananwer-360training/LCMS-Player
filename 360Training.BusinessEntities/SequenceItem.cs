@@ -78,6 +78,14 @@ namespace _360Training.BusinessEntities
             set { isAllowQuizinContentObject = value; }
         }
 
+        private bool isNotActive;
+
+        public bool IsNotActive
+        {
+            get { return isNotActive; }
+            set { isNotActive = value; }
+        }
+
         private bool isViewStreamingInScene;
 
         public bool IsViewStreamingInScene

@@ -808,7 +808,7 @@ function RenderEngine() {
 		ui.social.desc = result;
 		ui.social.url = CourseProductPageURL;
 		
-		if(CourseImage.length > 0)
+		if(CourseImage!=null && CourseImage.length > 0)
 		{
 		    ui.social.img = CourseImage;
 		}
