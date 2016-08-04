@@ -10658,6 +10658,13 @@ function setMediaType(mediaType, imageDiv, mediaDiv) {
                 $(imageDiv).hide();
                 break;
             }
+			
+	    case "embed":
+            {
+                $(mediaDiv).show();
+                $(imageDiv).hide();
+                break;
+            }			
         default:
             {
 
