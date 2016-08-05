@@ -1264,7 +1264,7 @@ namespace ICP4.BusinessLogic.CourseManager
                             {
                                 sequenceItem = GetNextBackItem(courseID, direction, seqNo--);
                             }
-                        }
+                        }                       
                     }
 
                     System.Web.HttpContext.Current.Session["IsAssessmentStarting"] = false;
@@ -8351,7 +8351,14 @@ namespace ICP4.BusinessLogic.CourseManager
                 int courseConfigurationID = Convert.ToInt32(System.Web.HttpContext.Current.Session["CourseConfigurationID"]);
                 if (isNormalDirection)
                 {
-                    seq = cacheManager.GetFirstChildSceneAssetOrQuizOfContentObject(courseID, sequenceNo, source, courseConfigurationID);
+                    if (sequenceItem.IsNotActive == true && sequenceItem.SequenceItemType == "ContentObject")
+                    {                        
+                        seq = cacheManager.GetFirstChildSceneAssetOrQuizOfContentObject(courseID, ++sequenceNo, source, courseConfigurationID);
+                    }
+                    else
+                    {
+                        seq = cacheManager.GetFirstChildSceneAssetOrQuizOfContentObject(courseID, sequenceNo, source, courseConfigurationID);
+                    }
                     if (seq < 0)
                     {//if there is no asset or quiz after the contentobject that means the end of course
                         return CreateCustomeMessageForEnd();
