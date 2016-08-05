@@ -176,5 +176,7 @@ namespace _360Training.CourseServiceDataLogic.CourseDA
         bool GetMultipleQuizConfigurationCount(int courseID);
         //Stop
         string GetCourseGroupsByCourse(int CourseID);
+
+        int GetCourseImageAsset(int courseID);
     }
 }

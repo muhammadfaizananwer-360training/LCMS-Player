@@ -81,6 +81,8 @@ namespace ICP4.BusinessLogic.ICPCourseService {
         
         private System.Threading.SendOrPostCallback GetAssetOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetCourseImageAssetOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAffidavitAssetOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetTableOfContentOperationCompleted;
@@ -270,6 +272,9 @@ namespace ICP4.BusinessLogic.ICPCourseService {
         
         /// <remarks/>
         public event GetAssetCompletedEventHandler GetAssetCompleted;
+        
+        /// <remarks/>
+        public event GetCourseImageAssetCompletedEventHandler GetCourseImageAssetCompleted;
         
         /// <remarks/>
         public event GetAffidavitAssetCompletedEventHandler GetAffidavitAssetCompleted;
@@ -1147,6 +1152,35 @@ namespace ICP4.BusinessLogic.ICPCourseService {
             if ((this.GetAssetCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAssetCompleted(this, new GetAssetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://www.360training.com/GetCourseImageAsset", RequestNamespace="http://www.360training.com/", ResponseNamespace="http://www.360training.com/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int GetCourseImageAsset(int courseID) {
+            object[] results = this.Invoke("GetCourseImageAsset", new object[] {
+                        courseID});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetCourseImageAssetAsync(int courseID) {
+            this.GetCourseImageAssetAsync(courseID, null);
+        }
+        
+        /// <remarks/>
+        public void GetCourseImageAssetAsync(int courseID, object userState) {
+            if ((this.GetCourseImageAssetOperationCompleted == null)) {
+                this.GetCourseImageAssetOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetCourseImageAssetOperationCompleted);
+            }
+            this.InvokeAsync("GetCourseImageAsset", new object[] {
+                        courseID}, this.GetCourseImageAssetOperationCompleted, userState);
+        }
+        
+        private void OnGetCourseImageAssetOperationCompleted(object arg) {
+            if ((this.GetCourseImageAssetCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetCourseImageAssetCompleted(this, new GetCourseImageAssetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4133,10 +4167,10 @@ namespace ICP4.BusinessLogic.ICPCourseService {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SingleSelectCourseEvaluationQuestion))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TextCourseEvaluationQuestion))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(FillInTheBlankCourseEvaluationQuestion))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(MultipleSelectCourseEvaluationQuestion))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TextCourseEvaluationQuestion))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SingleSelectCourseEvaluationQuestion))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(FillInTheBlankCourseEvaluationQuestion))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "2.0.50727.5485")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -4259,7 +4293,7 @@ namespace ICP4.BusinessLogic.ICPCourseService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.360training.com/")]
-    public partial class SingleSelectCourseEvaluationQuestion : CourseEvaluationQuestion {
+    public partial class MultipleSelectCourseEvaluationQuestion : CourseEvaluationQuestion {
     }
     
     /// <remarks/>
@@ -4277,7 +4311,7 @@ namespace ICP4.BusinessLogic.ICPCourseService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.360training.com/")]
-    public partial class FillInTheBlankCourseEvaluationQuestion : CourseEvaluationQuestion {
+    public partial class SingleSelectCourseEvaluationQuestion : CourseEvaluationQuestion {
     }
     
     /// <remarks/>
@@ -4286,7 +4320,7 @@ namespace ICP4.BusinessLogic.ICPCourseService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.360training.com/")]
-    public partial class MultipleSelectCourseEvaluationQuestion : CourseEvaluationQuestion {
+    public partial class FillInTheBlankCourseEvaluationQuestion : CourseEvaluationQuestion {
     }
     
     /// <remarks/>
@@ -6257,6 +6291,32 @@ namespace ICP4.BusinessLogic.ICPCourseService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Asset)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.5483")]
+    public delegate void GetCourseImageAssetCompletedEventHandler(object sender, GetCourseImageAssetCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "2.0.50727.5483")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetCourseImageAssetCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetCourseImageAssetCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

@@ -330,6 +330,22 @@ namespace _360Training.CourseServiceBusinessLogic
             }
         }
 
+        public int GetCourseImageAsset(int courseID)
+        {
+            try
+            {
+                using (CourseDA courseDA = new CourseDA())
+                {
+                    return courseDA.GetCourseImageAsset(courseID);
+                }
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+                return 0;
+            }
+        }
+
         public Asset GetAffidavitAsset(int affidativeID)
         {
             try

@@ -1167,6 +1167,35 @@ namespace _360Training.CourseServiceDataLogic.CourseDA
                 return 0;
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        public int GetCourseImageAsset(int courseID)
+        {
+            DbCommand dbCommand = null;
+            int AssetID = 0;
+            try
+            {
+                dbCommand = db.GetStoredProcCommand(StoredProcedures.SELECT_COURSE_IMAGE_ASSET);
+                db.AddInParameter(dbCommand, "@COURSE_ID", DbType.Int32, courseID);
+                using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+                {
+                    while (dataReader.Read())
+                    {
+                        AssetID = dataReader["ASSET_ID"] == DBNull.Value ? 0 : Convert.ToInt32(dataReader["ASSET_ID"]);
+                    }
+                }
+                return AssetID;
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+                return 0;
+            }
+        }
         /// <summary>
         /// Gets the course type by course guid
         /// </summary>

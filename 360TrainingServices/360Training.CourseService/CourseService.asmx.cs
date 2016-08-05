@@ -340,6 +340,15 @@ namespace _360Training.CourseService
         }
 
         [WebMethod]
+        public int GetCourseImageAsset(int courseID)
+        {
+            using (CourseManager courseManager = new CourseManager())
+            {
+                return courseManager.GetCourseImageAsset(courseID);
+            }
+        }
+
+        [WebMethod]
         public Asset GetAffidavitAsset(int affidativeID)
         {
             using (CourseManager courseManager = new CourseManager())
