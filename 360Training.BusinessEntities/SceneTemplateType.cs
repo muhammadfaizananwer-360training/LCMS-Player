@@ -12,6 +12,7 @@ namespace _360Training.BusinessEntities
         public const string LA = "LA";
         public const string CL = "CL";
         public const string CI = "CI";
+        public const string CC = "CC";
         public const string VIC = "VIC";
         public const string DC = "DC";
         public const string CR = "CR";

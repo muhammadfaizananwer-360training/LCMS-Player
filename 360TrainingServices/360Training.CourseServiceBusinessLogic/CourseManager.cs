@@ -688,7 +688,15 @@ namespace _360Training.CourseServiceBusinessLogic
 
                 CourseEndPage courseEndPage = new CourseEndPage();
                 courseEndPage = GetCourseEndPage(courseID);
-                FillEndPage(sequence, courseEndPage);
+                //FillEndPage(sequence, courseEndPage);
+
+                SequenceItem sequenceItemCC = new SequenceItem();
+                sequenceItemCC.SequenceItemType = SequenceItemType.EndOfCourseScene;
+                sequenceItemCC.SceneTemplateID = GetSceneTemplateIDByType(defaultSceneTemplates, SceneTemplateType.CC);
+                Asset asset = new Asset();
+                asset.URL = courseEndPage.Url;
+                sequenceItemCC.Assets.Add(asset);
+                sequence.SequenceItems.Add(sequenceItemCC);
 
             }
                         

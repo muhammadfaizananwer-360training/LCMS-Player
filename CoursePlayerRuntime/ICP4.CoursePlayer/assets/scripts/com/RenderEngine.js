@@ -1139,6 +1139,17 @@ function RenderEngine() {
         }
 
     }
+    
+    this.ShowCourseConcluded =function(slide) {
+        var htmlData = "";
+        $(htmlContentContainer).show();        
+        $(htmlContentContainer).html('');        
+        htmlData=slide.MediaAsset.TemplateHtml;
+        htmlData=htmlData.replace("$Heading",CourseConcludeHeading);
+        htmlData=htmlData.replace("$Text",CourseConcludeText);
+        $(htmlContentContainer).html(htmlData);
+        $('#wrapper').addClass('toggled-left');
+    }
     //// LCMS-2857
     this.ShowEOCInstructions = function(EOCInstructionObj) {
 

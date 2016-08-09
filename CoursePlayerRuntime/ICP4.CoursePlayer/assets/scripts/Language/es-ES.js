@@ -99,6 +99,8 @@ NoRecomendedBookText = 'No hay libros recomendados que se encuentran';
 true_text = "Verdadero";
 false_text = "Falso";
 and_text = "y";
+CourseConcludeHeading = 'This Concludes The Course.';
+CourseConcludeText = 'Tell the world your experience and what you thing by sharing this course today!';
 
 $(document).ready(function() {
     //Chat for Help

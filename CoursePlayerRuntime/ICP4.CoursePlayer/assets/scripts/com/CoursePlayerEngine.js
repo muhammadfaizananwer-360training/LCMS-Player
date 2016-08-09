@@ -1918,8 +1918,7 @@ function CoursePlayerEngine() {
                     //$(htmlContentContainer).empty();
                     //End
                     $(IcoBookMark).hide();
-                    $(ProgressBarContainer).hide();
-                    renderEngine.ShowSlideRendering(slide);
+                    $(ProgressBarContainer).hide();                    
 
                     // Added by Waqas Zakai LCMS-6575 START
                     $(controlPanel).find("#IcoInstructorInformation").show();
@@ -1938,7 +1937,9 @@ function CoursePlayerEngine() {
                     $(controlPanel).find("#IcoHelpDs").hide();
                     $(controlPanel).find("#IcoCourseCompletion").show();
                     $(controlPanel).find("#IcoCourseCompletionDs").hide();
-
+                    $('#controlPanel').show();
+                    
+                    renderEngine.ShowCourseConcluded(slide);
                     EndOfCSceneTF = true;
                     // LCMS-6575 END
 

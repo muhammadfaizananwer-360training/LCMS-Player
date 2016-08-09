@@ -546,6 +546,10 @@ var ui = function () {
 						$('#page-content-wrapper .cd-intro-content').addClass("mask");
 						$('#page-content-wrapper .content-wrapper').removeClass("fade");
 					break;
+					case "lesson_conclude_typing":
+						$('#page-content-wrapper .cd-conclude-content').addClass("mask");
+						$('#page-content-wrapper .content-wrapper').removeClass("fade");
+					break;
 				}
 			},
 			
@@ -870,7 +874,7 @@ var ui = function () {
 				{
 					var obj = {
 						url: ui.social.url,
-						title:(caseNum == 1? ui.social.title: "I am learning lesson " + ui.social.specificTitle+' in the course '+ui.social.title + ' at 360training.com'),
+						title:(caseNum == 1?ui.social.title:ui.social.specificTitle+' of '+ui.social.title),
 						summary: ui.social.desc,
 						source: ui.social.url
 					}
@@ -907,7 +911,7 @@ var ui = function () {
 					FB.ui({
 						method: 'feed',
 						app_id: ui.social.fb.key,
-						name:(caseNum == 1? ui.social.title: "I am learning lesson " + ui.social.specificTitle+' in the course '+ui.social.title + ' at 360training.com'),
+						name: (caseNum == 1?ui.social.title:ui.social.specificTitle+' of '+ui.social.title),
 						link: ui.social.url,
 						picture: ui.social.img,
 						caption: "To find more details, click on this post",

@@ -9697,6 +9697,7 @@ namespace ICP4.BusinessLogic.CourseManager
         {
             string brandCode = System.Web.HttpContext.Current.Session["BrandCode"].ToString();
             string variant = System.Web.HttpContext.Current.Session["Variant"].ToString();
+            //int courseID = Convert.ToInt32(System.Web.HttpContext.Current.Session["CourseID"]);
 
             if (sequenceItem.Assets != null && sequenceItem.Assets[0].URL != "")
             {
@@ -9718,6 +9719,24 @@ namespace ICP4.BusinessLogic.CourseManager
                 //else
                //    slideMediaAsset.FlashURL = sequenceItem.Assets[0].URL;
 
+                GetCourseImage(courseID);
+                string HTML = "";
+                string icpFileSystem = ConfigurationManager.AppSettings["ICPFileSystem"];
+                using (ICPCourseService.CourseService courseService = new ICP4.BusinessLogic.ICPCourseService.CourseService())
+                {
+                    courseService.Url = ConfigurationManager.AppSettings["ICPCourseService"];
+                    courseService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
+
+                    HTML = courseService.GetSceneTemplateHTML(sequenceItem.SceneTemplateID).TemplateHTML;
+                }
+
+                StringBuilder sb = new StringBuilder(HTML);                
+                if (System.Web.HttpContext.Current.Session["CourseImage"] != null)
+                {
+                    sb.Replace("$VisualTop", System.Web.HttpContext.Current.Session["CourseImage"].ToString());
+                }
+                HTML = sb.ToString();
+
                 string url = "";
                 using (CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
                 {
@@ -9730,7 +9749,7 @@ namespace ICP4.BusinessLogic.CourseManager
                 slideMediaAsset.LastScene = "";
                 slideMediaAsset.AudioURL = "";
                 slideMediaAsset.FlashFirstSceneName = "";
-                slideMediaAsset.TemplateHtml = "";
+                slideMediaAsset.TemplateHtml = HTML;
                 slideMediaAsset.NextButtonState = true;
                 slideMediaAsset.EnableAllTOC = true;
             
@@ -11781,6 +11800,10 @@ namespace ICP4.BusinessLogic.CourseManager
                                 courseImage = courseImageprefix + asset.URL;
                             }
                         }
+                        else
+                        {
+                            courseImage = defaultCourseImage;
+                        }
                     }                                    
                 }
                 else
@@ -11790,9 +11813,12 @@ namespace ICP4.BusinessLogic.CourseManager
 
                 using (ICP4.BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
                 {
-                    if (courseImage != null && courseImage.Length > 0)
+                    if (Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsPreview"]) == false && Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsDemoable"]) == false)
                     {
-                        cacheManager.CreateCourseImageInCache(courseID, courseImage);
+                        if (courseImage != null && courseImage.Length > 0)
+                        {
+                            cacheManager.CreateCourseImageInCache(courseID, courseImage);
+                        }
                     }
                 }
 

@@ -1371,7 +1371,8 @@ svg {
 }
 
 /* course into elements */
-.cd-intro {
+.cd-intro,
+.cd-conclude {
   z-index: 0;
   position: relative;
   height: 100vh;
@@ -1382,7 +1383,9 @@ svg {
   background-size: cover;
   overflow: hidden;
 }
-.cd-intro-content {
+
+.cd-intro-content,
+.cd-conclude-content {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
@@ -1391,6 +1394,8 @@ svg {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.cd-conclude-content h1,
 .cd-intro-content h1 {
 	font-size: 5.2rem;
 	font-weight: 300;
@@ -1404,8 +1409,50 @@ svg {
 	color: #c9cdd7;
 }
 
+.cd-conclude-content p {
+	font-size: 1.6rem;
+	margin: 1.5em auto;
+	font-weight: 700;
+	line-height: 1.4;
+	color: #c9cdd7;
+	width: 415px;
+}
+.cd-conclude-content .list-inline{
+	position:relative;
+}
+.cd-conclude-content .list-inline li{
+	padding: 25px;
+    position: relative;
+}
+
+.cd-conclude-content .fb-symbol::before,
+.cd-conclude-content .ln-symbol::before,
+.cd-conclude-content .tr-symbol::before,
+.cd-conclude-content .gp-symbol::before,
+.cd-conclude-content .ts-symbol::before{
+	padding: 20px;
+    left: 0;
+}
+
+.cd-conclude-content .tr-symbol:hover::before{
+	background-position: 0 40px;
+}
+.cd-conclude-content .ln-symbol:hover::before{
+	background-position: 0 40px;
+}
+.cd-conclude-content .fb-symbol:hover::before{
+	background-position: 0 40px;
+}
+.cd-conclude-content .gp-symbol:hover::before{
+	background-position: 0 40px;
+}
+.cd-conclude-content .ts-symbol:hover::before{
+	background-position: 0 40.5px;
+}
+
 /* course into mask elements */
-.cd-intro-content.mask .content-wrapper {
+.cd-intro-content.mask .content-wrapper,
+.cd-conclude-content.mask .content-wrapper {
   position: relative;
   width: 100%;
   max-width: 650px;
@@ -1426,7 +1473,8 @@ svg {
   -moz-animation-fill-mode: backwards;
   animation-fill-mode: backwards;
 }
-.cd-intro-content.mask .content-wrapper::before {
+.cd-intro-content.mask .content-wrapper::before,
+.cd-conclude-content.mask .content-wrapper::before {
   /* vertical bar */
   content: '';
   position: absolute;
@@ -1440,7 +1488,9 @@ svg {
   -moz-animation: cd-pulse 1.3s 0.3s both;
   animation: cd-pulse 1.3s 0.3s both;
 }
-.cd-intro-content.mask .content-wrapper > div {
+
+.cd-intro-content.mask .content-wrapper > div,
+.cd-conclude-content.mask .content-wrapper > div {
   /* wrap the entire content */
   position: relative;
   z-index: 1;
@@ -1458,7 +1508,8 @@ svg {
   -moz-animation-fill-mode: backwards;
   animation-fill-mode: backwards;
 }
-.no-cssanimations .cd-intro-content.mask .content-wrapper::before {
+.no-cssanimations .cd-intro-content.mask .content-wrapper::before,
+.no-cssanimations .cd-conclude-content.mask .content-wrapper::before{
   opacity: 0;
 }
 
@@ -3113,12 +3164,17 @@ h1.heading-exceeding{
 	}
 	
 	/* course into elements */
-	.cd-intro-content h1 {
+	.cd-intro-content h1,
+	.cd-conclude-content h1	{
 		font-size: 2.4rem;
 	}
-	.cd-intro-content p {
+	.cd-intro-content p{
 		font-size: 1.4rem;
 		margin: 1em 0;
+	}
+	
+	.cd-conclude-content p{
+		font-size: 1.4rem;
 	}
 	
 	/* scene templates */
@@ -3164,6 +3220,10 @@ h1.heading-exceeding{
 
 @media only screen and (max-width: 480px)
 {
+	.cd-conclude-content p{
+		width: 75%;
+	}
+	
 	#iso-filter-btns button{
 		width:100%;
 		border-top: 1px solid #333;

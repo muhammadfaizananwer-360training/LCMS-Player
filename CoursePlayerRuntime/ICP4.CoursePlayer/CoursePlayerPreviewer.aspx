@@ -6,53 +6,36 @@
     
     <script language="javascript" type="text/javascript">
     var launchWindow;
+    function ie_ver(){  
+       var iev=0;
+       var ieold = (/MSIE (\d+\.\d+);/.test(navigator.userAgent));
+       var trident = !!navigator.userAgent.match(/Trident\/7.0/);
+       var rv=navigator.userAgent.indexOf("rv:11.0");
+
+       if (ieold) iev=new Number(RegExp.$1);
+       if (navigator.appVersion.indexOf("MSIE 10") != -1) iev=10;
+       if (trident&&rv!=-1) iev=11;
+
+       return iev;         
+   }
+    
     function openWin(url)
     {        
-        var isResizable = 1;
-        if(navigator.appName == 'Microsoft Internet Explorer')
-        {
-           if(navigator.appVersion.indexOf('MSIE 6') != -1)
-           {
-                if(navigator.appMinorVersion.indexOf('SP3') == -1)
-                {
-                    isResizable = 0;
-                }   
-           }
+	    if (ie_ver() > 0){ 
+		    launchWindow = window.open(url,'','address=no,resizable=yes,toolbar=no,location=no,scrollbars=yes,menubar=no,status=yes,width=1366,height=660,left=0,top=0');
+		    launchWindow.focus();
+		    launchWindow.opener=this.window;
         }
-        
-        if (isResizable == 0)
-        {
-         if ( launchWindow != null ) {
-            launchWindow.close();
-        }
-            /*
-          var popup = window.open(url, "popup", "fullscreen");
-          if (popup.outerWidth < screen.availWidth || popup.outerHeight < screen.availHeight)
-          {
-            popup.moveTo(0,0);
-            popup.resizeTo(screen.availWidth, screen.availHeight);
-          }      
-          */  
-        launchWindow=window.open(url,'','menubar=0,scroll bars=no,width=1024,height=660,top=0,left=0,resizable=0,location=0,toolbar=0,directories=0');
-        //launchWindow=window.open(url,'','');
-        }
-        else
-        {
-        if ( launchWindow != null ) {
-            launchWindow.close();
-            }
-            /*
-          var popup = window.open(url, "popup", "fullscreen");
-          if (popup.outerWidth < screen.availWidth || popup.outerHeight < screen.availHeight)
-          {
-            popup.moveTo(0,0);
-            popup.resizeTo(screen.availWidth, screen.availHeight);
-          } 
-          */            
-        launchWindow=window.open(url,'','menubar=0,scroll bars=no,width=1024,height=660,top=0,left=0,resizable=1,location=0,toolbar=0,directories=0');
-        //launchWindow=window.open(url,'','');
-        }
-        
+        else{
+		    launchWindow = window.open(url,'','address=no,resizable=yes,toolbar=no,location=no,scrollbars=yes,menubar=no,status=yes,width=launchWidth,height=launchHeight,left=0,top=0');
+		    if (launchWindow.outerWidth < screen.availWidth || launchWindow.outerHeight < screen.availHeight)
+		    {
+			    launchWindow.moveTo(0,0);
+			    launchWindow.resizeTo(screen.availWidth, screen.availHeight);
+		    }                 
+		    launchWindow.focus();
+		    launchWindow.opener=this.window;
+	    }                
     }
     </script>
 </head>
