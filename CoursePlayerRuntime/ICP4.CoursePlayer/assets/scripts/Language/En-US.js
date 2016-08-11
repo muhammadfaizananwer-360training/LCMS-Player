@@ -46,7 +46,7 @@ CourseReviewnotAllowedText = "Course Review Not Allowed";
 InformationText = 'Information';
 NoRecomendedBookText = 'No recommended books found.';
 CourseConcludeHeading = 'This Concludes The Course.';
-CourseConcludeText = 'Tell the world your experience and what you thing by sharing this course today!';
+CourseConcludeText = 'Tell the world your experience and what you think by sharing this course today!';
 
 function ChangeCourseLoadingMessages() {
     $("#process .process_heading").text(process_heading_tx);
