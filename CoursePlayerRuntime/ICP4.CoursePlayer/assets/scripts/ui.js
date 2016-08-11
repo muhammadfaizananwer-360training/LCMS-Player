@@ -874,7 +874,7 @@ var ui = function () {
 				{
 					var obj = {
 						url: ui.social.url,
-						title:(caseNum == 1?ui.social.title:ui.social.specificTitle+' of '+ui.social.title),
+						title:(caseNum == 1? ui.social.title: "I am learning lesson " + ui.social.specificTitle+' in the course '+ui.social.title + ' at 360training.com'),
 						summary: ui.social.desc,
 						source: ui.social.url
 					}
@@ -911,7 +911,7 @@ var ui = function () {
 					FB.ui({
 						method: 'feed',
 						app_id: ui.social.fb.key,
-						name: (caseNum == 1?ui.social.title:ui.social.specificTitle+' of '+ui.social.title),
+						name:(caseNum == 1? ui.social.title: "I am learning lesson " + ui.social.specificTitle+' in the course '+ui.social.title + ' at 360training.com'),
 						link: ui.social.url,
 						picture: ui.social.img,
 						caption: "To find more details, click on this post",
@@ -921,7 +921,6 @@ var ui = function () {
 						
 					});
 				}
-				
 			},
 		
 			click:function(e){

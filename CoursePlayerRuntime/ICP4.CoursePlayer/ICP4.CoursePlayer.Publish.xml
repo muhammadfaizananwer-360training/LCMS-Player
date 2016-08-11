@@ -143,7 +143,7 @@
     <file relUrl="assets/plugins/jwplayer-7.1.4/provider.cast.js" publishTime="07/21/2016 13:05:38" />
     <file relUrl="assets/img/logo.jpg" publishTime="07/21/2016 13:05:37" />
     <file relUrl="assets/plugins/tour-guide/css/reset.css" publishTime="07/21/2016 13:05:38" />
-    <file relUrl="assets/scripts/Language/En-US.js" publishTime="08/09/2016 14:19:14" />
+    <file relUrl="assets/scripts/Language/En-US.js" publishTime="08/11/2016 15:33:05" />
     <file relUrl="assets/img/bg_button_hover.gif" publishTime="07/21/2016 13:05:37" />
     <file relUrl="Scripts/DocuSign/themes/ui-lightness/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" publishTime="07/21/2016 13:05:37" />
     <file relUrl="Web.config" publishTime="08/11/2016 13:06:00" />
@@ -546,12 +546,12 @@
     <file relUrl="assets/plugins/jquery.min.js" publishTime="07/21/2016 13:05:38" />
     <file relUrl="assets/scripts/Chart.js" publishTime="07/21/2016 13:05:38" />
     <file relUrl="images/menu_btn.gif" publishTime="07/21/2016 13:05:38" />
-    <file relUrl="assets/scripts/Language/es-ES.js" publishTime="08/09/2016 14:19:50" />
+    <file relUrl="assets/scripts/Language/es-ES.js" publishTime="08/11/2016 15:32:55" />
     <file relUrl="Scripts/DocuSign/themes/base/minified/images/ui-bg_glass_95_fef1ec_1x400.png" publishTime="07/21/2016 13:05:37" />
     <file relUrl="ICPBrands/1/Images/ico_pptx.png" publishTime="07/21/2016 13:05:37" />
     <file relUrl="images/ico_docM.png" publishTime="07/21/2016 13:05:38" />
     <file relUrl="Scripts/jquery/ui.progressbar.js" publishTime="07/21/2016 13:05:37" />
-    <file relUrl="bin/ICP4.CoursePlayer.dll" publishTime="08/11/2016 13:55:54" />
+    <file relUrl="bin/ICP4.CoursePlayer.dll" publishTime="08/11/2016 15:51:42" />
     <file relUrl="images/treeview-red-line.gif" publishTime="07/21/2016 13:05:38" />
     <file relUrl="ExternalCourseActions.asmx" publishTime="07/21/2016 13:05:37" />
     <file relUrl="Scripts/DocuSign/themes/ui-lightness/jquery.ui.accordion.css" publishTime="07/21/2016 13:05:37" />
@@ -708,7 +708,7 @@
     <file relUrl="assets/fonts/Oxygen/Regular/oxygen-regular-webfont.svg" publishTime="07/21/2016 13:05:37" />
     <file relUrl="ICPBrands/2/Images/logo_old.gif" publishTime="07/21/2016 13:05:37" />
     <file relUrl="assets/img/linkedin-symbol.svg" publishTime="07/25/2016 12:27:11" />
-    <file relUrl="assets/scripts/com/CoursePlayerEngine.js" publishTime="08/09/2016 15:31:01" />
+    <file relUrl="assets/scripts/com/CoursePlayerEngine.js" publishTime="08/11/2016 14:02:00" />
     <file relUrl="Redirector.aspx" publishTime="07/21/2016 13:05:37" />
     <file relUrl="assets/img/loadingbar.gif" publishTime="07/21/2016 13:05:37" />
     <file relUrl="assets/fonts/Oxygen/Light/oxygen-light-webfont.svg" publishTime="07/21/2016 13:05:37" />
@@ -739,7 +739,7 @@
     <file relUrl="assets/img/warning.png" publishTime="07/21/2016 13:05:37" />
     <file relUrl="Scripts/DocuSign/themes/base/minified/images/ui-bg_glass_75_dadada_1x400.png" publishTime="07/21/2016 13:05:37" />
     <file relUrl="assets/plugins/jquery-slimscroll/examples/nested.html" publishTime="07/21/2016 13:05:38" />
-    <file relUrl="bin/ICP4.CoursePlayer.pdb" publishTime="08/11/2016 13:55:54" />
+    <file relUrl="bin/ICP4.CoursePlayer.pdb" publishTime="08/11/2016 15:51:42" />
     <file relUrl="CacheInfo.aspx" publishTime="07/21/2016 13:05:37" />
     <file relUrl="assets/plugins/jwplayer-7.1.4/provider.youtube.js" publishTime="07/21/2016 13:05:38" />
     <file relUrl="assets/img/file_disable.gif" publishTime="07/21/2016 13:05:37" />
