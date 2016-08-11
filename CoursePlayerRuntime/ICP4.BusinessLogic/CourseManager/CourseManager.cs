@@ -587,12 +587,16 @@ namespace ICP4.BusinessLogic.CourseManager
                                 string courseImagePrefix = ConfigurationManager.AppSettings["ICPFileSystem"].ToString();            
                                 courseImagePrefix = courseImagePrefix.Replace("ICPFileSystem", "ICP4");            
                                 string defaultCourseImage = courseImagePrefix + "/" + ConfigurationManager.AppSettings["DefaultCourseImage"].ToString();
+                                string defaultCourseProductPageURL = ConfigurationManager.AppSettings["StoreFrontProductPageServiceRootURL"].ToString();
 
                                 courseInfo.CourseDefaultImage = defaultCourseImage;
+                                courseInfo.CourseDefaultProductPageURL = defaultCourseProductPageURL;
 
                                 using (ICP4.BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
                                 {
                                     string courseImage = cacheManager.GetIFCourseImageExistInCache(courseId);
+                                    string courseProductPageURL = cacheManager.GetIFCourseProductPageExistInCache(courseId);
+
                                     if (courseImage == null)
                                     {
                                         courseInfo.CourseImage = "";
@@ -601,9 +605,17 @@ namespace ICP4.BusinessLogic.CourseManager
                                     {
                                         courseInfo.CourseImage = courseImage;
                                     }
+
+                                    if (courseProductPageURL == null)
+                                    {
+                                        GetCourseProductPageURL(courseId);
+                                        courseInfo.CourseProductPageURL = System.Web.HttpContext.Current.Session["CourseProductPageURL"].ToString();
+                                    }
+                                    else
+                                    {
+                                        courseInfo.CourseProductPageURL = courseProductPageURL;
+                                    }
                                 }
-                                
-                                courseInfo.CourseProductPageURL = "https://www.360training.com";
                                 HttpContext.Current.Session["CourseName"] = courseInfo.CourseName;
                                 HttpContext.Current.Session["CourseDescription"] = courseInfo.CourseDescription;
                             }
@@ -11691,7 +11703,7 @@ namespace ICP4.BusinessLogic.CourseManager
             return originalCourseID;
         }
 
-        #region Course Background Image
+        #region Course Background Image and Product Page URL
         /// <summary>
         /// This method Getting the course background image from Store Front
         /// </summary>
@@ -11827,6 +11839,116 @@ namespace ICP4.BusinessLogic.CourseManager
             catch (Exception exp)
             {
                 System.Web.HttpContext.Current.Session["CourseImage"] = defaultCourseImage;                          
+            }
+        }
+
+        /// <summary>
+        /// This method Getting the course's Product Page URL from Store Front
+        /// </summary>
+        /// <param name="courseID">int courseID</param>
+        /// <returns></returns>
+        /// <Description>LCMS-14604 Author: Waqas Zakai Date : 11-August-2016</Description>        
+        private void GetCourseProductPageURL(int courseID)
+        {
+            string courseProductPageURL = null;            
+            string courseProductPagePrefix = ConfigurationManager.AppSettings["StoreFrontProductPageServiceRootURL"].ToString();
+            string defaultProductPageURL = courseProductPagePrefix;
+            bool isServiceCall = Convert.ToBoolean(ConfigurationManager.AppSettings["StoreFrontProductPageServiceCall"].ToString());
+
+            try
+            {
+                if (Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsDemoable"]) == false)
+                {
+                    if (Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsPreview"]) == false)
+                    {
+                        if (isServiceCall)
+                        {
+                            using (ICP4.BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
+                            {
+                                courseProductPageURL = cacheManager.GetIFCourseProductPageExistInCache(courseID);
+                                if (courseProductPageURL == null)
+                                {
+                                    ICPCourseService.CourseService courseService = new ICP4.BusinessLogic.ICPCourseService.CourseService();
+                                    courseService.Url = ConfigurationManager.AppSettings["ICPCourseService"];
+                                    courseService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
+
+                                    int originalCourseID = courseService.GetOriginalCourseID(courseID);
+                                    if (originalCourseID > 0)
+                                    {
+                                        courseID = originalCourseID;
+                                    }
+                                    string courseGroupGUID = courseService.GetCourseGroupsByCourse(courseID);
+                                    string courseGUID = courseService.GetCourseGUID(courseID);
+                                    using (WebClient client = new WebClient())
+                                    {
+                                        string serviceURL = courseProductPagePrefix + ConfigurationManager.AppSettings["StoreFrontProductPageServiceCallURL"].ToString();
+                                        serviceURL = serviceURL.Replace("{0}", courseGUID);
+                                        serviceURL = serviceURL.Replace("{1}", courseGroupGUID);
+                                        try
+                                        {
+                                            string content = client.DownloadString(serviceURL);
+                                            content = content.Replace("/*", "").Replace("*/", "").Trim();
+                                            object objcontent = Newtonsoft.Json.JavaScriptConvert.DeserializeObject(content);
+                                            Newtonsoft.Json.Linq.JObject json = Newtonsoft.Json.Linq.JObject.Parse(content);
+                                            string productPageURL = json["seourl"].ToString();
+                                            productPageURL = productPageURL.Replace("\"", "");
+                                            if (!productPageURL.Equals(""))
+                                            {
+                                                courseProductPageURL = "{0}" + productPageURL.ToString();
+                                                if (courseProductPageURL.Contains("http://") || courseProductPageURL.Contains("https://"))
+                                                {
+                                                    courseProductPageURL = courseProductPageURL.Replace("{0}", "");
+                                                }
+                                                else
+                                                {
+                                                    courseProductPageURL = courseProductPageURL.Replace("{0}", courseProductPagePrefix);
+                                                }                                              
+                                            }
+
+                                            if (courseProductPageURL == null)
+                                            {
+                                                courseProductPageURL = defaultProductPageURL;
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            courseProductPageURL = defaultProductPageURL;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            courseProductPageURL = defaultProductPageURL;
+                        }
+                    }
+                    else
+                    {
+                        courseProductPageURL = defaultProductPageURL;
+                    }
+                }
+                else
+                {
+                    courseProductPageURL = defaultProductPageURL;
+                }
+
+                using (ICP4.BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
+                {
+                    if (Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsPreview"]) == false && Convert.ToBoolean(System.Web.HttpContext.Current.Session["IsDemoable"]) == false)
+                    {
+                        if (courseProductPageURL != null && courseProductPageURL.Length > 0)
+                        {
+                            cacheManager.CreateCourseProductPageInCache(courseID, courseProductPageURL);
+                        }
+                    }
+                }
+
+                System.Web.HttpContext.Current.Session["CourseProductPageURL"] = courseProductPageURL;
+            }
+            catch (Exception exp)
+            {
+                System.Web.HttpContext.Current.Session["CourseProductPageURL"] = defaultProductPageURL;
             }
         }
         #endregion

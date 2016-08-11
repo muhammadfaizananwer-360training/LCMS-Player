@@ -168,7 +168,7 @@ namespace ICP4.CoursePlayer
                     #endregion
 
                     #region External Course
-                    else //if (courseType == ICP4.BusinessLogic.CourseManager.CourseType.ExternalCourse)
+                    else if (courseType == ICP4.BusinessLogic.CourseManager.CourseType.ExternalCourse)
                     {
                         string url = ConfigurationManager.AppSettings["ExternalCourseHandlerURL"] + "?learnerSessionID=" + learnerSessionID;
                         Response.Redirect(url, false);

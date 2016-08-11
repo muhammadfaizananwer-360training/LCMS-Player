@@ -41,6 +41,14 @@ namespace ICP4.CommunicationLogic.CommunicationCommand.ShowCourseInfo
             set { courseDefaultImage = value; }
         }
 
+        private string courseDefaultProductPageURL;
+
+        public string CourseDefaultProductPageURL
+        {
+            get { return courseDefaultProductPageURL; }
+            set { courseDefaultProductPageURL = value; }
+        }
+
         private string courseProductPageURL;
 
         public string CourseProductPageURL

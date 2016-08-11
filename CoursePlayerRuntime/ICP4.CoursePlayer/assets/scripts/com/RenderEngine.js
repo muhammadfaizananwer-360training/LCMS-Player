@@ -744,6 +744,7 @@ function RenderEngine() {
         CourseDescription = obj.CourseInfo.CourseDescription;
         var CourseImage = obj.CourseInfo.CourseImage;
         var CourseDefaultImage = obj.CourseInfo.CourseDefaultImage;
+        var CourseDefaultProductPageURL = obj.CourseInfo.CourseDefaultProductPageURL;
         var CourseProductPageURL = obj.CourseInfo.CourseProductPageURL;        
         var IdleTimeOut = obj.CourseInfo.IdleTimeOut;
         var ExpireTimeout = obj.CourseInfo.ExpireTimeout;
@@ -816,6 +817,15 @@ function RenderEngine() {
 		{
 		    ui.social.img = CourseDefaultImage;
 		}
+		
+		if(CourseProductPageURL!=null && CourseProductPageURL.length > 0)
+		{
+		    ui.social.url = CourseProductPageURL;
+		}
+		else
+		{
+		    ui.social.url = CourseDefaultProductPageURL;
+		}		
         //Waqas Zakai
         //LCMS-14012
         //Start     

@@ -229,7 +229,33 @@ namespace ICP4.BusinessLogic.CacheManager
                 ExceptionPolicyForLCMS.HandleException(ex, "ICPException");
                 return null;
             }
+        }
 
+        /// <summary>
+        /// This method get Course Product Page from cache if exist
+        /// </summary>
+        /// <param name="CourseID">CourseID int value, represent the key for cache</param>        
+        /// <returns>ICPBrandingService.BrandLocaleInfo object</returns>
+        public string GetIFCourseProductPageExistInCache(int CourseID)
+        {
+            string courseImage = null;
+            try
+            {
+                if (HttpRuntime.Cache["COURSEPRODUCTPAGE" + "_" + CourseID.ToString()] == null)
+                {
+                    courseImage = null;
+                }
+                else
+                {
+                    courseImage = (string)HttpRuntime.Cache["COURSEPRODUCTPAGE" + "_" + CourseID.ToString()];
+                }
+                return courseImage;
+            }
+            catch (Exception ex)
+            {
+                ExceptionPolicyForLCMS.HandleException(ex, "ICPException");
+                return null;
+            }
         }
 
 
@@ -309,7 +335,31 @@ namespace ICP4.BusinessLogic.CacheManager
                 ExceptionPolicyForLCMS.HandleException(ex, "ICPException");
                 return false;
             }
+        }
 
+        /// <summary>
+        /// This method create Course Product Page URL in cache.
+        /// </summary>
+        /// <param name="courseID">CourseID integer value, represent the key for cache</param>        
+        /// <returns>Boolean value to represent whether the object is stored in cache</returns>
+        public bool CreateCourseProductPageInCache(int courseID, string courseProductPageURL)
+        {
+
+            try
+            {
+                if (HttpRuntime.Cache["COURSEPRODUCTPAGE" + "_" + courseID.ToString()] == null)
+                {
+
+                    HttpRuntime.Cache.Add("COURSEPRODUCTPAGE" + "_" + courseID.ToString(), courseProductPageURL, null, System.Web.Caching.Cache.NoAbsoluteExpiration, new TimeSpan(0, 6, 0, 0), System.Web.Caching.CacheItemPriority.NotRemovable, null);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ExceptionPolicyForLCMS.HandleException(ex, "ICPException");
+                return false;
+            }
         }
 
         /// <summary>
