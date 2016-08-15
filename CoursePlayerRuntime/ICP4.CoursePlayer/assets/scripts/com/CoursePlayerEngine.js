@@ -484,8 +484,8 @@ function CoursePlayerEngine() {
     this.getQueryString = function() {
 
 
-         //var _queryString = window.location.search.substring(1);
-         var _queryString = "SESSION=a6d4f1ba-a16f-4e11-8f9b-a0fce4852e5b&ts=1470906081980";
+         var _queryString = window.location.search.substring(1);
+         //var _queryString = "SESSION=a6d4f1ba-a16f-4e11-8f9b-a0fce4852e5b&ts=1470906081980";
          //var _queryString = "COURSEID=117960&VARIANT=En-US&BRANDCODE=DEFAULT&PREVIEW=true&SESSION=ee9074c0-2f3b-4561-8c5b-ce9dbd2eaa2c"; //Yasin
 
         //  var _queryString = window.location.search.substring(1);

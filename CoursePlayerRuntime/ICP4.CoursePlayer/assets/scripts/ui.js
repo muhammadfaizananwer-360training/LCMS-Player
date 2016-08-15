@@ -874,7 +874,7 @@ var ui = function () {
 				{
 					var obj = {
 						url: ui.social.url,
-						title:(caseNum == 1? ui.social.title: "I am learning lesson " + ui.social.specificTitle+' in the course '+ui.social.title + ' at 360training.com'),
+						title:ui.social.heading(caseNum),
 						summary: ui.social.desc,
 						source: ui.social.url
 					}
@@ -911,7 +911,7 @@ var ui = function () {
 					FB.ui({
 						method: 'feed',
 						app_id: ui.social.fb.key,
-						name:(caseNum == 1? ui.social.title: "I am learning lesson " + ui.social.specificTitle+' in the course '+ui.social.title + ' at 360training.com'),
+						name:ui.social.heading(caseNum),
 						link: ui.social.url,
 						picture: ui.social.img,
 						caption: "To find more details, click on this post",
@@ -922,7 +922,23 @@ var ui = function () {
 					});
 				}
 			},
-		
+			
+			heading: function(n)
+			{
+				switch(n)
+				{
+					case 1:
+						return ui.social.title;
+					break;
+					case 2:
+						return "I am learning lesson " + ui.social.specificTitle+' in the course '+ui.social.title + ' at 360training.com';
+					break;
+					case 3:
+						return 'Course Completed! I completed the course, "'+ui.social.title + '", on 360training.com';
+					break;
+				}
+			},
+			
 			click:function(e){
 				ui.social.specificTitle = $(e).data("title");
 				ui.svgModal.open($("<a data-group='modal-dynamic' data-trg='social-sharing'></a>"));
