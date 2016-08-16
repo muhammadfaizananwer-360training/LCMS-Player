@@ -1387,7 +1387,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>65066</DevelopmentServerPort>
+          <DevelopmentServerPort>55066</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/ICP4.CoursePlayer</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

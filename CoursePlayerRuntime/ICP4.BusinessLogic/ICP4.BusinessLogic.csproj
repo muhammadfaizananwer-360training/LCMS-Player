@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{472AA97A-6014-44E8-99E5-F8A16699C677}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -112,6 +112,7 @@
     <Compile Include="CourseEvaluationManager\CourseEvaluationQuestionType.cs" />
     <Compile Include="CourseManager\AfterMaxFailAction.cs" />
     <Compile Include="CourseManager\CourseImage.cs" />
+    <Compile Include="CourseManager\CourseLockingManagement.cs" />
     <Compile Include="CourseManager\CourseManager.cs" />
     <Compile Include="CourseManager\CourseType.cs" />
     <Compile Include="CourseManager\LearnerStatisticsType.cs" />

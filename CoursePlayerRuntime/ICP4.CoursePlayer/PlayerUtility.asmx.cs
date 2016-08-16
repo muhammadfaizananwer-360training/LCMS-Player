@@ -11,6 +11,12 @@ using ICP4.BusinessLogic.CacheManager;
 using ICP4.DataLogic.PlayerServerDA;
 using Microsoft.Practices.EnterpriseLibrary;
 using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
+using ICP4.BusinessLogic.ICPCourseService;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using ICP4.BusinessLogic.CourseManager;
+using _360Training.BusinessEntities;
+
+
 
 namespace ICP4.CoursePlayer
 {
@@ -130,6 +136,312 @@ namespace ICP4.CoursePlayer
             BusinessLogic.BrandManager.BrandManager brandManager = new BusinessLogic.BrandManager.BrandManager();
 
             return brandManager.UpdateBrand(variant, brandCode);
+        }
+
+
+        [WebMethod]
+        public List<LockedCourseStatus> GetCourseLockedStatus(string listEnrollmentID)
+        {                     
+            try
+            {  
+               string[] namesArray = listEnrollmentID.Split(',');
+               List<string> namesList = new List<string>(namesArray.Length);
+               namesList.AddRange(namesArray);
+
+               List<LockedCourseStatus> suggestedCourseList = null;
+          
+               suggestedCourseList = GetLockedCourseStatus(namesList.ToArray());
+
+
+               return suggestedCourseList;
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+                return null;
+            }
+             
+        }
+
+        public List<LockedCourseStatus> GetLockedCourseStatus(string[] listEnrollmentID)
+        {
+            try
+            {
+                string enrollmentID = string.Empty;
+
+                int courseConfigurationID = 0;
+
+                List<LockedCourseStatus> LearnerEnrollmentList = null;
+
+                LearnerEnrollmentList = new List<LockedCourseStatus>();
+
+                for (int i = 0; i < listEnrollmentID.Length; i++)
+                {
+                    enrollmentID = listEnrollmentID[i];
+
+                    string LockStatus = string.Empty;
+
+                    Database db = DatabaseFactory.CreateDatabase("360TrainingServiceDB");
+
+                    System.Data.Common.DbCommand dbCommand = null;
+
+                    LockedCourseStatus lockedCourseStaus = new LockedCourseStatus();
+
+                    string LockType = string.Empty;
+
+                    dbCommand = db.GetStoredProcCommand("ICP_GET_LOCKEDCOURSE_STATUS");
+
+
+                    db.AddInParameter(dbCommand, "@ENROLLMENTID", DbType.String, enrollmentID);
+
+
+                    using (IDataReader dataReader = db.ExecuteReader(dbCommand))
+                    {
+                        while (dataReader.Read())
+                        {                            
+
+                            lockedCourseStaus.EnrollmentID = dataReader["ENROLLMENT_ID"] == DBNull.Value ? string.Empty : dataReader["ENROLLMENT_ID"].ToString();
+
+                            lockedCourseStaus.LockedStatus = dataReader["LOCKEDSTATUS"] == DBNull.Value ? false : Convert.ToBoolean(dataReader["LOCKEDSTATUS"]);
+                             
+                            //lockedCourseStaus.LockedType = dataReader["LOCKTYPE"] == DBNull.Value ? string.Empty : dataReader["LOCKTYPE"].ToString();
+
+                            LockType = dataReader["LOCKTYPE"] == DBNull.Value ? string.Empty : dataReader["LOCKTYPE"].ToString();
+
+                            courseConfigurationID = Convert.ToInt32(dataReader["COURSECONFIGURATIONID"] == DBNull.Value ? string.Empty : dataReader["COURSECONFIGURATIONID"].ToString());
+
+                            string ScreenText = dataReader["FINALMESSAGE"] == DBNull.Value ? string.Empty : dataReader["FINALMESSAGE"].ToString();
+
+                            lockedCourseStaus.FinalMessage = StatusofEnrollment(lockedCourseStaus.EnrollmentID, LockType, ScreenText, courseConfigurationID);
+
+                            LearnerEnrollmentList.Add(lockedCourseStaus);
+                           
+                        }
+
+                    }
+                }
+
+                return LearnerEnrollmentList;
+            }
+            catch (Exception exp)
+            {
+                ExceptionPolicyForLCMS.HandleException(exp, "Exception Policy");
+                return null;
+            }
+        }
+
+
+        public string StatusofEnrollment(string enrollmentID, string lockingReason, string FinalMessage, int courseConfigurationID)
+        {                     
+            _360Training.BusinessEntities.CourseConfiguration courseConfiguration;
+
+            using (CourseLockingManagement Management = new CourseLockingManagement())
+            {
+                 courseConfiguration = Management.GetCourseConfiguration(courseConfigurationID);
+            }
+
+            string ScreenMessageAppears = string.Empty;           
+
+            using (ICP4.BusinessLogic.CacheManager.CacheManager cacheManager = new ICP4.BusinessLogic.CacheManager.CacheManager())
+            {            
+                if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.ValidationFailed)
+                {         
+                    ScreenMessageAppears = FinalMessage;   
+               
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.MaxAttemptReach)
+                {
+               
+                    ScreenMessageAppears = FinalMessage;
+
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.MaxAttemptReachPostAssessment)
+                {
+                    
+                    string CourseLockMessageText = FinalMessage;
+
+                    CourseLockMessageText = CourseLockMessageText.Replace("$NUMBERINWORDS", CommonAPI.Utility.NumberToWordConvertor.NumberToText(courseConfiguration.PostAssessmentConfiguration.MaximumNOAttempt, false, ", First , Second , Third , Fourth , Fifth , Sixth , Seventh , Eight , Ninth", ", One , Two , Three , Four , Five , Six , Seven , Eight , Nine ", "Ten , Eleven , Twelve , Thirteen , Fourteen , Fifteen , Sixteen , Seventeen , Eighteen , Nineteen", "Twenty , Thirty , Forty , Fifty , Sixty , Seventy , Eighty , Ninety", "Thousand , Lakh , Crore"));
+
+                    ScreenMessageAppears = CourseLockMessageText;
+              
+                }
+                
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.MaxAttemptReachLessonAssessment)
+                {
+                    string ContentObjectName = "";
+                  
+                    string CourseLockMessageText = FinalMessage;
+                    CourseLockMessageText = CourseLockMessageText.Replace("$MAXATTEMPTNUMBER", CommonAPI.Utility.NumberToWordConvertor.NumberToText(courseConfiguration.QuizConfiguration.MaximumNOAttempt, false, ", First , Second , Third , Fourth , Fifth , Sixth , Seventh , Eight , Ninth", ", One , Two , Three , Four , Five , Six , Seven , Eight , Nine ", "Ten , Eleven , Twelve , Thirteen , Fourteen , Fifteen , Sixteen , Seventeen , Eighteen , Nineteen", "Twenty , Thirty , Forty , Fifty , Sixty , Seventy , Eighty , Ninety", "Thousand , Lakh , Crore"));
+                    CourseLockMessageText = CourseLockMessageText.Replace("$CONTENTOBJECTNAME", ContentObjectName);
+                    if (ContentObjectName.Equals(""))
+                    {
+                        CourseLockMessageText = CourseLockMessageText.Replace("quiz - ", "quiz");
+                    }
+
+                    ScreenMessageAppears = CourseLockMessageText;
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.MaxAttemptReachPracticeExam)
+                {
+                    string ContentObjectName = "";
+                    
+                    string CourseLockMessageText = FinalMessage;
+                    CourseLockMessageText = CourseLockMessageText.Replace("$MAXATTEMPTNUMBER", CommonAPI.Utility.NumberToWordConvertor.NumberToText(courseConfiguration.QuizConfiguration.MaximumNOAttempt, false, ", First , Second , Third , Fourth , Fifth , Sixth , Seventh , Eight , Ninth", ", One , Two , Three , Four , Five , Six , Seven , Eight , Nine ", "Ten , Eleven , Twelve , Thirteen , Fourteen , Fifteen , Sixteen , Seventeen , Eighteen , Nineteen", "Twenty , Thirty , Forty , Fifty , Sixty , Seventy , Eighty , Ninety", "Thousand , Lakh , Crore"));
+                    CourseLockMessageText = CourseLockMessageText.Replace("$CONTENTOBJECTNAME", ContentObjectName);
+                    if (ContentObjectName.Equals(""))
+                    {
+                        CourseLockMessageText = CourseLockMessageText.Replace("practice exam - ", "practice exam");
+                    }
+                        ScreenMessageAppears = CourseLockMessageText;
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.MaxAttemptReachPreAssessment)
+                {
+                    
+                    string CourseLockMessageText = FinalMessage;
+
+                    CourseLockMessageText = CourseLockMessageText.Replace("$MAXATTEMPTNUMBER", CommonAPI.Utility.NumberToWordConvertor.NumberToText(courseConfiguration.PreAssessmentConfiguration.MaximumNOAttempt, false, ", First , Second , Third , Fourth , Fifth , Sixth , Seventh , Eight , Ninth", ", One , Two , Three , Four , Five , Six , Seven , Eight , Nine ", "Ten , Eleven , Twelve , Thirteen , Fourteen , Fifteen , Sixteen , Seventeen , Eighteen , Nineteen", "Twenty , Thirty , Forty , Fifty , Sixty , Seventy , Eighty , Ninety", "Thousand , Lakh , Crore"));
+
+                    ScreenMessageAppears = CourseLockMessageText;
+                             
+                }
+
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.FailedCompletionMustCompleteWithinSpecificAmountOfTimeMinute)
+                {
+                
+                    string CourseLockMessageText = FinalMessage;
+                    string numDuration = courseConfiguration.CompletionMustCompleteWithinSpecifiedAmountOfTimeMinute.ToString();
+                    string duration = courseConfiguration.CompletionUnitOfMustCompleteWithInSpecifiedAmountOfTime;
+
+                    if (duration.ToLower().EndsWith("s"))
+                    {
+                        duration = duration.Replace("s", "(s)");
+                    }
+
+                    CourseLockMessageText = CourseLockMessageText.Replace("$DURATION", numDuration + " " + duration);
+
+                    ScreenMessageAppears = CourseLockMessageText;                
+                
+                }                
+                
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.FailedCompletionMustCompleteWithinSpecificAmountOfTimeAfterRegistration)
+                {
+
+                    string CourseLockMessageText = FinalMessage;
+                  
+                    string numDuration = courseConfiguration.CompletionMustCompleteWithinSpecifiedAmountOfTimeDay.ToString();
+
+                    CourseLockMessageText = CourseLockMessageText.Replace("$DURATION", numDuration + " " + "Day(s)");
+
+                    ScreenMessageAppears = CourseLockMessageText;
+                    
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.MustStartCourseWithinSpecificAmountOfTimeAfterRegistration)
+                {
+                    
+                    string CourseLockMessageText = FinalMessage;
+                    int numDuration = courseConfiguration.MustStartCourseWithinSpecifiedAmountOfTimeAfterRegistrationDate;
+                    string UnitMustStartWithinSpecifiedAmountOfTimeAfterRegistrationDate = courseConfiguration.UnitMustStartCourseWithinSpecifiedAmountOfTimeAfterRegistrationDate;
+
+                    switch (UnitMustStartWithinSpecifiedAmountOfTimeAfterRegistrationDate)
+                    {
+                        case _360Training.BusinessEntities.TimeUnit.Minutes:
+                            if (numDuration == 1)
+                            {
+                                CourseLockMessageText = CourseLockMessageText.Replace("#DURATION", "(" + numDuration.ToString() + " " + "Minute)");
+                            }
+                            else
+                            {
+                                CourseLockMessageText = CourseLockMessageText.Replace("#DURATION", "(" + numDuration.ToString() + " " + "Minutes)");
+                            }
+                            break;
+                        case _360Training.BusinessEntities.TimeUnit.Months:
+                            if (numDuration == 1)
+                            {
+                                CourseLockMessageText = CourseLockMessageText.Replace("#DURATION", "(" + numDuration.ToString() + " " + "Month)");
+                            }
+                            else
+                            {
+                                CourseLockMessageText = CourseLockMessageText.Replace("#DURATION", "(" + numDuration.ToString() + " " + "Months)");
+                            }
+
+                            break;
+                        case _360Training.BusinessEntities.TimeUnit.Days:
+                            if (numDuration == 1)
+                            {
+                                CourseLockMessageText = CourseLockMessageText.Replace("#DURATION", "(" + numDuration.ToString() + " " + "Day)");
+                            }
+                            else
+                            {
+                                CourseLockMessageText = CourseLockMessageText.Replace("#DURATION", "(" + numDuration.ToString() + " " + "Days)");
+                            }
+                            break;
+                    }
+
+                    CourseLockMessageText = CourseLockMessageText.Replace("$DURATION", numDuration + " " + "Day(s)");
+                    ScreenMessageAppears = CourseLockMessageText;
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.NothingEnable)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.GeneralCase)
+                {
+                    ScreenMessageAppears = FinalMessage;
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.IdleUserTimeElapsed)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.CoursePublishedScene)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.CoursePublishedAssessment)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.ReportingFieldMisMatch)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.CourseApprovalNotAttachedWithCourse)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.ReportingFieldNotAttachedWithCourseApproval)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.MonitorFieldMisMatch)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.ClickingAwayFromActiveWindow)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.ProctorLoginFailed)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.ProctorAccountNotActive)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+                else if (lockingReason == ICP4.BusinessLogic.CourseManager.LockingReason.ProctorNotPartOfCredential)
+                {
+                    ScreenMessageAppears = FinalMessage;   
+                }
+            }
+
+            //showCourseLocked.CommandName = ICP4.CommunicationLogic.CommunicationCommand.CommandNames.ShowCourseLocked;
+            //showCourseLocked.CourseLockedMessage = courseLockedMessage;
+
+            return ScreenMessageAppears;
+
+
+
+
         }
 
     }
