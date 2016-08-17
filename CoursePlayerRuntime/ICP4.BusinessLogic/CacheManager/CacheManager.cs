@@ -869,6 +869,37 @@ namespace ICP4.BusinessLogic.CacheManager
             return -1;   
         }
 
+        /// <summary>
+        /// This method searches Sequence to find active content object.
+        /// </summary>
+        /// <param name="courseID">CourseID integer value, represent the key for cache</param>
+        /// <param name="seqNo">SeqNo integer value, represent the sequenceno for contentobject</param>
+        /// <returns>Integer value</returns>
+        public int GetNextActiveContentObject(int courseID, int seqNo, int sourse, int courseConfigurationID, int parentContentObjectID)
+        {
+            ICPCourseService.Sequence sequence = (ICPCourseService.Sequence)HttpRuntime.Cache["COURSESEQUENCE" + "_" + courseID.ToString() + "_" + courseConfigurationID.ToString() + "_" + sourse.ToString()];
+            ArrayList parentCOID = new ArrayList();
+            parentCOID.Add(parentContentObjectID);
+            for (int index = seqNo + 1; index < sequence.SequenceItems.Length; index++)
+            {
+                if (sequence.SequenceItems[index].SequenceItemType == "ContentObject" && sequence.SequenceItems[index].IsNotActive == false)
+                {
+                    if (!parentCOID.Contains(sequence.SequenceItems[index].ParentID))
+                    {
+                        return index;
+                    }
+                    else
+                    {
+                        if(!parentCOID.Contains(sequence.SequenceItems[index].SequenceItemID))
+                        {
+                            parentCOID.Add(sequence.SequenceItems[index].SequenceItemID);
+                        }
+                    }
+                }
+            }
+            return GetFirstChildSceneAssetOrQuizOfContentObject(courseID,seqNo,sourse,courseConfigurationID);
+        }
+
 
         /// <summary>
         /// This method gets a list of contentObjectIDs by comparing tracking data and sequence in cache

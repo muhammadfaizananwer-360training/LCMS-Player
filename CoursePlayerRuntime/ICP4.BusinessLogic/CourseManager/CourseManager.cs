@@ -8365,7 +8365,8 @@ namespace ICP4.BusinessLogic.CourseManager
                 {
                     if (sequenceItem.IsNotActive == true && sequenceItem.SequenceItemType == "ContentObject")
                     {                        
-                        seq = cacheManager.GetFirstChildSceneAssetOrQuizOfContentObject(courseID, ++sequenceNo, source, courseConfigurationID);
+                        //seq = cacheManager.GetFirstChildSceneAssetOrQuizOfContentObject(courseID, ++sequenceNo, source, courseConfigurationID);
+                        seq = cacheManager.GetNextActiveContentObject(courseID, ++sequenceNo, source, courseConfigurationID, sequenceItem.SequenceItemID);
                     }
                     else
                     {
