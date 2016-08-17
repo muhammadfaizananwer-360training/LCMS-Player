@@ -1613,6 +1613,14 @@
 								$thisModal.removeClass('pre-loader please-wait').html(bodyHtml);
 							//},100);
 				break;
+				case "ProctorLockCourse":	
+				   
+					var $thisModal = $('.cd-modal[data-modal="'+ attr +'"] > .cd-modal-content');
+						$thisModal.addClass('pre-loader please-wait');							
+								var bodyHtml ='<div id= "ProctorLockCourseDialog" class = "cd-modal-content"><p> Your course is locked. Please use the chat window to communicate with your proctor and click <a href="#" onclick="return ProctorLockCourseDialog()">here</a> to unlock. </p></div>'
+								$thisModal.removeClass('pre-loader please-wait').html(bodyHtml);							
+				break;
+				
 			}
 		}
 		

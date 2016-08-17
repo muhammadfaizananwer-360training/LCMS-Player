@@ -247,3 +247,16 @@
     // Waqas Zakai
     // LCMS-10318
     // END
+    
+    function ProctorLockCourseDialog()
+    {
+     var communicationEng = new CommunicationEngine();
+     var coursePlayerEng = new CoursePlayerEngine();
+     var IsLocked = communicationEng.IsProctorLockedCourse();
+          if (IsLocked != null) {           
+           coursePlayerEng.CommandHelper(IsLocked);
+    
+    }
+    
+  }  
+    
