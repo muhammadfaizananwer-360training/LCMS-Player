@@ -8363,19 +8363,32 @@ namespace ICP4.BusinessLogic.CourseManager
                 int courseConfigurationID = Convert.ToInt32(System.Web.HttpContext.Current.Session["CourseConfigurationID"]);
                 if (isNormalDirection)
                 {
-                    if (sequenceItem.IsNotActive == true && sequenceItem.SequenceItemType == "ContentObject")
-                    {                        
-                        //seq = cacheManager.GetFirstChildSceneAssetOrQuizOfContentObject(courseID, ++sequenceNo, source, courseConfigurationID);
-                        seq = cacheManager.GetNextActiveContentObject(courseID, ++sequenceNo, source, courseConfigurationID, sequenceItem.SequenceItemID);
-                    }
-                    else
-                    {
-                        seq = cacheManager.GetFirstChildSceneAssetOrQuizOfContentObject(courseID, sequenceNo, source, courseConfigurationID);
-                    }
+                    seq = cacheManager.GetFirstChildSceneAssetOrQuizOfContentObject(courseID, sequenceNo, source, courseConfigurationID);
                     if (seq < 0)
                     {//if there is no asset or quiz after the contentobject that means the end of course
                         return CreateCustomeMessageForEnd();
                     }
+
+                    //if (sequenceItem.IsNotActive == true && sequenceItem.SequenceItemType == "ContentObject" || sequenceItem.ParentID ==0)
+                    //{                        
+                    //    //seq = cacheManager.GetFirstChildSceneAssetOrQuizOfContentObject(courseID, ++sequenceNo, source, courseConfigurationID);
+                    //    if (sequenceItem.ParentID == 0)
+                    //    {
+                    //        seq = cacheManager.GetNextActiveContentObject(courseID, sequenceNo, source, courseConfigurationID, sequenceItem.SequenceItemID, true);
+                    //    }
+                    //    else
+                    //    {
+                    //        seq = cacheManager.GetNextActiveContentObject(courseID, ++sequenceNo, source, courseConfigurationID, sequenceItem.SequenceItemID, false);
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    seq = cacheManager.GetFirstChildSceneAssetOrQuizOfContentObject(courseID, sequenceNo, source, courseConfigurationID);
+                    //}
+                    //if (seq < 0)
+                    //{//if there is no asset or quiz after the contentobject that means the end of course
+                    //    return CreateCustomeMessageForEnd();
+                    //}
                 }
                 else
                 {
@@ -11889,6 +11902,7 @@ namespace ICP4.BusinessLogic.CourseManager
                                         {
                                             string content = client.DownloadString(serviceURL);
                                             content = content.Replace("/*", "").Replace("*/", "").Trim();
+                                            content = content.Replace("&amp;", "&");                                            
                                             object objcontent = Newtonsoft.Json.JavaScriptConvert.DeserializeObject(content);
                                             Newtonsoft.Json.Linq.JObject json = Newtonsoft.Json.Linq.JObject.Parse(content);
                                             string productPageURL = json["seourl"].ToString();
