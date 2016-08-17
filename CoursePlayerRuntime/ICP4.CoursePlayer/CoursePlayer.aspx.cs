@@ -3579,117 +3579,122 @@ namespace ICP4.CoursePlayer
         {
             try
             {
-                string connectURL = ConfigurationManager.AppSettings["ConnectURLForMarketo"];
-
-                string topicName = ConfigurationManager.AppSettings["TopicNameForMarketo"];
-                
-                //Uri connecturi = new Uri("activemq:tcp://10.0.100.86:61616");
-
-                Uri connecturi = new Uri(connectURL);
-
-                //Console.WriteLine("About to connect to " + connecturi);
-
-                // NOTE: ensure the nmsprovider-activemq.config file exists in the executable folder.
-                IConnectionFactory factory = new NMSConnectionFactory(connecturi);
-
-                using (IConnection connection = factory.CreateConnection())
-                using (ISession session = connection.CreateSession(AcknowledgementMode.AutoAcknowledge))
+                ICP4.BusinessLogic.ICPTrackingService.LearnerProfile serviceLearnerProfile;
+                ICP4.BusinessLogic.ICPTrackingService.LearnerProfile serviceLearnerProfileForMarketo;
+                int enrollmentID;
+                using (ICP4.BusinessLogic.ICPTrackingService.TrackingService trackingService = new ICP4.BusinessLogic.ICPTrackingService.TrackingService())
                 {
+                    trackingService.Url = ConfigurationManager.AppSettings["ICPTrackingService"];
+                    trackingService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
 
-                    //IDestination destination = SessionUtil.GetDestination(session, "topic://JMS/TOPIC/PUBLISH_TO_CRM");
-                    IDestination destination = SessionUtil.GetDestination(session, topicName);
+                    enrollmentID = Convert.ToInt32(System.Web.HttpContext.Current.Session["EnrollmentID"]);
 
-                    //Console.WriteLine("Using destination: " + destination);
+                    int learnerID = Convert.ToInt32(System.Web.HttpContext.Current.Session["LearnerID"]);
 
-                    // Create a consumer and producer
-                    using (IMessageConsumer consumer = session.CreateConsumer(destination))
-                    using (IMessageProducer producer = session.CreateProducer(destination))
-                    {
-                        // Start the connection.
-                        connection.Start();
+                    serviceLearnerProfile = trackingService.GetUserProfileInformation(enrollmentID);
+                    serviceLearnerProfileForMarketo = trackingService.GetLearnerInformationForMarketo(learnerID);
 
-                        producer.DeliveryMode = MsgDeliveryMode.Persistent;
-
-                        // Send a message
-                        ITextMessage request = session.CreateTextMessage("The is the Text Message");
-
-                        int enrollmentID = Convert.ToInt32(System.Web.HttpContext.Current.Session["EnrollmentID"]);
-
-                        int learnerID = Convert.ToInt32(System.Web.HttpContext.Current.Session["LearnerID"]);
-
-                       
-                        ICP4.BusinessLogic.ICPTrackingService.LearnerProfile serviceLearnerProfile;
-                        ICP4.BusinessLogic.ICPTrackingService.LearnerProfile serviceLearnerProfileForMarketo;
-                        
-                        using (ICP4.BusinessLogic.ICPTrackingService.TrackingService trackingService = new ICP4.BusinessLogic.ICPTrackingService.TrackingService())
-                        {
-                            trackingService.Url = ConfigurationManager.AppSettings["ICPTrackingService"];
-                            trackingService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
-
-                             serviceLearnerProfile = trackingService.GetUserProfileInformation(enrollmentID);
-                             serviceLearnerProfileForMarketo = trackingService.GetLearnerInformationForMarketo(learnerID);
-
-                        }
-                              //DateTime.Now.ToString("yyyy-MM-ddThh:mm:sszzz"),     
-                        var JSONData = new
-                        {
-                            firstName = serviceLearnerProfile.FirstName,
-                            lastName = serviceLearnerProfile.LastName,
-                            emailAddress = serviceLearnerProfile.EmailAddress,
-                            courseName = serviceLearnerProfile.CourseName,
-                            storeName = serviceLearnerProfileForMarketo.StoreName,
-                            company = serviceLearnerProfileForMarketo.CompanyName,
-                            customerType = serviceLearnerProfileForMarketo.CustomerType,
-                            eventName = ConfigurationManager.AppSettings["EventNameForMarketo"],                            
-                            eventDate = DateTime.Now.ToString("s") + "Z", 
-                            NPSScore = courseRating.NPS_RATING,
-                            review = courseRating.USER_REVIEW_TEXT,
-                            course5StarRating = courseRating.RATING_COURSE,
-                            course5StarComment = courseRating.RATING_COURSE_SECONDARY_Q + "<br>" + courseRating.RATING_COURSE_SECONDARY ,
-                            shopping5StarRating = courseRating.RATING_SHOPPINGEXP,
-                            shopping5StarComment = courseRating.RATING_SHOPPINGEXP_SECONDARY_Q + "<br>" + courseRating.RATING_SHOPPINGEXP_SECONDARY ,
-                            technology5StarRating = courseRating.RATING_LEARNINGTECH,
-                            technology5StarComment = courseRating.RATING_LEARNINGTECH_SECONDARY_Q + "<br>" + courseRating.RATING_LEARNINGTECH_SECONDARY,
-                            support5StarRating = courseRating.RATING_CS,
-                            support5StarComment = courseRating.RATING_CS_SECONDARY_Q + "<br>" + courseRating.RATING_CS_SECONDARY  
-
-                        };
-
-
-                        request.Text = JavaScriptConvert.SerializeObject(JSONData);
-                        producer.Send(request);
-
-                        // Consume a message
-                        ITextMessage message = consumer.Receive() as ITextMessage;
-                        if (message == null)
-                        {
-                            //Console.WriteLine("No message received!");
-                            Logger.Write("No message recieved! " + DateTime.Now.ToString(), "PlayerCourseCache", 2, 2000, System.Diagnostics.TraceEventType.Information, "");
-                        }
-                        else
-                        {
-                            Logger.Write("Received message with ID:   " + message.NMSMessageId + DateTime.Now.ToString(), "PlayerCourseCache", 2, 2000, System.Diagnostics.TraceEventType.Information, "");
-                            Logger.Write("Received message with text: " + message.Text + DateTime.Now.ToString(), "PlayerCourseCache", 2, 2000, System.Diagnostics.TraceEventType.Information, "");
-                            //Console.WriteLine("Received message with ID:   " + message.NMSMessageId);
-                            //Console.WriteLine("Received message with text: " + message.Text);
-                        }
-
-                        using (ICP4.BusinessLogic.ICPTrackingService.TrackingService trackingService = new ICP4.BusinessLogic.ICPTrackingService.TrackingService())
-                        {
-                            trackingService.Url = ConfigurationManager.AppSettings["ICPTrackingService"];
-                            trackingService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
-
-                            trackingService.SavePlayerMarketoLog(ConfigurationManager.AppSettings["EventNameForMarketo"], enrollmentID, request.Text);
-                            
-
-                        }
-
-                        // Close the connection.
-                        connection.Close();
-
-                    }
                 }
 
+                CourseManager courseManager = new CourseManager();
+                bool validEmailAddress = courseManager.IsEmail(serviceLearnerProfile.EmailAddress);
+
+                if (validEmailAddress == true)
+                {
+                    string connectURL = ConfigurationManager.AppSettings["ConnectURLForMarketo"];
+
+                    string topicName = ConfigurationManager.AppSettings["TopicNameForMarketo"];
+
+                    //Uri connecturi = new Uri("activemq:tcp://10.0.100.86:61616");
+
+                    Uri connecturi = new Uri(connectURL);
+
+                    //Console.WriteLine("About to connect to " + connecturi);
+
+                    // NOTE: ensure the nmsprovider-activemq.config file exists in the executable folder.
+                    IConnectionFactory factory = new NMSConnectionFactory(connecturi);
+
+                    using (IConnection connection = factory.CreateConnection())
+                    using (ISession session = connection.CreateSession(AcknowledgementMode.AutoAcknowledge))
+                    {
+
+                        //IDestination destination = SessionUtil.GetDestination(session, "topic://JMS/TOPIC/PUBLISH_TO_CRM");
+                        IDestination destination = SessionUtil.GetDestination(session, topicName);
+
+                        //Console.WriteLine("Using destination: " + destination);
+
+                        // Create a consumer and producer
+                        using (IMessageConsumer consumer = session.CreateConsumer(destination))
+                        using (IMessageProducer producer = session.CreateProducer(destination))
+                        {
+                            // Start the connection.
+                            connection.Start();
+
+                            producer.DeliveryMode = MsgDeliveryMode.Persistent;
+
+                            // Send a message
+                            ITextMessage request = session.CreateTextMessage("The is the Text Message");
+                            
+                            //DateTime.Now.ToString("yyyy-MM-ddThh:mm:sszzz"),  
+
+                            
+                            var JSONData = new
+                            {
+                                firstName = serviceLearnerProfile.FirstName,
+                                lastName = serviceLearnerProfile.LastName,
+                                emailAddress = serviceLearnerProfile.EmailAddress,
+                                courseName = serviceLearnerProfile.CourseName,
+                                storeName = serviceLearnerProfileForMarketo.StoreName,
+                                company = serviceLearnerProfileForMarketo.CompanyName,
+                                customerType = serviceLearnerProfileForMarketo.CustomerType,
+                                eventName = ConfigurationManager.AppSettings["EventNameForMarketo"],
+                                eventDate = DateTime.Now.ToString("s") + "Z",
+                                NPSScore = courseRating.NPS_RATING,
+                                review = courseRating.USER_REVIEW_TEXT,
+                                course5StarRating = courseRating.RATING_COURSE,
+                                course5StarComment = courseRating.RATING_COURSE_SECONDARY_Q + "<br>" + courseRating.RATING_COURSE_SECONDARY,
+                                shopping5StarRating = courseRating.RATING_SHOPPINGEXP,
+                                shopping5StarComment = courseRating.RATING_SHOPPINGEXP_SECONDARY_Q + "<br>" + courseRating.RATING_SHOPPINGEXP_SECONDARY,
+                                technology5StarRating = courseRating.RATING_LEARNINGTECH,
+                                technology5StarComment = courseRating.RATING_LEARNINGTECH_SECONDARY_Q + "<br>" + courseRating.RATING_LEARNINGTECH_SECONDARY,
+                                support5StarRating = courseRating.RATING_CS,
+                                support5StarComment = courseRating.RATING_CS_SECONDARY_Q + "<br>" + courseRating.RATING_CS_SECONDARY
+
+                            };
+
+
+                            request.Text = JavaScriptConvert.SerializeObject(JSONData);
+                            producer.Send(request);
+
+                            // Consume a message
+                            ITextMessage message = consumer.Receive() as ITextMessage;
+                            if (message == null)
+                            {
+                                //Console.WriteLine("No message received!");
+                                Logger.Write("No message recieved! " + DateTime.Now.ToString(), "PlayerCourseCache", 2, 2000, System.Diagnostics.TraceEventType.Information, "");
+                            }
+                            else
+                            {
+                                Logger.Write("Received message with ID:   " + message.NMSMessageId + DateTime.Now.ToString(), "PlayerCourseCache", 2, 2000, System.Diagnostics.TraceEventType.Information, "");
+                                Logger.Write("Received message with text: " + message.Text + DateTime.Now.ToString(), "PlayerCourseCache", 2, 2000, System.Diagnostics.TraceEventType.Information, "");
+                                //Console.WriteLine("Received message with ID:   " + message.NMSMessageId);
+                                //Console.WriteLine("Received message with text: " + message.Text);
+                            }
+
+                            using (ICP4.BusinessLogic.ICPTrackingService.TrackingService trackingService = new ICP4.BusinessLogic.ICPTrackingService.TrackingService())
+                            {
+                                trackingService.Url = ConfigurationManager.AppSettings["ICPTrackingService"];
+                                trackingService.Timeout = Convert.ToInt32(ConfigurationManager.AppSettings["ICPCourseServiceTimeout"]);
+
+                                trackingService.SavePlayerMarketoLog(ConfigurationManager.AppSettings["EventNameForMarketo"], enrollmentID, request.Text);
+                            }
+
+                            // Close the connection.
+                            connection.Close();
+
+                        }
+                    }
+                }
 
                 return "";
 
@@ -4227,6 +4232,10 @@ namespace ICP4.CoursePlayer
 
         }
         //Stop
+
+
+
+      
 
 
       

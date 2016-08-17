@@ -14585,6 +14585,19 @@ namespace ICP4.BusinessLogic.CourseManager
         
         }
         //Stop
+
+        public bool IsEmail(string Email)
+        {
+            string regexEmailAddress = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                                       @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                                       @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+
+            System.Text.RegularExpressions.Regex re = new System.Text.RegularExpressions.Regex(regexEmailAddress);
+            if (re.IsMatch(Email))
+                return (true);
+            else
+                return (false);
+        }
      
     }
 
