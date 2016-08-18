@@ -11071,8 +11071,8 @@ namespace ICP4.BusinessLogic.CourseManager
             int totalViewableScenes=0;
             for (int index = 0; index <= sequence.SequenceItems.Length - 1; index++)
             {
-                if (sequence.SequenceItems[index].SequenceItemType == SequenceItemTypeName.ContentAsset ||
-                    sequence.SequenceItems[index].SequenceItemType == SequenceItemTypeName.FlashAsset)
+                if ((sequence.SequenceItems[index].SequenceItemType == SequenceItemTypeName.ContentAsset ||
+                    sequence.SequenceItems[index].SequenceItemType == SequenceItemTypeName.FlashAsset) && sequence.SequenceItems[index].IsNotActive==false)
                 {
                     totalViewableScenes++;
                 }
@@ -11117,8 +11117,8 @@ namespace ICP4.BusinessLogic.CourseManager
                 int visitedSceneCount = 0;
                 for (int index = 0; index <= seqNo; index++)
                 {
-                    if (sequence.SequenceItems[index].SequenceItemType == SequenceItemTypeName.ContentAsset ||
-                        sequence.SequenceItems[index].SequenceItemType == SequenceItemTypeName.FlashAsset)
+                    if ((sequence.SequenceItems[index].SequenceItemType == SequenceItemTypeName.ContentAsset ||
+                        sequence.SequenceItems[index].SequenceItemType == SequenceItemTypeName.FlashAsset) && sequence.SequenceItems[index].IsNotActive==false)
                     {
                         visitedSceneCount++;
                     }

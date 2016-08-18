@@ -6,7 +6,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <StartPageUrl>CoursePlayer.aspx?COURSEID=1726884&amp;VARIANT=En-US&amp;BRANDCODE=DEFAULT&amp;PREVIEW=true&amp;SESSION=a76f0253-5e7b-4cf1-936b-8f3cb83d4aa8</StartPageUrl>
+          <StartPageUrl>CoursePlayer.aspx?COURSEID=219309&amp;VARIANT=En-US&amp;BRANDCODE=DEFAULT&amp;PREVIEW=true&amp;SESSION=a76f0253-5e7b-4cf1-936b-8f3cb83d4aa8</StartPageUrl>
           <StartAction>SpecificPage</StartAction>
           <AspNetDebugging>True</AspNetDebugging>
           <NativeDebugging>False</NativeDebugging>
