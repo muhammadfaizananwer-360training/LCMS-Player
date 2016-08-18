@@ -2913,6 +2913,9 @@ function CoursePlayerEngine() {
             }
             return false;
         });
+        
+        
+        ui.svgModal.open($("<a data-group='modal-dynamic' data-trg='ProctorLockCourse'></a>"));
 
         //$(overlay).css({ "opacity": "0.7" });
         //$(overlay).fadeIn("slow");
