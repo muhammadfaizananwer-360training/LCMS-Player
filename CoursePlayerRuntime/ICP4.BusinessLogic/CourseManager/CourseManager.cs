@@ -1266,15 +1266,16 @@ namespace ICP4.BusinessLogic.CourseManager
                     else
                     {
                         sequenceItem = GetNextBackItem(courseID, direction, seqNo);
-                        while (sequenceItem.IsNotActive == true && sequenceItem.SequenceItemType!="ContentObject")
+                        //while (sequenceItem.IsNotActive == true && sequenceItem.SequenceItemType != "ContentObject")
+                        while (sequenceItem.IsNotActive == true)
                         {
                             if (direction > 0)
                             {
-                                sequenceItem = GetNextBackItem(courseID, direction, seqNo++);
+                                sequenceItem = GetNextBackItem(courseID, direction, ++seqNo);
                             }
                             else
                             {
-                                sequenceItem = GetNextBackItem(courseID, direction, seqNo--);
+                                sequenceItem = GetNextBackItem(courseID, direction, --seqNo);
                             }
                         }                       
                     }
