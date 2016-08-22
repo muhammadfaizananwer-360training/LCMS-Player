@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
@@ -12,7 +12,7 @@
           <NativeDebugging>False</NativeDebugging>
           <SQLDebugging>False</SQLDebugging>
           <PublishCopyOption>RunFiles</PublishCopyOption>
-          <PublishTargetLocation>D:\WaqasWork\LCMS\SourceCode-4.26.7\Publish\18-AUGUST-2016\ICP4\player\</PublishTargetLocation>
+          <PublishTargetLocation>D:\WaqasWork\LCMS\SourceCode-4.26.7\Publish\17-AUGUST-2016\ICP4\player\</PublishTargetLocation>
           <PublishDeleteAllFiles>True</PublishDeleteAllFiles>
           <PublishCopyAppData>False</PublishCopyAppData>
           <ExternalProgram>
