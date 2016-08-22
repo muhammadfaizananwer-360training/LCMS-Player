@@ -934,7 +934,7 @@ var ui = function () {
 						return "I am learning lesson " + ui.social.specificTitle+' in the course '+ui.social.title + ' at 360training.com';
 					break;
 					case 3:
-						return 'Course Completed! I completed the course, "'+ui.social.title + '", on 360training.com';
+						return 'Course Completed! I completed the course "'+ui.social.title + '" on 360training.com';
 					break;
 				}
 			},
